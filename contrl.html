@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Live - Control Móvil</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: transparent; 
+            color: #ffffff; margin: 0; padding: 0; min-height: 100vh; overflow: hidden; 
+        }
+        
+        .container {
+            width: 85%; max-width: 260px; background: rgba(18, 18, 20, 0.85); backdrop-filter: blur(8px);
+            padding: 10px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%);
+            cursor: grab; user-select: none; touch-action: none; 
+        }
+        
+        .container:active { cursor: grabbing; }
+        .drag-handle { width: 35px; height: 3px; background: rgba(255, 255, 255, 0.3); border-radius: 3px; margin: 0 auto 6px auto; }
+        h2 { color: #00e676; margin: 0 0 6px 0; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; text-align: center;}
+        
+        input {
+            width: 100%; padding: 8px; margin-bottom: 8px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 6px;
+            background-color: rgba(26, 26, 30, 0.9); color: #fff; font-size: 12px; box-sizing: border-box; text-align: center; text-transform: uppercase;
+        }
+        input:focus { border-color: #00e676; outline: none; }
+        
+        .btn-grid { display: flex; flex-direction: column; gap: 6px; }
+        
+        .btn {
+            width: 100%; padding: 10px; font-size: 13px; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;
+            transition: transform 0.1s, opacity 0.2s; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .btn:active { transform: scale(0.96); }
+        .btn-a { background-color: rgba(255, 23, 68, 0.9); border: 1px solid #ff1744; }
+        .btn-b { background-color: rgba(41, 121, 255, 0.9); border: 1px solid #2979ff; }
+        .btn-c { background-color: rgba(255, 145, 0, 0.9); border: 1px solid #ff9100; }
+        
+        .grid-avatares { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 4px;}
+        .btn-avatar { 
+            background: rgba(37, 37, 37, 0.9); border: 1px solid rgba(255,255,255,0.2); 
+            padding: 8px; border-radius: 6px; color: white; font-size: 11px; font-weight: bold; cursor: pointer; transition: all 0.2s;
+        }
+        .btn-avatar:hover:not(:disabled) { border-color: #00e676; }
+        
+        #estado { margin-top: 6px; font-size: 10px; color: #aaa; text-align: center;}
+        #panel-juego { display: none; }
+        .texto-info { color: #aaa; font-size: 11px; margin: 0 0 6px 0; text-align: center; }
+        #avatar-seleccionado { font-size: 28px; text-align: center; margin-bottom: -4px; animation: latido 1.5s infinite alternate; }
+        @keyframes latido { from { transform: scale(0.95); } to { transform: scale(1.05); } }
+    </style>
+</head>
+<body>
+
+<div class="container" id="control-flotante">
+    <div class="drag-handle"></div>
+    <h2>🎮 TRIVIA LIVE</h2>
+    
+    <div id="panel-registro">
+        <p class="texto-info">Elige avatar y escribe tu nombre:</p>
+        <input type="text" id="username" placeholder="TU NOMBRE..." maxlength="12">
+        <div class="grid-avatares" id="zona-botones-avatar">
+            <!-- Los botones se generan dinámicamente aquí -->
+        </div>
+    </div>
+
+    <div id="panel-juego" class="btn-grid">
+        <div id="avatar-seleccionado"></div>
+        <p style="color: #00e676; font-size: 11px; font-weight: bold; margin: 0 0 4px 0; text-align: center;" id="mensaje-bienvenida"></p>
+        <button class="btn btn-a" onclick="enviarRespuesta('A')">OPCIÓN A</button>
+        <button class="btn btn-b" onclick="enviarRespuesta('B')">OPCIÓN B</button>
+        <button class="btn btn-c" onclick="enviarRespuesta('C')">OPCIÓN C</button>
+    </div>
+
+    <div id="estado">🔴 Desconectado</div>
+</div>
+
+<script>
+    // --- ARRASTRE ---
+    const dragItem = document.getElementById("control-flotante");
+    let isDragging = false; let startX, startY, startLeft, startTop;
+    function dragStart(e) {
+        if (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT') return;
+        isDragging = true; const rect = dragItem.getBoundingClientRect();
+        dragItem.style.transform = 'none'; dragItem.style.bottom = 'auto';
+        dragItem.style.left = rect.left + 'px'; dragItem.style.top = rect.top + 'px';
+        if (e.type === "touchstart") { startX = e.touches[0].clientX; startY = e.touches[0].clientY; } 
+        else { startX = e.clientX; startY = e.clientY; }
+        startLeft = rect.left; startTop = rect.top;
+    }
+    function drag(e) {
+        if (!isDragging) return; e.preventDefault(); 
+        let currentX, currentY;
+        if (e.type === "touchmove") { currentX = e.touches[0].clientX; currentY = e.touches[0].clientY; } 
+        else { currentX = e.clientX; currentY = e.clientY; }
+        dragItem.style.left = (startLeft + (currentX - startX)) + 'px'; dragItem.style.top = (startTop + (currentY - startY)) + 'px';
+    }
+    function dragEnd() { isDragging = false; }
+    dragItem.addEventListener('mousedown', dragStart); document.addEventListener('mousemove', drag); document.addEventListener('mouseup', dragEnd);
+    dragItem.addEventListener('touchstart', dragStart, {passive: false}); document.addEventListener('touchmove', drag, {passive: false}); document.addEventListener('touchend', dragEnd);
+
+    // --- WEBSOCKETS (CONEXIÓN DINÁMICA A LA NUBE O LOCAL) ---
+    let mapaEmojis = { 'alien': '👽', 'robot': '🤖', 'zorro': '🦊', 'unicornio': '🦄' };
+    
+    // AQUÍ ESTÁ EL CAMBIO MÁGICO PARA RENDER:
+    const ws = new WebSocket(window.location.origin.replace(/^http/, 'ws'));
+    
+    const estadoDiv = document.getElementById('estado');
+
+    ws.onopen = () => { estadoDiv.innerHTML = '🟢 Conectado'; estadoDiv.style.color = '#00e676'; ws.send(JSON.stringify({ tipo: 'SOLICITAR_AVATARES' })); };
+    ws.onclose = () => { estadoDiv.innerHTML = '🔴 Desconectado'; estadoDiv.style.color = '#ff1744'; };
+
+    ws.onmessage = (event) => {
+        const datos = JSON.parse(event.data);
+        
+        // 1. RECONSTRUIR BOTONES SI EL ADMIN CAMBIA LA TEMÁTICA
+        if (datos.tipo === 'CAMBIO_TEMATICA') {
+            const tema = datos.datos;
+            mapaEmojis = {
+                [tema[1].id]: tema[1].emoji,
+                [tema[2].id]: tema[2].emoji,
+                [tema[3].id]: tema[3].emoji,
+                [tema[4].id]: tema[4].emoji
+            };
+            
+            const contenedor = document.getElementById('zona-botones-avatar');
+            contenedor.innerHTML = `
+                <button id="btn-${tema[1].id}" class="btn-avatar" onclick="registrarse('${tema[1].id}')">${tema[1].emoji} ${tema[1].nombre.toUpperCase()}</button>
+                <button id="btn-${tema[2].id}" class="btn-avatar" onclick="registrarse('${tema[2].id}')">${tema[2].emoji} ${tema[2].nombre.toUpperCase()}</button>
+                <button id="btn-${tema[3].id}" class="btn-avatar" onclick="registrarse('${tema[3].id}')">${tema[3].emoji} ${tema[3].nombre.toUpperCase()}</button>
+                <button id="btn-${tema[4].id}" class="btn-avatar" onclick="registrarse('${tema[4].id}')">${tema[4].emoji} ${tema[4].nombre.toUpperCase()}</button>
+            `;
+            // Pedir estado para saber cuáles bloquear en esta nueva temática
+            ws.send(JSON.stringify({ tipo: 'SOLICITAR_AVATARES' }));
+        }
+
+        // 2. BLOQUEAR LOS OCUPADOS
+        if (datos.tipo === 'ESTADO_AVATARES') {
+            const botones = document.querySelectorAll('.grid-avatares .btn-avatar');
+            botones.forEach(btn => {
+                const idBtn = btn.id.substring(4); // Extraer 'alien', 'perro', etc.
+                if (datos.ocupados.includes(idBtn)) {
+                    btn.disabled = true; btn.style.opacity = '0.3'; btn.style.cursor = 'not-allowed';
+                    if (!btn.innerText.includes('OCUPA')) btn.innerText += " (OCUPA)";
+                } else {
+                    btn.disabled = false; btn.style.opacity = '1'; btn.style.cursor = 'pointer';
+                    btn.innerText = btn.innerText.replace(" (OCUPA)", "");
+                }
+            });
+        }
+    };
+
+    function registrarse(avatarElegido) {
+        const usernameInput = document.getElementById('username').value.trim();
+        if (usernameInput === "") { alert("Escribe tu nombre primero."); return; }
+        const datos = { tipo: 'SELECCION_AVATAR', usuario: usernameInput, avatar: avatarElegido };
+        if (ws.readyState === WebSocket.OPEN) {
+            ws.send(JSON.stringify(datos));
+            document.getElementById('panel-registro').style.display = 'none';
+            document.getElementById('panel-juego').style.display = 'flex';
+            document.getElementById('avatar-seleccionado').innerText = mapaEmojis[avatarElegido];
+            document.getElementById('mensaje-bienvenida').innerText = `¡Listo, ${usernameInput}!`;
+        }
+    }
+
+    function enviarRespuesta(opcion) {
+        const usernameInput = document.getElementById('username').value.trim();
+        const datos = { tipo: 'RESPUESTA_CHAT', usuario: usernameInput, opcion: opcion };
+        if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(datos));
+    }
+</script>
+
+</body>
+</html>

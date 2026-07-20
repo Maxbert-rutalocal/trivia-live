@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Live - Tablero Principal</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .game-container {
+            display: flex;
+            max-width: 1450px;
+            margin: 10px auto;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* PANEL IZQUIERDO */
+        .sidebar {
+            flex: 1; background: #1e1e1e; padding: 15px; border-radius: 12px;
+            border: 2px solid #333; max-width: 280px; max-height: 95vh; overflow-y: auto;
+        }
+
+        /* PANEL DERECHO DE TEMÁTICAS */
+        .sidebar-derecha {
+            flex: 0.2; background: #1e1e1e; padding: 12px; border-radius: 12px;
+            border: 2px solid #333; min-width: 95px; max-width: 110px; max-height: 95vh;
+            display: flex; flex-direction: column; align-items: center; overflow-y: auto;
+        }
+        .tit-tematica { font-size: 11px; color: #25f4ee; font-weight: bold; margin: 0 0 10px 0; text-transform: uppercase; text-align: center; line-height: 1.3;}
+        
+        .grid-tematicas { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+        
+        .btn-tematica {
+            background: #252525; border: 2px solid #444; color: white; padding: 8px 2px; 
+            border-radius: 8px; cursor: pointer; font-size: 18px; transition: all 0.2s; 
+            width: 100%; text-align: center; line-height: 1.1;
+        }
+        .btn-tematica:hover { border-color: #ffc107; }
+        .btn-tematica.activa { border-color: #25f4ee; background: #1a3a3a; box-shadow: 0 0 10px rgba(37, 244, 238, 0.4); }
+        .btn-tematica span { display: block; font-size: 9px; color: #aaa; margin-top: 4px; font-weight: bold; letter-spacing: 0.5px;}
+
+        .seccion-config { background: #151515; padding: 8px; border-radius: 8px; border: 1px solid #222; margin-bottom: 12px; }
+        .tit-config { font-size: 11px; color: #aaa; font-weight: bold; margin: 0 0 5px 0; text-transform: uppercase;}
+        .zona-botones { display: flex; gap: 5px; }
+        
+        .btn-config { flex: 1; border: none; padding: 8px 4px; font-weight: bold; font-size: 11px; border-radius: 5px; cursor: pointer; color: #888; background: #252525; transition: all 0.2s ease; }
+        .btn-config.active[data-nivel="facil"] { background: #28a745; color: white; box-shadow: 0 0 8px rgba(40,167,69,0.5); }
+        .btn-config.active[data-nivel="medio"] { background: #ffc107; color: black; box-shadow: 0 0 8px rgba(255,193,7,0.5); }
+        .btn-config.active[data-nivel="dificil"] { background: #dc3545; color: white; box-shadow: 0 0 8px rgba(220,53,69,0.5); }
+        .btn-config.active-jugadores { background: #fe2c55; color: white; box-shadow: 0 0 8px rgba(254,44,85,0.5); }
+
+        .grupo-input-nombre { display: flex; align-items: center; gap: 5px; margin-bottom: 5px; }
+        .grupo-input-nombre span { font-size: 13px; min-width: 20px; }
+        .input-nombre-jug { flex: 1; background: #252525; border: 1px solid #444; color: white; padding: 4px 8px; font-size: 12px; border-radius: 4px; font-weight: bold; }
+        .input-nombre-jug:focus { border-color: #25f4ee; outline: none; }
+
+        .btn-dados-principal {
+            background: linear-gradient(135deg, #ff1744, #ff9100); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 6px; cursor: pointer; width: 100%; font-size: 13px; text-transform: uppercase; box-shadow: 0 0 12px rgba(255, 145, 0, 0.4); margin-bottom: 12px; transition: transform 0.1s;
+        }
+        .btn-dados-principal:active { transform: scale(0.97); }
+
+        .grid-categorias { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 15px; }
+        .btn-cat { border: none; padding: 14px; font-weight: bold; color: white; border-radius: 6px; cursor: pointer; text-shadow: 1px 1px 2px #000; font-size: 12px; transition: all 0.2s ease; text-transform: uppercase; }
+        .azul { background: #007bff; } .rojo { background: #dc3545; } .verde { background: #28a745; } .amarillo { background: #ffc107; color: #000; text-shadow: none; }
+
+        .btn-cat.esperando-pregunta { background: #25f4ee !important; color: #000 !important; text-shadow: none !important; animation: parpadeo-control 0.8s infinite alternate; font-size: 13px; }
+        .btn-cat.esperando-conteo { background: #ffc107 !important; color: #000 !important; text-shadow: none !important; font-size: 13px; }
+        .btn-cat.desactivado { opacity: 0.2; cursor: not-allowed; pointer-events: none; }
+
+        @keyframes parpadeo-control { from { box-shadow: 0 0 4px #25f4ee; } to { box-shadow: 0 0 15px #25f4ee; transform: scale(1.02); } }
+        
+        .btn-revelar { background: #25f4ee; color: #000; border: none; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 6px;}
+        .btn-fallo { background: #dc3545; color: white; border: none; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px; box-shadow: 0 0 10px rgba(220,53,69,0.3); }
+
+        .estado-conexion { font-size: 11px; font-weight: bold; padding: 4px; margin-bottom: 10px; border-radius: 4px; background: #3a1a1a; color: #ff6666;}
+        .estado-conexion.conectado { background: #1a3a1a; color: #66ff66; }
+
+        /* TABLERO CENTRAL */
+        .tablero-wrapper { flex: 2.2; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+        
+        .tablero-monopolio { 
+            display: grid; 
+            grid-template-columns: repeat(9, 95px); 
+            grid-template-rows: repeat(7, 95px); 
+            gap: 6px; 
+            background: #111; padding: 15px; border-radius: 16px; border: 5px solid #fe2c55; 
+            position: relative; box-shadow: 0 0 25px rgba(254, 44, 85, 0.2); 
+        }
+
+        .casilla { background: #2a2a2a; border: 1px solid #444; border-radius: 6px; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 14px; font-weight: bold; position: relative; color: #fff; padding: 3px; box-sizing: border-box; }
+
+        .c-salida { background: #222; border: 2px dashed #25f4ee; font-size: 12px; color: #25f4ee;} .c-meta { background: #fe2c55; font-size: 12px; }
+        .c-azul { border-top: 5px solid #007bff; } .c-rojo { border-top: 5px solid #dc3545; }
+        .c-verde { border-top: 5px solid #28a745; } .c-amarillo { border-top: 5px solid #ffc107; }
+        .c-reto { background: #8a1a1a; border: 1px solid #ff4444; } .c-avanza { background: #1a5e3a; } .c-retrocede { background: #5c1d1d; }
+
+        .avatar-ficha { font-size: 26px; margin: 2px; display: inline-block; }
+        .efecto-brinco { animation: brincar 0.2s ease-out both; }
+        .casilla-activa { background: #3a3a3a !important; box-shadow: inset 0 0 15px #25f4ee, 0 0 20px #25f4ee !important; transform: scale(1.08); z-index: 10; }
+        .efecto-victoria { animation: disco 0.4s infinite alternate; border-color: #ffc107 !important; }
+
+        @keyframes brincar { 0% { transform: scale(1) translateY(0); } 50% { transform: scale(1.4) translateY(-15px); } 100% { transform: scale(1) translateY(0); } }
+        @keyframes disco { from { box-shadow: 0 0 10px #fe2c55; } to { box-shadow: 0 0 35px #25f4ee, 0 0 15px #ffc107; } }
+
+        .centro-tablero { grid-column: 2 / 9; grid-row: 2 / 7; background: #1e1e1e; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 20px; position: relative; }
+
+        .titulo-centro { color: #fe2c55; font-size: 26px; font-weight: bold; margin: 5px 0 0 0; text-shadow: 0 0 12px rgba(254,44,85,0.7); }
+        .zona-controles-musicales { display: flex; gap: 10px; margin: 5px 0; }
+        .btn-audio-directo { background: #252525; border: 1px solid #444; color: #25f4ee; font-size: 12px; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; box-shadow: 0 0 6px rgba(37,244,238,0.2); }
+        .btn-audio-directo.muteada { color: #888; box-shadow: none; }
+        .marcador-turno-actual { background: #151515; border: 1px solid #333; padding: 8px 24px; border-radius: 20px; font-size: 15px; font-weight: bold; color: #aaa; margin-bottom: 5px; }
+        .marcador-turno-actual span { color: #25f4ee; text-shadow: 0 0 5px rgba(37,244,238,0.5); }
+
+        .zona-dinamica-centro { width: 100%; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .contenedor-espera-turno { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .avatar-turno-gigante { font-size: 100px; margin: 0; animation: latido-espera 1s infinite alternate; }
+        .texto-turno-gigante { font-size: 18px; color: #25f4ee; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; margin-top: 10px; }
+
+        .zona-dados-centro { display: flex; gap: 25px; display: none; }
+        .dado-gigante { background: #252525; border: 3px solid #fe2c55; border-radius: 12px; padding: 20px; min-width: 150px; box-shadow: 0 0 15px rgba(254, 44, 85, 0.3); }
+        .dado-tit { font-size: 13px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;}
+        .dado-val { font-size: 20px; font-weight: bold; color: #fff; }
+
+        .pregunta-proyectada { background: rgba(0, 0, 0, 0.95); border: 2px solid #25f4ee; border-radius: 12px; padding: 20px; width: 95%; box-sizing: border-box; box-shadow: 0 0 20px rgba(37, 244, 238, 0.4); display: none; text-align: left; }
+        .txt-pregunta-tablero { font-size: 19px; font-weight: bold; color: #fff; line-height: 1.4; margin-bottom: 15px; text-align: center; }
+        .bloque-opciones-tablero { display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
+        .opcion-item { background: #181818; border: 1px solid #333; padding: 10px 15px; border-radius: 6px; font-size: 16px; font-weight: bold; color: #ddd; transition: all 0.3s ease; }
+        .opcion-item span { color: #fe2c55; margin-right: 5px; }
+
+        .opcion-correcta-iluminada { background: #ffc107 !important; color: #000 !important; border-color: #fff !important; box-shadow: 0 0 15px #ffc107; transform: scale(1.02); animation: parpadeo-respuesta 0.5s infinite alternate; }
+        .opcion-correcta-iluminada span { color: #000 !important; }
+
+        @keyframes parpadeo-respuesta { from { box-shadow: 0 0 8px #ffc107; } to { box-shadow: 0 0 22px #ffc107; } }
+
+        .contador-segundos { font-size: 40px; font-weight: bold; color: #ffc107; text-shadow: 0 0 12px rgba(255, 193, 7, 0.6); margin-top: 5px; text-align: center; }
+        .txt-respuesta-tablero { font-size: 20px; font-weight: bold; color: #25f4ee; margin-top: 10px; text-shadow: 0 0 10px rgba(37, 244, 238, 0.6); display: none; text-align: center; }
+        .tiempo-agotado { color: #dc3545 !important; text-shadow: 0 0 12px rgba(220, 53, 69, 0.8) !important; animation: parpadeo 0.5s infinite alternate; }
+
+        .contenedor-error-centro { display: none; animation: sacudir 0.4s ease-in-out; }
+        .carita-triste { font-size: 85px; margin: 0; animation: latido-triste 0.6s infinite alternate; }
+        .texto-error-tit { font-size: 20px; color: #dc3545; font-weight: bold; margin-top: 10px; text-transform: uppercase; }
+
+        .contenedor-celebracion-centro { display: none; }
+        .icono-celebracion { font-size: 85px; margin: 0; animation: pulso-fiesta 0.4s infinite alternate; }
+        .texto-celebracion-tit { font-size: 24px; color: #28a745; font-weight: bold; margin-top: 10px; text-transform: uppercase; }
+
+        @keyframes sacudir { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-10px); } 40%, 80% { transform: translateX(10px); } }
+        @keyframes latido-triste { from { transform: scale(1); } to { transform: scale(1.1); } }
+        @keyframes latido-espera { from { transform: scale(0.95); opacity: 0.8; } to { transform: scale(1.05); opacity: 1; } }
+        @keyframes pulso-fiesta { from { transform: scale(0.95) rotate(-5deg); } to { transform: scale(1.1) rotate(5deg); } }
+        @keyframes parpadeo { from { opacity: 1; } to { opacity: 0.4; } }
+        @keyframes agitar-dado { 0% { transform: rotate(0deg) scale(1); } 25% { transform: rotate(-3deg) scale(1.05); } 50% { transform: rotate(3deg) scale(1.05); } 75% { transform: rotate(-3deg) scale(1.05); } 100% { transform: rotate(0deg) scale(1); } }
+        
+        .dado-animado { animation: agitar-dado 0.15s infinite; border-color: #ffc107 !important; box-shadow: 0 0 25px rgba(255,193,7,0.6) !important; }
+        #anuncio-efecto { color: #25f4ee; font-weight: bold; font-size: 16px; margin-top: 10px; min-height: 22px; }
+        #ganador-pantalla { font-size: 26px; font-weight: bold; color: #ffc107; margin-top: 5px; text-shadow: 0 0 10px rgba(255,193,7,0.5);}
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        
+        <!-- SIDEBAR IZQUIERDA -->
+        <div class="sidebar">
+            <div id="conexion-ws" class="estado-conexion">🔴 Chat Desconectado</div>
+            
+            <div class="seccion-config">
+                <p class="tit-config">NÚMERO DE JUGADORES</p>
+                <div class="zona-botones">
+                    <button class="btn-config active-jugadores" data-cant="2" onclick="cambiarCantidadJugadores(2)">2 JUGS</button>
+                    <button class="btn-config" data-cant="3" onclick="cambiarCantidadJugadores(3)">3 JUGS</button>
+                    <button class="btn-config" data-cant="4" onclick="cambiarCantidadJugadores(4)">4 JUGS</button>
+                </div>
+            </div>
+
+            <div class="seccion-config">
+                <p class="tit-config">JUGADORES ASIGNADOS</p>
+                <div class="grupo-input-nombre">
+                    <span id="span-j1">Alien👽</span><input type="text" id="input-j1" class="input-nombre-jug" value="" placeholder="CHAT" oninput="actualizarNombresDesdeCampos()">
+                </div>
+                <div class="grupo-input-nombre">
+                    <span id="span-j2">Robot🤖</span><input type="text" id="input-j2" class="input-nombre-jug" value="" placeholder="CREADOR" oninput="actualizarNombresDesdeCampos()">
+                </div>
+                <div class="grupo-input-nombre" id="capa-input-j3" style="display: none;">
+                    <span id="span-j3">Zorro🦊</span><input type="text" id="input-j3" class="input-nombre-jug" value="" placeholder="MODERADOR" oninput="actualizarNombresDesdeCampos()">
+                </div>
+                <div class="grupo-input-nombre" id="capa-input-j4" style="display: none;">
+                    <span id="span-j4">Unic.🦄</span><input type="text" id="input-j4" class="input-nombre-jug" value="" placeholder="INVITADO" oninput="actualizarNombresDesdeCampos()">
+                </div>
+            </div>
+
+            <div class="seccion-config">
+                <p class="tit-config">DIFICULTAD PREGUNTAS</p>
+                <div class="zona-botones">
+                    <button class="btn-config active" data-nivel="facil" onclick="cambiarNivel('facil')">🟢 FÁCIL</button>
+                    <button class="btn-config" data-nivel="medio" onclick="cambiarNivel('medio')">🟡 MEDIO</button>
+                    <button class="btn-config" data-nivel="dificil" onclick="cambiarNivel('dificil')">🔴 DIFÍCIL</button>
+                </div>
+            </div>
+
+            <button class="btn-dados-principal" onclick="tirarDadosAzar()">🎲 Tirar Dados al Azar</button>
+
+            <p style="font-size: 11px; color: #888; font-weight: bold; margin-bottom: 8px;">O SELECCIONAR CATEGORÍA MANUAL</p>
+            <div class="grid-categorias">
+                <button id="btn-cat-general" class="btn-cat azul" onclick="controlFlujoCategoria('general')">Conoc. General</button>
+                <button id="btn-cat-geografia" class="btn-cat verde" onclick="controlFlujoCategoria('geografia')">Geografía / Mundo</button>
+                <button id="btn-cat-entretenimiento" class="btn-cat rojo" onclick="controlFlujoCategoria('entretenimiento')">Entre. / Arte</button>
+                <button id="btn-cat-ciencia" class="btn-cat amarillo" onclick="controlFlujoCategoria('ciencia')">Ciencia / Nat.</button>
+            </div>
+
+            <!-- BOTONES DE CONTROL DE PREGUNTAS MÁS LIMPIOS -->
+            <button class="btn-revelar" onclick="revelarRespuesta()">👁️ Mostrar Respuesta</button>
+            <button class="btn-fallo" onclick="activarFalloUrgente()">❌ Incorrecto / No Contestó</button>
+        </div>
+
+        <!-- TABLERO CENTRAL -->
+        <div class="tablero-wrapper">
+            <div class="tablero-monopolio" id="tablero-fisico">
+                <div class="centro-tablero">
+                    <div class="titulo-centro">🎙️ TRIVIA LIVE 🎙️</div>
+                    <div class="zona-controles-musicales">
+                        <button id="btn-musica-id" class="btn-audio-directo muteada" onclick="conmutarMusicaAmbiente()">🎵 Ritmo Interactivo: APAGADO</button>
+                    </div>
+
+                    <div class="marcador-turno-actual">TURNO DE: <span id="nombre-turno-marcador">CHAT 👽</span></div>
+
+                    <div class="zona-dinamica-centro">
+                        <div class="contenedor-espera-turno" id="contenedor-espera-tablero">
+                            <div class="avatar-turno-gigante" id="avatar-turno-pantalla">👽</div>
+                            <div class="texto-turno-gigante" id="texto-turno-pantalla">TU TURNO</div>
+                        </div>
+
+                        <div class="zona-dados-centro" id="contenedor-dados-tablero">
+                            <div class="dado-gigante">
+                                <div class="dado-tit">🎨 Categoría</div>
+                                <div id="dado-color" class="dado-val">-</div>
+                            </div>
+                            <div class="dado-gigante">
+                                <div class="dado-tit">🎲 Pasos</div>
+                                <div id="dado-numero" class="dado-val" style="font-size: 40px; color: #25f4ee;">-</div>
+                            </div>
+                        </div>
+
+                        <div class="pregunta-proyectada" id="contenedor-pregunta-tablero">
+                            <div class="txt-pregunta-tablero" id="pregunta-tablero-texto">¿Pregunta?</div>
+                            <div class="bloque-opciones-tablero">
+                                <div class="opcion-item" id="opc-a"><span>A)</span> -</div>
+                                <div class="opcion-item" id="opc-b"><span>B)</span> -</div>
+                                <div class="opcion-item" id="opc-c"><span>C)</span> -</div>
+                            </div>
+                            <div class="contador-segundos" id="contador-reloj">10</div>
+                            <div class="txt-respuesta-tablero" id="respuesta-tablero-texto">R: Respuesta</div>
+                        </div>
+
+                        <div class="contenedor-error-centro" id="contenedor-error-tablero">
+                            <div class="carita-triste">😭</div>
+                            <div class="texto-error-tit">¡Respuesta Incorrecta!</div>
+                        </div>
+
+                        <div class="contenedor-celebracion-centro" id="contenedor-celebracion-tablero">
+                            <div class="icono-celebracion">🤩✨🎉</div>
+                            <div class="texto-celebracion-tit">¡AVANZA! 🔥</div>
+                        </div>
+                    </div>
+
+                    <div id="anuncio-efecto"></div>
+                    <div id="ganador-pantalla"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDEBAR DERECHA: 8 TEMÁTICAS EN LISTA VERTICAL -->
+        <div class="sidebar-derecha">
+            <p class="tit-tematica">TEMÁTICA<br>DE AVATARES</p>
+            <div class="grid-tematicas">
+                <button class="btn-tematica activa" onclick="cambiarTematica('clasica')" title="Clásica">👽🤖<br><span>CLÁSICA</span></button>
+                <button class="btn-tematica" onclick="cambiarTematica('animales')" title="Animales">🐶🐱<br><span>ANIMALES</span></button>
+                <button class="btn-tematica" onclick="cambiarTematica('musica')" title="Música">🎙️🎸<br><span>MÚSICA</span></button>
+                <button class="btn-tematica" onclick="cambiarTematica('fitness')" title="Fitness">🍏🥑<br><span>FITNESS</span></button>
+                <button class="btn-tematica" onclick="cambiarTematica('dulces')" title="Dulces">🍦🍩<br><span>DULCES</span></button>
+                <button class="btn-tematica" onclick="cambiarTematica('deportes')" title="Deportes">⚽🏀<br><span>DEPORTES</span></button>
+                <button class="btn-tematica" onclick="cambiarTematica('espacio')" title="Espacio">🚀🛸<br><span>ESPACIO</span></button>
+                <button class="btn-tematica" onclick="cambiarTematica('terror')" title="Terror">👻💀<br><span>TERROR</span></button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const rutaTablero = [
+            { r: 7, c: 1, tipo: "c-salida", txt: "SALIDA" }, { r: 6, c: 1, tipo: "c-azul", txt: "1" }, { r: 5, c: 1, tipo: "c-rojo", txt: "2" }, { r: 4, c: 1, tipo: "c-verde", txt: "3" },
+            { r: 3, c: 1, tipo: "c-amarillo", txt: "4" }, { r: 2, c: 1, tipo: "c-avanza", txt: "🚀 +3" }, { r: 1, c: 1, tipo: "c-azul", txt: "6" }, { r: 1, c: 2, tipo: "c-rojo", txt: "7" },
+            { r: 1, c: 3, tipo: "c-verde", txt: "8" }, { r: 1, c: 4, tipo: "c-amarillo", txt: "9" }, { r: 1, c: 5, tipo: "c-retrocede", txt: "💥 -3" }, { r: 1, c: 6, tipo: "c-azul", txt: "11" },
+            { r: 1, c: 7, tipo: "c-rojo", txt: "12" }, { r: 1, c: 8, tipo: "c-verde", txt: "13" }, { r: 1, c: 9, tipo: "c-amarillo", txt: "14" }, { r: 2, c: 9, tipo: "c-reto", txt: "🚨 RETO" }, 
+            { r: 3, c: 9, tipo: "c-azul", txt: "16" }, { r: 4, c: 9, tipo: "c-rojo", txt: "17" }, { r: 5, c: 9, tipo: "c-verde", txt: "18" }, { r: 6, c: 9, tipo: "c-amarillo", txt: "19" },
+            { r: 7, c: 9, tipo: "c-avanza", txt: "🚀 +3" }, { r: 7, c: 8, tipo: "c-azul", txt: "21" }, { r: 7, c: 7, tipo: "c-rojo", txt: "22" }, { r: 7, c: 6, tipo: "c-verde", txt: "23" },
+            { r: 7, c: 5, tipo: "c-amarillo", txt: "24" }, { r: 7, c: 4, tipo: "c-retrocede", txt: "💥 -3" }, { r: 7, c: 3, tipo: "c-azul", txt: "26" }, { r: 7, c: 2, tipo: "c-rojo", txt: "27" },
+            { r: 6, c: 2, tipo: "c-verde", txt: "28" }, { r: 6, c: 3, tipo: "c-amarillo", txt: "29" }, { r: 6, c: 4, tipo: "c-meta", txt: "🏆 META" }  
+        ];
+
+        const tematicas = {
+            clasica: { 1: {id:'alien', emoji:'👽', nombre:'Alien'}, 2: {id:'robot', emoji:'🤖', nombre:'Robot'}, 3: {id:'zorro', emoji:'🦊', nombre:'Zorro'}, 4: {id:'unicornio', emoji:'🦄', nombre:'Unic.'} },
+            animales: { 1: {id:'perro', emoji:'🐶', nombre:'Perro'}, 2: {id:'gato', emoji:'🐱', nombre:'Gato'}, 3: {id:'panda', emoji:'🐼', nombre:'Panda'}, 4: {id:'rana', emoji:'🐸', nombre:'Rana'} },
+            musica: { 1: {id:'micro', emoji:'🎙️', nombre:'Voz'}, 2: {id:'guitarra', emoji:'🎸', nombre:'Rock'}, 3: {id:'auricular', emoji:'🎧', nombre:'DJ'}, 4: {id:'piano', emoji:'🎹', nombre:'Piano'} },
+            fitness: { 1: {id:'manzana', emoji:'🍏', nombre:'Manz.'}, 2: {id:'aguacate', emoji:'🥑', nombre:'Agua.'}, 3: {id:'banano', emoji:'🍌', nombre:'Bana.'}, 4: {id:'fresa', emoji:'🍓', nombre:'Fresa'} },
+            dulces: { 1: {id:'helado', emoji:'🍦', nombre:'Helado'}, 2: {id:'dona', emoji:'🍩', nombre:'Dona'}, 3: {id:'choco', emoji:'🍫', nombre:'Choco'}, 4: {id:'galleta', emoji:'🍪', nombre:'Galleta'} },
+            deportes: { 1: {id:'futbol', emoji:'⚽', nombre:'Futbol'}, 2: {id:'basket', emoji:'🏀', nombre:'Basket'}, 3: {id:'americano', emoji:'🏈', nombre:'Americ.'}, 4: {id:'tenis', emoji:'🎾', nombre:'Tenis'} },
+            espacio: { 1: {id:'cohete', emoji:'🚀', nombre:'Cohete'}, 2: {id:'ovni', emoji:'🛸', nombre:'Ovni'}, 3: {id:'planeta', emoji:'🪐', nombre:'Planeta'}, 4: {id:'cometa', emoji:'☄️', nombre:'Cometa'} },
+            terror: { 1: {id:'fantasma', emoji:'👻', nombre:'Fantasma'}, 2: {id:'calavera', emoji:'💀', nombre:'Calavera'}, 3: {id:'vampiro', emoji:'🧛', nombre:'Vampiro'}, 4: {id:'zombie', emoji:'🧟', nombre:'Zombie'} }
+        };
+
+        let tematicaActual = 'clasica';
+        let avatarJugadores = { 1: "👽", 2: "🤖", 3: "🦊", 4: "🦄" };
+        let nombreJugadores = { 1: "CHAT 👽", 2: "CREADOR 🤖", 3: "MODERADOR 🦊", 4: "INVITADO 🦄" };
+
+        const datosClasificados = {
+            general: {
+                facil: { preguntas: ["¿Cuántos días tiene un año bisiesto?", "¿Qué tipo de animal es la ballena orca?", "¿Cuál es el color que resulta de mezclar azul y amarillo?", "¿Cuántas patas tiene una araña?", "¿Cuántas horas tiene un día?", "¿Qué mes tiene menos días en el año?", "¿Cuál es el primer mes del año?", "¿Qué usamos para protegernos de la lluvia?"], opciones: [["A) 365 días", "B) 366 días", "C) 364 días"], ["A) Pez", "B) Reptil", "C) Mamífero"], ["A) Verde", "B) Morado", "C) Naranja"], ["A) 6 patas", "B) 8 patas", "C) 10 patas"], ["A) 12 horas", "B) 24 horas", "C) 48 horas"], ["A) Febrero", "B) Enero", "C) Abril"], ["A) Febrero", "B) Diciembre", "C) Enero"], ["A) Sombrilla", "B) Gafas", "C) Bufanda"]], respuestas: ["B) 366 días", "C) Mamífero", "A) Verde", "B) 8 patas", "B) 24 horas", "A) Febrero", "C) Enero", "A) Sombrilla"] },
+                medio: { preguntas: ["¿Qué filósofo griego fue el maestro de Alejandro Magno?", "¿Cuál es el océano más grande del mundo?", "¿En qué siglo comenzó la Revolución Industrial?", "¿De qué país es originario el queso Mozzarella?", "¿Quién pintó la Mona Lisa?", "¿Qué idioma tiene más hablantes nativos en el mundo?", "¿En qué año llegó el hombre a la Luna?", "¿Qué significa la sigla 'ONU'?"], opciones: [["A) Sócrates", "B) Platón", "C) Aristóteles"], ["A) Atlántico", "B) Índico", "C) Pacífico"], ["A) Siglo XVII", "B) Siglo XVIII", "C) Siglo XIX"], ["A) Francia", "B) Italia", "C) España"], ["A) Van Gogh", "B) Da Vinci", "C) Picasso"], ["A) Inglés", "B) Español", "C) Chino Mandarín"], ["A) 1965", "B) 1969", "C) 1972"], ["A) Org. Naciones Unidas", "B) Org. Nuevas Unidas", "C) Org. Nacional Universal"]], respuestas: ["C) Aristóteles", "C) Pacífico", "B) Siglo XVIII", "B) Italia", "B) Da Vinci", "C) Chino Mandarín", "B) 1969", "A) Org. Naciones Unidas"] },
+                dificil: { preguntas: ["¿En qué año exacto se hundió el Titanic?", "¿Qué dinastía gobernaba China al construir la Gran Muralla?", "¿Qué tratado puso fin a la Primera Guerra Mundial?", "¿Quién escribió la célebre obra 'La Divina Comedia'?", "¿Cuál fue el primer metal que empleó el hombre?", "¿Quién es el autor de 'Cien años de soledad'?", "¿En qué año cayó el Muro de Berlín?", "¿Cuál es el libro más vendido de la historia después de la Biblia?"], opciones: [["A) 1905", "B) 1912", "C) 1920"], ["A) Ming", "B) Han", "C) Qin"], ["A) Versalles", "B) París", "C) Ginebra"], ["A) Petrarca", "B) Bocaccio", "C) Dante Alighieri"], ["A) Hierro", "B) Cobre", "C) Bronce"], ["A) Vargas Llosa", "B) García Márquez", "C) Cortázar"], ["A) 1989", "B) 1991", "C) 1987"], ["A) Don Quijote", "B) Harry Potter", "C) El Principito"]], respuestas: ["B) 1912", "C) Qin", "A) Versalles", "C) Dante Alighieri", "B) Cobre", "B) García Márquez", "A) 1989", "A) Don Quijote"] }
+            },
+            geografia: {
+                facil: { preguntas: ["¿En qué continente se encuentra Egipto?", "¿Cuál es el río más largo del mundo?", "¿Cuál es el país más grande del mundo?", "¿Qué país tiene forma de bota?", "¿Cuál es la capital de Colombia?", "¿En qué continente está Japón?", "¿Cuál es el idioma oficial de Brasil?", "¿Qué país está al norte de México?"], opciones: [["A) Asia", "B) Europa", "C) África"], ["A) Nilo", "B) Amazonas", "C) Misisipi"], ["A) Canadá", "B) Rusia", "C) EE.UU."], ["A) España", "B) Italia", "C) Grecia"], ["A) Medellín", "B) Bogotá", "C) Cali"], ["A) Asia", "B) Oceanía", "C) Europa"], ["A) Español", "B) Portugués", "C) Inglés"], ["A) Canadá", "B) Estados Unidos", "C) Guatemala"]], respuestas: ["C) África", "B) Amazonas", "B) Rusia", "B) Italia", "B) Bogotá", "A) Asia", "B) Portugués", "B) Estados Unidos"] },
+                medio: { preguntas: ["¿Cuál es la capital de Australia?", "¿Los Montes Urales dividen qué continentes?", "¿Cuál es el país más poblado de África?", "¿Qué mar baña las costas de Jamaica y Cuba?", "¿En qué país se encuentra Machu Picchu?", "¿Cuál es el desierto más grande del mundo?", "¿Qué país tiene la mayor cantidad de volcanes activos?", "¿Cuál es la montaña más alta del mundo?"], opciones: [["A) Sídney", "B) Melbourne", "C) Canberra"], ["A) Europa y Asia", "B) África y Asia", "C) América y Europa"], ["A) Sudáfrica", "B) Nigeria", "C) Egipto"], ["A) Mar Muerto", "B) Mar Caribe", "C) Mar Mediterráneo"], ["A) Chile", "B) Ecuador", "C) Perú"], ["A) Sahara", "B) Gobi", "C) Antártico"], ["A) Indonesia", "B) Japón", "C) Chile"], ["A) K2", "B) Monte Everest", "C) Kilimanjaro"]], respuestas: ["C) Canberra", "A) Europa y Asia", "B) Nigeria", "B) Mar Caribe", "C) Perú", "C) Antártico", "A) Indonesia", "B) Monte Everest"] },
+                dificil: { preguntas: ["¿Cuál es la capital de Islandia?", "¿Qué país tiene más islas en su territorio?", "¿Dónde está la región histórica de Transilvania?", "¿Cuál es el punto más bajo de la corteza terrestre?", "¿Cuál es el país más pequeño del mundo?", "¿Qué río cruza por más países europeos?", "¿En qué país se encuentra el lago Baikal?", "¿Cuál es la capital de Mongolia?"], opciones: [["A) Oslo", "B) Reikiavik", "C) Helsinki"], ["A) Grecia", "B) Suecia", "C) Filipinas"], ["A) Rumanía", "B) Hungría", "C) Polonia"], ["A) Mar Muerto", "B) Fosa Marianas", "C) Valle Muerte"], ["A) Mónaco", "B) San Marino", "C) Vaticano"], ["A) Rin", "B) Danubio", "C) Sena"], ["A) Rusia", "B) Canadá", "C) Noruega"], ["A) Ulán Bator", "B) Astaná", "C) Taskent"]], respuestas: ["B) Reikiavik", "B) Suecia", "A) Rumanía", "A) Mar Muerto", "C) Vaticano", "B) Danubio", "A) Rusia", "A) Ulán Bator"] }
+            },
+            entretenimiento: {
+                facil: { preguntas: ["¿Quién es el rey de la selva en Disney?", "¿Qué instrumento tiene teclas blancas y negras?", "¿Quién canta la famosa canción 'Thriller'?", "¿Cómo se llama el ratón compañero de Ash?", "¿De qué color es la piel de Los Simpson?", "¿Quién es el superhéroe de Ciudad Gótica?", "¿Cómo se llama el muñeco de nieve de Frozen?", "¿Qué animal es Mickey Mouse?"], opciones: [["A) Tarzán", "B) Simba", "C) Bambi"], ["A) Guitarra", "B) Flauta", "C) Piano"], ["A) Prince", "B) Michael Jackson", "C) Madonna"], ["A) Pikachu", "B) Squirtle", "C) Charmander"], ["A) Naranja", "B) Amarillo", "C) Verde"], ["A) Superman", "B) Batman", "C) Flash"], ["A) Olaf", "B) Sven", "C) Kristoff"], ["A) Perro", "B) Gato", "C) Ratón"]], respuestas: ["B) Simba", "C) Piano", "B) Michael Jackson", "A) Pikachu", "B) Amarillo", "B) Batman", "A) Olaf", "C) Ratón"] },
+                medio: { preguntas: ["¿Quién dirigió la película 'Inception'?", "¿Cuál es la identidad secreta de Iron Man?", "¿El álbum 'The Dark Side of the Moon' es de:", "¿Qué actor protagoniza 'Misión Imposible'?", "¿En qué ciudad vive Spider-Man?", "¿Cuál es el nombre del villano en Harry Potter?", "¿Qué banda cantaba 'Bohemian Rhapsody'?", "¿Cómo se llama el creador de Star Wars?"], opciones: [["A) James Cameron", "B) Christopher Nolan", "C) Spielberg"], ["A) Tony Stark", "B) Bruce Wayne", "C) Peter Parker"], ["A) Led Zeppelin", "B) Pink Floyd", "C) Queen"], ["A) Brad Pitt", "B) Tom Cruise", "C) Matt Damon"], ["A) Los Ángeles", "B) Chicago", "C) Nueva York"], ["A) Grindelwald", "B) Voldemort", "C) Sauron"], ["A) The Beatles", "B) The Rolling Stones", "C) Queen"], ["A) J.J. Abrams", "B) George Lucas", "C) Steven Spielberg"]], respuestas: ["B) Christopher Nolan", "A) Tony Stark", "B) Pink Floyd", "B) Tom Cruise", "C) Nueva York", "B) Voldemort", "C) Queen", "B) George Lucas"] },
+                dificil: { preguntas: ["¿En qué año se estrenó Star Wars: Episodio IV?", "¿Quién pintó 'La joven de la perla'?", "¿Primer largometraje animado de la historia?", "¿Escultor de la estatua del David en Florencia?", "¿Qué actor ganó el Oscar por 'El Padrino' y lo rechazó?", "¿Cómo se llamaba la banda de rock de Kurt Cobain?", "¿Cuál fue la primera película de Quentin Tarantino?", "¿Quién compuso 'Las cuatro estaciones'?"], opciones: [["A) 1975", "B) 1977", "C) 1980"], ["A) Rembrandt", "B) Vermeer", "C) Van Gogh"], ["A) Pinocho", "B) Fantasía", "C) Blancanieves"], ["A) Donatello", "B) Miguel Ángel", "C) Da Vinci"], ["A) Marlon Brando", "B) Al Pacino", "C) Robert De Niro"], ["A) Pearl Jam", "B) Soundgarden", "C) Nirvana"], ["A) Pulp Fiction", "B) Reservoir Dogs", "C) Kill Bill"], ["A) Mozart", "B) Beethoven", "C) Vivaldi"]], respuestas: ["B) 1977", "B) Vermeer", "C) Blancanieves", "B) Miguel Ángel", "A) Marlon Brando", "C) Nirvana", "B) Reservoir Dogs", "C) Vivaldi"] }
+            },
+            ciencia: {
+                facil: { preguntas: ["¿Cuánto es 45 + 35?", "¿Qué planeta es conocido como el rojo?", "¿Cuál es el gas que absorben los humanos al respirar?", "¿Cuántos minutos tiene una hora?", "¿Qué órgano usamos para pensar?", "¿Cuál es el satélite natural de la Tierra?", "¿A qué temperatura hierve el agua?", "¿Qué animal es conocido por tener una trompa?"], opciones: [["A) 75", "B) 80", "C) 90"], ["A) Marte", "B) Júpiter", "C) Venus"], ["A) Nitrógeno", "B) Oxígeno", "C) Dióxido de Carbono"], ["A) 50 minutos", "B) 60 minutos", "C) 100 minutos"], ["A) Corazón", "B) Pulmón", "C) Cerebro"], ["A) Sol", "B) Marte", "C) Luna"], ["A) 50°C", "B) 100°C", "C) 150°C"], ["A) León", "B) Jirafa", "C) Elefante"]], respuestas: ["B) 80", "A) Marte", "B) Oxígeno", "B) 60 minutos", "C) Cerebro", "C) Luna", "B) 100°C", "C) Elefante"] },
+                medio: { preguntas: ["¿Símbolo químico oficial del Hierro?", "¿Qué órgano bombea la sangre?", "¿Velocidad aproximada de la luz?", "¿Energía obtenida de la fuerza del viento?", "¿Qué planeta es el más grande de nuestro sistema solar?", "¿Cómo se llama el proceso de las plantas para hacer su alimento?", "¿Qué hueso es el más largo del cuerpo humano?", "¿Cuál es el elemento más abundante en el universo?"], opciones: [["A) Hi", "B) He", "C) Fe"], ["A) Pulmón", "B) Cerebro", "C) Corazón"], ["A) 150,000 km/s", "B) 300,000 km/s", "C) 500,000 km/s"], ["A) Solar", "B) Hidráulica", "C) Eólica"], ["A) Saturno", "B) Urano", "C) Júpiter"], ["A) Fotosíntesis", "B) Respiración", "C) Digestión"], ["A) Fémur", "B) Tibia", "C) Húmero"], ["A) Oxígeno", "B) Hidrógeno", "C) Carbono"]], respuestas: ["C) Fe", "C) Corazón", "B) 300,000 km/s", "C) Eólica", "C) Júpiter", "A) Fotosíntesis", "A) Fémur", "B) Hidrógeno"] },
+                dificil: { preguntas: ["¿Cuánto es 12 por 11?", "¿Símbolo químico oficial del Oro?", "¿Partícula subatómica con carga negativa?", "A toda acción corresponde una reacción es la:", "¿Quién propuso la teoría de la relatividad?", "¿Cuál es la fórmula química del ácido sulfúrico?", "¿Qué científico descubrió la penicilina?", "¿En qué parte de la célula se encuentra el ADN?"], opciones: [["A) 122", "B) 132", "C) 142"], ["A) Or", "B) Ag", "C) Au"], ["A) Protón", "B) Neutrón", "C) Electrón"], ["A) 1ra Ley Newton", "B) 2da Ley Newton", "C) 3ra Ley Newton"], ["A) Isaac Newton", "B) Albert Einstein", "C) Nikola Tesla"], ["A) H2O", "B) HCl", "C) H2SO4"], ["A) Marie Curie", "B) Louis Pasteur", "C) Alexander Fleming"], ["A) Ribosoma", "B) Mitocondria", "C) Núcleo"]], respuestas: ["B) 132", "C) Au", "C) Electrón", "C) 3ra Ley Newton", "B) Albert Einstein", "C) H2SO4", "C) Alexander Fleming", "C) Núcleo"] }
+            }
+        };
+
+        const colorCategoriasMapeo = { 'general': 'GENERAL 🔵', 'entretenimiento': 'ENTRE./ARTE 🔴', 'geografia': 'GEOGRAFÍA 🟢', 'ciencia': 'CIENCIA 🟡' };
+        const nombresOriginalesBotones = { 'general': 'Conoc. General', 'geografia': 'Geografía / Mundo', 'entretenimiento': 'Entre. / Arte', 'ciencia': 'Ciencia / Nat.' };
+
+        let dadoNumeroActual = 0; let juegoTerminado = false; let nivelActual = "facil"; let cantidadJugadoresActual = 2; 
+        let posiciones = { 1: 0, 2: 0, 3: 0, 4: 0 }; let estaMoviendose = false; let jugadorTurnoActual = 1; 
+        let intervaloReloj; let tiempoRestante = 10; let preguntaCargadaEstructura = null; let pasoFlujoActual = "inicio"; let categoriaSeleccionadaActiva = null;
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); let nodoMusicaAmbiente = null; let musicaEncendida = false; let socketAdmin; 
+
+        function cambiarTematica(tema) {
+            if(estaMoviendose) return;
+            tematicaActual = tema;
+            
+            document.querySelectorAll('.btn-tematica').forEach(b => b.classList.remove('activa'));
+            event.currentTarget.classList.add('activa');
+
+            avatarJugadores = {
+                1: tematicas[tema][1].emoji, 2: tematicas[tema][2].emoji, 3: tematicas[tema][3].emoji, 4: tematicas[tema][4].emoji
+            };
+
+            document.getElementById('span-j1').innerText = tematicas[tema][1].nombre + tematicas[tema][1].emoji;
+            document.getElementById('span-j2').innerText = tematicas[tema][2].nombre + tematicas[tema][2].emoji;
+            document.getElementById('span-j3').innerText = tematicas[tema][3].nombre + tematicas[tema][3].emoji;
+            document.getElementById('span-j4').innerText = tematicas[tema][4].nombre + tematicas[tema][4].emoji;
+
+            actualizarNombresDesdeCampos();
+            actualizarFichas(null, null);
+
+            if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
+                socketAdmin.send(JSON.stringify({ tipo: 'CAMBIO_TEMATICA', datos: tematicas[tema] }));
+                setTimeout(actualizarNombresDesdeCampos, 100);
+            }
+        }
+
+        // AQUÍ ESTÁ EL CAMBIO MÁGICO PARA RENDER EN EL ADMIN:
+        function conectarConServidorNode() {
+            const indicadorConexion = document.getElementById('conexion-ws');
+            socketAdmin = new WebSocket(window.location.origin.replace(/^http/, 'ws'));
+
+            socketAdmin.onopen = () => {
+                indicadorConexion.innerText = "🟢 Chat Sincronizado";
+                indicadorConexion.className = "estado-conexion conectado";
+                setTimeout(actualizarNombresDesdeCampos, 500);
+            };
+
+            socketAdmin.onclose = () => {
+                indicadorConexion.innerText = "🔴 Chat Desconectado. Reconectando...";
+                indicadorConexion.className = "estado-conexion";
+                setTimeout(conectarConServidorNode, 3000);
+            };
+
+            socketAdmin.onmessage = (event) => {
+                const datos = JSON.parse(event.data);
+                
+                if (datos.tipo === 'SOLICITAR_AVATARES') {
+                    socketAdmin.send(JSON.stringify({ tipo: 'CAMBIO_TEMATICA', datos: tematicas[tematicaActual] }));
+                    setTimeout(actualizarNombresDesdeCampos, 100);
+                }
+
+                if (datos.tipo === 'SELECCION_AVATAR') {
+                    const avatarElegido = datos.avatar.toLowerCase();
+                    const temaData = tematicas[tematicaActual];
+                    
+                    if (avatarElegido === temaData[1].id) { document.getElementById('input-j1').value = datos.usuario; }
+                    else if (avatarElegido === temaData[2].id) { document.getElementById('input-j2').value = datos.usuario; }
+                    else if (avatarElegido === temaData[3].id && cantidadJugadoresActual >= 3) { document.getElementById('input-j3').value = datos.usuario; }
+                    else if (avatarElegido === temaData[4].id && cantidadJugadoresActual >= 4) { document.getElementById('input-j4').value = datos.usuario; }
+                    actualizarNombresDesdeCampos();
+                }
+
+                if (datos.tipo === 'RESPUESTA_CHAT' && pasoFlujoActual === "bloqueado" && !estaMoviendose) {
+                    const nombreTurnoActual = nombreJugadores[jugadorTurnoActual].split(' ')[0].trim().toUpperCase();
+                    const nombreRemitente = datos.usuario.trim().toUpperCase();
+                    if (nombreRemitente === nombreTurnoActual) procesarRespuestaElegidaChat(datos.opcion);
+                }
+            };
+        }
+
+        function actualizarNombresDesdeCampos() {
+            const j1Val = document.getElementById('input-j1').value.trim();
+            const j2Val = document.getElementById('input-j2').value.trim();
+            const j3Val = document.getElementById('input-j3').value.trim();
+            const j4Val = document.getElementById('input-j4').value.trim();
+            const temaData = tematicas[tematicaActual];
+
+            nombreJugadores[1] = `${(j1Val || "CHAT").toUpperCase()} ${temaData[1].emoji}`;
+            nombreJugadores[2] = `${(j2Val || "CREADOR").toUpperCase()} ${temaData[2].emoji}`;
+            nombreJugadores[3] = `${(j3Val || "MODERADOR").toUpperCase()} ${temaData[3].emoji}`;
+            nombreJugadores[4] = `${(j4Val || "INVITADO").toUpperCase()} ${temaData[4].emoji}`;
+
+            document.getElementById('nombre-turno-marcador').innerText = nombreJugadores[jugadorTurnoActual];
+            if(document.getElementById('contenedor-espera-tablero').style.display === "flex") {
+                document.getElementById('texto-turno-pantalla').innerText = `TURNO DE: ${nombreJugadores[jugadorTurnoActual]}`;
+                document.getElementById('avatar-turno-pantalla').innerText = avatarJugadores[jugadorTurnoActual];
+            }
+
+            if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
+                let ocupados = [];
+                if(j1Val !== "") ocupados.push(temaData[1].id);
+                if(j2Val !== "") ocupados.push(temaData[2].id);
+                if(j3Val !== "") ocupados.push(temaData[3].id);
+                if(j4Val !== "") ocupados.push(temaData[4].id);
+                socketAdmin.send(JSON.stringify({ tipo: 'ESTADO_AVATARES', ocupados: ocupados }));
+            }
+        }
+
+        function procesarRespuestaElegidaChat(letraOpcion) {
+            if(!preguntaCargadaEstructura) return;
+            clearInterval(intervaloReloj); revelarRespuesta();
+            const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase();
+            setTimeout(() => { if (letraOpcion === letraCorrecta) aplicarAvance(jugadorTurnoActual); else activarFalloUrgente(); }, 1500);
+        }
+
+        function sonarBrinco() { const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination); osc.type = 'sine'; osc.frequency.setValueAtTime(260, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(650, audioCtx.currentTime + 0.12); gain.gain.setValueAtTime(0.12, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12); osc.start(); osc.stop(audioCtx.currentTime + 0.12); }
+        function sonarCelebracionAvance() { const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination); osc.type = 'triangle'; const t = audioCtx.currentTime; osc.frequency.setValueAtTime(320, t); osc.frequency.setValueAtTime(480, t + 0.06); osc.frequency.setValueAtTime(640, t + 0.12); osc.frequency.setValueAtTime(960, t + 0.18); gain.gain.setValueAtTime(0.15, t); gain.gain.linearRampToValueAtTime(0.01, t + 0.3); osc.start(); osc.stop(t + 0.3); }
+        function sonarFalloCritico() { const osc1 = audioCtx.createOscillator(); const osc2 = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc1.connect(gain); osc2.connect(gain); gain.connect(audioCtx.destination); osc1.type = 'sawtooth'; osc2.type = 'square'; osc1.frequency.setValueAtTime(160, audioCtx.currentTime); osc1.frequency.linearRampToValueAtTime(50, audioCtx.currentTime + 0.6); osc2.frequency.setValueAtTime(155, audioCtx.currentTime); osc2.frequency.linearRampToValueAtTime(45, audioCtx.currentTime + 0.6); gain.gain.setValueAtTime(0.2, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.6); osc1.start(); osc2.start(); osc1.stop(audioCtx.currentTime + 0.6); osc2.stop(audioCtx.currentTime + 0.6); }
+        function sonarEfectoEspecial(esBueno) { const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination); osc.type = 'triangle'; osc.frequency.setValueAtTime(esBueno ? 450 : 550, audioCtx.currentTime); osc.frequency.linearRampToValueAtTime(esBueno ? 1000 : 120, audioCtx.currentTime + 0.35); gain.gain.setValueAtTime(0.15, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.35); osc.start(); osc.stop(audioCtx.currentTime + 0.35); }
+        function sonarAparicionPregunta() { const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination); osc.type = 'sine'; const t = audioCtx.currentTime; osc.frequency.setValueAtTime(350, t); osc.frequency.exponentialRampToValueAtTime(900, t + 0.2); gain.gain.setValueAtTime(0.25, t); gain.gain.exponentialRampToValueAtTime(0.01, t + 0.2); osc.start(); osc.stop(t + 0.2); }
+        function sonarClickSegundero(urgente) { const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination); osc.type = 'square'; osc.frequency.setValueAtTime(urgente ? 1400 : 900, audioCtx.currentTime); gain.gain.setValueAtTime(0.18, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05); osc.start(); osc.stop(audioCtx.currentTime + 0.06); }
+        function conmutarMusicaAmbiente() { if (audioCtx.state === 'suspended') audioCtx.resume(); const btn = document.getElementById('btn-musica-id'); if (musicaEncendida) { if(nodoMusicaAmbiente) { nodoMusicaAmbiente.stop(); nodoMusicaAmbiente = null; } musicaEncendida = false; btn.innerText = "🎵 Ritmo Interactivo: APAGADO"; btn.className = "btn-audio-directo muteada"; } else { musicaEncendida = true; btn.innerText = "⚡ Ritmo Interactivo: EN VIVO"; btn.className = "btn-audio-directo"; reproducirSúperFondoProcedural(); } }
+        function reproducirSúperFondoProcedural() { if (!musicaEncendida) return; const ritmoBPM = 125; const duracionNegra = 60 / ritmoBPM; const bufferSize = audioCtx.sampleRate * (duracionNegra * 4); const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate); const canalMuestra = buffer.getChannelData(0); for (let i = 0; i < bufferSize; i++) { let t = i / audioCtx.sampleRate; let ondaGrave = Math.sin(2 * Math.PI * 55.0 * t) * Math.exp(-(t % (duracionNegra / 2)) * 10); canalMuestra[i] = (ondaGrave * 0.1); } nodoMusicaAmbiente = audioCtx.createBufferSource(); nodoMusicaAmbiente.buffer = buffer; nodoMusicaAmbiente.loop = true; const gain = audioCtx.createGain(); gain.gain.value = 0.38; nodoMusicaAmbiente.connect(gain); gain.connect(audioCtx.destination); nodoMusicaAmbiente.start(); }
+
+        function tirarDadosAzar() {
+            if(juegoTerminado || estaMoviendose) return;
+            const keysCats = ['general', 'geografia', 'entretenimiento', 'ciencia'];
+            controlFlujoCategoria(keysCats[Math.floor(Math.random() * keysCats.length)]);
+        }
+
+        function animarDados(categoriaDefinitiva, callback) {
+            let iteraciones = 0; const maxIteraciones = 15; const categoriasTemp = ['GENERAL 🔵', 'ENTRE./ARTE 🔴', 'GEOGRAFÍA 🟢', 'CIENCIA 🟡'];
+            const dados = document.querySelectorAll('.dado-gigante'); dados.forEach(d => d.classList.add('dado-animado'));
+            const intervalo = setInterval(() => {
+                document.getElementById('dado-numero').innerText = Math.floor(Math.random() * 6) + 1;
+                document.getElementById('dado-color').innerText = categoriasTemp[Math.floor(Math.random() * categoriasTemp.length)];
+                sonarClickSegundero(false); iteraciones++;
+                if (iteraciones >= maxIteraciones) {
+                    clearInterval(intervalo); dados.forEach(d => d.classList.remove('dado-animado'));
+                    dadoNumeroActual = Math.floor(Math.random() * 6) + 1;
+                    document.getElementById('dado-numero').innerText = dadoNumeroActual;
+                    document.getElementById('dado-color').innerText = colorCategoriasMapeo[categoriaDefinitiva];
+                    sonarAparicionPregunta(); if(callback) callback();
+                }
+            }, 100);
+        }
+
+        function controlFlujoCategoria(categoria) {
+            if(juegoTerminado || estaMoviendose) return;
+            if(audioCtx.state === 'suspended') audioCtx.resume();
+            if(!musicaEncendida) conmutarMusicaAmbiente();
+            if (categoriaSeleccionadaActiva !== null && categoriaSeleccionadaActiva !== categoria) return;
+
+            if (pasoFlujoActual === "inicio") {
+                categoriaSeleccionadaActiva = categoria; estaMoviendose = true; 
+                document.getElementById('contenedor-espera-tablero').style.display = "none"; document.getElementById('contenedor-dados-tablero').style.display = "flex";
+                document.getElementById('contenedor-pregunta-tablero').style.display = "none";
+                limpiarIluminacionOpciones();
+
+                animarDados(categoria, () => {
+                    estaMoviendose = false; pasoFlujoActual = "revelar";
+                    preguntaCargadaEstructura = obtenerPreguntaClasificada(categoria, nivelActual);
+                    actualizarEstadosVisualesBotonesCategorias();
+                });
+
+            } else if (pasoFlujoActual === "revelar") {
+                pasoFlujoActual = "conteo"; sonarAparicionPregunta();
+                document.getElementById('contenedor-dados-tablero').style.display = "none"; document.getElementById('contenedor-pregunta-tablero').style.display = "block";
+                document.getElementById('pregunta-tablero-texto').innerText = preguntaCargadaEstructura.p;
+                document.getElementById('opc-a').innerHTML = `<span>A)</span> ${preguntaCargadaEstructura.o[0].substring(3)}`;
+                document.getElementById('opc-b').innerHTML = `<span>B)</span> ${preguntaCargadaEstructura.o[1].substring(3)}`;
+                document.getElementById('opc-c').innerHTML = `<span>C)</span> ${preguntaCargadaEstructura.o[2].substring(3)}`;
+                document.getElementById('contador-reloj').innerText = "10"; document.getElementById('contador-reloj').className = "contador-segundos";
+                document.getElementById('respuesta-tablero-texto').innerText = "R: " + preguntaCargadaEstructura.r;
+                document.getElementById('respuesta-tablero-texto').style.display = "none";
+                actualizarEstadosVisualesBotonesCategorias();
+
+            } else if (pasoFlujoActual === "conteo") {
+                pasoFlujoActual = "bloqueado"; actualizarEstadosVisualesBotonesCategorias();
+                clearInterval(intervaloReloj); tiempoRestante = 10; const elementoReloj = document.getElementById('contador-reloj');
+                intervaloReloj = setInterval(() => {
+                    tiempoRestante--;
+                    if (tiempoRestante > 0) { elementoReloj.innerText = tiempoRestante; sonarClickSegundero(tiempoRestante <= 3); } 
+                    else { clearInterval(intervaloReloj); elementoReloj.innerText = "⏱️ ¡TIEMPO!"; elementoReloj.classList.add("tiempo-agotado"); activarFalloUrgente(); }
+                }, 1000);
+            }
+        }
+
+        function actualizarEstadosVisualesBotonesCategorias() {
+            const categories = ['general', 'geografia', 'entretenimiento', 'ciencia'];
+            categories.forEach(cat => {
+                const btn = document.getElementById(`btn-cat-${cat}`);
+                btn.className = `btn-cat ${colorCategoriasMapeo[cat].includes('🔵') ? 'azul' : colorCategoriasMapeo[cat].includes('🟢') ? 'verde' : colorCategoriasMapeo[cat].includes('🔴') ? 'rojo' : 'amarillo'}`; 
+                btn.innerText = nombresOriginalesBotones[cat];
+                if (pasoFlujoActual === "inicio") return;
+                if (categoriaSeleccionadaActiva === cat) {
+                    if (pasoFlujoActual === "revelar") { btn.classList.add('esperando-pregunta'); btn.innerText = "👁️ Mostrar Pregunta"; } 
+                    else if (pasoFlujoActual === "conteo") { btn.classList.add('esperando-conteo'); btn.innerText = "⏱️ Iniciar Conteo"; } 
+                    else if (pasoFlujoActual === "bloqueado") { btn.classList.add('desactivado'); }
+                } else { btn.classList.add('desactivado'); }
+            });
+        }
+
+        function liberarYResetearFlujoBotones() { clearInterval(intervaloReloj); pasoFlujoActual = "inicio"; categoriaSeleccionadaActiva = null; actualizarEstadosVisualesBotonesCategorias(); }
+        function revelarRespuesta() { 
+            if(estaMoviendose || !preguntaCargadaEstructura) return;
+            clearInterval(intervaloReloj); document.getElementById('respuesta-tablero-texto').style.display = "block";
+            const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase(); limpiarIluminacionOpciones();
+            if(letraCorrecta === "A") document.getElementById('opc-a').classList.add('opcion-correcta-iluminada');
+            else if(letraCorrecta === "B") document.getElementById('opc-b').classList.add('opcion-correcta-iluminada');
+            else if(letraCorrecta === "C") document.getElementById('opc-c').classList.add('opcion-correcta-iluminada');
+        }
+        function limpiarIluminacionOpciones() { document.getElementById('opc-a').classList.remove('opcion-correcta-iluminada'); document.getElementById('opc-b').classList.remove('opcion-correcta-iluminada'); document.getElementById('opc-c').classList.remove('opcion-correcta-iluminada'); }
+        
+        function activarFalloUrgente() {
+            if(estaMoviendose || juegoTerminado) return;
+            clearInterval(intervaloReloj); document.getElementById('contenedor-espera-tablero').style.display = "none"; document.getElementById('contenedor-dados-tablero').style.display = "none";
+            document.getElementById('contenedor-pregunta-tablero').style.display = "none"; document.getElementById('contenedor-error-tablero').style.display = "block";
+            sonarFalloCritico(); dadoNumeroActual = 0; preguntaCargadaEstructura = null; estaMoviendose = true; 
+            setTimeout(() => { estaMoviendose = false; liberarYResetearFlujoBotones(); rotarSiguienteTurno(); }, 1800);
+        }
+
+        function aplicarAvance(jugador) {
+            if (document.activeElement.tagName === "INPUT" || jugador > cantidadJugadoresActual || juegoTerminado || estaMoviendose) return;
+            estaMoviendose = true; let pasosPorDar = dadoNumeroActual || 1; dadoNumeroActual = 0; preguntaCargadaEstructura = null;
+            document.getElementById('anuncio-efecto').innerText = ""; document.getElementById('contenedor-error-tablero').style.display = "none";
+            document.getElementById('contenedor-pregunta-tablero').style.display = "none"; document.getElementById('contenedor-celebracion-tablero').style.display = "block";
+            sonarCelebracionAvance(); let pasoActual = 0;
+            let bucleMovimiento = setInterval(() => {
+                posiciones[jugador]++; pasoActual++;
+                if (posiciones[jugador] >= 30) { posiciones[jugador] = 30; clearInterval(bucleMovimiento); concluirTurno(jugador, true); return; }
+                sonarBrinco(); actualizarFichas(posiciones[jugador], jugador);
+                if (pasoActual === pasosPorDar) {
+                    clearInterval(bucleMovimiento); let posFinal = posiciones[jugador];
+                    if (posFinal === 5 || posFinal === 20) {
+                        setTimeout(() => { sonarEfectoEspecial(true); posiciones[jugador] += 3; document.getElementById('anuncio-efecto').innerText = `🚀 ¡COHETE! ${avatarJugadores[jugador]} vuela +3 casillas.`; actualizarFichas(posiciones[jugador], jugador); concluirTurno(jugador, false); }, 400);
+                    } else if (posFinal === 10 || posFinal === 25) {
+                        setTimeout(() => { sonarEfectoEspecial(false); posiciones[jugador] -= 3; document.getElementById('anuncio-efecto').innerText = `💥 ¡TRAMPA! ${avatarJugadores[jugador]} retrocede 3 casillas.`; actualizarFichas(posiciones[jugador], jugador); concluirTurno(jugador, false); }, 400);
+                    } else {
+                        if (posFinal === 15) document.getElementById('anuncio-efecto').innerText = `🚨 ¡RETO EN VIVO PARA ${nombreJugadores[jugador]}!`; concluirTurno(jugador, false);
+                    }
+                }
+            }, 280); 
+        }
+
+        function concluirTurno(jugador, llegoAMeta) {
+            estaMoviendose = false;
+            if (llegoAMeta || posiciones[jugador] >= 30) {
+                juegoTerminado = true; document.getElementById('ganador-pantalla').innerText = `🏆 ¡GANÓ EL ${nombreJugadores[jugador]}! 🏆`;
+                document.getElementById('tablero-fisico').classList.add('efecto-victoria'); sonarEfectoEspecial(true); return;
+            }
+            liberarYResetearFlujoBotones(); rotarSiguienteTurno();
+        }
+
+        function actualizarVisualTurnoEspera() {
+            actualizarNombresDesdeCampos();
+            document.getElementById('contenedor-espera-tablero').style.display = "flex"; document.getElementById('contenedor-dados-tablero').style.display = "none";
+            document.getElementById('contenedor-pregunta-tablero').style.display = "none"; document.getElementById('contenedor-error-tablero').style.display = "none"; document.getElementById('contenedor-celebracion-tablero').style.display = "none";
+        }
+
+        function rotarSiguienteTurno() { jugadorTurnoActual = (jugadorTurnoActual % cantidadJugadoresActual) + 1; actualizarVisualTurnoEspera(); }
+        function obtenerPreguntaClasificada(cat, nivel) { const grupo = datosClasificados[cat][nivel] || datosClasificados[cat]['facil']; const rIdx = Math.floor(Math.random() * grupo.preguntas.length); return { p: grupo.preguntas[rIdx], o: grupo.opciones[rIdx], r: grupo.respuestas[rIdx] }; }
+        function cambiarNivel(nuevoNivel) { if(estaMoviendose) return; nivelActual = nuevoNivel; document.querySelectorAll('[data-nivel]').forEach(btn => btn.classList.remove('active')); document.querySelector(`[data-nivel="${nuevoNivel}"]`).classList.add('active'); }
+        function cambiarCantidadJugadores(cant) { if(estaMoviendose) return; cantidadJugadoresActual = cant; document.querySelectorAll('[data-cant]').forEach(btn => btn.classList.remove('active-jugadores')); document.querySelector(`[data-cant="${cant}"]`).classList.add('active-jugadores'); document.getElementById('capa-input-j3').style.display = (cant >= 3) ? "flex" : "none"; document.getElementById('capa-input-j4').style.display = (cant >= 4) ? "flex" : "none"; reiniciarTodo(); }
+        
+        function construirTablero() {
+            const contenedor = document.getElementById('tablero-fisico'); document.querySelectorAll('.casilla').forEach(e => e.remove()); document.getElementById('tablero-fisico').classList.remove('efecto-victoria');
+            rutaTablero.forEach((casilla, index) => {
+                const div = document.createElement('div'); div.className = `casilla ${casilla.tipo}`; div.style.gridRow = casilla.r; div.style.gridColumn = casilla.c; div.id = `casilla-${index}`;
+                div.innerHTML = `<div>${casilla.txt}</div><div id="fichas-c-${index}" style="display:flex; gap:3px; margin-top:5px; flex-wrap:wrap; justify-content:center;"></div>`; contenedor.appendChild(div);
+            });
+            actualizarFichas(null, null); liberarYResetearFlujoBotones(); actualizarVisualTurnoEspera();
+        }
+
+        function actualizarFichas(casillaResaltar, jugadorMovido) {
+            for(let i=0; i<=30; i++) {
+                let casillaElemento = document.getElementById(`casilla-${i}`); if (casillaElemento) casillaElemento.classList.remove('casilla-activa');
+                let contenedorFichas = document.getElementById(`fichas-c-${i}`); if(contenedorFichas) contenedorFichas.innerHTML = "";
+            }
+            if (casillaResaltar !== null) { let casillaDestino = document.getElementById(`casilla-${casillaResaltar}`); if (casillaDestino) casillaDestino.classList.add('casilla-activa'); }
+            for(let j=1; j<=cantidadJugadoresActual; j++) {
+                let pos = posiciones[j]; let contenedorFichas = document.getElementById(`fichas-c-${pos}`);
+                if (contenedorFichas) { let claseAnimacion = (j === jugadorMovido) ? "avatar-ficha efecto-brinco" : "avatar-ficha"; contenedorFichas.innerHTML += `<span class="${claseAnimacion}">${avatarJugadores[j]}</span>`; }
+            }
+        }
+
+        function reiniciarTodo() {
+            if(estaMoviendose) return;
+            posiciones = { 1: 0, 2: 0, 3: 0, 4: 0 }; juegoTerminado = false; dadoNumeroActual = 0; jugadorTurnoActual = 1; preguntaCargadaEstructura = null;
+            const panelGanador = document.getElementById('ganador-pantalla'); if (panelGanador) panelGanador.innerText = "";
+            document.getElementById('anuncio-efecto').innerText = ""; limpiarIluminacionOpciones(); construirTablero();
+        }
+
+        window.addEventListener('keydown', (e) => { if (document.activeElement.tagName === "INPUT") return; if (e.key === 'r' || e.key === 'R') reiniciarTodo(); });
+        construirTablero(); conectarConServidorNode();
+    </script>
+</body>
+</html>
