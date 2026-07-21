@@ -413,8 +413,16 @@
                     actualizarNombresDesdeCampos();
                 }
 
+                // --- MAGIA: AHORA VERIFICA EL AVATAR EXACTO ---
                 if (datos.tipo === 'RESPUESTA_CHAT' && (pasoFlujoActual === "bloqueado" || pasoFlujoActual === "conteo") && !estaMoviendose) {
-                    procesarRespuestaElegidaChat(datos.opcion);
+                    
+                    // Comprobamos cuál de los 4 avatares es el que tiene el turno actualmente
+                    const idAvatarTurnoActual = tematicas[tematicaActual][jugadorTurnoActual].id;
+                    
+                    // Si el avatar que manda el celular coincide con el avatar del turno ¡Pasa de inmediato!
+                    if (datos.avatar === idAvatarTurnoActual) {
+                        procesarRespuestaElegidaChat(datos.opcion);
+                    }
                 }
             };
         }
@@ -583,7 +591,6 @@
                         if (posFinal === 15) {
                             document.getElementById('anuncio-efecto').innerText = `🚨 ¡RETO EN VIVO PARA ${nombreJugadores[jugador]}!`;
                         }
-                        // AQUÍ ESTABA EL ERROR: ESTA LÍNEA FALTABA Y CONGELABA EL JUEGO
                         concluirTurno(jugador, false); 
                     }
                 }
