@@ -218,7 +218,6 @@
                 <button id="btn-cat-ciencia" class="btn-cat amarillo" onclick="controlFlujoCategoria('ciencia')">Ciencia / Nat.</button>
             </div>
 
-            <!-- BOTONES DE CONTROL DE PREGUNTAS MÁS LIMPIOS -->
             <button class="btn-revelar" onclick="revelarRespuesta()">👁️ Mostrar Respuesta</button>
             <button class="btn-fallo" onclick="activarFalloUrgente()">❌ Incorrecto / No Contestó</button>
         </div>
@@ -379,7 +378,6 @@
             }
         }
 
-        // AQUÍ ESTÁ EL CAMBIO MÁGICO PARA RENDER EN EL ADMIN:
         function conectarConServidorNode() {
             const indicadorConexion = document.getElementById('conexion-ws');
             socketAdmin = new WebSocket(window.location.origin.replace(/^http/, 'ws'));
@@ -415,12 +413,9 @@
                     actualizarNombresDesdeCampos();
                 }
 
+                // AQUI QUITAMOS EL CANDADO DEL NOMBRE:
                 if (datos.tipo === 'RESPUESTA_CHAT' && (pasoFlujoActual === "bloqueado" || pasoFlujoActual === "conteo") && !estaMoviendose) {
-                    const nombreRemitente = datos.usuario.trim().toUpperCase();
-                    // Verifica si el nombre de quien responde coincide con el del jugador al que le toca
-                    if (nombreJugadores[jugadorTurnoActual].includes(nombreRemitente)) {
-                        procesarRespuestaElegidaChat(datos.opcion);
-                    }
+                    procesarRespuestaElegidaChat(datos.opcion);
                 }
             };
         }
@@ -453,8 +448,10 @@
             }
         }
 
+        // CANDADO ANTI-DOBLE CLIC AGREGADO AQUÍ:
         function procesarRespuestaElegidaChat(letraOpcion) {
-            if(!preguntaCargadaEstructura) return;
+            if(!preguntaCargadaEstructura || pasoFlujoActual === "resolviendo") return;
+            pasoFlujoActual = "resolviendo"; // Evita recibir más respuestas mientras evalúa
             clearInterval(intervaloReloj); revelarRespuesta();
             const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase();
             setTimeout(() => { if (letraOpcion === letraCorrecta) aplicarAvance(jugadorTurnoActual); else activarFalloUrgente(); }, 1500);
@@ -549,6 +546,7 @@
         }
 
         function liberarYResetearFlujoBotones() { clearInterval(intervaloReloj); pasoFlujoActual = "inicio"; categoriaSeleccionadaActiva = null; actualizarEstadosVisualesBotonesCategorias(); }
+        
         function revelarRespuesta() { 
             if(estaMoviendose || !preguntaCargadaEstructura) return;
             clearInterval(intervaloReloj); document.getElementById('respuesta-tablero-texto').style.display = "block";
