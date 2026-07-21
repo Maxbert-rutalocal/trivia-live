@@ -403,7 +403,7 @@
                 }
 
                 if (datos.tipo === 'SELECCION_AVATAR') {
-                    const avatarElegido = datos.avatar.toLowerCase();
+                    const avatarElegido = datos.avatar ? datos.avatar.toLowerCase() : "";
                     const temaData = tematicas[tematicaActual];
                     
                     if (avatarElegido === temaData[1].id) { document.getElementById('input-j1').value = datos.usuario; }
@@ -413,14 +413,10 @@
                     actualizarNombresDesdeCampos();
                 }
 
-                // --- MAGIA: AHORA VERIFICA EL AVATAR EXACTO ---
-                if (datos.tipo === 'RESPUESTA_CHAT' && (pasoFlujoActual === "bloqueado" || pasoFlujoActual === "conteo") && !estaMoviendose) {
-                    
-                    // Comprobamos cuál de los 4 avatares es el que tiene el turno actualmente
-                    const idAvatarTurnoActual = tematicas[tematicaActual][jugadorTurnoActual].id;
-                    
-                    // Si el avatar que manda el celular coincide con el avatar del turno ¡Pasa de inmediato!
-                    if (datos.avatar === idAvatarTurnoActual) {
+                // --- MODO A PRUEBA DE BALAS (SIN CANDADOS) ---
+                // Si recibe una respuesta y hay una pregunta activa, la acepta inmediatamente.
+                if (datos.tipo === 'RESPUESTA_CHAT') {
+                    if ((pasoFlujoActual === "conteo" || pasoFlujoActual === "bloqueado") && !estaMoviendose) {
                         procesarRespuestaElegidaChat(datos.opcion);
                     }
                 }
