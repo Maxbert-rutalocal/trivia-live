@@ -101,9 +101,9 @@
     dragItem.addEventListener('mousedown', dragStart); document.addEventListener('mousemove', drag); document.addEventListener('mouseup', dragEnd);
     dragItem.addEventListener('touchstart', dragStart, {passive: false}); document.addEventListener('touchmove', drag, {passive: false}); document.addEventListener('touchend', dragEnd);
 
-    // --- MEMORIA DE AVATAR Y WEBSOCKETS ---
+    // --- WEBSOCKETS ---
     let mapaEmojis = { 'alien': '👽', 'robot': '🤖', 'zorro': '🦊', 'unicornio': '🦄' };
-    let miAvatarActual = ""; // <--- Memoria para saber quién soy
+    let miAvatarActual = ""; 
     
     const ws = new WebSocket(window.location.origin.replace(/^http/, 'ws'));
     const estadoDiv = document.getElementById('estado');
@@ -130,7 +130,7 @@
                 <button id="btn-${tema[3].id}" class="btn-avatar" onclick="registrarse('${tema[3].id}')">${tema[3].emoji} ${tema[3].nombre.toUpperCase()}</button>
                 <button id="btn-${tema[4].id}" class="btn-avatar" onclick="registrarse('${tema[4].id}')">${tema[4].emoji} ${tema[4].nombre.toUpperCase()}</button>
             `;
-            ws.send(JSON.stringify({ tipo: 'SOLICITAR_AVATARES' }));
+            // BUCLE INFINITO ELIMINADO AQUÍ.
         }
 
         if (datos.tipo === 'ESTADO_AVATARES') {
@@ -152,7 +152,7 @@
         const usernameInput = document.getElementById('username').value.trim();
         if (usernameInput === "") { alert("Escribe tu nombre primero."); return; }
         
-        miAvatarActual = avatarElegido; // <--- Guarda el avatar internamente
+        miAvatarActual = avatarElegido; 
 
         const datos = { tipo: 'SELECCION_AVATAR', usuario: usernameInput, avatar: avatarElegido };
         if (ws.readyState === WebSocket.OPEN) {
@@ -166,7 +166,6 @@
 
     function enviarRespuesta(opcion) {
         const usernameInput = document.getElementById('username').value.trim();
-        // <--- Ahora enviamos el avatar exacto para que el admin lo reconozca fácil
         const datos = { tipo: 'RESPUESTA_CHAT', usuario: usernameInput, avatar: miAvatarActual, opcion: opcion };
         if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(datos));
     }
