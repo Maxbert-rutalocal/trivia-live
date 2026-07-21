@@ -408,12 +408,11 @@
                     
                     if (avatarElegido === temaData[1].id) { document.getElementById('input-j1').value = datos.usuario; }
                     else if (avatarElegido === temaData[2].id) { document.getElementById('input-j2').value = datos.usuario; }
-                    else if (avatarElegido === temaData[3].id && cantidadJugadoresActual >= 3) { document.getElementById('input-j3').value = datos.usuario; }
-                    else if (avatarElegido === temaData[4].id && cantidadJugadoresActual >= 4) { document.getElementById('input-j4').value = datos.usuario; }
+                    else if (avatarElegido === temaData[3].id) { document.getElementById('input-j3').value = datos.usuario; }
+                    else if (avatarElegido === temaData[4].id) { document.getElementById('input-j4').value = datos.usuario; }
                     actualizarNombresDesdeCampos();
                 }
 
-                // AQUI QUITAMOS EL CANDADO DEL NOMBRE:
                 if (datos.tipo === 'RESPUESTA_CHAT' && (pasoFlujoActual === "bloqueado" || pasoFlujoActual === "conteo") && !estaMoviendose) {
                     procesarRespuestaElegidaChat(datos.opcion);
                 }
@@ -448,10 +447,9 @@
             }
         }
 
-        // CANDADO ANTI-DOBLE CLIC AGREGADO AQUÍ:
         function procesarRespuestaElegidaChat(letraOpcion) {
             if(!preguntaCargadaEstructura || pasoFlujoActual === "resolviendo") return;
-            pasoFlujoActual = "resolviendo"; // Evita recibir más respuestas mientras evalúa
+            pasoFlujoActual = "resolviendo"; 
             clearInterval(intervaloReloj); revelarRespuesta();
             const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase();
             setTimeout(() => { if (letraOpcion === letraCorrecta) aplicarAvance(jugadorTurnoActual); else activarFalloUrgente(); }, 1500);
@@ -582,7 +580,11 @@
                     } else if (posFinal === 10 || posFinal === 25) {
                         setTimeout(() => { sonarEfectoEspecial(false); posiciones[jugador] -= 3; document.getElementById('anuncio-efecto').innerText = `💥 ¡TRAMPA! ${avatarJugadores[jugador]} retrocede 3 casillas.`; actualizarFichas(posiciones[jugador], jugador); concluirTurno(jugador, false); }, 400);
                     } else {
-                        if (posFinal === 15) document.getElementById('anuncio-efecto').innerText = `🚨 ¡RETO EN VIVO PARA ${nombreJugadores[jugador]}!`; concluirTurno(jugador, false);
+                        if (posFinal === 15) {
+                            document.getElementById('anuncio-efecto').innerText = `🚨 ¡RETO EN VIVO PARA ${nombreJugadores[jugador]}!`;
+                        }
+                        // AQUÍ ESTABA EL ERROR: ESTA LÍNEA FALTABA Y CONGELABA EL JUEGO
+                        concluirTurno(jugador, false); 
                     }
                 }
             }, 280); 
