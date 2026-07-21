@@ -177,9 +177,9 @@
             <div class="seccion-config">
                 <p class="tit-config">NÚMERO DE JUGADORES</p>
                 <div class="zona-botones">
-                    <button class="btn-config active-jugadores" data-cant="2" onclick="cambiarCantidadJugadores(2)">2 JUGS</button>
+                    <button class="btn-config" data-cant="2" onclick="cambiarCantidadJugadores(2)">2 JUGS</button>
                     <button class="btn-config" data-cant="3" onclick="cambiarCantidadJugadores(3)">3 JUGS</button>
-                    <button class="btn-config" data-cant="4" onclick="cambiarCantidadJugadores(4)">4 JUGS</button>
+                    <button class="btn-config active-jugadores" data-cant="4" onclick="cambiarCantidadJugadores(4)">4 JUGS</button>
                 </div>
             </div>
 
@@ -191,10 +191,10 @@
                 <div class="grupo-input-nombre">
                     <span id="span-j2">Robot🤖</span><input type="text" id="input-j2" class="input-nombre-jug" value="" placeholder="CREADOR" oninput="actualizarNombresDesdeCampos()">
                 </div>
-                <div class="grupo-input-nombre" id="capa-input-j3" style="display: none;">
+                <div class="grupo-input-nombre" id="capa-input-j3" style="display: flex;">
                     <span id="span-j3">Zorro🦊</span><input type="text" id="input-j3" class="input-nombre-jug" value="" placeholder="MODERADOR" oninput="actualizarNombresDesdeCampos()">
                 </div>
-                <div class="grupo-input-nombre" id="capa-input-j4" style="display: none;">
+                <div class="grupo-input-nombre" id="capa-input-j4" style="display: flex;">
                     <span id="span-j4">Unic.🦄</span><input type="text" id="input-j4" class="input-nombre-jug" value="" placeholder="INVITADO" oninput="actualizarNombresDesdeCampos()">
                 </div>
             </div>
@@ -349,7 +349,7 @@
         const colorCategoriasMapeo = { 'general': 'GENERAL 🔵', 'entretenimiento': 'ENTRE./ARTE 🔴', 'geografia': 'GEOGRAFÍA 🟢', 'ciencia': 'CIENCIA 🟡' };
         const nombresOriginalesBotones = { 'general': 'Conoc. General', 'geografia': 'Geografía / Mundo', 'entretenimiento': 'Entre. / Arte', 'ciencia': 'Ciencia / Nat.' };
 
-        let dadoNumeroActual = 0; let juegoTerminado = false; let nivelActual = "facil"; let cantidadJugadoresActual = 2; 
+        let dadoNumeroActual = 0; let juegoTerminado = false; let nivelActual = "facil"; let cantidadJugadoresActual = 4; 
         let posiciones = { 1: 0, 2: 0, 3: 0, 4: 0 }; let estaMoviendose = false; let jugadorTurnoActual = 1; 
         let intervaloReloj; let tiempoRestante = 10; let preguntaCargadaEstructura = null; let pasoFlujoActual = "inicio"; let categoriaSeleccionadaActiva = null;
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); let nodoMusicaAmbiente = null; let musicaEncendida = false; let socketAdmin; 
@@ -415,10 +415,12 @@
                     actualizarNombresDesdeCampos();
                 }
 
-                if (datos.tipo === 'RESPUESTA_CHAT' && pasoFlujoActual === "bloqueado" && !estaMoviendose) {
-                    const nombreTurnoActual = nombreJugadores[jugadorTurnoActual].split(' ')[0].trim().toUpperCase();
+                if (datos.tipo === 'RESPUESTA_CHAT' && (pasoFlujoActual === "bloqueado" || pasoFlujoActual === "conteo") && !estaMoviendose) {
                     const nombreRemitente = datos.usuario.trim().toUpperCase();
-                    if (nombreRemitente === nombreTurnoActual) procesarRespuestaElegidaChat(datos.opcion);
+                    // Verifica si el nombre de quien responde coincide con el del jugador al que le toca
+                    if (nombreJugadores[jugadorTurnoActual].includes(nombreRemitente)) {
+                        procesarRespuestaElegidaChat(datos.opcion);
+                    }
                 }
             };
         }
