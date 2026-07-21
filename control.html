@@ -101,12 +101,11 @@
     dragItem.addEventListener('mousedown', dragStart); document.addEventListener('mousemove', drag); document.addEventListener('mouseup', dragEnd);
     dragItem.addEventListener('touchstart', dragStart, {passive: false}); document.addEventListener('touchmove', drag, {passive: false}); document.addEventListener('touchend', dragEnd);
 
-    // --- WEBSOCKETS (CONEXIÓN DINÁMICA A LA NUBE O LOCAL) ---
+    // --- MEMORIA DE AVATAR Y WEBSOCKETS ---
     let mapaEmojis = { 'alien': '👽', 'robot': '🤖', 'zorro': '🦊', 'unicornio': '🦄' };
+    let miAvatarActual = ""; // <--- Memoria para saber quién soy
     
-    // AQUÍ ESTÁ EL CAMBIO MÁGICO PARA RENDER:
     const ws = new WebSocket(window.location.origin.replace(/^http/, 'ws'));
-    
     const estadoDiv = document.getElementById('estado');
 
     ws.onopen = () => { estadoDiv.innerHTML = '🟢 Conectado'; estadoDiv.style.color = '#00e676'; ws.send(JSON.stringify({ tipo: 'SOLICITAR_AVATARES' })); };
@@ -115,7 +114,6 @@
     ws.onmessage = (event) => {
         const datos = JSON.parse(event.data);
         
-        // 1. RECONSTRUIR BOTONES SI EL ADMIN CAMBIA LA TEMÁTICA
         if (datos.tipo === 'CAMBIO_TEMATICA') {
             const tema = datos.datos;
             mapaEmojis = {
@@ -132,15 +130,13 @@
                 <button id="btn-${tema[3].id}" class="btn-avatar" onclick="registrarse('${tema[3].id}')">${tema[3].emoji} ${tema[3].nombre.toUpperCase()}</button>
                 <button id="btn-${tema[4].id}" class="btn-avatar" onclick="registrarse('${tema[4].id}')">${tema[4].emoji} ${tema[4].nombre.toUpperCase()}</button>
             `;
-            // Pedir estado para saber cuáles bloquear en esta nueva temática
             ws.send(JSON.stringify({ tipo: 'SOLICITAR_AVATARES' }));
         }
 
-        // 2. BLOQUEAR LOS OCUPADOS
         if (datos.tipo === 'ESTADO_AVATARES') {
             const botones = document.querySelectorAll('.grid-avatares .btn-avatar');
             botones.forEach(btn => {
-                const idBtn = btn.id.substring(4); // Extraer 'alien', 'perro', etc.
+                const idBtn = btn.id.substring(4); 
                 if (datos.ocupados.includes(idBtn)) {
                     btn.disabled = true; btn.style.opacity = '0.3'; btn.style.cursor = 'not-allowed';
                     if (!btn.innerText.includes('OCUPA')) btn.innerText += " (OCUPA)";
@@ -155,6 +151,9 @@
     function registrarse(avatarElegido) {
         const usernameInput = document.getElementById('username').value.trim();
         if (usernameInput === "") { alert("Escribe tu nombre primero."); return; }
+        
+        miAvatarActual = avatarElegido; // <--- Guarda el avatar internamente
+
         const datos = { tipo: 'SELECCION_AVATAR', usuario: usernameInput, avatar: avatarElegido };
         if (ws.readyState === WebSocket.OPEN) {
             ws.send(JSON.stringify(datos));
@@ -167,7 +166,8 @@
 
     function enviarRespuesta(opcion) {
         const usernameInput = document.getElementById('username').value.trim();
-        const datos = { tipo: 'RESPUESTA_CHAT', usuario: usernameInput, opcion: opcion };
+        // <--- Ahora enviamos el avatar exacto para que el admin lo reconozca fácil
+        const datos = { tipo: 'RESPUESTA_CHAT', usuario: usernameInput, avatar: miAvatarActual, opcion: opcion };
         if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(datos));
     }
 </script>
