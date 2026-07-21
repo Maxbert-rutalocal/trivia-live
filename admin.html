@@ -413,8 +413,7 @@
                     actualizarNombresDesdeCampos();
                 }
 
-                // --- MODO A PRUEBA DE BALAS (SIN CANDADOS) ---
-                // Si recibe una respuesta y hay una pregunta activa, la acepta inmediatamente.
+                // --- RESPUESTAS A PRUEBA DE BALAS ---
                 if (datos.tipo === 'RESPUESTA_CHAT') {
                     if ((pasoFlujoActual === "conteo" || pasoFlujoActual === "bloqueado") && !estaMoviendose) {
                         procesarRespuestaElegidaChat(datos.opcion);
