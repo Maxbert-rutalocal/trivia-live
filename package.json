@@ -1,0 +1,14 @@
+{
+  "name": "trivia-live",
+  "version": "1.0.0",
+  "description": "Juego de Trivia Interactivo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.22.2",
+    "ws": "^8.21.1",
+    "xlsx": "^0.18.5"
+  }
+}

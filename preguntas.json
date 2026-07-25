@@ -1,0 +1,5434 @@
+{
+  "general": {
+    "facil": [
+      {
+        "p": "¿Cuántas horas completas le toma a la Tierra dar una vuelta sobre su propio eje?",
+        "o": [
+          "A) 48 horas",
+          "B) 12 horas",
+          "C) 24 horas"
+        ],
+        "r": "C) 24 horas"
+      },
+      {
+        "p": "¿Qué plato tradicional antioqueño se compone de fríjoles, chicharrón, huevo y arepa?",
+        "o": [
+          "A) Bandeja Paisa",
+          "B) Sancocho",
+          "C) Ajiaco"
+        ],
+        "r": "A) Bandeja Paisa"
+      },
+      {
+        "p": "¿Cuántos días laborables y de fin de semana conforman una semana estándar?",
+        "o": [
+          "A) 7 días",
+          "B) 5 días",
+          "C) 10 días"
+        ],
+        "r": "A) 7 días"
+      },
+      {
+        "p": "¿Cuál es el mes del calendario gregoriano que cuenta con menos días?",
+        "o": [
+          "A) Febrero",
+          "B) Noviembre",
+          "C) Abril"
+        ],
+        "r": "A) Febrero"
+      },
+      {
+        "p": "¿Cuántas horas completas le toma a la Tierra dar una vuelta sobre su propio eje?",
+        "o": [
+          "A) 48 horas",
+          "B) 24 horas",
+          "C) 12 horas"
+        ],
+        "r": "B) 24 horas"
+      },
+      {
+        "p": "¿Qué plato tradicional antioqueño se compone de fríjoles, chicharrón, huevo y arepa?",
+        "o": [
+          "A) Sancocho",
+          "B) Ajiaco",
+          "C) Bandeja Paisa"
+        ],
+        "r": "C) Bandeja Paisa"
+      },
+      {
+        "p": "¿Cuántos días laborables y de fin de semana conforman una semana estándar?",
+        "o": [
+          "A) 10 días",
+          "B) 5 días",
+          "C) 7 días"
+        ],
+        "r": "C) 7 días"
+      },
+      {
+        "p": "¿Cuál es el mes del calendario gregoriano que cuenta con menos días?",
+        "o": [
+          "A) Abril",
+          "B) Febrero",
+          "C) Noviembre"
+        ],
+        "r": "B) Febrero"
+      },
+      {
+        "p": "¿Cuántas horas completas le toma a la Tierra dar una vuelta sobre su propio eje?",
+        "o": [
+          "A) 48 horas",
+          "B) 12 horas",
+          "C) 24 horas"
+        ],
+        "r": "C) 24 horas"
+      },
+      {
+        "p": "¿Qué plato tradicional antioqueño se compone de fríjoles, chicharrón, huevo y arepa?",
+        "o": [
+          "A) Ajiaco",
+          "B) Sancocho",
+          "C) Bandeja Paisa"
+        ],
+        "r": "C) Bandeja Paisa"
+      },
+      {
+        "p": "¿Cuántos días laborables y de fin de semana conforman una semana estándar?",
+        "o": [
+          "A) 10 días",
+          "B) 5 días",
+          "C) 7 días"
+        ],
+        "r": "C) 7 días"
+      },
+      {
+        "p": "¿Cuál es el mes del calendario gregoriano que cuenta con menos días?",
+        "o": [
+          "A) Febrero",
+          "B) Abril",
+          "C) Noviembre"
+        ],
+        "r": "A) Febrero"
+      },
+      {
+        "p": "¿Cuántas horas completas le toma a la Tierra dar una vuelta sobre su propio eje?",
+        "o": [
+          "A) 24 horas",
+          "B) 12 horas",
+          "C) 48 horas"
+        ],
+        "r": "A) 24 horas"
+      },
+      {
+        "p": "¿Qué plato tradicional antioqueño se compone de fríjoles, chicharrón, huevo y arepa?",
+        "o": [
+          "A) Sancocho",
+          "B) Bandeja Paisa",
+          "C) Ajiaco"
+        ],
+        "r": "B) Bandeja Paisa"
+      },
+      {
+        "p": "¿Cuántos días laborables y de fin de semana conforman una semana estándar?",
+        "o": [
+          "A) 7 días",
+          "B) 10 días",
+          "C) 5 días"
+        ],
+        "r": "A) 7 días"
+      },
+      {
+        "p": "¿Cuál es el mes del calendario gregoriano que cuenta con menos días?",
+        "o": [
+          "A) Febrero",
+          "B) Abril",
+          "C) Noviembre"
+        ],
+        "r": "A) Febrero"
+      },
+      {
+        "p": "¿Cuántas horas completas le toma a la Tierra dar una vuelta sobre su propio eje?",
+        "o": [
+          "A) 24 horas",
+          "B) 48 horas",
+          "C) 12 horas"
+        ],
+        "r": "A) 24 horas"
+      },
+      {
+        "p": "¿Qué plato tradicional antioqueño se compone de fríjoles, chicharrón, huevo y arepa?",
+        "o": [
+          "A) Sancocho",
+          "B) Bandeja Paisa",
+          "C) Ajiaco"
+        ],
+        "r": "B) Bandeja Paisa"
+      },
+      {
+        "p": "¿Cuántos días laborables y de fin de semana conforman una semana estándar?",
+        "o": [
+          "A) 7 días",
+          "B) 10 días",
+          "C) 5 días"
+        ],
+        "r": "A) 7 días"
+      },
+      {
+        "p": "¿Cuál es el mes del calendario gregoriano que cuenta con menos días?",
+        "o": [
+          "A) Abril",
+          "B) Febrero",
+          "C) Noviembre"
+        ],
+        "r": "B) Febrero"
+      },
+      {
+        "p": "¿Cuántas horas completas le toma a la Tierra dar una vuelta sobre su propio eje?",
+        "o": [
+          "A) 24 horas",
+          "B) 12 horas",
+          "C) 48 horas"
+        ],
+        "r": "A) 24 horas"
+      },
+      {
+        "p": "¿Qué plato tradicional antioqueño se compone de fríjoles, chicharrón, huevo y arepa?",
+        "o": [
+          "A) Ajiaco",
+          "B) Sancocho",
+          "C) Bandeja Paisa"
+        ],
+        "r": "C) Bandeja Paisa"
+      },
+      {
+        "p": "¿Cuántos días laborables y de fin de semana conforman una semana estándar?",
+        "o": [
+          "A) 7 días",
+          "B) 5 días",
+          "C) 10 días"
+        ],
+        "r": "A) 7 días"
+      },
+      {
+        "p": "¿Cuál es el mes del calendario gregoriano que cuenta con menos días?",
+        "o": [
+          "A) Noviembre",
+          "B) Febrero",
+          "C) Abril"
+        ],
+        "r": "B) Febrero"
+      },
+      {
+        "p": "¿Cuántas horas completas le toma a la Tierra dar una vuelta sobre su propio eje?",
+        "o": [
+          "A) 24 horas",
+          "B) 12 horas",
+          "C) 48 horas"
+        ],
+        "r": "A) 24 horas"
+      },
+      {
+        "p": "¿Qué plato tradicional antioqueño se compone de fríjoles, chicharrón, huevo y arepa?",
+        "o": [
+          "A) Bandeja Paisa",
+          "B) Ajiaco",
+          "C) Sancocho"
+        ],
+        "r": "A) Bandeja Paisa"
+      },
+      {
+        "p": "¿Cuántos días laborables y de fin de semana conforman una semana estándar?",
+        "o": [
+          "A) 7 días",
+          "B) 5 días",
+          "C) 10 días"
+        ],
+        "r": "A) 7 días"
+      },
+      {
+        "p": "¿Cuál es el mes del calendario gregoriano que cuenta con menos días?",
+        "o": [
+          "A) Noviembre",
+          "B) Abril",
+          "C) Febrero"
+        ],
+        "r": "C) Febrero"
+      },
+      {
+        "p": "¿Cuántas horas completas le toma a la Tierra dar una vuelta sobre su propio eje?",
+        "o": [
+          "A) 48 horas",
+          "B) 12 horas",
+          "C) 24 horas"
+        ],
+        "r": "C) 24 horas"
+      },
+      {
+        "p": "¿Qué plato tradicional antioqueño se compone de fríjoles, chicharrón, huevo y arepa?",
+        "o": [
+          "A) Ajiaco",
+          "B) Sancocho",
+          "C) Bandeja Paisa"
+        ],
+        "r": "C) Bandeja Paisa"
+      },
+      {
+        "p": "¿Cuántos días laborables y de fin de semana conforman una semana estándar?",
+        "o": [
+          "A) 10 días",
+          "B) 5 días",
+          "C) 7 días"
+        ],
+        "r": "C) 7 días"
+      },
+      {
+        "p": "¿Cuál es el mes del calendario gregoriano que cuenta con menos días?",
+        "o": [
+          "A) Noviembre",
+          "B) Abril",
+          "C) Febrero"
+        ],
+        "r": "C) Febrero"
+      },
+      {
+        "p": "¿Cuántas horas completas le toma a la Tierra dar una vuelta sobre su propio eje?",
+        "o": [
+          "A) 48 horas",
+          "B) 24 horas",
+          "C) 12 horas"
+        ],
+        "r": "B) 24 horas"
+      },
+      {
+        "p": "¿Qué plato tradicional antioqueño se compone de fríjoles, chicharrón, huevo y arepa?",
+        "o": [
+          "A) Bandeja Paisa",
+          "B) Sancocho",
+          "C) Ajiaco"
+        ],
+        "r": "A) Bandeja Paisa"
+      },
+      {
+        "p": "¿Cuántos días laborables y de fin de semana conforman una semana estándar?",
+        "o": [
+          "A) 7 días",
+          "B) 5 días",
+          "C) 10 días"
+        ],
+        "r": "A) 7 días"
+      },
+      {
+        "p": "¿Cuál es el mes del calendario gregoriano que cuenta con menos días?",
+        "o": [
+          "A) Noviembre",
+          "B) Abril",
+          "C) Febrero"
+        ],
+        "r": "C) Febrero"
+      },
+      {
+        "p": "¿Cuántas horas completas le toma a la Tierra dar una vuelta sobre su propio eje?",
+        "o": [
+          "A) 48 horas",
+          "B) 12 horas",
+          "C) 24 horas"
+        ],
+        "r": "C) 24 horas"
+      },
+      {
+        "p": "¿Qué plato tradicional antioqueño se compone de fríjoles, chicharrón, huevo y arepa?",
+        "o": [
+          "A) Sancocho",
+          "B) Bandeja Paisa",
+          "C) Ajiaco"
+        ],
+        "r": "B) Bandeja Paisa"
+      },
+      {
+        "p": "¿Cuántos días laborables y de fin de semana conforman una semana estándar?",
+        "o": [
+          "A) 5 días",
+          "B) 7 días",
+          "C) 10 días"
+        ],
+        "r": "B) 7 días"
+      },
+      {
+        "p": "¿Cuál es el mes del calendario gregoriano que cuenta con menos días?",
+        "o": [
+          "A) Noviembre",
+          "B) Abril",
+          "C) Febrero"
+        ],
+        "r": "C) Febrero"
+      },
+      {
+        "p": "¿Cuántas horas completas le toma a la Tierra dar una vuelta sobre su propio eje?",
+        "o": [
+          "A) 24 horas",
+          "B) 12 horas",
+          "C) 48 horas"
+        ],
+        "r": "A) 24 horas"
+      },
+      {
+        "p": "¿Qué plato tradicional antioqueño se compone de fríjoles, chicharrón, huevo y arepa?",
+        "o": [
+          "A) Bandeja Paisa",
+          "B) Sancocho",
+          "C) Ajiaco"
+        ],
+        "r": "A) Bandeja Paisa"
+      },
+      {
+        "p": "¿Cuántos días laborables y de fin de semana conforman una semana estándar?",
+        "o": [
+          "A) 10 días",
+          "B) 5 días",
+          "C) 7 días"
+        ],
+        "r": "C) 7 días"
+      },
+      {
+        "p": "¿Cuál es el mes del calendario gregoriano que cuenta con menos días?",
+        "o": [
+          "A) Noviembre",
+          "B) Abril",
+          "C) Febrero"
+        ],
+        "r": "C) Febrero"
+      },
+      {
+        "p": "¿Cuántas horas completas le toma a la Tierra dar una vuelta sobre su propio eje?",
+        "o": [
+          "A) 48 horas",
+          "B) 12 horas",
+          "C) 24 horas"
+        ],
+        "r": "C) 24 horas"
+      },
+      {
+        "p": "¿Qué plato tradicional antioqueño se compone de fríjoles, chicharrón, huevo y arepa?",
+        "o": [
+          "A) Sancocho",
+          "B) Bandeja Paisa",
+          "C) Ajiaco"
+        ],
+        "r": "B) Bandeja Paisa"
+      },
+      {
+        "p": "¿Cuántos días laborables y de fin de semana conforman una semana estándar?",
+        "o": [
+          "A) 7 días",
+          "B) 5 días",
+          "C) 10 días"
+        ],
+        "r": "A) 7 días"
+      },
+      {
+        "p": "¿Cuál es el mes del calendario gregoriano que cuenta con menos días?",
+        "o": [
+          "A) Noviembre",
+          "B) Abril",
+          "C) Febrero"
+        ],
+        "r": "C) Febrero"
+      },
+      {
+        "p": "¿Cuántas horas completas le toma a la Tierra dar una vuelta sobre su propio eje?",
+        "o": [
+          "A) 48 horas",
+          "B) 12 horas",
+          "C) 24 horas"
+        ],
+        "r": "C) 24 horas"
+      },
+      {
+        "p": "¿Qué plato tradicional antioqueño se compone de fríjoles, chicharrón, huevo y arepa?",
+        "o": [
+          "A) Bandeja Paisa",
+          "B) Sancocho",
+          "C) Ajiaco"
+        ],
+        "r": "A) Bandeja Paisa"
+      }
+    ],
+    "medio": [
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Chino Mandarín",
+          "B) Inglés",
+          "C) Español"
+        ],
+        "r": "A) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Won",
+          "B) Yen",
+          "C) Yuan"
+        ],
+        "r": "B) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1920",
+          "B) 1905",
+          "C) 1912"
+        ],
+        "r": "C) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Español",
+          "B) Inglés",
+          "C) Chino Mandarín"
+        ],
+        "r": "C) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Won",
+          "B) Yuan",
+          "C) Yen"
+        ],
+        "r": "C) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1920",
+          "B) 1905",
+          "C) 1912"
+        ],
+        "r": "C) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Chino Mandarín",
+          "B) Inglés",
+          "C) Español"
+        ],
+        "r": "A) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Won",
+          "B) Yen",
+          "C) Yuan"
+        ],
+        "r": "B) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1920",
+          "B) 1912",
+          "C) 1905"
+        ],
+        "r": "B) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Chino Mandarín",
+          "B) Inglés",
+          "C) Español"
+        ],
+        "r": "A) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Yen",
+          "B) Won",
+          "C) Yuan"
+        ],
+        "r": "A) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1912",
+          "B) 1905",
+          "C) 1920"
+        ],
+        "r": "A) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Español",
+          "B) Inglés",
+          "C) Chino Mandarín"
+        ],
+        "r": "C) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Yen",
+          "B) Yuan",
+          "C) Won"
+        ],
+        "r": "A) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1912",
+          "B) 1905",
+          "C) 1920"
+        ],
+        "r": "A) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Inglés",
+          "B) Chino Mandarín",
+          "C) Español"
+        ],
+        "r": "B) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Yen",
+          "B) Yuan",
+          "C) Won"
+        ],
+        "r": "A) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1912",
+          "B) 1920",
+          "C) 1905"
+        ],
+        "r": "A) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Español",
+          "B) Inglés",
+          "C) Chino Mandarín"
+        ],
+        "r": "C) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Won",
+          "B) Yen",
+          "C) Yuan"
+        ],
+        "r": "B) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1912",
+          "B) 1905",
+          "C) 1920"
+        ],
+        "r": "A) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Español",
+          "B) Inglés",
+          "C) Chino Mandarín"
+        ],
+        "r": "C) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Won",
+          "B) Yuan",
+          "C) Yen"
+        ],
+        "r": "C) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1920",
+          "B) 1905",
+          "C) 1912"
+        ],
+        "r": "C) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Inglés",
+          "B) Español",
+          "C) Chino Mandarín"
+        ],
+        "r": "C) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Yuan",
+          "B) Yen",
+          "C) Won"
+        ],
+        "r": "B) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1912",
+          "B) 1920",
+          "C) 1905"
+        ],
+        "r": "A) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Español",
+          "B) Inglés",
+          "C) Chino Mandarín"
+        ],
+        "r": "C) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Yen",
+          "B) Yuan",
+          "C) Won"
+        ],
+        "r": "A) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1920",
+          "B) 1905",
+          "C) 1912"
+        ],
+        "r": "C) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Chino Mandarín",
+          "B) Inglés",
+          "C) Español"
+        ],
+        "r": "A) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Yen",
+          "B) Yuan",
+          "C) Won"
+        ],
+        "r": "A) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1912",
+          "B) 1905",
+          "C) 1920"
+        ],
+        "r": "A) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Español",
+          "B) Chino Mandarín",
+          "C) Inglés"
+        ],
+        "r": "B) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Yen",
+          "B) Yuan",
+          "C) Won"
+        ],
+        "r": "A) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1905",
+          "B) 1920",
+          "C) 1912"
+        ],
+        "r": "C) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Inglés",
+          "B) Español",
+          "C) Chino Mandarín"
+        ],
+        "r": "C) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Yen",
+          "B) Yuan",
+          "C) Won"
+        ],
+        "r": "A) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1912",
+          "B) 1905",
+          "C) 1920"
+        ],
+        "r": "A) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Chino Mandarín",
+          "B) Español",
+          "C) Inglés"
+        ],
+        "r": "A) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Won",
+          "B) Yen",
+          "C) Yuan"
+        ],
+        "r": "B) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1912",
+          "B) 1905",
+          "C) 1920"
+        ],
+        "r": "A) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Español",
+          "B) Chino Mandarín",
+          "C) Inglés"
+        ],
+        "r": "B) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Yen",
+          "B) Yuan",
+          "C) Won"
+        ],
+        "r": "A) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1920",
+          "B) 1905",
+          "C) 1912"
+        ],
+        "r": "C) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Chino Mandarín",
+          "B) Inglés",
+          "C) Español"
+        ],
+        "r": "A) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Yen",
+          "B) Yuan",
+          "C) Won"
+        ],
+        "r": "A) Yen"
+      },
+      {
+        "p": "¿En qué año se hundió el afamado barco transatlántico Titanic tras chocar con un iceberg?",
+        "o": [
+          "A) 1920",
+          "B) 1905",
+          "C) 1912"
+        ],
+        "r": "C) 1912"
+      },
+      {
+        "p": "¿Qué idioma encabeza la lista con la mayor cantidad de hablantes nativos a nivel mundial?",
+        "o": [
+          "A) Español",
+          "B) Chino Mandarín",
+          "C) Inglés"
+        ],
+        "r": "B) Chino Mandarín"
+      },
+      {
+        "p": "¿Cuál es la denominación monetaria oficial que circula en Japón?",
+        "o": [
+          "A) Yen",
+          "B) Yuan",
+          "C) Won"
+        ],
+        "r": "A) Yen"
+      }
+    ],
+    "dificil": [
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Julio Cortázar",
+          "B) Gabriel García Márquez",
+          "C) Mario Vargas Llosa"
+        ],
+        "r": "B) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1991",
+          "B) 1989",
+          "C) 1987"
+        ],
+        "r": "B) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de París",
+          "B) Tratado de Versalles",
+          "C) Tratado de Ginebra"
+        ],
+        "r": "B) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Mario Vargas Llosa",
+          "B) Julio Cortázar",
+          "C) Gabriel García Márquez"
+        ],
+        "r": "C) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1989",
+          "B) 1991",
+          "C) 1987"
+        ],
+        "r": "A) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de Versalles",
+          "B) Tratado de París",
+          "C) Tratado de Ginebra"
+        ],
+        "r": "A) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Julio Cortázar",
+          "B) Mario Vargas Llosa",
+          "C) Gabriel García Márquez"
+        ],
+        "r": "C) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1991",
+          "B) 1987",
+          "C) 1989"
+        ],
+        "r": "C) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de Versalles",
+          "B) Tratado de París",
+          "C) Tratado de Ginebra"
+        ],
+        "r": "A) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Julio Cortázar",
+          "B) Mario Vargas Llosa",
+          "C) Gabriel García Márquez"
+        ],
+        "r": "C) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1987",
+          "B) 1989",
+          "C) 1991"
+        ],
+        "r": "B) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de Ginebra",
+          "B) Tratado de París",
+          "C) Tratado de Versalles"
+        ],
+        "r": "C) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Gabriel García Márquez",
+          "B) Mario Vargas Llosa",
+          "C) Julio Cortázar"
+        ],
+        "r": "A) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1989",
+          "B) 1991",
+          "C) 1987"
+        ],
+        "r": "A) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de Versalles",
+          "B) Tratado de París",
+          "C) Tratado de Ginebra"
+        ],
+        "r": "A) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Gabriel García Márquez",
+          "B) Mario Vargas Llosa",
+          "C) Julio Cortázar"
+        ],
+        "r": "A) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1989",
+          "B) 1991",
+          "C) 1987"
+        ],
+        "r": "A) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de Ginebra",
+          "B) Tratado de París",
+          "C) Tratado de Versalles"
+        ],
+        "r": "C) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Gabriel García Márquez",
+          "B) Mario Vargas Llosa",
+          "C) Julio Cortázar"
+        ],
+        "r": "A) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1991",
+          "B) 1989",
+          "C) 1987"
+        ],
+        "r": "B) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de Versalles",
+          "B) Tratado de París",
+          "C) Tratado de Ginebra"
+        ],
+        "r": "A) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Julio Cortázar",
+          "B) Mario Vargas Llosa",
+          "C) Gabriel García Márquez"
+        ],
+        "r": "C) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1989",
+          "B) 1991",
+          "C) 1987"
+        ],
+        "r": "A) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de Ginebra",
+          "B) Tratado de Versalles",
+          "C) Tratado de París"
+        ],
+        "r": "B) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Gabriel García Márquez",
+          "B) Mario Vargas Llosa",
+          "C) Julio Cortázar"
+        ],
+        "r": "A) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1991",
+          "B) 1987",
+          "C) 1989"
+        ],
+        "r": "C) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de Ginebra",
+          "B) Tratado de París",
+          "C) Tratado de Versalles"
+        ],
+        "r": "C) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Gabriel García Márquez",
+          "B) Julio Cortázar",
+          "C) Mario Vargas Llosa"
+        ],
+        "r": "A) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1987",
+          "B) 1991",
+          "C) 1989"
+        ],
+        "r": "C) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de Versalles",
+          "B) Tratado de París",
+          "C) Tratado de Ginebra"
+        ],
+        "r": "A) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Gabriel García Márquez",
+          "B) Mario Vargas Llosa",
+          "C) Julio Cortázar"
+        ],
+        "r": "A) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1991",
+          "B) 1987",
+          "C) 1989"
+        ],
+        "r": "C) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de Versalles",
+          "B) Tratado de Ginebra",
+          "C) Tratado de París"
+        ],
+        "r": "A) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Julio Cortázar",
+          "B) Mario Vargas Llosa",
+          "C) Gabriel García Márquez"
+        ],
+        "r": "C) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1991",
+          "B) 1989",
+          "C) 1987"
+        ],
+        "r": "B) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de Ginebra",
+          "B) Tratado de París",
+          "C) Tratado de Versalles"
+        ],
+        "r": "C) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Gabriel García Márquez",
+          "B) Mario Vargas Llosa",
+          "C) Julio Cortázar"
+        ],
+        "r": "A) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1987",
+          "B) 1991",
+          "C) 1989"
+        ],
+        "r": "C) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de París",
+          "B) Tratado de Ginebra",
+          "C) Tratado de Versalles"
+        ],
+        "r": "C) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Gabriel García Márquez",
+          "B) Mario Vargas Llosa",
+          "C) Julio Cortázar"
+        ],
+        "r": "A) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1989",
+          "B) 1991",
+          "C) 1987"
+        ],
+        "r": "A) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de Ginebra",
+          "B) Tratado de París",
+          "C) Tratado de Versalles"
+        ],
+        "r": "C) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Julio Cortázar",
+          "B) Mario Vargas Llosa",
+          "C) Gabriel García Márquez"
+        ],
+        "r": "C) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1987",
+          "B) 1991",
+          "C) 1989"
+        ],
+        "r": "C) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de Ginebra",
+          "B) Tratado de París",
+          "C) Tratado de Versalles"
+        ],
+        "r": "C) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Julio Cortázar",
+          "B) Mario Vargas Llosa",
+          "C) Gabriel García Márquez"
+        ],
+        "r": "C) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1991",
+          "B) 1989",
+          "C) 1987"
+        ],
+        "r": "B) 1989"
+      },
+      {
+        "p": "¿Qué tratado de paz internacional dio por terminada formalmente la Primera Guerra Mundial?",
+        "o": [
+          "A) Tratado de Ginebra",
+          "B) Tratado de París",
+          "C) Tratado de Versalles"
+        ],
+        "r": "C) Tratado de Versalles"
+      },
+      {
+        "p": "¿Qué célebre autor colombiano fue galardonado con el Premio Nobel tras escribir 'Cien años de soledad'?",
+        "o": [
+          "A) Gabriel García Márquez",
+          "B) Mario Vargas Llosa",
+          "C) Julio Cortázar"
+        ],
+        "r": "A) Gabriel García Márquez"
+      },
+      {
+        "p": "¿En qué año aconteció la histórica caída del Muro de Berlín que unificó a la capital alemana?",
+        "o": [
+          "A) 1989",
+          "B) 1991",
+          "C) 1987"
+        ],
+        "r": "A) 1989"
+      }
+    ]
+  },
+  "geografia": {
+    "facil": [
+      {
+        "p": "¿Cuál es la capital oficial de Colombia?",
+        "o": [
+          "A) Medellín",
+          "B) Bogotá",
+          "C) Cali"
+        ],
+        "r": "B) Bogotá"
+      },
+      {
+        "p": "¿Cuál es la capital oficial de Francia?",
+        "o": [
+          "A) Lyon",
+          "B) Marsella",
+          "C) París"
+        ],
+        "r": "C) París"
+      },
+      {
+        "p": "¿Cuál es la capital oficial de Japón?",
+        "o": [
+          "A) Kioto",
+          "B) Osaka",
+          "C) Tokio"
+        ],
+        "r": "C) Tokio"
+      },
+      {
+        "p": "¿Cuál es la capital oficial de Italia?",
+        "o": [
+          "A) Roma",
+          "B) Milán",
+          "C) Venecia"
+        ],
+        "r": "A) Roma"
+      },
+      {
+        "p": "¿Cuál es la capital oficial de España?",
+        "o": [
+          "A) Sevilla",
+          "B) Barcelona",
+          "C) Madrid"
+        ],
+        "r": "C) Madrid"
+      },
+      {
+        "p": "¿Cuál es la capital oficial de México?",
+        "o": [
+          "A) Ciudad de México",
+          "B) Guadalajara",
+          "C) Monterrey"
+        ],
+        "r": "A) Ciudad de México"
+      },
+      {
+        "p": "¿Cuál es la capital oficial de Argentina?",
+        "o": [
+          "A) Buenos Aires",
+          "B) Córdoba",
+          "C) Mendoza"
+        ],
+        "r": "A) Buenos Aires"
+      },
+      {
+        "p": "¿Cuál es la capital oficial de Alemania?",
+        "o": [
+          "A) Hamburgo",
+          "B) Múnich",
+          "C) Berlín"
+        ],
+        "r": "C) Berlín"
+      },
+      {
+        "p": "¿Cuál es la capital oficial de Perú?",
+        "o": [
+          "A) Lima",
+          "B) Cusco",
+          "C) Arequipa"
+        ],
+        "r": "A) Lima"
+      },
+      {
+        "p": "¿Cuál es la capital oficial de Brasil?",
+        "o": [
+          "A) Río de Janeiro",
+          "B) Brasilia",
+          "C) São Paulo"
+        ],
+        "r": "B) Brasilia"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Colombia?",
+        "o": [
+          "A) Bogotá",
+          "B) Medellín",
+          "C) Cali"
+        ],
+        "r": "A) Bogotá"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Francia?",
+        "o": [
+          "A) Marsella",
+          "B) Lyon",
+          "C) París"
+        ],
+        "r": "C) París"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Japón?",
+        "o": [
+          "A) Osaka",
+          "B) Kioto",
+          "C) Tokio"
+        ],
+        "r": "C) Tokio"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Italia?",
+        "o": [
+          "A) Venecia",
+          "B) Milán",
+          "C) Roma"
+        ],
+        "r": "C) Roma"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en España?",
+        "o": [
+          "A) Barcelona",
+          "B) Sevilla",
+          "C) Madrid"
+        ],
+        "r": "C) Madrid"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en México?",
+        "o": [
+          "A) Monterrey",
+          "B) Guadalajara",
+          "C) Ciudad de México"
+        ],
+        "r": "C) Ciudad de México"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Argentina?",
+        "o": [
+          "A) Mendoza",
+          "B) Córdoba",
+          "C) Buenos Aires"
+        ],
+        "r": "C) Buenos Aires"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Alemania?",
+        "o": [
+          "A) Berlín",
+          "B) Múnich",
+          "C) Hamburgo"
+        ],
+        "r": "A) Berlín"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Perú?",
+        "o": [
+          "A) Arequipa",
+          "B) Cusco",
+          "C) Lima"
+        ],
+        "r": "C) Lima"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Brasil?",
+        "o": [
+          "A) Brasilia",
+          "B) Río de Janeiro",
+          "C) São Paulo"
+        ],
+        "r": "A) Brasilia"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Colombia?",
+        "o": [
+          "A) Medellín",
+          "B) Bogotá",
+          "C) Cali"
+        ],
+        "r": "B) Bogotá"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Francia?",
+        "o": [
+          "A) Lyon",
+          "B) Marsella",
+          "C) París"
+        ],
+        "r": "C) París"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Japón?",
+        "o": [
+          "A) Osaka",
+          "B) Kioto",
+          "C) Tokio"
+        ],
+        "r": "C) Tokio"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Italia?",
+        "o": [
+          "A) Roma",
+          "B) Milán",
+          "C) Venecia"
+        ],
+        "r": "A) Roma"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en España?",
+        "o": [
+          "A) Barcelona",
+          "B) Madrid",
+          "C) Sevilla"
+        ],
+        "r": "B) Madrid"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en México?",
+        "o": [
+          "A) Ciudad de México",
+          "B) Guadalajara",
+          "C) Monterrey"
+        ],
+        "r": "A) Ciudad de México"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Argentina?",
+        "o": [
+          "A) Córdoba",
+          "B) Buenos Aires",
+          "C) Mendoza"
+        ],
+        "r": "B) Buenos Aires"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Alemania?",
+        "o": [
+          "A) Hamburgo",
+          "B) Múnich",
+          "C) Berlín"
+        ],
+        "r": "C) Berlín"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Perú?",
+        "o": [
+          "A) Lima",
+          "B) Arequipa",
+          "C) Cusco"
+        ],
+        "r": "A) Lima"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Brasil?",
+        "o": [
+          "A) Brasilia",
+          "B) São Paulo",
+          "C) Río de Janeiro"
+        ],
+        "r": "A) Brasilia"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Colombia?",
+        "o": [
+          "A) Bogotá",
+          "B) Medellín",
+          "C) Cali"
+        ],
+        "r": "A) Bogotá"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Francia?",
+        "o": [
+          "A) París",
+          "B) Lyon",
+          "C) Marsella"
+        ],
+        "r": "A) París"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Japón?",
+        "o": [
+          "A) Osaka",
+          "B) Kioto",
+          "C) Tokio"
+        ],
+        "r": "C) Tokio"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Italia?",
+        "o": [
+          "A) Roma",
+          "B) Milán",
+          "C) Venecia"
+        ],
+        "r": "A) Roma"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en España?",
+        "o": [
+          "A) Sevilla",
+          "B) Barcelona",
+          "C) Madrid"
+        ],
+        "r": "C) Madrid"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en México?",
+        "o": [
+          "A) Ciudad de México",
+          "B) Monterrey",
+          "C) Guadalajara"
+        ],
+        "r": "A) Ciudad de México"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Argentina?",
+        "o": [
+          "A) Córdoba",
+          "B) Mendoza",
+          "C) Buenos Aires"
+        ],
+        "r": "C) Buenos Aires"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Alemania?",
+        "o": [
+          "A) Múnich",
+          "B) Berlín",
+          "C) Hamburgo"
+        ],
+        "r": "B) Berlín"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Perú?",
+        "o": [
+          "A) Arequipa",
+          "B) Cusco",
+          "C) Lima"
+        ],
+        "r": "C) Lima"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Brasil?",
+        "o": [
+          "A) Brasilia",
+          "B) São Paulo",
+          "C) Río de Janeiro"
+        ],
+        "r": "A) Brasilia"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Colombia?",
+        "o": [
+          "A) Medellín",
+          "B) Bogotá",
+          "C) Cali"
+        ],
+        "r": "B) Bogotá"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Francia?",
+        "o": [
+          "A) Marsella",
+          "B) Lyon",
+          "C) París"
+        ],
+        "r": "C) París"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Japón?",
+        "o": [
+          "A) Kioto",
+          "B) Tokio",
+          "C) Osaka"
+        ],
+        "r": "B) Tokio"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Italia?",
+        "o": [
+          "A) Roma",
+          "B) Milán",
+          "C) Venecia"
+        ],
+        "r": "A) Roma"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en España?",
+        "o": [
+          "A) Madrid",
+          "B) Barcelona",
+          "C) Sevilla"
+        ],
+        "r": "A) Madrid"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en México?",
+        "o": [
+          "A) Guadalajara",
+          "B) Monterrey",
+          "C) Ciudad de México"
+        ],
+        "r": "C) Ciudad de México"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Argentina?",
+        "o": [
+          "A) Mendoza",
+          "B) Córdoba",
+          "C) Buenos Aires"
+        ],
+        "r": "C) Buenos Aires"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Alemania?",
+        "o": [
+          "A) Berlín",
+          "B) Múnich",
+          "C) Hamburgo"
+        ],
+        "r": "A) Berlín"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Perú?",
+        "o": [
+          "A) Cusco",
+          "B) Lima",
+          "C) Arequipa"
+        ],
+        "r": "B) Lima"
+      },
+      {
+        "p": "¿Qué ciudad actúa como la sede principal de gobierno en Brasil?",
+        "o": [
+          "A) São Paulo",
+          "B) Río de Janeiro",
+          "C) Brasilia"
+        ],
+        "r": "C) Brasilia"
+      }
+    ],
+    "medio": [
+      {
+        "p": "¿En cuál continente se ubica geográficamente el río Amazonas?",
+        "o": [
+          "A) Europa",
+          "B) América del Sur",
+          "C) Asia"
+        ],
+        "r": "B) América del Sur"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el desierto del Sahara?",
+        "o": [
+          "A) América del Norte",
+          "B) Oceanía",
+          "C) África"
+        ],
+        "r": "C) África"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el monte Everest?",
+        "o": [
+          "A) Asia",
+          "B) África",
+          "C) Europa"
+        ],
+        "r": "A) Asia"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente los Alpes suizos?",
+        "o": [
+          "A) Europa",
+          "B) Asia",
+          "C) América del Sur"
+        ],
+        "r": "A) Europa"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente la Gran Barrera de Coral?",
+        "o": [
+          "A) América del Norte",
+          "B) África",
+          "C) Oceanía"
+        ],
+        "r": "C) Oceanía"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el río Amazonas?",
+        "o": [
+          "A) Europa",
+          "B) América del Sur",
+          "C) Asia"
+        ],
+        "r": "B) América del Sur"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el desierto del Sahara?",
+        "o": [
+          "A) África",
+          "B) Oceanía",
+          "C) América del Norte"
+        ],
+        "r": "A) África"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el monte Everest?",
+        "o": [
+          "A) Asia",
+          "B) África",
+          "C) Europa"
+        ],
+        "r": "A) Asia"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente los Alpes suizos?",
+        "o": [
+          "A) Europa",
+          "B) Asia",
+          "C) América del Sur"
+        ],
+        "r": "A) Europa"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente la Gran Barrera de Coral?",
+        "o": [
+          "A) Oceanía",
+          "B) América del Norte",
+          "C) África"
+        ],
+        "r": "A) Oceanía"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el río Amazonas?",
+        "o": [
+          "A) Asia",
+          "B) Europa",
+          "C) América del Sur"
+        ],
+        "r": "C) América del Sur"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el desierto del Sahara?",
+        "o": [
+          "A) Oceanía",
+          "B) África",
+          "C) América del Norte"
+        ],
+        "r": "B) África"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el monte Everest?",
+        "o": [
+          "A) Europa",
+          "B) Asia",
+          "C) África"
+        ],
+        "r": "B) Asia"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente los Alpes suizos?",
+        "o": [
+          "A) Europa",
+          "B) Asia",
+          "C) América del Sur"
+        ],
+        "r": "A) Europa"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente la Gran Barrera de Coral?",
+        "o": [
+          "A) África",
+          "B) Oceanía",
+          "C) América del Norte"
+        ],
+        "r": "B) Oceanía"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el río Amazonas?",
+        "o": [
+          "A) Asia",
+          "B) Europa",
+          "C) América del Sur"
+        ],
+        "r": "C) América del Sur"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el desierto del Sahara?",
+        "o": [
+          "A) América del Norte",
+          "B) Oceanía",
+          "C) África"
+        ],
+        "r": "C) África"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el monte Everest?",
+        "o": [
+          "A) Asia",
+          "B) África",
+          "C) Europa"
+        ],
+        "r": "A) Asia"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente los Alpes suizos?",
+        "o": [
+          "A) América del Sur",
+          "B) Asia",
+          "C) Europa"
+        ],
+        "r": "C) Europa"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente la Gran Barrera de Coral?",
+        "o": [
+          "A) América del Norte",
+          "B) África",
+          "C) Oceanía"
+        ],
+        "r": "C) Oceanía"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el río Amazonas?",
+        "o": [
+          "A) América del Sur",
+          "B) Europa",
+          "C) Asia"
+        ],
+        "r": "A) América del Sur"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el desierto del Sahara?",
+        "o": [
+          "A) América del Norte",
+          "B) Oceanía",
+          "C) África"
+        ],
+        "r": "C) África"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el monte Everest?",
+        "o": [
+          "A) África",
+          "B) Europa",
+          "C) Asia"
+        ],
+        "r": "C) Asia"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente los Alpes suizos?",
+        "o": [
+          "A) Europa",
+          "B) América del Sur",
+          "C) Asia"
+        ],
+        "r": "A) Europa"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente la Gran Barrera de Coral?",
+        "o": [
+          "A) Oceanía",
+          "B) América del Norte",
+          "C) África"
+        ],
+        "r": "A) Oceanía"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el río Amazonas?",
+        "o": [
+          "A) Europa",
+          "B) América del Sur",
+          "C) Asia"
+        ],
+        "r": "B) América del Sur"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el desierto del Sahara?",
+        "o": [
+          "A) África",
+          "B) Oceanía",
+          "C) América del Norte"
+        ],
+        "r": "A) África"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el monte Everest?",
+        "o": [
+          "A) Asia",
+          "B) África",
+          "C) Europa"
+        ],
+        "r": "A) Asia"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente los Alpes suizos?",
+        "o": [
+          "A) América del Sur",
+          "B) Asia",
+          "C) Europa"
+        ],
+        "r": "C) Europa"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente la Gran Barrera de Coral?",
+        "o": [
+          "A) Oceanía",
+          "B) África",
+          "C) América del Norte"
+        ],
+        "r": "A) Oceanía"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el río Amazonas?",
+        "o": [
+          "A) América del Sur",
+          "B) Europa",
+          "C) Asia"
+        ],
+        "r": "A) América del Sur"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el desierto del Sahara?",
+        "o": [
+          "A) Oceanía",
+          "B) América del Norte",
+          "C) África"
+        ],
+        "r": "C) África"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el monte Everest?",
+        "o": [
+          "A) Asia",
+          "B) África",
+          "C) Europa"
+        ],
+        "r": "A) Asia"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente los Alpes suizos?",
+        "o": [
+          "A) Asia",
+          "B) Europa",
+          "C) América del Sur"
+        ],
+        "r": "B) Europa"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente la Gran Barrera de Coral?",
+        "o": [
+          "A) Oceanía",
+          "B) África",
+          "C) América del Norte"
+        ],
+        "r": "A) Oceanía"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el río Amazonas?",
+        "o": [
+          "A) Asia",
+          "B) Europa",
+          "C) América del Sur"
+        ],
+        "r": "C) América del Sur"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el desierto del Sahara?",
+        "o": [
+          "A) África",
+          "B) Oceanía",
+          "C) América del Norte"
+        ],
+        "r": "A) África"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el monte Everest?",
+        "o": [
+          "A) Asia",
+          "B) África",
+          "C) Europa"
+        ],
+        "r": "A) Asia"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente los Alpes suizos?",
+        "o": [
+          "A) Europa",
+          "B) Asia",
+          "C) América del Sur"
+        ],
+        "r": "A) Europa"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente la Gran Barrera de Coral?",
+        "o": [
+          "A) América del Norte",
+          "B) África",
+          "C) Oceanía"
+        ],
+        "r": "C) Oceanía"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el río Amazonas?",
+        "o": [
+          "A) Asia",
+          "B) Europa",
+          "C) América del Sur"
+        ],
+        "r": "C) América del Sur"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el desierto del Sahara?",
+        "o": [
+          "A) África",
+          "B) Oceanía",
+          "C) América del Norte"
+        ],
+        "r": "A) África"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el monte Everest?",
+        "o": [
+          "A) Europa",
+          "B) África",
+          "C) Asia"
+        ],
+        "r": "C) Asia"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente los Alpes suizos?",
+        "o": [
+          "A) Europa",
+          "B) Asia",
+          "C) América del Sur"
+        ],
+        "r": "A) Europa"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente la Gran Barrera de Coral?",
+        "o": [
+          "A) Oceanía",
+          "B) África",
+          "C) América del Norte"
+        ],
+        "r": "A) Oceanía"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el río Amazonas?",
+        "o": [
+          "A) Asia",
+          "B) Europa",
+          "C) América del Sur"
+        ],
+        "r": "C) América del Sur"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el desierto del Sahara?",
+        "o": [
+          "A) América del Norte",
+          "B) Oceanía",
+          "C) África"
+        ],
+        "r": "C) África"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente el monte Everest?",
+        "o": [
+          "A) Europa",
+          "B) África",
+          "C) Asia"
+        ],
+        "r": "C) Asia"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente los Alpes suizos?",
+        "o": [
+          "A) América del Sur",
+          "B) Asia",
+          "C) Europa"
+        ],
+        "r": "C) Europa"
+      },
+      {
+        "p": "¿En cuál continente se ubica geográficamente la Gran Barrera de Coral?",
+        "o": [
+          "A) América del Norte",
+          "B) África",
+          "C) Oceanía"
+        ],
+        "r": "C) Oceanía"
+      }
+    ],
+    "dificil": [
+      {
+        "p": "¿Cuál es el país soberano más pequeño del mundo?",
+        "o": [
+          "A) San Marino",
+          "B) Mónaco",
+          "C) Ciudad del Vaticano"
+        ],
+        "r": "C) Ciudad del Vaticano"
+      },
+      {
+        "p": "¿Qué lago abarca la mayor reserva de agua dulce no helada del planeta?",
+        "o": [
+          "A) Lago Superior",
+          "B) Lago Baikal",
+          "C) Lago Victoria"
+        ],
+        "r": "B) Lago Baikal"
+      },
+      {
+        "p": "¿En qué país actual se encuentran las ruinas antiguas de Troya?",
+        "o": [
+          "A) Turquía",
+          "B) Grecia",
+          "C) Egipto"
+        ],
+        "r": "A) Turquía"
+      },
+      {
+        "p": "¿Cuál es el mar interior más salado de la corteza terrestre?",
+        "o": [
+          "A) Mar Muerto",
+          "B) Mar Rojo",
+          "C) Mar Caspio"
+        ],
+        "r": "A) Mar Muerto"
+      },
+      {
+        "p": "¿Qué estrecho separa el continente africano de la península ibérica?",
+        "o": [
+          "A) Estrecho de Gibraltar",
+          "B) Estrecho de Bósforo",
+          "C) Estrecho de Bering"
+        ],
+        "r": "A) Estrecho de Gibraltar"
+      },
+      {
+        "p": "¿Cuál es el país soberano más pequeño del mundo?",
+        "o": [
+          "A) Ciudad del Vaticano",
+          "B) Mónaco",
+          "C) San Marino"
+        ],
+        "r": "A) Ciudad del Vaticano"
+      },
+      {
+        "p": "¿Qué lago abarca la mayor reserva de agua dulce no helada del planeta?",
+        "o": [
+          "A) Lago Victoria",
+          "B) Lago Superior",
+          "C) Lago Baikal"
+        ],
+        "r": "C) Lago Baikal"
+      },
+      {
+        "p": "¿En qué país actual se encuentran las ruinas antiguas de Troya?",
+        "o": [
+          "A) Turquía",
+          "B) Grecia",
+          "C) Egipto"
+        ],
+        "r": "A) Turquía"
+      },
+      {
+        "p": "¿Cuál es el mar interior más salado de la corteza terrestre?",
+        "o": [
+          "A) Mar Caspio",
+          "B) Mar Muerto",
+          "C) Mar Rojo"
+        ],
+        "r": "B) Mar Muerto"
+      },
+      {
+        "p": "¿Qué estrecho separa el continente africano de la península ibérica?",
+        "o": [
+          "A) Estrecho de Gibraltar",
+          "B) Estrecho de Bósforo",
+          "C) Estrecho de Bering"
+        ],
+        "r": "A) Estrecho de Gibraltar"
+      },
+      {
+        "p": "¿Cuál es el país soberano más pequeño del mundo?",
+        "o": [
+          "A) Mónaco",
+          "B) Ciudad del Vaticano",
+          "C) San Marino"
+        ],
+        "r": "B) Ciudad del Vaticano"
+      },
+      {
+        "p": "¿Qué lago abarca la mayor reserva de agua dulce no helada del planeta?",
+        "o": [
+          "A) Lago Victoria",
+          "B) Lago Superior",
+          "C) Lago Baikal"
+        ],
+        "r": "C) Lago Baikal"
+      },
+      {
+        "p": "¿En qué país actual se encuentran las ruinas antiguas de Troya?",
+        "o": [
+          "A) Turquía",
+          "B) Grecia",
+          "C) Egipto"
+        ],
+        "r": "A) Turquía"
+      },
+      {
+        "p": "¿Cuál es el mar interior más salado de la corteza terrestre?",
+        "o": [
+          "A) Mar Caspio",
+          "B) Mar Rojo",
+          "C) Mar Muerto"
+        ],
+        "r": "C) Mar Muerto"
+      },
+      {
+        "p": "¿Qué estrecho separa el continente africano de la península ibérica?",
+        "o": [
+          "A) Estrecho de Bósforo",
+          "B) Estrecho de Gibraltar",
+          "C) Estrecho de Bering"
+        ],
+        "r": "B) Estrecho de Gibraltar"
+      },
+      {
+        "p": "¿Cuál es el país soberano más pequeño del mundo?",
+        "o": [
+          "A) Ciudad del Vaticano",
+          "B) Mónaco",
+          "C) San Marino"
+        ],
+        "r": "A) Ciudad del Vaticano"
+      },
+      {
+        "p": "¿Qué lago abarca la mayor reserva de agua dulce no helada del planeta?",
+        "o": [
+          "A) Lago Baikal",
+          "B) Lago Victoria",
+          "C) Lago Superior"
+        ],
+        "r": "A) Lago Baikal"
+      },
+      {
+        "p": "¿En qué país actual se encuentran las ruinas antiguas de Troya?",
+        "o": [
+          "A) Turquía",
+          "B) Grecia",
+          "C) Egipto"
+        ],
+        "r": "A) Turquía"
+      },
+      {
+        "p": "¿Cuál es el mar interior más salado de la corteza terrestre?",
+        "o": [
+          "A) Mar Muerto",
+          "B) Mar Rojo",
+          "C) Mar Caspio"
+        ],
+        "r": "A) Mar Muerto"
+      },
+      {
+        "p": "¿Qué estrecho separa el continente africano de la península ibérica?",
+        "o": [
+          "A) Estrecho de Bering",
+          "B) Estrecho de Gibraltar",
+          "C) Estrecho de Bósforo"
+        ],
+        "r": "B) Estrecho de Gibraltar"
+      },
+      {
+        "p": "¿Cuál es el país soberano más pequeño del mundo?",
+        "o": [
+          "A) San Marino",
+          "B) Mónaco",
+          "C) Ciudad del Vaticano"
+        ],
+        "r": "C) Ciudad del Vaticano"
+      },
+      {
+        "p": "¿Qué lago abarca la mayor reserva de agua dulce no helada del planeta?",
+        "o": [
+          "A) Lago Baikal",
+          "B) Lago Superior",
+          "C) Lago Victoria"
+        ],
+        "r": "A) Lago Baikal"
+      },
+      {
+        "p": "¿En qué país actual se encuentran las ruinas antiguas de Troya?",
+        "o": [
+          "A) Egipto",
+          "B) Grecia",
+          "C) Turquía"
+        ],
+        "r": "C) Turquía"
+      },
+      {
+        "p": "¿Cuál es el mar interior más salado de la corteza terrestre?",
+        "o": [
+          "A) Mar Caspio",
+          "B) Mar Rojo",
+          "C) Mar Muerto"
+        ],
+        "r": "C) Mar Muerto"
+      },
+      {
+        "p": "¿Qué estrecho separa el continente africano de la península ibérica?",
+        "o": [
+          "A) Estrecho de Gibraltar",
+          "B) Estrecho de Bósforo",
+          "C) Estrecho de Bering"
+        ],
+        "r": "A) Estrecho de Gibraltar"
+      },
+      {
+        "p": "¿Cuál es el país soberano más pequeño del mundo?",
+        "o": [
+          "A) San Marino",
+          "B) Mónaco",
+          "C) Ciudad del Vaticano"
+        ],
+        "r": "C) Ciudad del Vaticano"
+      },
+      {
+        "p": "¿Qué lago abarca la mayor reserva de agua dulce no helada del planeta?",
+        "o": [
+          "A) Lago Victoria",
+          "B) Lago Superior",
+          "C) Lago Baikal"
+        ],
+        "r": "C) Lago Baikal"
+      },
+      {
+        "p": "¿En qué país actual se encuentran las ruinas antiguas de Troya?",
+        "o": [
+          "A) Turquía",
+          "B) Grecia",
+          "C) Egipto"
+        ],
+        "r": "A) Turquía"
+      },
+      {
+        "p": "¿Cuál es el mar interior más salado de la corteza terrestre?",
+        "o": [
+          "A) Mar Rojo",
+          "B) Mar Muerto",
+          "C) Mar Caspio"
+        ],
+        "r": "B) Mar Muerto"
+      },
+      {
+        "p": "¿Qué estrecho separa el continente africano de la península ibérica?",
+        "o": [
+          "A) Estrecho de Gibraltar",
+          "B) Estrecho de Bósforo",
+          "C) Estrecho de Bering"
+        ],
+        "r": "A) Estrecho de Gibraltar"
+      },
+      {
+        "p": "¿Cuál es el país soberano más pequeño del mundo?",
+        "o": [
+          "A) San Marino",
+          "B) Mónaco",
+          "C) Ciudad del Vaticano"
+        ],
+        "r": "C) Ciudad del Vaticano"
+      },
+      {
+        "p": "¿Qué lago abarca la mayor reserva de agua dulce no helada del planeta?",
+        "o": [
+          "A) Lago Baikal",
+          "B) Lago Superior",
+          "C) Lago Victoria"
+        ],
+        "r": "A) Lago Baikal"
+      },
+      {
+        "p": "¿En qué país actual se encuentran las ruinas antiguas de Troya?",
+        "o": [
+          "A) Turquía",
+          "B) Grecia",
+          "C) Egipto"
+        ],
+        "r": "A) Turquía"
+      },
+      {
+        "p": "¿Cuál es el mar interior más salado de la corteza terrestre?",
+        "o": [
+          "A) Mar Muerto",
+          "B) Mar Rojo",
+          "C) Mar Caspio"
+        ],
+        "r": "A) Mar Muerto"
+      },
+      {
+        "p": "¿Qué estrecho separa el continente africano de la península ibérica?",
+        "o": [
+          "A) Estrecho de Bósforo",
+          "B) Estrecho de Gibraltar",
+          "C) Estrecho de Bering"
+        ],
+        "r": "B) Estrecho de Gibraltar"
+      },
+      {
+        "p": "¿Cuál es el país soberano más pequeño del mundo?",
+        "o": [
+          "A) Ciudad del Vaticano",
+          "B) Mónaco",
+          "C) San Marino"
+        ],
+        "r": "A) Ciudad del Vaticano"
+      },
+      {
+        "p": "¿Qué lago abarca la mayor reserva de agua dulce no helada del planeta?",
+        "o": [
+          "A) Lago Baikal",
+          "B) Lago Superior",
+          "C) Lago Victoria"
+        ],
+        "r": "A) Lago Baikal"
+      },
+      {
+        "p": "¿En qué país actual se encuentran las ruinas antiguas de Troya?",
+        "o": [
+          "A) Grecia",
+          "B) Egipto",
+          "C) Turquía"
+        ],
+        "r": "C) Turquía"
+      },
+      {
+        "p": "¿Cuál es el mar interior más salado de la corteza terrestre?",
+        "o": [
+          "A) Mar Rojo",
+          "B) Mar Caspio",
+          "C) Mar Muerto"
+        ],
+        "r": "C) Mar Muerto"
+      },
+      {
+        "p": "¿Qué estrecho separa el continente africano de la península ibérica?",
+        "o": [
+          "A) Estrecho de Gibraltar",
+          "B) Estrecho de Bósforo",
+          "C) Estrecho de Bering"
+        ],
+        "r": "A) Estrecho de Gibraltar"
+      },
+      {
+        "p": "¿Cuál es el país soberano más pequeño del mundo?",
+        "o": [
+          "A) Ciudad del Vaticano",
+          "B) Mónaco",
+          "C) San Marino"
+        ],
+        "r": "A) Ciudad del Vaticano"
+      },
+      {
+        "p": "¿Qué lago abarca la mayor reserva de agua dulce no helada del planeta?",
+        "o": [
+          "A) Lago Baikal",
+          "B) Lago Superior",
+          "C) Lago Victoria"
+        ],
+        "r": "A) Lago Baikal"
+      },
+      {
+        "p": "¿En qué país actual se encuentran las ruinas antiguas de Troya?",
+        "o": [
+          "A) Egipto",
+          "B) Grecia",
+          "C) Turquía"
+        ],
+        "r": "C) Turquía"
+      },
+      {
+        "p": "¿Cuál es el mar interior más salado de la corteza terrestre?",
+        "o": [
+          "A) Mar Rojo",
+          "B) Mar Caspio",
+          "C) Mar Muerto"
+        ],
+        "r": "C) Mar Muerto"
+      },
+      {
+        "p": "¿Qué estrecho separa el continente africano de la península ibérica?",
+        "o": [
+          "A) Estrecho de Bering",
+          "B) Estrecho de Gibraltar",
+          "C) Estrecho de Bósforo"
+        ],
+        "r": "B) Estrecho de Gibraltar"
+      },
+      {
+        "p": "¿Cuál es el país soberano más pequeño del mundo?",
+        "o": [
+          "A) Mónaco",
+          "B) San Marino",
+          "C) Ciudad del Vaticano"
+        ],
+        "r": "C) Ciudad del Vaticano"
+      },
+      {
+        "p": "¿Qué lago abarca la mayor reserva de agua dulce no helada del planeta?",
+        "o": [
+          "A) Lago Baikal",
+          "B) Lago Victoria",
+          "C) Lago Superior"
+        ],
+        "r": "A) Lago Baikal"
+      },
+      {
+        "p": "¿En qué país actual se encuentran las ruinas antiguas de Troya?",
+        "o": [
+          "A) Egipto",
+          "B) Turquía",
+          "C) Grecia"
+        ],
+        "r": "B) Turquía"
+      },
+      {
+        "p": "¿Cuál es el mar interior más salado de la corteza terrestre?",
+        "o": [
+          "A) Mar Caspio",
+          "B) Mar Rojo",
+          "C) Mar Muerto"
+        ],
+        "r": "C) Mar Muerto"
+      },
+      {
+        "p": "¿Qué estrecho separa el continente africano de la península ibérica?",
+        "o": [
+          "A) Estrecho de Bering",
+          "B) Estrecho de Bósforo",
+          "C) Estrecho de Gibraltar"
+        ],
+        "r": "C) Estrecho de Gibraltar"
+      }
+    ]
+  },
+  "entretenimiento": {
+    "facil": [
+      {
+        "p": "¿De qué color icónico es la piel de la familia animada Los Simpson?",
+        "o": [
+          "A) Naranja",
+          "B) Amarillo",
+          "C) Verde"
+        ],
+        "r": "B) Amarillo"
+      },
+      {
+        "p": "¿Qué superhéroe enmascarado opera como el velador nocturno de Ciudad Gótica?",
+        "o": [
+          "A) Spider-Man",
+          "B) Superman",
+          "C) Batman"
+        ],
+        "r": "C) Batman"
+      },
+      {
+        "p": "¿Cómo se llama el alegre muñeco de nieve viviente en la película Frozen?",
+        "o": [
+          "A) Kristoff",
+          "B) Olaf",
+          "C) Sven"
+        ],
+        "r": "B) Olaf"
+      },
+      {
+        "p": "¿Qué cantante colombiana es mundialmente famosa por interpretar 'Waka Waka'?",
+        "o": [
+          "A) Shakira",
+          "B) Karol G",
+          "C) Greeicy"
+        ],
+        "r": "A) Shakira"
+      },
+      {
+        "p": "¿Cuál es el nombre del famoso ratón que sirve como insignia a la compañía Disney?",
+        "o": [
+          "A) Goofy",
+          "B) Donald",
+          "C) Mickey Mouse"
+        ],
+        "r": "C) Mickey Mouse"
+      },
+      {
+        "p": "¿De qué color icónico es la piel de la familia animada Los Simpson?",
+        "o": [
+          "A) Amarillo",
+          "B) Naranja",
+          "C) Verde"
+        ],
+        "r": "A) Amarillo"
+      },
+      {
+        "p": "¿Qué superhéroe enmascarado opera como el velador nocturno de Ciudad Gótica?",
+        "o": [
+          "A) Batman",
+          "B) Spider-Man",
+          "C) Superman"
+        ],
+        "r": "A) Batman"
+      },
+      {
+        "p": "¿Cómo se llama el alegre muñeco de nieve viviente en la película Frozen?",
+        "o": [
+          "A) Olaf",
+          "B) Sven",
+          "C) Kristoff"
+        ],
+        "r": "A) Olaf"
+      },
+      {
+        "p": "¿Qué cantante colombiana es mundialmente famosa por interpretar 'Waka Waka'?",
+        "o": [
+          "A) Greeicy",
+          "B) Shakira",
+          "C) Karol G"
+        ],
+        "r": "B) Shakira"
+      },
+      {
+        "p": "¿Cuál es el nombre del famoso ratón que sirve como insignia a la compañía Disney?",
+        "o": [
+          "A) Mickey Mouse",
+          "B) Goofy",
+          "C) Donald"
+        ],
+        "r": "A) Mickey Mouse"
+      },
+      {
+        "p": "¿De qué color icónico es la piel de la familia animada Los Simpson?",
+        "o": [
+          "A) Amarillo",
+          "B) Naranja",
+          "C) Verde"
+        ],
+        "r": "A) Amarillo"
+      },
+      {
+        "p": "¿Qué superhéroe enmascarado opera como el velador nocturno de Ciudad Gótica?",
+        "o": [
+          "A) Spider-Man",
+          "B) Superman",
+          "C) Batman"
+        ],
+        "r": "C) Batman"
+      },
+      {
+        "p": "¿Cómo se llama el alegre muñeco de nieve viviente en la película Frozen?",
+        "o": [
+          "A) Olaf",
+          "B) Sven",
+          "C) Kristoff"
+        ],
+        "r": "A) Olaf"
+      },
+      {
+        "p": "¿Qué cantante colombiana es mundialmente famosa por interpretar 'Waka Waka'?",
+        "o": [
+          "A) Shakira",
+          "B) Karol G",
+          "C) Greeicy"
+        ],
+        "r": "A) Shakira"
+      },
+      {
+        "p": "¿Cuál es el nombre del famoso ratón que sirve como insignia a la compañía Disney?",
+        "o": [
+          "A) Mickey Mouse",
+          "B) Donald",
+          "C) Goofy"
+        ],
+        "r": "A) Mickey Mouse"
+      },
+      {
+        "p": "¿De qué color icónico es la piel de la familia animada Los Simpson?",
+        "o": [
+          "A) Naranja",
+          "B) Verde",
+          "C) Amarillo"
+        ],
+        "r": "C) Amarillo"
+      },
+      {
+        "p": "¿Qué superhéroe enmascarado opera como el velador nocturno de Ciudad Gótica?",
+        "o": [
+          "A) Superman",
+          "B) Spider-Man",
+          "C) Batman"
+        ],
+        "r": "C) Batman"
+      },
+      {
+        "p": "¿Cómo se llama el alegre muñeco de nieve viviente en la película Frozen?",
+        "o": [
+          "A) Kristoff",
+          "B) Sven",
+          "C) Olaf"
+        ],
+        "r": "C) Olaf"
+      },
+      {
+        "p": "¿Qué cantante colombiana es mundialmente famosa por interpretar 'Waka Waka'?",
+        "o": [
+          "A) Shakira",
+          "B) Karol G",
+          "C) Greeicy"
+        ],
+        "r": "A) Shakira"
+      },
+      {
+        "p": "¿Cuál es el nombre del famoso ratón que sirve como insignia a la compañía Disney?",
+        "o": [
+          "A) Donald",
+          "B) Mickey Mouse",
+          "C) Goofy"
+        ],
+        "r": "B) Mickey Mouse"
+      },
+      {
+        "p": "¿De qué color icónico es la piel de la familia animada Los Simpson?",
+        "o": [
+          "A) Amarillo",
+          "B) Verde",
+          "C) Naranja"
+        ],
+        "r": "A) Amarillo"
+      },
+      {
+        "p": "¿Qué superhéroe enmascarado opera como el velador nocturno de Ciudad Gótica?",
+        "o": [
+          "A) Batman",
+          "B) Superman",
+          "C) Spider-Man"
+        ],
+        "r": "A) Batman"
+      },
+      {
+        "p": "¿Cómo se llama el alegre muñeco de nieve viviente en la película Frozen?",
+        "o": [
+          "A) Olaf",
+          "B) Sven",
+          "C) Kristoff"
+        ],
+        "r": "A) Olaf"
+      },
+      {
+        "p": "¿Qué cantante colombiana es mundialmente famosa por interpretar 'Waka Waka'?",
+        "o": [
+          "A) Greeicy",
+          "B) Karol G",
+          "C) Shakira"
+        ],
+        "r": "C) Shakira"
+      },
+      {
+        "p": "¿Cuál es el nombre del famoso ratón que sirve como insignia a la compañía Disney?",
+        "o": [
+          "A) Donald",
+          "B) Mickey Mouse",
+          "C) Goofy"
+        ],
+        "r": "B) Mickey Mouse"
+      },
+      {
+        "p": "¿De qué color icónico es la piel de la familia animada Los Simpson?",
+        "o": [
+          "A) Naranja",
+          "B) Verde",
+          "C) Amarillo"
+        ],
+        "r": "C) Amarillo"
+      },
+      {
+        "p": "¿Qué superhéroe enmascarado opera como el velador nocturno de Ciudad Gótica?",
+        "o": [
+          "A) Batman",
+          "B) Superman",
+          "C) Spider-Man"
+        ],
+        "r": "A) Batman"
+      },
+      {
+        "p": "¿Cómo se llama el alegre muñeco de nieve viviente en la película Frozen?",
+        "o": [
+          "A) Kristoff",
+          "B) Sven",
+          "C) Olaf"
+        ],
+        "r": "C) Olaf"
+      },
+      {
+        "p": "¿Qué cantante colombiana es mundialmente famosa por interpretar 'Waka Waka'?",
+        "o": [
+          "A) Shakira",
+          "B) Greeicy",
+          "C) Karol G"
+        ],
+        "r": "A) Shakira"
+      },
+      {
+        "p": "¿Cuál es el nombre del famoso ratón que sirve como insignia a la compañía Disney?",
+        "o": [
+          "A) Goofy",
+          "B) Mickey Mouse",
+          "C) Donald"
+        ],
+        "r": "B) Mickey Mouse"
+      },
+      {
+        "p": "¿De qué color icónico es la piel de la familia animada Los Simpson?",
+        "o": [
+          "A) Verde",
+          "B) Amarillo",
+          "C) Naranja"
+        ],
+        "r": "B) Amarillo"
+      },
+      {
+        "p": "¿Qué superhéroe enmascarado opera como el velador nocturno de Ciudad Gótica?",
+        "o": [
+          "A) Batman",
+          "B) Superman",
+          "C) Spider-Man"
+        ],
+        "r": "A) Batman"
+      },
+      {
+        "p": "¿Cómo se llama el alegre muñeco de nieve viviente en la película Frozen?",
+        "o": [
+          "A) Olaf",
+          "B) Sven",
+          "C) Kristoff"
+        ],
+        "r": "A) Olaf"
+      },
+      {
+        "p": "¿Qué cantante colombiana es mundialmente famosa por interpretar 'Waka Waka'?",
+        "o": [
+          "A) Greeicy",
+          "B) Karol G",
+          "C) Shakira"
+        ],
+        "r": "C) Shakira"
+      },
+      {
+        "p": "¿Cuál es el nombre del famoso ratón que sirve como insignia a la compañía Disney?",
+        "o": [
+          "A) Goofy",
+          "B) Donald",
+          "C) Mickey Mouse"
+        ],
+        "r": "C) Mickey Mouse"
+      },
+      {
+        "p": "¿De qué color icónico es la piel de la familia animada Los Simpson?",
+        "o": [
+          "A) Amarillo",
+          "B) Verde",
+          "C) Naranja"
+        ],
+        "r": "A) Amarillo"
+      },
+      {
+        "p": "¿Qué superhéroe enmascarado opera como el velador nocturno de Ciudad Gótica?",
+        "o": [
+          "A) Superman",
+          "B) Batman",
+          "C) Spider-Man"
+        ],
+        "r": "B) Batman"
+      },
+      {
+        "p": "¿Cómo se llama el alegre muñeco de nieve viviente en la película Frozen?",
+        "o": [
+          "A) Kristoff",
+          "B) Sven",
+          "C) Olaf"
+        ],
+        "r": "C) Olaf"
+      },
+      {
+        "p": "¿Qué cantante colombiana es mundialmente famosa por interpretar 'Waka Waka'?",
+        "o": [
+          "A) Shakira",
+          "B) Karol G",
+          "C) Greeicy"
+        ],
+        "r": "A) Shakira"
+      },
+      {
+        "p": "¿Cuál es el nombre del famoso ratón que sirve como insignia a la compañía Disney?",
+        "o": [
+          "A) Goofy",
+          "B) Donald",
+          "C) Mickey Mouse"
+        ],
+        "r": "C) Mickey Mouse"
+      },
+      {
+        "p": "¿De qué color icónico es la piel de la familia animada Los Simpson?",
+        "o": [
+          "A) Naranja",
+          "B) Verde",
+          "C) Amarillo"
+        ],
+        "r": "C) Amarillo"
+      },
+      {
+        "p": "¿Qué superhéroe enmascarado opera como el velador nocturno de Ciudad Gótica?",
+        "o": [
+          "A) Superman",
+          "B) Batman",
+          "C) Spider-Man"
+        ],
+        "r": "B) Batman"
+      },
+      {
+        "p": "¿Cómo se llama el alegre muñeco de nieve viviente en la película Frozen?",
+        "o": [
+          "A) Kristoff",
+          "B) Sven",
+          "C) Olaf"
+        ],
+        "r": "C) Olaf"
+      },
+      {
+        "p": "¿Qué cantante colombiana es mundialmente famosa por interpretar 'Waka Waka'?",
+        "o": [
+          "A) Shakira",
+          "B) Karol G",
+          "C) Greeicy"
+        ],
+        "r": "A) Shakira"
+      },
+      {
+        "p": "¿Cuál es el nombre del famoso ratón que sirve como insignia a la compañía Disney?",
+        "o": [
+          "A) Goofy",
+          "B) Mickey Mouse",
+          "C) Donald"
+        ],
+        "r": "B) Mickey Mouse"
+      },
+      {
+        "p": "¿De qué color icónico es la piel de la familia animada Los Simpson?",
+        "o": [
+          "A) Amarillo",
+          "B) Verde",
+          "C) Naranja"
+        ],
+        "r": "A) Amarillo"
+      },
+      {
+        "p": "¿Qué superhéroe enmascarado opera como el velador nocturno de Ciudad Gótica?",
+        "o": [
+          "A) Batman",
+          "B) Spider-Man",
+          "C) Superman"
+        ],
+        "r": "A) Batman"
+      },
+      {
+        "p": "¿Cómo se llama el alegre muñeco de nieve viviente en la película Frozen?",
+        "o": [
+          "A) Kristoff",
+          "B) Sven",
+          "C) Olaf"
+        ],
+        "r": "C) Olaf"
+      },
+      {
+        "p": "¿Qué cantante colombiana es mundialmente famosa por interpretar 'Waka Waka'?",
+        "o": [
+          "A) Karol G",
+          "B) Shakira",
+          "C) Greeicy"
+        ],
+        "r": "B) Shakira"
+      },
+      {
+        "p": "¿Cuál es el nombre del famoso ratón que sirve como insignia a la compañía Disney?",
+        "o": [
+          "A) Goofy",
+          "B) Donald",
+          "C) Mickey Mouse"
+        ],
+        "r": "C) Mickey Mouse"
+      }
+    ],
+    "medio": [
+      {
+        "p": "¿Qué célebre pintor y escultor colombiano destacó por sus figuras de volumen exagerado?",
+        "o": [
+          "A) Fernando Botero",
+          "B) David Manzur",
+          "C) Alejandro Obregón"
+        ],
+        "r": "A) Fernando Botero"
+      },
+      {
+        "p": "¿Cuál es la verdadera identidad secreta del héroe Iron Man en el universo Marvel?",
+        "o": [
+          "A) Tony Stark",
+          "B) Bruce Wayne",
+          "C) Peter Parker"
+        ],
+        "r": "A) Tony Stark"
+      },
+      {
+        "p": "¿Qué legendaria banda británica compuso la obra musical 'Bohemian Rhapsody'?",
+        "o": [
+          "A) The Rolling Stones",
+          "B) The Beatles",
+          "C) Queen"
+        ],
+        "r": "C) Queen"
+      },
+      {
+        "p": "¿Cómo se llama el temido antagonista principal en la saga de libros de Harry Potter?",
+        "o": [
+          "A) Grindelwald",
+          "B) Lucius Malfoy",
+          "C) Lord Voldemort"
+        ],
+        "r": "C) Lord Voldemort"
+      },
+      {
+        "p": "¿Qué célebre pintor y escultor colombiano destacó por sus figuras de volumen exagerado?",
+        "o": [
+          "A) Fernando Botero",
+          "B) Alejandro Obregón",
+          "C) David Manzur"
+        ],
+        "r": "A) Fernando Botero"
+      },
+      {
+        "p": "¿Cuál es la verdadera identidad secreta del héroe Iron Man en el universo Marvel?",
+        "o": [
+          "A) Tony Stark",
+          "B) Bruce Wayne",
+          "C) Peter Parker"
+        ],
+        "r": "A) Tony Stark"
+      },
+      {
+        "p": "¿Qué legendaria banda británica compuso la obra musical 'Bohemian Rhapsody'?",
+        "o": [
+          "A) The Rolling Stones",
+          "B) The Beatles",
+          "C) Queen"
+        ],
+        "r": "C) Queen"
+      },
+      {
+        "p": "¿Cómo se llama el temido antagonista principal en la saga de libros de Harry Potter?",
+        "o": [
+          "A) Lord Voldemort",
+          "B) Grindelwald",
+          "C) Lucius Malfoy"
+        ],
+        "r": "A) Lord Voldemort"
+      },
+      {
+        "p": "¿Qué célebre pintor y escultor colombiano destacó por sus figuras de volumen exagerado?",
+        "o": [
+          "A) Fernando Botero",
+          "B) Alejandro Obregón",
+          "C) David Manzur"
+        ],
+        "r": "A) Fernando Botero"
+      },
+      {
+        "p": "¿Cuál es la verdadera identidad secreta del héroe Iron Man en el universo Marvel?",
+        "o": [
+          "A) Bruce Wayne",
+          "B) Tony Stark",
+          "C) Peter Parker"
+        ],
+        "r": "B) Tony Stark"
+      },
+      {
+        "p": "¿Qué legendaria banda británica compuso la obra musical 'Bohemian Rhapsody'?",
+        "o": [
+          "A) Queen",
+          "B) The Beatles",
+          "C) The Rolling Stones"
+        ],
+        "r": "A) Queen"
+      },
+      {
+        "p": "¿Cómo se llama el temido antagonista principal en la saga de libros de Harry Potter?",
+        "o": [
+          "A) Lord Voldemort",
+          "B) Grindelwald",
+          "C) Lucius Malfoy"
+        ],
+        "r": "A) Lord Voldemort"
+      },
+      {
+        "p": "¿Qué célebre pintor y escultor colombiano destacó por sus figuras de volumen exagerado?",
+        "o": [
+          "A) Alejandro Obregón",
+          "B) Fernando Botero",
+          "C) David Manzur"
+        ],
+        "r": "B) Fernando Botero"
+      },
+      {
+        "p": "¿Cuál es la verdadera identidad secreta del héroe Iron Man en el universo Marvel?",
+        "o": [
+          "A) Bruce Wayne",
+          "B) Tony Stark",
+          "C) Peter Parker"
+        ],
+        "r": "B) Tony Stark"
+      },
+      {
+        "p": "¿Qué legendaria banda británica compuso la obra musical 'Bohemian Rhapsody'?",
+        "o": [
+          "A) The Rolling Stones",
+          "B) The Beatles",
+          "C) Queen"
+        ],
+        "r": "C) Queen"
+      },
+      {
+        "p": "¿Cómo se llama el temido antagonista principal en la saga de libros de Harry Potter?",
+        "o": [
+          "A) Lord Voldemort",
+          "B) Grindelwald",
+          "C) Lucius Malfoy"
+        ],
+        "r": "A) Lord Voldemort"
+      },
+      {
+        "p": "¿Qué célebre pintor y escultor colombiano destacó por sus figuras de volumen exagerado?",
+        "o": [
+          "A) Fernando Botero",
+          "B) Alejandro Obregón",
+          "C) David Manzur"
+        ],
+        "r": "A) Fernando Botero"
+      },
+      {
+        "p": "¿Cuál es la verdadera identidad secreta del héroe Iron Man en el universo Marvel?",
+        "o": [
+          "A) Tony Stark",
+          "B) Bruce Wayne",
+          "C) Peter Parker"
+        ],
+        "r": "A) Tony Stark"
+      },
+      {
+        "p": "¿Qué legendaria banda británica compuso la obra musical 'Bohemian Rhapsody'?",
+        "o": [
+          "A) The Rolling Stones",
+          "B) The Beatles",
+          "C) Queen"
+        ],
+        "r": "C) Queen"
+      },
+      {
+        "p": "¿Cómo se llama el temido antagonista principal en la saga de libros de Harry Potter?",
+        "o": [
+          "A) Lucius Malfoy",
+          "B) Grindelwald",
+          "C) Lord Voldemort"
+        ],
+        "r": "C) Lord Voldemort"
+      },
+      {
+        "p": "¿Qué célebre pintor y escultor colombiano destacó por sus figuras de volumen exagerado?",
+        "o": [
+          "A) David Manzur",
+          "B) Alejandro Obregón",
+          "C) Fernando Botero"
+        ],
+        "r": "C) Fernando Botero"
+      },
+      {
+        "p": "¿Cuál es la verdadera identidad secreta del héroe Iron Man en el universo Marvel?",
+        "o": [
+          "A) Tony Stark",
+          "B) Bruce Wayne",
+          "C) Peter Parker"
+        ],
+        "r": "A) Tony Stark"
+      },
+      {
+        "p": "¿Qué legendaria banda británica compuso la obra musical 'Bohemian Rhapsody'?",
+        "o": [
+          "A) Queen",
+          "B) The Beatles",
+          "C) The Rolling Stones"
+        ],
+        "r": "A) Queen"
+      },
+      {
+        "p": "¿Cómo se llama el temido antagonista principal en la saga de libros de Harry Potter?",
+        "o": [
+          "A) Lord Voldemort",
+          "B) Grindelwald",
+          "C) Lucius Malfoy"
+        ],
+        "r": "A) Lord Voldemort"
+      },
+      {
+        "p": "¿Qué célebre pintor y escultor colombiano destacó por sus figuras de volumen exagerado?",
+        "o": [
+          "A) Fernando Botero",
+          "B) David Manzur",
+          "C) Alejandro Obregón"
+        ],
+        "r": "A) Fernando Botero"
+      },
+      {
+        "p": "¿Cuál es la verdadera identidad secreta del héroe Iron Man en el universo Marvel?",
+        "o": [
+          "A) Tony Stark",
+          "B) Bruce Wayne",
+          "C) Peter Parker"
+        ],
+        "r": "A) Tony Stark"
+      },
+      {
+        "p": "¿Qué legendaria banda británica compuso la obra musical 'Bohemian Rhapsody'?",
+        "o": [
+          "A) Queen",
+          "B) The Beatles",
+          "C) The Rolling Stones"
+        ],
+        "r": "A) Queen"
+      },
+      {
+        "p": "¿Cómo se llama el temido antagonista principal en la saga de libros de Harry Potter?",
+        "o": [
+          "A) Lucius Malfoy",
+          "B) Grindelwald",
+          "C) Lord Voldemort"
+        ],
+        "r": "C) Lord Voldemort"
+      },
+      {
+        "p": "¿Qué célebre pintor y escultor colombiano destacó por sus figuras de volumen exagerado?",
+        "o": [
+          "A) David Manzur",
+          "B) Alejandro Obregón",
+          "C) Fernando Botero"
+        ],
+        "r": "C) Fernando Botero"
+      },
+      {
+        "p": "¿Cuál es la verdadera identidad secreta del héroe Iron Man en el universo Marvel?",
+        "o": [
+          "A) Tony Stark",
+          "B) Bruce Wayne",
+          "C) Peter Parker"
+        ],
+        "r": "A) Tony Stark"
+      },
+      {
+        "p": "¿Qué legendaria banda británica compuso la obra musical 'Bohemian Rhapsody'?",
+        "o": [
+          "A) The Beatles",
+          "B) Queen",
+          "C) The Rolling Stones"
+        ],
+        "r": "B) Queen"
+      },
+      {
+        "p": "¿Cómo se llama el temido antagonista principal en la saga de libros de Harry Potter?",
+        "o": [
+          "A) Lord Voldemort",
+          "B) Grindelwald",
+          "C) Lucius Malfoy"
+        ],
+        "r": "A) Lord Voldemort"
+      },
+      {
+        "p": "¿Qué célebre pintor y escultor colombiano destacó por sus figuras de volumen exagerado?",
+        "o": [
+          "A) Fernando Botero",
+          "B) Alejandro Obregón",
+          "C) David Manzur"
+        ],
+        "r": "A) Fernando Botero"
+      },
+      {
+        "p": "¿Cuál es la verdadera identidad secreta del héroe Iron Man en el universo Marvel?",
+        "o": [
+          "A) Peter Parker",
+          "B) Bruce Wayne",
+          "C) Tony Stark"
+        ],
+        "r": "C) Tony Stark"
+      },
+      {
+        "p": "¿Qué legendaria banda británica compuso la obra musical 'Bohemian Rhapsody'?",
+        "o": [
+          "A) The Rolling Stones",
+          "B) The Beatles",
+          "C) Queen"
+        ],
+        "r": "C) Queen"
+      },
+      {
+        "p": "¿Cómo se llama el temido antagonista principal en la saga de libros de Harry Potter?",
+        "o": [
+          "A) Grindelwald",
+          "B) Lucius Malfoy",
+          "C) Lord Voldemort"
+        ],
+        "r": "C) Lord Voldemort"
+      },
+      {
+        "p": "¿Qué célebre pintor y escultor colombiano destacó por sus figuras de volumen exagerado?",
+        "o": [
+          "A) David Manzur",
+          "B) Alejandro Obregón",
+          "C) Fernando Botero"
+        ],
+        "r": "C) Fernando Botero"
+      },
+      {
+        "p": "¿Cuál es la verdadera identidad secreta del héroe Iron Man en el universo Marvel?",
+        "o": [
+          "A) Bruce Wayne",
+          "B) Peter Parker",
+          "C) Tony Stark"
+        ],
+        "r": "C) Tony Stark"
+      },
+      {
+        "p": "¿Qué legendaria banda británica compuso la obra musical 'Bohemian Rhapsody'?",
+        "o": [
+          "A) The Beatles",
+          "B) The Rolling Stones",
+          "C) Queen"
+        ],
+        "r": "C) Queen"
+      },
+      {
+        "p": "¿Cómo se llama el temido antagonista principal en la saga de libros de Harry Potter?",
+        "o": [
+          "A) Lord Voldemort",
+          "B) Grindelwald",
+          "C) Lucius Malfoy"
+        ],
+        "r": "A) Lord Voldemort"
+      },
+      {
+        "p": "¿Qué célebre pintor y escultor colombiano destacó por sus figuras de volumen exagerado?",
+        "o": [
+          "A) Fernando Botero",
+          "B) Alejandro Obregón",
+          "C) David Manzur"
+        ],
+        "r": "A) Fernando Botero"
+      },
+      {
+        "p": "¿Cuál es la verdadera identidad secreta del héroe Iron Man en el universo Marvel?",
+        "o": [
+          "A) Peter Parker",
+          "B) Bruce Wayne",
+          "C) Tony Stark"
+        ],
+        "r": "C) Tony Stark"
+      },
+      {
+        "p": "¿Qué legendaria banda británica compuso la obra musical 'Bohemian Rhapsody'?",
+        "o": [
+          "A) The Beatles",
+          "B) Queen",
+          "C) The Rolling Stones"
+        ],
+        "r": "B) Queen"
+      },
+      {
+        "p": "¿Cómo se llama el temido antagonista principal en la saga de libros de Harry Potter?",
+        "o": [
+          "A) Lord Voldemort",
+          "B) Grindelwald",
+          "C) Lucius Malfoy"
+        ],
+        "r": "A) Lord Voldemort"
+      },
+      {
+        "p": "¿Qué célebre pintor y escultor colombiano destacó por sus figuras de volumen exagerado?",
+        "o": [
+          "A) David Manzur",
+          "B) Alejandro Obregón",
+          "C) Fernando Botero"
+        ],
+        "r": "C) Fernando Botero"
+      },
+      {
+        "p": "¿Cuál es la verdadera identidad secreta del héroe Iron Man en el universo Marvel?",
+        "o": [
+          "A) Bruce Wayne",
+          "B) Tony Stark",
+          "C) Peter Parker"
+        ],
+        "r": "B) Tony Stark"
+      },
+      {
+        "p": "¿Qué legendaria banda británica compuso la obra musical 'Bohemian Rhapsody'?",
+        "o": [
+          "A) The Rolling Stones",
+          "B) Queen",
+          "C) The Beatles"
+        ],
+        "r": "B) Queen"
+      },
+      {
+        "p": "¿Cómo se llama el temido antagonista principal en la saga de libros de Harry Potter?",
+        "o": [
+          "A) Grindelwald",
+          "B) Lord Voldemort",
+          "C) Lucius Malfoy"
+        ],
+        "r": "B) Lord Voldemort"
+      },
+      {
+        "p": "¿Qué célebre pintor y escultor colombiano destacó por sus figuras de volumen exagerado?",
+        "o": [
+          "A) Fernando Botero",
+          "B) Alejandro Obregón",
+          "C) David Manzur"
+        ],
+        "r": "A) Fernando Botero"
+      },
+      {
+        "p": "¿Cuál es la verdadera identidad secreta del héroe Iron Man en el universo Marvel?",
+        "o": [
+          "A) Peter Parker",
+          "B) Bruce Wayne",
+          "C) Tony Stark"
+        ],
+        "r": "C) Tony Stark"
+      }
+    ],
+    "dificil": [
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) Los Nadie",
+          "B) Pájaros de Verano",
+          "C) El Abrazo de la Serpiente"
+        ],
+        "r": "C) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1977",
+          "B) 1975",
+          "C) 1980"
+        ],
+        "r": "A) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Blancanieves y los siete enanos",
+          "B) Pinocho",
+          "C) Fantasía"
+        ],
+        "r": "A) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) Los Nadie",
+          "B) Pájaros de Verano",
+          "C) El Abrazo de la Serpiente"
+        ],
+        "r": "C) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1977",
+          "B) 1975",
+          "C) 1980"
+        ],
+        "r": "A) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Pinocho",
+          "B) Blancanieves y los siete enanos",
+          "C) Fantasía"
+        ],
+        "r": "B) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) El Abrazo de la Serpiente",
+          "B) Los Nadie",
+          "C) Pájaros de Verano"
+        ],
+        "r": "A) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1977",
+          "B) 1975",
+          "C) 1980"
+        ],
+        "r": "A) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Blancanieves y los siete enanos",
+          "B) Pinocho",
+          "C) Fantasía"
+        ],
+        "r": "A) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) Pájaros de Verano",
+          "B) El Abrazo de la Serpiente",
+          "C) Los Nadie"
+        ],
+        "r": "B) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1977",
+          "B) 1975",
+          "C) 1980"
+        ],
+        "r": "A) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Blancanieves y los siete enanos",
+          "B) Pinocho",
+          "C) Fantasía"
+        ],
+        "r": "A) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) El Abrazo de la Serpiente",
+          "B) Pájaros de Verano",
+          "C) Los Nadie"
+        ],
+        "r": "A) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1980",
+          "B) 1977",
+          "C) 1975"
+        ],
+        "r": "B) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Fantasía",
+          "B) Pinocho",
+          "C) Blancanieves y los siete enanos"
+        ],
+        "r": "C) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) El Abrazo de la Serpiente",
+          "B) Pájaros de Verano",
+          "C) Los Nadie"
+        ],
+        "r": "A) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1980",
+          "B) 1977",
+          "C) 1975"
+        ],
+        "r": "B) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Blancanieves y los siete enanos",
+          "B) Pinocho",
+          "C) Fantasía"
+        ],
+        "r": "A) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) Los Nadie",
+          "B) Pájaros de Verano",
+          "C) El Abrazo de la Serpiente"
+        ],
+        "r": "C) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1977",
+          "B) 1975",
+          "C) 1980"
+        ],
+        "r": "A) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Blancanieves y los siete enanos",
+          "B) Pinocho",
+          "C) Fantasía"
+        ],
+        "r": "A) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) Pájaros de Verano",
+          "B) El Abrazo de la Serpiente",
+          "C) Los Nadie"
+        ],
+        "r": "B) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1980",
+          "B) 1975",
+          "C) 1977"
+        ],
+        "r": "C) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Blancanieves y los siete enanos",
+          "B) Fantasía",
+          "C) Pinocho"
+        ],
+        "r": "A) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) El Abrazo de la Serpiente",
+          "B) Pájaros de Verano",
+          "C) Los Nadie"
+        ],
+        "r": "A) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1977",
+          "B) 1975",
+          "C) 1980"
+        ],
+        "r": "A) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Fantasía",
+          "B) Pinocho",
+          "C) Blancanieves y los siete enanos"
+        ],
+        "r": "C) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) Los Nadie",
+          "B) Pájaros de Verano",
+          "C) El Abrazo de la Serpiente"
+        ],
+        "r": "C) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1980",
+          "B) 1975",
+          "C) 1977"
+        ],
+        "r": "C) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Fantasía",
+          "B) Pinocho",
+          "C) Blancanieves y los siete enanos"
+        ],
+        "r": "C) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) Pájaros de Verano",
+          "B) El Abrazo de la Serpiente",
+          "C) Los Nadie"
+        ],
+        "r": "B) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1977",
+          "B) 1975",
+          "C) 1980"
+        ],
+        "r": "A) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Pinocho",
+          "B) Fantasía",
+          "C) Blancanieves y los siete enanos"
+        ],
+        "r": "C) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) Los Nadie",
+          "B) Pájaros de Verano",
+          "C) El Abrazo de la Serpiente"
+        ],
+        "r": "C) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1975",
+          "B) 1977",
+          "C) 1980"
+        ],
+        "r": "B) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Blancanieves y los siete enanos",
+          "B) Pinocho",
+          "C) Fantasía"
+        ],
+        "r": "A) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) El Abrazo de la Serpiente",
+          "B) Los Nadie",
+          "C) Pájaros de Verano"
+        ],
+        "r": "A) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1977",
+          "B) 1975",
+          "C) 1980"
+        ],
+        "r": "A) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Fantasía",
+          "B) Pinocho",
+          "C) Blancanieves y los siete enanos"
+        ],
+        "r": "C) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) Los Nadie",
+          "B) Pájaros de Verano",
+          "C) El Abrazo de la Serpiente"
+        ],
+        "r": "C) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1977",
+          "B) 1975",
+          "C) 1980"
+        ],
+        "r": "A) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Blancanieves y los siete enanos",
+          "B) Pinocho",
+          "C) Fantasía"
+        ],
+        "r": "A) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) El Abrazo de la Serpiente",
+          "B) Pájaros de Verano",
+          "C) Los Nadie"
+        ],
+        "r": "A) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1977",
+          "B) 1975",
+          "C) 1980"
+        ],
+        "r": "A) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Fantasía",
+          "B) Pinocho",
+          "C) Blancanieves y los siete enanos"
+        ],
+        "r": "C) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) El Abrazo de la Serpiente",
+          "B) Pájaros de Verano",
+          "C) Los Nadie"
+        ],
+        "r": "A) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1977",
+          "B) 1975",
+          "C) 1980"
+        ],
+        "r": "A) 1977"
+      },
+      {
+        "p": "¿Cuál fue el primer largometraje animado a color producido en la historia del cine?",
+        "o": [
+          "A) Pinocho",
+          "B) Fantasía",
+          "C) Blancanieves y los siete enanos"
+        ],
+        "r": "C) Blancanieves y los siete enanos"
+      },
+      {
+        "p": "¿Qué largometraje colombiano logró una histórica nominación al Óscar en 2016?",
+        "o": [
+          "A) El Abrazo de la Serpiente",
+          "B) Pájaros de Verano",
+          "C) Los Nadie"
+        ],
+        "r": "A) El Abrazo de la Serpiente"
+      },
+      {
+        "p": "¿En qué año se estrenó originalmente en cines la primera entrega de Star Wars (Episodio IV)?",
+        "o": [
+          "A) 1977",
+          "B) 1975",
+          "C) 1980"
+        ],
+        "r": "A) 1977"
+      }
+    ]
+  },
+  "ciencia": {
+    "facil": [
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 5 + 7?",
+        "o": [
+          "A) 12",
+          "B) 16",
+          "C) 9"
+        ],
+        "r": "A) 12"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 8 + 9?",
+        "o": [
+          "A) 17",
+          "B) 21",
+          "C) 14"
+        ],
+        "r": "A) 17"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 11 + 11?",
+        "o": [
+          "A) 19",
+          "B) 22",
+          "C) 26"
+        ],
+        "r": "B) 22"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 14 + 13?",
+        "o": [
+          "A) 24",
+          "B) 31",
+          "C) 27"
+        ],
+        "r": "C) 27"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 17 + 15?",
+        "o": [
+          "A) 29",
+          "B) 36",
+          "C) 32"
+        ],
+        "r": "C) 32"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 20 + 17?",
+        "o": [
+          "A) 34",
+          "B) 37",
+          "C) 41"
+        ],
+        "r": "B) 37"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 23 + 19?",
+        "o": [
+          "A) 39",
+          "B) 46",
+          "C) 42"
+        ],
+        "r": "C) 42"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 26 + 21?",
+        "o": [
+          "A) 44",
+          "B) 51",
+          "C) 47"
+        ],
+        "r": "C) 47"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 29 + 23?",
+        "o": [
+          "A) 49",
+          "B) 56",
+          "C) 52"
+        ],
+        "r": "C) 52"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 32 + 25?",
+        "o": [
+          "A) 54",
+          "B) 61",
+          "C) 57"
+        ],
+        "r": "C) 57"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 35 + 27?",
+        "o": [
+          "A) 66",
+          "B) 62",
+          "C) 59"
+        ],
+        "r": "B) 62"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 38 + 29?",
+        "o": [
+          "A) 64",
+          "B) 71",
+          "C) 67"
+        ],
+        "r": "C) 67"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 41 + 31?",
+        "o": [
+          "A) 72",
+          "B) 76",
+          "C) 69"
+        ],
+        "r": "A) 72"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 44 + 33?",
+        "o": [
+          "A) 74",
+          "B) 81",
+          "C) 77"
+        ],
+        "r": "C) 77"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 47 + 35?",
+        "o": [
+          "A) 82",
+          "B) 86",
+          "C) 79"
+        ],
+        "r": "A) 82"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 50 + 37?",
+        "o": [
+          "A) 84",
+          "B) 91",
+          "C) 87"
+        ],
+        "r": "C) 87"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 53 + 39?",
+        "o": [
+          "A) 89",
+          "B) 96",
+          "C) 92"
+        ],
+        "r": "C) 92"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 56 + 41?",
+        "o": [
+          "A) 97",
+          "B) 101",
+          "C) 94"
+        ],
+        "r": "A) 97"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 59 + 43?",
+        "o": [
+          "A) 99",
+          "B) 106",
+          "C) 102"
+        ],
+        "r": "C) 102"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 62 + 45?",
+        "o": [
+          "A) 104",
+          "B) 111",
+          "C) 107"
+        ],
+        "r": "C) 107"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 65 + 47?",
+        "o": [
+          "A) 116",
+          "B) 112",
+          "C) 109"
+        ],
+        "r": "B) 112"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 68 + 49?",
+        "o": [
+          "A) 114",
+          "B) 121",
+          "C) 117"
+        ],
+        "r": "C) 117"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 71 + 51?",
+        "o": [
+          "A) 122",
+          "B) 126",
+          "C) 119"
+        ],
+        "r": "A) 122"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 74 + 53?",
+        "o": [
+          "A) 127",
+          "B) 131",
+          "C) 124"
+        ],
+        "r": "A) 127"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 77 + 55?",
+        "o": [
+          "A) 136",
+          "B) 132",
+          "C) 129"
+        ],
+        "r": "B) 132"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 80 + 57?",
+        "o": [
+          "A) 141",
+          "B) 137",
+          "C) 134"
+        ],
+        "r": "B) 137"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 83 + 59?",
+        "o": [
+          "A) 139",
+          "B) 146",
+          "C) 142"
+        ],
+        "r": "C) 142"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 86 + 61?",
+        "o": [
+          "A) 147",
+          "B) 144",
+          "C) 151"
+        ],
+        "r": "A) 147"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 89 + 63?",
+        "o": [
+          "A) 156",
+          "B) 152",
+          "C) 149"
+        ],
+        "r": "B) 152"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 92 + 65?",
+        "o": [
+          "A) 154",
+          "B) 157",
+          "C) 161"
+        ],
+        "r": "B) 157"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 95 + 67?",
+        "o": [
+          "A) 162",
+          "B) 166",
+          "C) 159"
+        ],
+        "r": "A) 162"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 98 + 69?",
+        "o": [
+          "A) 167",
+          "B) 171",
+          "C) 164"
+        ],
+        "r": "A) 167"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 101 + 71?",
+        "o": [
+          "A) 172",
+          "B) 176",
+          "C) 169"
+        ],
+        "r": "A) 172"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 104 + 73?",
+        "o": [
+          "A) 177",
+          "B) 181",
+          "C) 174"
+        ],
+        "r": "A) 177"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 107 + 75?",
+        "o": [
+          "A) 179",
+          "B) 186",
+          "C) 182"
+        ],
+        "r": "C) 182"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 110 + 77?",
+        "o": [
+          "A) 184",
+          "B) 187",
+          "C) 191"
+        ],
+        "r": "B) 187"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 113 + 79?",
+        "o": [
+          "A) 192",
+          "B) 189",
+          "C) 196"
+        ],
+        "r": "A) 192"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 116 + 81?",
+        "o": [
+          "A) 201",
+          "B) 197",
+          "C) 194"
+        ],
+        "r": "B) 197"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 119 + 83?",
+        "o": [
+          "A) 199",
+          "B) 206",
+          "C) 202"
+        ],
+        "r": "C) 202"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 122 + 85?",
+        "o": [
+          "A) 211",
+          "B) 207",
+          "C) 204"
+        ],
+        "r": "B) 207"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 125 + 87?",
+        "o": [
+          "A) 209",
+          "B) 216",
+          "C) 212"
+        ],
+        "r": "C) 212"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 128 + 89?",
+        "o": [
+          "A) 214",
+          "B) 221",
+          "C) 217"
+        ],
+        "r": "C) 217"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 131 + 91?",
+        "o": [
+          "A) 222",
+          "B) 226",
+          "C) 219"
+        ],
+        "r": "A) 222"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 134 + 93?",
+        "o": [
+          "A) 227",
+          "B) 224",
+          "C) 231"
+        ],
+        "r": "A) 227"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 137 + 95?",
+        "o": [
+          "A) 232",
+          "B) 229",
+          "C) 236"
+        ],
+        "r": "A) 232"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 140 + 97?",
+        "o": [
+          "A) 234",
+          "B) 241",
+          "C) 237"
+        ],
+        "r": "C) 237"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 143 + 99?",
+        "o": [
+          "A) 246",
+          "B) 242",
+          "C) 239"
+        ],
+        "r": "B) 242"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 146 + 101?",
+        "o": [
+          "A) 247",
+          "B) 251",
+          "C) 244"
+        ],
+        "r": "A) 247"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 149 + 103?",
+        "o": [
+          "A) 256",
+          "B) 252",
+          "C) 249"
+        ],
+        "r": "B) 252"
+      },
+      {
+        "p": "¿Cuál es el resultado matemático de sumar 152 + 105?",
+        "o": [
+          "A) 254",
+          "B) 261",
+          "C) 257"
+        ],
+        "r": "C) 257"
+      }
+    ],
+    "medio": [
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Hierro en la tabla periódica?",
+        "o": [
+          "A) Ir",
+          "B) Hi",
+          "C) Fe"
+        ],
+        "r": "C) Fe"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Oro en la tabla periódica?",
+        "o": [
+          "A) Au",
+          "B) Or",
+          "C) Ag"
+        ],
+        "r": "A) Au"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Plata en la tabla periódica?",
+        "o": [
+          "A) Pt",
+          "B) Pl",
+          "C) Ag"
+        ],
+        "r": "C) Ag"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Cobre en la tabla periódica?",
+        "o": [
+          "A) Cu",
+          "B) Cr",
+          "C) Co"
+        ],
+        "r": "A) Cu"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Sodio en la tabla periódica?",
+        "o": [
+          "A) So",
+          "B) Sd",
+          "C) Na"
+        ],
+        "r": "C) Na"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Hierro en la tabla periódica?",
+        "o": [
+          "A) Hi",
+          "B) Fe",
+          "C) Ir"
+        ],
+        "r": "B) Fe"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Oro en la tabla periódica?",
+        "o": [
+          "A) Au",
+          "B) Or",
+          "C) Ag"
+        ],
+        "r": "A) Au"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Plata en la tabla periódica?",
+        "o": [
+          "A) Ag",
+          "B) Pt",
+          "C) Pl"
+        ],
+        "r": "A) Ag"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Cobre en la tabla periódica?",
+        "o": [
+          "A) Cr",
+          "B) Co",
+          "C) Cu"
+        ],
+        "r": "C) Cu"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Sodio en la tabla periódica?",
+        "o": [
+          "A) Sd",
+          "B) So",
+          "C) Na"
+        ],
+        "r": "C) Na"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Hierro en la tabla periódica?",
+        "o": [
+          "A) Ir",
+          "B) Hi",
+          "C) Fe"
+        ],
+        "r": "C) Fe"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Oro en la tabla periódica?",
+        "o": [
+          "A) Or",
+          "B) Au",
+          "C) Ag"
+        ],
+        "r": "B) Au"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Plata en la tabla periódica?",
+        "o": [
+          "A) Ag",
+          "B) Pl",
+          "C) Pt"
+        ],
+        "r": "A) Ag"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Cobre en la tabla periódica?",
+        "o": [
+          "A) Cr",
+          "B) Co",
+          "C) Cu"
+        ],
+        "r": "C) Cu"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Sodio en la tabla periódica?",
+        "o": [
+          "A) Na",
+          "B) So",
+          "C) Sd"
+        ],
+        "r": "A) Na"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Hierro en la tabla periódica?",
+        "o": [
+          "A) Ir",
+          "B) Hi",
+          "C) Fe"
+        ],
+        "r": "C) Fe"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Oro en la tabla periódica?",
+        "o": [
+          "A) Ag",
+          "B) Au",
+          "C) Or"
+        ],
+        "r": "B) Au"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Plata en la tabla periódica?",
+        "o": [
+          "A) Pt",
+          "B) Ag",
+          "C) Pl"
+        ],
+        "r": "B) Ag"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Cobre en la tabla periódica?",
+        "o": [
+          "A) Cu",
+          "B) Cr",
+          "C) Co"
+        ],
+        "r": "A) Cu"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Sodio en la tabla periódica?",
+        "o": [
+          "A) Sd",
+          "B) So",
+          "C) Na"
+        ],
+        "r": "C) Na"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Hierro en la tabla periódica?",
+        "o": [
+          "A) Fe",
+          "B) Hi",
+          "C) Ir"
+        ],
+        "r": "A) Fe"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Oro en la tabla periódica?",
+        "o": [
+          "A) Or",
+          "B) Ag",
+          "C) Au"
+        ],
+        "r": "C) Au"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Plata en la tabla periódica?",
+        "o": [
+          "A) Pl",
+          "B) Ag",
+          "C) Pt"
+        ],
+        "r": "B) Ag"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Cobre en la tabla periódica?",
+        "o": [
+          "A) Cu",
+          "B) Co",
+          "C) Cr"
+        ],
+        "r": "A) Cu"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Sodio en la tabla periódica?",
+        "o": [
+          "A) Na",
+          "B) So",
+          "C) Sd"
+        ],
+        "r": "A) Na"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Hierro en la tabla periódica?",
+        "o": [
+          "A) Fe",
+          "B) Hi",
+          "C) Ir"
+        ],
+        "r": "A) Fe"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Oro en la tabla periódica?",
+        "o": [
+          "A) Au",
+          "B) Or",
+          "C) Ag"
+        ],
+        "r": "A) Au"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Plata en la tabla periódica?",
+        "o": [
+          "A) Ag",
+          "B) Pl",
+          "C) Pt"
+        ],
+        "r": "A) Ag"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Cobre en la tabla periódica?",
+        "o": [
+          "A) Cr",
+          "B) Co",
+          "C) Cu"
+        ],
+        "r": "C) Cu"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Sodio en la tabla periódica?",
+        "o": [
+          "A) Na",
+          "B) So",
+          "C) Sd"
+        ],
+        "r": "A) Na"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Hierro en la tabla periódica?",
+        "o": [
+          "A) Fe",
+          "B) Hi",
+          "C) Ir"
+        ],
+        "r": "A) Fe"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Oro en la tabla periódica?",
+        "o": [
+          "A) Au",
+          "B) Or",
+          "C) Ag"
+        ],
+        "r": "A) Au"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Plata en la tabla periódica?",
+        "o": [
+          "A) Pt",
+          "B) Pl",
+          "C) Ag"
+        ],
+        "r": "C) Ag"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Cobre en la tabla periódica?",
+        "o": [
+          "A) Cu",
+          "B) Co",
+          "C) Cr"
+        ],
+        "r": "A) Cu"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Sodio en la tabla periódica?",
+        "o": [
+          "A) So",
+          "B) Sd",
+          "C) Na"
+        ],
+        "r": "C) Na"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Hierro en la tabla periódica?",
+        "o": [
+          "A) Fe",
+          "B) Hi",
+          "C) Ir"
+        ],
+        "r": "A) Fe"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Oro en la tabla periódica?",
+        "o": [
+          "A) Or",
+          "B) Au",
+          "C) Ag"
+        ],
+        "r": "B) Au"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Plata en la tabla periódica?",
+        "o": [
+          "A) Ag",
+          "B) Pl",
+          "C) Pt"
+        ],
+        "r": "A) Ag"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Cobre en la tabla periódica?",
+        "o": [
+          "A) Cu",
+          "B) Co",
+          "C) Cr"
+        ],
+        "r": "A) Cu"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Sodio en la tabla periódica?",
+        "o": [
+          "A) Na",
+          "B) So",
+          "C) Sd"
+        ],
+        "r": "A) Na"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Hierro en la tabla periódica?",
+        "o": [
+          "A) Ir",
+          "B) Hi",
+          "C) Fe"
+        ],
+        "r": "C) Fe"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Oro en la tabla periódica?",
+        "o": [
+          "A) Au",
+          "B) Or",
+          "C) Ag"
+        ],
+        "r": "A) Au"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Plata en la tabla periódica?",
+        "o": [
+          "A) Ag",
+          "B) Pl",
+          "C) Pt"
+        ],
+        "r": "A) Ag"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Cobre en la tabla periódica?",
+        "o": [
+          "A) Co",
+          "B) Cr",
+          "C) Cu"
+        ],
+        "r": "C) Cu"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Sodio en la tabla periódica?",
+        "o": [
+          "A) Na",
+          "B) So",
+          "C) Sd"
+        ],
+        "r": "A) Na"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Hierro en la tabla periódica?",
+        "o": [
+          "A) Fe",
+          "B) Hi",
+          "C) Ir"
+        ],
+        "r": "A) Fe"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Oro en la tabla periódica?",
+        "o": [
+          "A) Ag",
+          "B) Or",
+          "C) Au"
+        ],
+        "r": "C) Au"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Plata en la tabla periódica?",
+        "o": [
+          "A) Ag",
+          "B) Pl",
+          "C) Pt"
+        ],
+        "r": "A) Ag"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Cobre en la tabla periódica?",
+        "o": [
+          "A) Cu",
+          "B) Co",
+          "C) Cr"
+        ],
+        "r": "A) Cu"
+      },
+      {
+        "p": "¿Cuál es la representación simbólica del elemento químico Sodio en la tabla periódica?",
+        "o": [
+          "A) So",
+          "B) Na",
+          "C) Sd"
+        ],
+        "r": "B) Na"
+      }
+    ],
+    "dificil": [
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 4 x 5?",
+        "o": [
+          "A) 28",
+          "B) 20",
+          "C) 15"
+        ],
+        "r": "B) 20"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 5 x 6?",
+        "o": [
+          "A) 25",
+          "B) 38",
+          "C) 30"
+        ],
+        "r": "C) 30"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 6 x 7?",
+        "o": [
+          "A) 42",
+          "B) 50",
+          "C) 37"
+        ],
+        "r": "A) 42"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 7 x 8?",
+        "o": [
+          "A) 51",
+          "B) 64",
+          "C) 56"
+        ],
+        "r": "C) 56"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 8 x 9?",
+        "o": [
+          "A) 72",
+          "B) 80",
+          "C) 67"
+        ],
+        "r": "A) 72"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 9 x 10?",
+        "o": [
+          "A) 90",
+          "B) 98",
+          "C) 85"
+        ],
+        "r": "A) 90"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 10 x 11?",
+        "o": [
+          "A) 110",
+          "B) 118",
+          "C) 105"
+        ],
+        "r": "A) 110"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 11 x 12?",
+        "o": [
+          "A) 132",
+          "B) 140",
+          "C) 127"
+        ],
+        "r": "A) 132"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 12 x 4?",
+        "o": [
+          "A) 43",
+          "B) 56",
+          "C) 48"
+        ],
+        "r": "C) 48"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 13 x 5?",
+        "o": [
+          "A) 65",
+          "B) 73",
+          "C) 60"
+        ],
+        "r": "A) 65"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 14 x 6?",
+        "o": [
+          "A) 92",
+          "B) 79",
+          "C) 84"
+        ],
+        "r": "C) 84"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 15 x 7?",
+        "o": [
+          "A) 100",
+          "B) 105",
+          "C) 113"
+        ],
+        "r": "B) 105"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 16 x 8?",
+        "o": [
+          "A) 128",
+          "B) 136",
+          "C) 123"
+        ],
+        "r": "A) 128"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 17 x 9?",
+        "o": [
+          "A) 148",
+          "B) 161",
+          "C) 153"
+        ],
+        "r": "C) 153"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 18 x 10?",
+        "o": [
+          "A) 180",
+          "B) 188",
+          "C) 175"
+        ],
+        "r": "A) 180"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 19 x 11?",
+        "o": [
+          "A) 204",
+          "B) 217",
+          "C) 209"
+        ],
+        "r": "C) 209"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 20 x 12?",
+        "o": [
+          "A) 240",
+          "B) 248",
+          "C) 235"
+        ],
+        "r": "A) 240"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 21 x 4?",
+        "o": [
+          "A) 92",
+          "B) 84",
+          "C) 79"
+        ],
+        "r": "B) 84"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 22 x 5?",
+        "o": [
+          "A) 105",
+          "B) 118",
+          "C) 110"
+        ],
+        "r": "C) 110"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 23 x 6?",
+        "o": [
+          "A) 133",
+          "B) 146",
+          "C) 138"
+        ],
+        "r": "C) 138"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 24 x 7?",
+        "o": [
+          "A) 163",
+          "B) 176",
+          "C) 168"
+        ],
+        "r": "C) 168"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 25 x 8?",
+        "o": [
+          "A) 200",
+          "B) 208",
+          "C) 195"
+        ],
+        "r": "A) 200"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 26 x 9?",
+        "o": [
+          "A) 229",
+          "B) 242",
+          "C) 234"
+        ],
+        "r": "C) 234"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 27 x 10?",
+        "o": [
+          "A) 265",
+          "B) 278",
+          "C) 270"
+        ],
+        "r": "C) 270"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 28 x 11?",
+        "o": [
+          "A) 308",
+          "B) 316",
+          "C) 303"
+        ],
+        "r": "A) 308"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 29 x 12?",
+        "o": [
+          "A) 348",
+          "B) 343",
+          "C) 356"
+        ],
+        "r": "A) 348"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 30 x 4?",
+        "o": [
+          "A) 120",
+          "B) 128",
+          "C) 115"
+        ],
+        "r": "A) 120"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 31 x 5?",
+        "o": [
+          "A) 150",
+          "B) 163",
+          "C) 155"
+        ],
+        "r": "C) 155"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 32 x 6?",
+        "o": [
+          "A) 187",
+          "B) 192",
+          "C) 200"
+        ],
+        "r": "B) 192"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 33 x 7?",
+        "o": [
+          "A) 231",
+          "B) 239",
+          "C) 226"
+        ],
+        "r": "A) 231"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 34 x 8?",
+        "o": [
+          "A) 272",
+          "B) 280",
+          "C) 267"
+        ],
+        "r": "A) 272"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 35 x 9?",
+        "o": [
+          "A) 310",
+          "B) 315",
+          "C) 323"
+        ],
+        "r": "B) 315"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 36 x 10?",
+        "o": [
+          "A) 355",
+          "B) 368",
+          "C) 360"
+        ],
+        "r": "C) 360"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 37 x 11?",
+        "o": [
+          "A) 407",
+          "B) 415",
+          "C) 402"
+        ],
+        "r": "A) 407"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 38 x 12?",
+        "o": [
+          "A) 456",
+          "B) 464",
+          "C) 451"
+        ],
+        "r": "A) 456"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 39 x 4?",
+        "o": [
+          "A) 156",
+          "B) 151",
+          "C) 164"
+        ],
+        "r": "A) 156"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 40 x 5?",
+        "o": [
+          "A) 200",
+          "B) 208",
+          "C) 195"
+        ],
+        "r": "A) 200"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 41 x 6?",
+        "o": [
+          "A) 246",
+          "B) 254",
+          "C) 241"
+        ],
+        "r": "A) 246"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 42 x 7?",
+        "o": [
+          "A) 289",
+          "B) 302",
+          "C) 294"
+        ],
+        "r": "C) 294"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 43 x 8?",
+        "o": [
+          "A) 344",
+          "B) 352",
+          "C) 339"
+        ],
+        "r": "A) 344"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 44 x 9?",
+        "o": [
+          "A) 404",
+          "B) 396",
+          "C) 391"
+        ],
+        "r": "B) 396"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 45 x 10?",
+        "o": [
+          "A) 445",
+          "B) 458",
+          "C) 450"
+        ],
+        "r": "C) 450"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 46 x 11?",
+        "o": [
+          "A) 506",
+          "B) 514",
+          "C) 501"
+        ],
+        "r": "A) 506"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 47 x 12?",
+        "o": [
+          "A) 559",
+          "B) 572",
+          "C) 564"
+        ],
+        "r": "C) 564"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 48 x 4?",
+        "o": [
+          "A) 187",
+          "B) 200",
+          "C) 192"
+        ],
+        "r": "C) 192"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 49 x 5?",
+        "o": [
+          "A) 240",
+          "B) 253",
+          "C) 245"
+        ],
+        "r": "C) 245"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 50 x 6?",
+        "o": [
+          "A) 295",
+          "B) 308",
+          "C) 300"
+        ],
+        "r": "C) 300"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 51 x 7?",
+        "o": [
+          "A) 352",
+          "B) 365",
+          "C) 357"
+        ],
+        "r": "C) 357"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 52 x 8?",
+        "o": [
+          "A) 411",
+          "B) 424",
+          "C) 416"
+        ],
+        "r": "C) 416"
+      },
+      {
+        "p": "¿Cuál es el producto exacto de multiplicar 53 x 9?",
+        "o": [
+          "A) 472",
+          "B) 485",
+          "C) 477"
+        ],
+        "r": "C) 477"
+      }
+    ]
+  }
+}
