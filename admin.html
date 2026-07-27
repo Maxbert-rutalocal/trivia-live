@@ -61,7 +61,7 @@
         .btn-config.active-jugadores { background: #fe2c55; color: white; box-shadow: 0 0 8px rgba(254,44,85,0.5); }
 
         .btn-modo-auto {
-            width: 100%; margin-top: 6px; padding: 8px; font-weight: bold; font-size: 11px; text-transform: uppercase;
+            flex: 1; padding: 8px; font-weight: bold; font-size: 10px; text-transform: uppercase;
             border-radius: 5px; cursor: pointer; border: 1px solid #444; background: #222; color: #888; transition: all 0.3s;
         }
         .btn-modo-auto.encendido {
@@ -97,25 +97,12 @@
         .estado-conexion.conectado { background: #1a3a1a; color: #66ff66; }
 
         /* TABLERO CENTRAL RESPONSIVO */
-        .tablero-wrapper { 
-            flex: 2.2; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: flex-start; 
-            padding-top: 15px;
-        }
+        .tablero-wrapper { flex: 2.2; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 15px; }
         
         .tablero-monopolio { 
-            display: grid; 
-            grid-template-columns: repeat(9, 1fr); 
-            grid-template-rows: repeat(7, 1fr);    
-            gap: 4px; 
-            background: #111; padding: 10px; border-radius: 12px; border: 3px solid #fe2c55; 
-            position: relative; box-shadow: 0 0 25px rgba(254, 44, 85, 0.2); 
-            width: 100%;
-            max-width: 850px;
-            aspect-ratio: 9 / 7; 
+            display: grid; grid-template-columns: repeat(9, 1fr); grid-template-rows: repeat(7, 1fr);    
+            gap: 4px; background: #111; padding: 10px; border-radius: 12px; border: 3px solid #fe2c55; 
+            position: relative; box-shadow: 0 0 25px rgba(254, 44, 85, 0.2); width: 100%; max-width: 850px; aspect-ratio: 9 / 7; 
         }
 
         .casilla { background: #2a2a2a; border: 1px solid #444; border-radius: 6px; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 14px; font-weight: bold; position: relative; color: #fff; padding: 3px; box-sizing: border-box; }
@@ -158,26 +145,25 @@
         .opcion-item { background: #181818; border: 1px solid #333; padding: 8px 12px; border-radius: 6px; font-size: 15px; font-weight: bold; color: #ddd; transition: all 0.3s ease; }
         .opcion-item span { color: #fe2c55; margin-right: 5px; }
 
+        /* EFECTOS DE RESPUESTA VISUALES */
+        .opcion-seleccionada { background: #fff !important; color: #000 !important; border-color: #25f4ee !important; box-shadow: 0 0 15px #fff; transform: scale(1.02); }
         .opcion-correcta-iluminada { background: #ffc107 !important; color: #000 !important; border-color: #fff !important; box-shadow: 0 0 15px #ffc107; transform: scale(1.02); animation: parpadeo-respuesta 0.5s infinite alternate; }
         .opcion-correcta-iluminada span { color: #000 !important; }
+        .opcion-error { background: #dc3545 !important; border-color: #ff4444 !important; box-shadow: 0 0 15px #dc3545; transform: scale(1.02); animation: sacudir-error 0.3s ease-in-out; }
+        .opcion-error span { color: #fff !important; }
 
         @keyframes parpadeo-respuesta { from { box-shadow: 0 0 8px #ffc107; } to { box-shadow: 0 0 22px #ffc107; } }
+        @keyframes sacudir-error { 0%, 100% { transform: scale(1.02) translateX(0); } 25% { transform: scale(1.02) translateX(-5px); } 75% { transform: scale(1.02) translateX(5px); } }
 
-        .contenedor-barra-tiempo { 
-            width: 100%; height: 20px; background: #222; border-radius: 12px; margin: 10px 0; overflow: hidden; border: 2px solid #444; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); 
-        }
-        .barra-tiempo { 
-            height: 100%; width: 100%; background: #00e676; transition: width 1s linear, background-color 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 0 12px #00e676; 
-        }
+        .contenedor-barra-tiempo { width: 100%; height: 20px; background: #222; border-radius: 12px; margin: 10px 0; overflow: hidden; border: 2px solid #444; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
+        .barra-tiempo { height: 100%; width: 100%; background: #00e676; transition: width 1s linear, background-color 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 0 12px #00e676; }
         .barra-tiempo.alerta { background: #ffc107; box-shadow: 0 0 12px #ffc107; }
         .barra-tiempo.peligro { background: #ff1744; box-shadow: 0 0 15px #ff1744; }
-
         .txt-respuesta-tablero { font-size: 18px; font-weight: bold; color: #25f4ee; margin-top: 10px; text-shadow: 0 0 10px rgba(37, 244, 238, 0.6); display: none; text-align: center; }
 
         .contenedor-error-centro { display: none; animation: sacudir 0.4s ease-in-out; }
         .carita-triste { font-size: 75px; margin: 0; animation: latido-triste 0.6s infinite alternate; }
         .texto-error-tit { font-size: 18px; color: #dc3545; font-weight: bold; margin-top: 10px; text-transform: uppercase; }
-
         .contenedor-celebracion-centro { display: none; }
         .icono-celebracion { font-size: 75px; margin: 0; animation: pulso-fiesta 0.4s infinite alternate; }
         .texto-celebracion-tit { font-size: 22px; color: #28a745; font-weight: bold; margin-top: 10px; text-transform: uppercase; }
@@ -186,58 +172,31 @@
         @keyframes latido-triste { from { transform: scale(1); } to { transform: scale(1.1); } }
         @keyframes latido-espera { from { transform: scale(0.95); opacity: 0.8; } to { transform: scale(1.05); opacity: 1; } }
         @keyframes pulso-fiesta { from { transform: scale(0.95) rotate(-5deg); } to { transform: scale(1.1) rotate(5deg); } }
-        @keyframes parpadeo { from { opacity: 1; } to { opacity: 0.4; } }
         @keyframes agitar-dado { 0% { transform: rotate(0deg) scale(1); } 25% { transform: rotate(-3deg) scale(1.05); } 50% { transform: rotate(3deg) scale(1.05); } 75% { transform: rotate(-3deg) scale(1.05); } 100% { transform: rotate(0deg) scale(1); } }
-        
         .dado-animado { animation: agitar-dado 0.15s infinite; border-color: #ffc107 !important; box-shadow: 0 0 25px rgba(255,193,7,0.6) !important; }
         #anuncio-efecto { color: #25f4ee; font-weight: bold; font-size: 15px; margin-top: 10px; min-height: 20px; }
         #ganador-pantalla { font-size: 24px; font-weight: bold; color: #ffc107; margin-top: 5px; text-shadow: 0 0 10px rgba(255,193,7,0.5);}
 
-        /* ========================================= */
-        /* ADAPTACIÓN MÓVIL Y RESPONSIVA COMPLETA    */
-        /* ========================================= */
-        
-        /* Ajuste general para apilar los paneles */
+        /* RESPONSIVO */
         @media (max-width: 1100px) {
-            .game-container {
-                flex-direction: column; 
-                align-items: center;
-                gap: 15px;
-            }
-            .sidebar, .tablero-wrapper, .sidebar-derecha {
-                width: 100%;
-                max-width: 100%; 
-                max-height: none; 
-                box-sizing: border-box;
-            }
-            
-            /* Ajuste del Panel de Temáticas a cuadrícula para ahorrar espacio vertical */
+            .game-container { flex-direction: column; align-items: center; gap: 15px; }
+            .sidebar, .tablero-wrapper, .sidebar-derecha { width: 100%; max-width: 100%; max-height: none; box-sizing: border-box; }
             .sidebar-derecha { padding: 15px; flex: none; min-width: auto; }
-            .grid-tematicas {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 10px;
-            }
+            .grid-tematicas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
         }
-
-        /* Ajuste fino de textos y elementos internos para pantallas pequeñas (Teléfonos) */
         @media (max-width: 768px) {
             .grid-tematicas { grid-template-columns: repeat(2, 1fr); } 
-            
             .tablero-monopolio { gap: 2px; padding: 5px; border-width: 2px; border-radius: 8px;}
             .casilla { font-size: 9px; padding: 1px; }
             .c-salida, .c-meta { font-size: 8px; }
             .avatar-ficha { font-size: 14px; margin: 1px; }
-            
             .centro-tablero { padding: 5px; }
             .titulo-centro { font-size: 16px; margin-top: 0; }
             .avatar-turno-gigante { font-size: 40px; }
             .texto-turno-gigante { font-size: 11px; margin-top: 5px; }
-            
             .dado-gigante { min-width: 60px; padding: 8px; }
             .dado-val { font-size: 14px; }
             #dado-numero { font-size: 20px !important; }
-            
             .txt-pregunta-tablero { font-size: 12px; margin-bottom: 5px; }
             .opcion-item { font-size: 11px; padding: 5px; }
             .icono-celebracion { font-size: 40px; }
@@ -252,7 +211,6 @@
         <!-- SIDEBAR IZQUIERDA -->
         <div class="sidebar">
             <div id="conexion-ws" class="estado-conexion">🔴 Chat Desconectado</div>
-            <!-- BOTÓN DE REINICIO DE PARTIDA -->
             <button id="btn-reset-global" class="btn-reset" onclick="reiniciarJuegoYControles()">🔄 REINICIAR TABLERO</button>
             
             <div class="seccion-config">
@@ -287,7 +245,10 @@
                     <button class="btn-config" data-nivel="medio" onclick="cambiarNivel('medio')">🟡 MEDIO</button>
                     <button class="btn-config" data-nivel="dificil" onclick="cambiarNivel('dificil')">🔴 DIFÍCIL</button>
                 </div>
-                <button id="btn-modo-auto" class="btn-modo-auto" onclick="toggleModoAuto()">⚙️ AUTO: APAGADO</button>
+                <div style="display: flex; gap: 5px; margin-top: 6px;">
+                    <button id="btn-modo-auto" class="btn-modo-auto" onclick="toggleModoAuto()">⚙️ DIF. AUTO</button>
+                    <button id="btn-auto-conteo" class="btn-modo-auto" onclick="toggleAutoConteo()">⏱️ CONT. AUTO</button>
+                </div>
             </div>
 
             <button class="btn-dados-principal" onclick="tirarDadosAzar()">🎲 Tirar Dados al Azar</button>
@@ -300,8 +261,7 @@
                 <button id="btn-cat-ciencia" class="btn-cat amarillo" onclick="controlFlujoCategoria('ciencia')">Ciencia / Nat.</button>
             </div>
 
-            <button class="btn-revelar" onclick="revelarRespuesta()">👁️ Mostrar Respuesta</button>
-            <button class="btn-fallo" onclick="activarFalloUrgente()">❌ Incorrecto / No Contestó</button>
+            <button class="btn-revelar" onclick="marcarFalloManual()">❌ Incorrecto / No Contestó</button>
         </div>
 
         <!-- TABLERO CENTRAL -->
@@ -364,7 +324,7 @@
             </div>
         </div>
 
-        <!-- SIDEBAR DERECHA: 8 TEMÁTICAS EN LISTA VERTICAL -->
+        <!-- SIDEBAR DERECHA: TEMÁTICAS -->
         <div class="sidebar-derecha">
             <p class="tit-tematica">TEMÁTICA<br>DE AVATARES</p>
             <div class="grid-tematicas">
@@ -408,9 +368,8 @@
         let avatarJugadores = { 1: "👽", 2: "🤖", 3: "🦊", 4: "🦄" };
         let nombreJugadores = { 1: "CHAT 👽", 2: "CREADOR 🤖", 3: "MODERADOR 🦊", 4: "INVITADO 🦄" };
 
-        let datosClasificados = null; 
-        let copiaMaestraPreguntas = null; 
-        let modoAutoDificultad = false; 
+        let datosClasificados = null; let copiaMaestraPreguntas = null; 
+        let modoAutoDificultad = false; let modoAutoConteo = false; 
 
         const colorCategoriasMapeo = { 'general': 'GENERAL 🔵', 'entretenimiento': 'ENTRE./ARTE 🔴', 'geografia': 'GEOGRAFÍA 🟢', 'ciencia': 'CIENCIA 🟡' };
         const nombresOriginalesBotones = { 'general': 'Conoc. General', 'geografia': 'Geografía / Mundo', 'entretenimiento': 'Entre. / Arte', 'ciencia': 'Ciencia / Nat.' };
@@ -424,84 +383,44 @@
             try {
                 const respuesta = await fetch('preguntas.json');
                 const datosCrudos = await respuesta.json();
+                copiaMaestraPreguntas = { general: {facil:[], medio:[], dificil:[]}, geografia: {facil:[], medio:[], dificil:[]}, entretenimiento: {facil:[], medio:[], dificil:[]}, ciencia: {facil:[], medio:[], dificil:[]} };
 
-                // 1. Preparamos el formato maestro para reinicios
-                copiaMaestraPreguntas = { 
-                    general: {facil:[], medio:[], dificil:[]}, 
-                    geografia: {facil:[], medio:[], dificil:[]}, 
-                    entretenimiento: {facil:[], medio:[], dificil:[]}, 
-                    ciencia: {facil:[], medio:[], dificil:[]} 
-                };
-
-                // 2. Traductor Automático del nuevo formato de lista plana
                 if (Array.isArray(datosCrudos)) {
-                    datosCrudos.forEach(item => {
-                        let cat = item.Categoria.toLowerCase();
-                        let dif = item.Dificultad.toLowerCase();
-                        if (copiaMaestraPreguntas[cat] && copiaMaestraPreguntas[cat][dif]) {
-                            copiaMaestraPreguntas[cat][dif].push({
-                                p: item.Pregunta,
-                                o: [item.OpcionA, item.OpcionB, item.OpcionC],
-                                r: item.Respuesta
-                            });
-                        }
-                    });
-                } else {
-                    copiaMaestraPreguntas = JSON.parse(JSON.stringify(datosCrudos));
-                }
+                    datosCrudos.forEach(item => { let cat = item.Categoria.toLowerCase(); let dif = item.Dificultad.toLowerCase(); if (copiaMaestraPreguntas[cat] && copiaMaestraPreguntas[cat][dif]) { copiaMaestraPreguntas[cat][dif].push({ p: item.Pregunta, o: [item.OpcionA, item.OpcionB, item.OpcionC], r: item.Respuesta }); } });
+                } else { copiaMaestraPreguntas = JSON.parse(JSON.stringify(datosCrudos)); }
 
-                // 3. Verificamos si hay un mazo a medio jugar guardado en la memoria
                 const mazoGuardado = localStorage.getItem('memoriaMazoTrivia');
-                if (mazoGuardado) {
-                    datosClasificados = JSON.parse(mazoGuardado);
-                    console.log("📚 Mazo recuperado de la memoria. Continuando sin repetir preguntas.");
-                } else {
-                    datosClasificados = JSON.parse(JSON.stringify(copiaMaestraPreguntas));
-                    localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados));
-                    console.log("📚 Nuevo mazo cargado y guardado en memoria.");
-                }
-            } catch (error) {
-                console.error("Error al cargar preguntas.json:", error);
-            }
+                if (mazoGuardado) { datosClasificados = JSON.parse(mazoGuardado); console.log("📚 Mazo recuperado."); } 
+                else { datosClasificados = JSON.parse(JSON.stringify(copiaMaestraPreguntas)); localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados)); console.log("📚 Nuevo mazo."); }
+            } catch (error) { console.error("Error al cargar preguntas.json:", error); }
         }
 
-        // LÓGICA DE REINICIO DE PARTIDA (Mantiene el mazo guardado intacto)
         function reiniciarJuegoYControles() {
-            if(confirm("¿Deseas reiniciar las posiciones del tablero y los controles? (El mazo de preguntas no se perderá)")) {
+            if(confirm("¿Deseas reiniciar el tablero y los controles? (El mazo no se perderá)")) {
                 reiniciarTodo();
-                document.getElementById('input-j1').value = "";
-                document.getElementById('input-j2').value = "";
-                document.getElementById('input-j3').value = "";
-                document.getElementById('input-j4').value = "";
+                document.getElementById('input-j1').value = ""; document.getElementById('input-j2').value = "";
+                document.getElementById('input-j3').value = ""; document.getElementById('input-j4').value = "";
                 actualizarNombresDesdeCampos(); 
-
-                if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
-                    socketAdmin.send(JSON.stringify({ tipo: 'REINICIAR_JUEGO' }));
-                }
+                if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) { socketAdmin.send(JSON.stringify({ tipo: 'REINICIAR_JUEGO' })); }
             }
         }
 
         function toggleModoAuto() {
-            if (estaMoviendose) return;
-            modoAutoDificultad = !modoAutoDificultad;
-            const btn = document.getElementById('btn-modo-auto');
-            if (modoAutoDificultad) {
-                btn.innerText = "⚙️ AUTO: ENCENDIDO";
-                btn.classList.add('encendido');
-                actualizarDificultadVisualPorTurno();
-            } else {
-                btn.innerText = "⚙️ AUTO: APAGADO";
-                btn.classList.remove('encendido');
-            }
+            if (estaMoviendose) return; modoAutoDificultad = !modoAutoDificultad; const btn = document.getElementById('btn-modo-auto');
+            if (modoAutoDificultad) { btn.innerText = "⚙️ DIF. AUTO: ON"; btn.classList.add('encendido'); actualizarDificultadVisualPorTurno(); } 
+            else { btn.innerText = "⚙️ DIF. AUTO"; btn.classList.remove('encendido'); }
+        }
+
+        function toggleAutoConteo() {
+            if (estaMoviendose) return; modoAutoConteo = !modoAutoConteo; const btn = document.getElementById('btn-auto-conteo');
+            if (modoAutoConteo) { btn.innerText = "⏱️ CONT. AUTO: ON"; btn.classList.add('encendido'); } 
+            else { btn.innerText = "⏱️ CONT. AUTO"; btn.classList.remove('encendido'); }
         }
 
         function actualizarDificultadVisualPorTurno() {
             if (!modoAutoDificultad) return;
             const pos = posiciones[jugadorTurnoActual];
-            let nivelAuto = "facil";
-            if (pos >= 20) nivelAuto = "dificil";
-            else if (pos >= 10) nivelAuto = "medio";
-            
+            let nivelAuto = pos >= 20 ? "dificil" : pos >= 10 ? "medio" : "facil";
             nivelActual = nivelAuto;
             document.querySelectorAll('[data-nivel]').forEach(btn => btn.classList.remove('active'));
             document.querySelector(`[data-nivel="${nivelAuto}"]`).classList.add('active');
@@ -509,95 +428,60 @@
 
         function cambiarNivel(nuevoNivel) { 
             if(estaMoviendose) return; 
-            if (modoAutoDificultad) {
-                modoAutoDificultad = false;
-                const btn = document.getElementById('btn-modo-auto');
-                btn.innerText = "⚙️ AUTO: APAGADO";
-                btn.classList.remove('encendido');
-            }
-
+            if (modoAutoDificultad) { modoAutoDificultad = false; const btn = document.getElementById('btn-modo-auto'); btn.innerText = "⚙️ DIF. AUTO"; btn.classList.remove('encendido'); }
             nivelActual = nuevoNivel; 
-            document.querySelectorAll('[data-nivel]').forEach(btn => btn.classList.remove('active')); 
-            document.querySelector(`[data-nivel="${nuevoNivel}"]`).classList.add('active'); 
+            document.querySelectorAll('[data-nivel]').forEach(btn => btn.classList.remove('active')); document.querySelector(`[data-nivel="${nuevoNivel}"]`).classList.add('active'); 
         }
 
         function cambiarTematica(tema) {
-            if(estaMoviendose) return;
-            tematicaActual = tema;
-            
-            document.querySelectorAll('.btn-tematica').forEach(b => b.classList.remove('activa'));
-            event.currentTarget.classList.add('activa');
-
+            if(estaMoviendose) return; tematicaActual = tema;
+            document.querySelectorAll('.btn-tematica').forEach(b => b.classList.remove('activa')); event.currentTarget.classList.add('activa');
             avatarJugadores = { 1: tematicas[tema][1].emoji, 2: tematicas[tema][2].emoji, 3: tematicas[tema][3].emoji, 4: tematicas[tema][4].emoji };
-
-            actualizarNombresDesdeCampos();
-            actualizarFichas(null, null);
-
-            if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
-                socketAdmin.send(JSON.stringify({ tipo: 'CAMBIO_TEMATICA', datos: tematicas[tema], cantidadJugadores: cantidadJugadoresActual }));
-                setTimeout(actualizarNombresDesdeCampos, 100);
-            }
+            actualizarNombresDesdeCampos(); actualizarFichas(null, null);
+            if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) { socketAdmin.send(JSON.stringify({ tipo: 'CAMBIO_TEMATICA', datos: tematicas[tema], cantidadJugadores: cantidadJugadoresActual })); setTimeout(actualizarNombresDesdeCampos, 100); }
         }
 
         function conectarConServidorNode() {
             const indicadorConexion = document.getElementById('conexion-ws');
             socketAdmin = new WebSocket(window.location.origin.replace(/^http/, 'ws'));
 
-            socketAdmin.onopen = () => {
-                indicadorConexion.innerText = "🟢 Chat Sincronizado";
-                indicadorConexion.className = "estado-conexion conectado";
-                setTimeout(actualizarNombresDesdeCampos, 500);
-            };
-
-            socketAdmin.onclose = () => {
-                indicadorConexion.innerText = "🔴 Chat Desconectado. Reconectando...";
-                indicadorConexion.className = "estado-conexion";
-                setTimeout(conectarConServidorNode, 3000);
-            };
+            socketAdmin.onopen = () => { indicadorConexion.innerText = "🟢 Chat Sincronizado"; indicadorConexion.className = "estado-conexion conectado"; setTimeout(actualizarNombresDesdeCampos, 500); };
+            socketAdmin.onclose = () => { indicadorConexion.innerText = "🔴 Chat Desconectado. Reconectando..."; indicadorConexion.className = "estado-conexion"; setTimeout(conectarConServidorNode, 3000); };
 
             socketAdmin.onmessage = (event) => {
                 const datos = JSON.parse(event.data);
-                
-                if (datos.tipo === 'SOLICITAR_AVATARES') {
-                    socketAdmin.send(JSON.stringify({ tipo: 'CAMBIO_TEMATICA', datos: tematicas[tematicaActual], cantidadJugadores: cantidadJugadoresActual }));
-                    setTimeout(actualizarNombresDesdeCampos, 100);
-                }
-
+                if (datos.tipo === 'SOLICITAR_AVATARES') { socketAdmin.send(JSON.stringify({ tipo: 'CAMBIO_TEMATICA', datos: tematicas[tematicaActual], cantidadJugadores: cantidadJugadoresActual })); setTimeout(actualizarNombresDesdeCampos, 100); }
                 if (datos.tipo === 'SELECCION_AVATAR') {
-                    const avatarElegido = datos.avatar.toLowerCase();
-                    const temaData = tematicas[tematicaActual];
-                    
-                    if (avatarElegido === temaData[1].id) { document.getElementById('input-j1').value = datos.usuario; }
-                    else if (avatarElegido === temaData[2].id) { document.getElementById('input-j2').value = datos.usuario; }
-                    else if (avatarElegido === temaData[3].id && cantidadJugadoresActual >= 3) { document.getElementById('input-j3').value = datos.usuario; }
-                    else if (avatarElegido === temaData[4].id && cantidadJugadoresActual >= 4) { document.getElementById('input-j4').value = datos.usuario; }
+                    const avElegido = datos.avatar.toLowerCase(); const td = tematicas[tematicaActual];
+                    if (avElegido === td[1].id) { document.getElementById('input-j1').value = datos.usuario; }
+                    else if (avElegido === td[2].id) { document.getElementById('input-j2').value = datos.usuario; }
+                    else if (avElegido === td[3].id && cantidadJugadoresActual >= 3) { document.getElementById('input-j3').value = datos.usuario; }
+                    else if (avElegido === td[4].id && cantidadJugadoresActual >= 4) { document.getElementById('input-j4').value = datos.usuario; }
                     actualizarNombresDesdeCampos();
                 }
-
                 if (datos.tipo === 'RESPUESTA_CHAT' && pasoFlujoActual === "bloqueado" && !estaMoviendose) {
                     const nombreTurnoActual = nombreJugadores[jugadorTurnoActual].split(' ')[0].trim().toUpperCase();
                     const nombreRemitente = datos.usuario.trim().toUpperCase();
-                    if (nombreRemitente === nombreTurnoActual) procesarRespuestaElegidaChat(datos.opcion);
+                    
+                    // ANTI-SABOTAJE: Solo si es el turno exacto del jugador
+                    if (nombreRemitente === nombreTurnoActual) {
+                        pasoFlujoActual = "evaluando"; // BLOQUEA INMEDIATAMENTE EL CHAT
+                        procesarRespuestaElegidaChat(datos.opcion.toUpperCase());
+                    }
                 }
             };
         }
 
         function actualizarNombresDesdeCampos() {
-            const j1Val = document.getElementById('input-j1').value.trim();
-            const j2Val = document.getElementById('input-j2').value.trim();
-            const j3Val = document.getElementById('input-j3').value.trim();
-            const j4Val = document.getElementById('input-j4').value.trim();
-            const temaData = tematicas[tematicaActual];
+            const j1Val = document.getElementById('input-j1').value.trim(); const j2Val = document.getElementById('input-j2').value.trim();
+            const j3Val = document.getElementById('input-j3').value.trim(); const j4Val = document.getElementById('input-j4').value.trim();
+            const td = tematicas[tematicaActual];
 
-            nombreJugadores[1] = `${(j1Val || "CHAT").toUpperCase()} ${temaData[1].emoji}`;
-            nombreJugadores[2] = `${(j2Val || "CREADOR").toUpperCase()} ${temaData[2].emoji}`;
-            nombreJugadores[3] = `${(j3Val || "MODERADOR").toUpperCase()} ${temaData[3].emoji}`;
-            nombreJugadores[4] = `${(j4Val || "INVITADO").toUpperCase()} ${temaData[4].emoji}`;
+            nombreJugadores[1] = `${(j1Val || "CHAT").toUpperCase()} ${td[1].emoji}`; nombreJugadores[2] = `${(j2Val || "CREADOR").toUpperCase()} ${td[2].emoji}`;
+            nombreJugadores[3] = `${(j3Val || "MODERADOR").toUpperCase()} ${td[3].emoji}`; nombreJugadores[4] = `${(j4Val || "INVITADO").toUpperCase()} ${td[4].emoji}`;
 
-            document.getElementById('span-j1').innerText = tematicas[tematicaActual][1].nombre + tematicas[tematicaActual][1].emoji;
-            document.getElementById('span-j2').innerText = tematicas[tematicaActual][2].nombre + tematicas[tematicaActual][2].emoji;
-            document.getElementById('span-j3').innerText = tematicas[tematicaActual][3].nombre + tematicas[tematicaActual][3].emoji;
-            document.getElementById('span-j4').innerText = tematicas[tematicaActual][4].nombre + tematicas[tematicaActual][4].emoji;
+            document.getElementById('span-j1').innerText = td[1].nombre + td[1].emoji; document.getElementById('span-j2').innerText = td[2].nombre + td[2].emoji;
+            document.getElementById('span-j3').innerText = td[3].nombre + td[3].emoji; document.getElementById('span-j4').innerText = td[4].nombre + td[4].emoji;
 
             document.getElementById('nombre-turno-marcador').innerText = nombreJugadores[jugadorTurnoActual];
             document.getElementById('texto-turno-pantalla').innerText = `TURNO DE: ${nombreJugadores[jugadorTurnoActual]}`;
@@ -605,19 +489,86 @@
 
             if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
                 let ocupados = [];
-                if(j1Val !== "") ocupados.push(temaData[1].id);
-                if(j2Val !== "") ocupados.push(temaData[2].id);
-                if(j3Val !== "") ocupados.push(temaData[3].id);
-                if(j4Val !== "") ocupados.push(temaData[4].id);
+                if(j1Val !== "") ocupados.push(td[1].id); if(j2Val !== "") ocupados.push(td[2].id);
+                if(j3Val !== "") ocupados.push(td[3].id); if(j4Val !== "") ocupados.push(td[4].id);
                 socketAdmin.send(JSON.stringify({ tipo: 'ESTADO_AVATARES', ocupados: ocupados }));
             }
         }
 
+        // LÓGICA DE REVELACIÓN (Marcado inmediato, suspenso de 1s, resultado de 2s)
         function procesarRespuestaElegidaChat(letraOpcion) {
             if(!preguntaCargadaEstructura) return;
-            clearInterval(intervaloReloj); revelarRespuesta();
+            clearInterval(intervaloReloj); 
+            pasoFlujoActual = "evaluando"; // Seguro extra
+            
             const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase();
-            setTimeout(() => { if (letraOpcion === letraCorrecta) aplicarAvance(jugadorTurnoActual); else activarFalloUrgente(); }, 1500);
+            const mapOpciones = {'A': 'opc-a', 'B': 'opc-b', 'C': 'opc-c'};
+
+            // PASO 1: Marcar la que el jugador eligió de inmediato (Blanco)
+            if(letraOpcion && mapOpciones[letraOpcion]) {
+                document.getElementById(mapOpciones[letraOpcion]).classList.add('opcion-seleccionada');
+                if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
+                    socketAdmin.send(JSON.stringify({ tipo: 'MARCAR_SELECCION', elegida: letraOpcion }));
+                }
+            }
+
+            // PASO 2: Esperar 1 segundo de suspenso y revelar la correcta (Amarillo / Rojo)
+            setTimeout(() => {
+                revelarRespuesta(letraOpcion, letraCorrecta, mapOpciones);
+                
+                if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
+                    socketAdmin.send(JSON.stringify({ tipo: 'REVELAR_CON_SELECCION', correcta: letraCorrecta, elegida: letraOpcion }));
+                }
+
+                // PASO 3: Esperar 2 segundos para que todos lo vean y avanzar el juego
+                setTimeout(() => { 
+                    if (letraOpcion === letraCorrecta) aplicarAvance(jugadorTurnoActual); 
+                    else activarFalloUrgente(); 
+                }, 2000);
+
+            }, 1000); // 1 Segundo
+        }
+
+        // Pinta las respuestas según lo que el usuario eligió y la que es real
+        function revelarRespuesta(letraElegida, letraCorrecta, mapOpciones) { 
+            document.getElementById('respuesta-tablero-texto').style.display = "block";
+            limpiarIluminacionOpciones(); 
+            
+            if(letraElegida && mapOpciones[letraElegida]) {
+                if(letraElegida === letraCorrecta) {
+                    // Si acertó, la elegida se pone amarilla
+                    document.getElementById(mapOpciones[letraElegida]).classList.add('opcion-correcta-iluminada');
+                } else {
+                    // Si falló, la elegida se pone roja y la correcta amarilla
+                    document.getElementById(mapOpciones[letraElegida]).classList.add('opcion-error');
+                    document.getElementById(mapOpciones[letraCorrecta]).classList.add('opcion-correcta-iluminada');
+                }
+            } else {
+                // Si se acabó el tiempo, solo muestra la amarilla
+                document.getElementById(mapOpciones[letraCorrecta]).classList.add('opcion-correcta-iluminada');
+            }
+        }
+
+        function limpiarIluminacionOpciones() { 
+            ['opc-a', 'opc-b', 'opc-c'].forEach(id => {
+                document.getElementById(id).classList.remove('opcion-correcta-iluminada', 'opcion-error', 'opcion-seleccionada');
+            });
+        }
+
+        function marcarFalloManual() {
+            if(estaMoviendose || !preguntaCargadaEstructura || pasoFlujoActual === "evaluando") return;
+            clearInterval(intervaloReloj);
+            pasoFlujoActual = "evaluando";
+
+            const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase();
+            const mapOpciones = {'A': 'opc-a', 'B': 'opc-b', 'C': 'opc-c'};
+            
+            revelarRespuesta(null, letraCorrecta, mapOpciones);
+            
+            if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
+                socketAdmin.send(JSON.stringify({ tipo: 'REVELAR_CON_SELECCION', correcta: letraCorrecta, elegida: null }));
+            }
+            setTimeout(() => { activarFalloUrgente(); }, 2000);
         }
 
         function sonarBrinco() { const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination); osc.type = 'sine'; osc.frequency.setValueAtTime(260, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(650, audioCtx.currentTime + 0.12); gain.gain.setValueAtTime(0.12, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12); osc.start(); osc.stop(audioCtx.currentTime + 0.12); }
@@ -668,6 +619,11 @@
                     estaMoviendose = false; pasoFlujoActual = "revelar";
                     preguntaCargadaEstructura = obtenerPreguntaClasificada(categoria, nivelActual);
                     actualizarEstadosVisualesBotonesCategorias();
+
+                    // SI CONT. AUTO ESTÁ ACTIVO, MUESTRA PREGUNTA 3 SEGUNDOS ANTES DEL RELOJ
+                    if (modoAutoConteo) {
+                        setTimeout(() => { controlFlujoCategoria(categoriaSeleccionadaActiva); }, 500);
+                    }
                 });
 
             } else if (pasoFlujoActual === "revelar") {
@@ -679,8 +635,7 @@
                 document.getElementById('opc-c').innerHTML = `<span>C)</span> ${preguntaCargadaEstructura.o[2].substring(3)}`;
                 
                 const barraReloj = document.getElementById('barra-reloj');
-                barraReloj.style.width = '100%';
-                barraReloj.className = 'barra-tiempo';
+                barraReloj.style.width = '100%'; barraReloj.className = 'barra-tiempo';
 
                 document.getElementById('respuesta-tablero-texto').innerText = "R: " + preguntaCargadaEstructura.r;
                 document.getElementById('respuesta-tablero-texto').style.display = "none";
@@ -688,6 +643,11 @@
 
                 if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
                     socketAdmin.send(JSON.stringify({ tipo: 'MOSTRAR_EN_CONTROL', fase: 'revelar', pregunta: preguntaCargadaEstructura.p, opciones: preguntaCargadaEstructura.o }));
+                }
+
+                // SI CONT. AUTO ESTÁ ACTIVO, INICIA EL RELOJ A LOS 3 SEGUNDOS DE LEER
+                if (modoAutoConteo) {
+                    setTimeout(() => { controlFlujoCategoria(categoriaSeleccionadaActiva); }, 3000);
                 }
 
             } else if (pasoFlujoActual === "conteo") {
@@ -703,18 +663,13 @@
                     tiempoRestante--;
                     if (tiempoRestante > 0) { 
                         barraReloj.style.width = (tiempoRestante * 10) + '%';
-                        if(tiempoRestante <= 5 && tiempoRestante > 3) {
-                            barraReloj.classList.add('alerta');
-                        } else if(tiempoRestante <= 3) {
-                            barraReloj.classList.remove('alerta');
-                            barraReloj.classList.add('peligro');
-                        }
+                        if(tiempoRestante <= 5 && tiempoRestante > 3) barraReloj.classList.add('alerta');
+                        else if(tiempoRestante <= 3) { barraReloj.classList.remove('alerta'); barraReloj.classList.add('peligro'); }
                         sonarClickSegundero(tiempoRestante <= 3); 
                     } 
                     else { 
-                        clearInterval(intervaloReloj); 
-                        barraReloj.style.width = '0%';
-                        activarFalloUrgente(); 
+                        clearInterval(intervaloReloj); barraReloj.style.width = '0%'; 
+                        marcarFalloManual(); // Si se acaba el tiempo lanza fallo evaluado
                     }
                 }, 1000);
             }
@@ -730,27 +685,15 @@
                 if (categoriaSeleccionadaActiva === cat) {
                     if (pasoFlujoActual === "revelar") { btn.classList.add('esperando-pregunta'); btn.innerText = "👁️ Mostrar Pregunta"; } 
                     else if (pasoFlujoActual === "conteo") { btn.classList.add('esperando-conteo'); btn.innerText = "⏱️ Iniciar Conteo"; } 
-                    else if (pasoFlujoActual === "bloqueado") { btn.classList.add('desactivado'); }
+                    else if (pasoFlujoActual === "bloqueado" || pasoFlujoActual === "evaluando") { btn.classList.add('desactivado'); }
                 } else { btn.classList.add('desactivado'); }
             });
         }
 
         function liberarYResetearFlujoBotones() { 
             clearInterval(intervaloReloj); pasoFlujoActual = "inicio"; categoriaSeleccionadaActiva = null; actualizarEstadosVisualesBotonesCategorias(); 
-            if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) { 
-                socketAdmin.send(JSON.stringify({ tipo: 'OCULTAR_PREGUNTA' })); 
-            }
+            if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) { socketAdmin.send(JSON.stringify({ tipo: 'OCULTAR_PREGUNTA' })); }
         }
-        
-        function revelarRespuesta() { 
-            if(estaMoviendose || !preguntaCargadaEstructura) return;
-            clearInterval(intervaloReloj); document.getElementById('respuesta-tablero-texto').style.display = "block";
-            const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase(); limpiarIluminacionOpciones();
-            if(letraCorrecta === "A") document.getElementById('opc-a').classList.add('opcion-correcta-iluminada');
-            else if(letraCorrecta === "B") document.getElementById('opc-b').classList.add('opcion-correcta-iluminada');
-            else if(letraCorrecta === "C") document.getElementById('opc-c').classList.add('opcion-correcta-iluminada');
-        }
-        function limpiarIluminacionOpciones() { document.getElementById('opc-a').classList.remove('opcion-correcta-iluminada'); document.getElementById('opc-b').classList.remove('opcion-correcta-iluminada'); document.getElementById('opc-c').classList.remove('opcion-correcta-iluminada'); }
         
         function activarFalloUrgente() {
             if(estaMoviendose || juegoTerminado) return;
@@ -760,24 +703,19 @@
             setTimeout(() => { estaMoviendose = false; liberarYResetearFlujoBotones(); rotarSiguienteTurno(); }, 1800);
         }
 
-        // FUNCION CRÍTICA RESTAURADA (Actualiza las posiciones y avatares en el tablero)
         function actualizarFichas(posicionBrinco, jugadorBrinco) {
             document.querySelectorAll('[id^="fichas-c-"]').forEach(el => el.innerHTML = '');
             for (let j = 1; j <= cantidadJugadoresActual; j++) {
-                const pos = posiciones[j];
-                const contenedor = document.getElementById(`fichas-c-${pos}`);
+                const pos = posiciones[j]; const contenedor = document.getElementById(`fichas-c-${pos}`);
                 if (contenedor) {
-                    const span = document.createElement('span');
-                    span.className = 'avatar-ficha';
-                    span.innerText = avatarJugadores[j];
+                    const span = document.createElement('span'); span.className = 'avatar-ficha'; span.innerText = avatarJugadores[j];
                     if (j === jugadorBrinco && pos === posicionBrinco) span.classList.add('efecto-brinco');
                     contenedor.appendChild(span);
                 }
             }
             document.querySelectorAll('.casilla').forEach(c => c.classList.remove('casilla-activa'));
             if(!juegoTerminado && pasoFlujoActual === "inicio") {
-                const posActual = posiciones[jugadorTurnoActual];
-                const casillaActual = document.getElementById(`casilla-${posActual}`);
+                const posActual = posiciones[jugadorTurnoActual]; const casillaActual = document.getElementById(`casilla-${posActual}`);
                 if(casillaActual) casillaActual.classList.add('casilla-activa');
             }
         }
@@ -794,24 +732,16 @@
                 sonarBrinco(); actualizarFichas(posiciones[jugador], jugador);
                 if (pasoActual === pasosPorDar) {
                     clearInterval(bucleMovimiento); let posFinal = posiciones[jugador];
-                    if (posFinal === 5 || posFinal === 20) {
-                        setTimeout(() => { sonarEfectoEspecial(true); posiciones[jugador] += 3; document.getElementById('anuncio-efecto').innerText = `🚀 ¡COHETE! ${avatarJugadores[jugador]} vuela +3 casillas.`; actualizarFichas(posiciones[jugador], jugador); concluirTurno(jugador, false); }, 400);
-                    } else if (posFinal === 10 || posFinal === 25) {
-                        setTimeout(() => { sonarEfectoEspecial(false); posiciones[jugador] -= 3; document.getElementById('anuncio-efecto').innerText = `💥 ¡TRAMPA! ${avatarJugadores[jugador]} retrocede 3 casillas.`; actualizarFichas(posiciones[jugador], jugador); concluirTurno(jugador, false); }, 400);
-                    } else {
-                        if (posFinal === 15) { document.getElementById('anuncio-efecto').innerText = `🚨 ¡RETO EN VIVO PARA ${nombreJugadores[jugador]}!`; }
-                        concluirTurno(jugador, false); 
-                    }
+                    if (posFinal === 5 || posFinal === 20) { setTimeout(() => { sonarEfectoEspecial(true); posiciones[jugador] += 3; document.getElementById('anuncio-efecto').innerText = `🚀 ¡COHETE! ${avatarJugadores[jugador]} vuela +3 casillas.`; actualizarFichas(posiciones[jugador], jugador); concluirTurno(jugador, false); }, 400); } 
+                    else if (posFinal === 10 || posFinal === 25) { setTimeout(() => { sonarEfectoEspecial(false); posiciones[jugador] -= 3; document.getElementById('anuncio-efecto').innerText = `💥 ¡TRAMPA! ${avatarJugadores[jugador]} retrocede 3 casillas.`; actualizarFichas(posiciones[jugador], jugador); concluirTurno(jugador, false); }, 400); } 
+                    else { if (posFinal === 15) { document.getElementById('anuncio-efecto').innerText = `🚨 ¡RETO EN VIVO PARA ${nombreJugadores[jugador]}!`; } concluirTurno(jugador, false); }
                 }
             }, 280); 
         }
 
         function concluirTurno(jugador, llegoAMeta) {
             estaMoviendose = false;
-            if (llegoAMeta || posiciones[jugador] >= 30) {
-                juegoTerminado = true; document.getElementById('ganador-pantalla').innerText = `🏆 ¡GANÓ EL ${nombreJugadores[jugador]}! 🏆`;
-                document.getElementById('tablero-fisico').classList.add('efecto-victoria'); sonarEfectoEspecial(true); return;
-            }
+            if (llegoAMeta || posiciones[jugador] >= 30) { juegoTerminado = true; document.getElementById('ganador-pantalla').innerText = `🏆 ¡GANÓ EL ${nombreJugadores[jugador]}! 🏆`; document.getElementById('tablero-fisico').classList.add('efecto-victoria'); sonarEfectoEspecial(true); return; }
             liberarYResetearFlujoBotones(); rotarSiguienteTurno();
         }
 
@@ -821,48 +751,23 @@
             document.getElementById('contenedor-pregunta-tablero').style.display = "none"; document.getElementById('contenedor-error-tablero').style.display = "none"; document.getElementById('contenedor-celebracion-tablero').style.display = "none";
         }
 
-        function rotarSiguienteTurno() { 
-            jugadorTurnoActual = (jugadorTurnoActual % cantidadJugadoresActual) + 1; 
-            actualizarVisualTurnoEspera(); 
-            actualizarDificultadVisualPorTurno();
-        }
+        function rotarSiguienteTurno() { jugadorTurnoActual = (jugadorTurnoActual % cantidadJugadoresActual) + 1; actualizarVisualTurnoEspera(); actualizarDificultadVisualPorTurno(); }
         
-        // EL CRUPIER: Saca la carta y guarda el estado en la memoria local
         function obtenerPreguntaClasificada(cat, nivel) { 
             if (!datosClasificados) return { p: "Cargando preguntas...", o: ["A) -", "B) -", "C) -"], r: "A) -" };
             let grupo = datosClasificados[cat][nivel]; 
-            
-            // Si el mazo de esa categoría y dificultad se quedó vacío, lo rellena usando la copia maestra
-            if (!grupo || grupo.length === 0) { 
-                datosClasificados[cat][nivel] = JSON.parse(JSON.stringify(copiaMaestraPreguntas[cat][nivel]));
-                grupo = datosClasificados[cat][nivel];
-            }
-            
-            const rIdx = Math.floor(Math.random() * grupo.length); 
-            // Saca la carta para que no vuelva a salir
-            const preguntaSeleccionada = grupo.splice(rIdx, 1)[0]; 
-            
-            // Actualiza la memoria del navegador inmediatamente
-            localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados));
-            
-            return preguntaSeleccionada; 
+            if (!grupo || grupo.length === 0) { datosClasificados[cat][nivel] = JSON.parse(JSON.stringify(copiaMaestraPreguntas[cat][nivel])); grupo = datosClasificados[cat][nivel]; }
+            const rIdx = Math.floor(Math.random() * grupo.length); const preguntaSeleccionada = grupo.splice(rIdx, 1)[0]; 
+            localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados)); return preguntaSeleccionada; 
         }
         
         function cambiarCantidadJugadores(cant) { 
-            if(estaMoviendose) return; 
-            cantidadJugadoresActual = cant; 
-            document.querySelectorAll('[data-cant]').forEach(btn => btn.classList.remove('active-jugadores')); 
-            document.querySelector(`[data-cant="${cant}"]`).classList.add('active-jugadores'); 
-            document.getElementById('capa-input-j3').style.display = (cant >= 3) ? "flex" : "none"; 
-            document.getElementById('capa-input-j4').style.display = (cant >= 4) ? "flex" : "none"; 
-            
-            if(jugadorTurnoActual > cantidadJugadoresActual) { jugadorTurnoActual = 1; actualizarVisualTurnoEspera(); } 
-            else { actualizarNombresDesdeCampos(); }
+            if(estaMoviendose) return; cantidadJugadoresActual = cant; 
+            document.querySelectorAll('[data-cant]').forEach(btn => btn.classList.remove('active-jugadores')); document.querySelector(`[data-cant="${cant}"]`).classList.add('active-jugadores'); 
+            document.getElementById('capa-input-j3').style.display = (cant >= 3) ? "flex" : "none"; document.getElementById('capa-input-j4').style.display = (cant >= 4) ? "flex" : "none"; 
+            if(jugadorTurnoActual > cantidadJugadoresActual) { jugadorTurnoActual = 1; actualizarVisualTurnoEspera(); } else { actualizarNombresDesdeCampos(); }
             actualizarFichas(null, null);
-
-            if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
-                socketAdmin.send(JSON.stringify({ tipo: 'CAMBIO_TEMATICA', datos: tematicas[tematicaActual], cantidadJugadores: cantidadJugadoresActual }));
-            }
+            if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) { socketAdmin.send(JSON.stringify({ tipo: 'CAMBIO_TEMATICA', datos: tematicas[tematicaActual], cantidadJugadores: cantidadJugadoresActual })); }
         }
         
         function construirTablero() {
@@ -875,18 +780,14 @@
         }
 
         function reiniciarTodo() {
-            if(estaMoviendose) return;
-            posiciones = { 1: 0, 2: 0, 3: 0, 4: 0 }; juegoTerminado = false; dadoNumeroActual = 0; jugadorTurnoActual = 1; preguntaCargadaEstructura = null;
+            if(estaMoviendose) return; posiciones = { 1: 0, 2: 0, 3: 0, 4: 0 }; juegoTerminado = false; dadoNumeroActual = 0; jugadorTurnoActual = 1; preguntaCargadaEstructura = null;
             const panelGanador = document.getElementById('ganador-pantalla'); if (panelGanador) panelGanador.innerText = "";
-            document.getElementById('anuncio-efecto').innerText = ""; limpiarIluminacionOpciones(); construirTablero();
-            actualizarDificultadVisualPorTurno();
+            document.getElementById('anuncio-efecto').innerText = ""; limpiarIluminacionOpciones(); construirTablero(); actualizarDificultadVisualPorTurno();
         }
 
         window.addEventListener('keydown', (e) => { if (document.activeElement.tagName === "INPUT") return; if (e.key === 'r' || e.key === 'R') reiniciarJuegoYControles(); });
         
-        construirTablero(); 
-        cargarPreguntasJSON();
-        conectarConServidorNode();
+        construirTablero(); cargarPreguntasJSON(); conectarConServidorNode();
     </script>
 </body>
 </html>
