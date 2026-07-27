@@ -90,11 +90,13 @@
         
         .btn-revelar { background: #25f4ee; color: #000; border: none; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 6px;}
         .btn-fallo { background: #dc3545; color: white; border: none; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px; box-shadow: 0 0 10px rgba(220,53,69,0.3); }
+        .btn-reset { background: #8a1a1a; color: white; border: 1px solid #ff4444; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 15px; margin-top: 5px; transition: 0.2s;}
+        .btn-reset:hover { background: #ff1744; }
 
-        .estado-conexion { font-size: 11px; font-weight: bold; padding: 4px; margin-bottom: 10px; border-radius: 4px; background: #3a1a1a; color: #ff6666;}
+        .estado-conexion { font-size: 11px; font-weight: bold; padding: 4px; margin-bottom: 5px; border-radius: 4px; background: #3a1a1a; color: #ff6666;}
         .estado-conexion.conectado { background: #1a3a1a; color: #66ff66; }
 
-        /* TABLERO CENTRAL */
+        /* TABLERO CENTRAL RESPONSIVO */
         .tablero-wrapper { 
             flex: 2.2; 
             display: flex; 
@@ -106,11 +108,14 @@
         
         .tablero-monopolio { 
             display: grid; 
-            grid-template-columns: repeat(9, 88px); 
-            grid-template-rows: repeat(7, 88px);    
-            gap: 6px; 
-            background: #111; padding: 15px; border-radius: 16px; border: 5px solid #fe2c55; 
+            grid-template-columns: repeat(9, 1fr); 
+            grid-template-rows: repeat(7, 1fr);    
+            gap: 4px; 
+            background: #111; padding: 10px; border-radius: 12px; border: 3px solid #fe2c55; 
             position: relative; box-shadow: 0 0 25px rgba(254, 44, 85, 0.2); 
+            width: 100%;
+            max-width: 850px;
+            aspect-ratio: 9 / 7; 
         }
 
         .casilla { background: #2a2a2a; border: 1px solid #444; border-radius: 6px; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 14px; font-weight: bold; position: relative; color: #fff; padding: 3px; box-sizing: border-box; }
@@ -187,6 +192,57 @@
         .dado-animado { animation: agitar-dado 0.15s infinite; border-color: #ffc107 !important; box-shadow: 0 0 25px rgba(255,193,7,0.6) !important; }
         #anuncio-efecto { color: #25f4ee; font-weight: bold; font-size: 15px; margin-top: 10px; min-height: 20px; }
         #ganador-pantalla { font-size: 24px; font-weight: bold; color: #ffc107; margin-top: 5px; text-shadow: 0 0 10px rgba(255,193,7,0.5);}
+
+        /* ========================================= */
+        /* ADAPTACIÓN MÓVIL Y RESPONSIVA COMPLETA    */
+        /* ========================================= */
+        
+        /* Ajuste general para apilar los paneles */
+        @media (max-width: 1100px) {
+            .game-container {
+                flex-direction: column; 
+                align-items: center;
+                gap: 15px;
+            }
+            .sidebar, .tablero-wrapper, .sidebar-derecha {
+                width: 100%;
+                max-width: 100%; 
+                max-height: none; 
+                box-sizing: border-box;
+            }
+            
+            /* Ajuste del Panel de Temáticas a cuadrícula para ahorrar espacio vertical */
+            .sidebar-derecha { padding: 15px; flex: none; min-width: auto; }
+            .grid-tematicas {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+            }
+        }
+
+        /* Ajuste fino de textos y elementos internos para pantallas pequeñas (Teléfonos) */
+        @media (max-width: 768px) {
+            .grid-tematicas { grid-template-columns: repeat(2, 1fr); } 
+            
+            .tablero-monopolio { gap: 2px; padding: 5px; border-width: 2px; border-radius: 8px;}
+            .casilla { font-size: 9px; padding: 1px; }
+            .c-salida, .c-meta { font-size: 8px; }
+            .avatar-ficha { font-size: 14px; margin: 1px; }
+            
+            .centro-tablero { padding: 5px; }
+            .titulo-centro { font-size: 16px; margin-top: 0; }
+            .avatar-turno-gigante { font-size: 40px; }
+            .texto-turno-gigante { font-size: 11px; margin-top: 5px; }
+            
+            .dado-gigante { min-width: 60px; padding: 8px; }
+            .dado-val { font-size: 14px; }
+            #dado-numero { font-size: 20px !important; }
+            
+            .txt-pregunta-tablero { font-size: 12px; margin-bottom: 5px; }
+            .opcion-item { font-size: 11px; padding: 5px; }
+            .icono-celebracion { font-size: 40px; }
+            .texto-celebracion-tit { font-size: 16px; }
+        }
     </style>
 </head>
 <body>
@@ -196,6 +252,8 @@
         <!-- SIDEBAR IZQUIERDA -->
         <div class="sidebar">
             <div id="conexion-ws" class="estado-conexion">🔴 Chat Desconectado</div>
+            <!-- BOTÓN DE REINICIO DE PARTIDA -->
+            <button id="btn-reset-global" class="btn-reset" onclick="reiniciarJuegoYControles()">🔄 REINICIAR TABLERO</button>
             
             <div class="seccion-config">
                 <p class="tit-config">NÚMERO DE JUGADORES</p>
@@ -352,7 +410,7 @@
 
         let datosClasificados = null; 
         let copiaMaestraPreguntas = null; 
-        let modoAutoDificultad = false; // VARIABLE DEL NUEVO MODO AUTO
+        let modoAutoDificultad = false; 
 
         const colorCategoriasMapeo = { 'general': 'GENERAL 🔵', 'entretenimiento': 'ENTRE./ARTE 🔴', 'geografia': 'GEOGRAFÍA 🟢', 'ciencia': 'CIENCIA 🟡' };
         const nombresOriginalesBotones = { 'general': 'Conoc. General', 'geografia': 'Geografía / Mundo', 'entretenimiento': 'Entre. / Arte', 'ciencia': 'Ciencia / Nat.' };
@@ -365,16 +423,64 @@
         async function cargarPreguntasJSON() {
             try {
                 const respuesta = await fetch('preguntas.json');
-                datosClasificados = await respuesta.json();
-                copiaMaestraPreguntas = JSON.parse(JSON.stringify(datosClasificados));
-                console.log("📚 Archivo preguntas.json cargado exitosamente. Sistema de mazo activado.");
+                const datosCrudos = await respuesta.json();
+
+                // 1. Preparamos el formato maestro para reinicios
+                copiaMaestraPreguntas = { 
+                    general: {facil:[], medio:[], dificil:[]}, 
+                    geografia: {facil:[], medio:[], dificil:[]}, 
+                    entretenimiento: {facil:[], medio:[], dificil:[]}, 
+                    ciencia: {facil:[], medio:[], dificil:[]} 
+                };
+
+                // 2. Traductor Automático del nuevo formato de lista plana
+                if (Array.isArray(datosCrudos)) {
+                    datosCrudos.forEach(item => {
+                        let cat = item.Categoria.toLowerCase();
+                        let dif = item.Dificultad.toLowerCase();
+                        if (copiaMaestraPreguntas[cat] && copiaMaestraPreguntas[cat][dif]) {
+                            copiaMaestraPreguntas[cat][dif].push({
+                                p: item.Pregunta,
+                                o: [item.OpcionA, item.OpcionB, item.OpcionC],
+                                r: item.Respuesta
+                            });
+                        }
+                    });
+                } else {
+                    copiaMaestraPreguntas = JSON.parse(JSON.stringify(datosCrudos));
+                }
+
+                // 3. Verificamos si hay un mazo a medio jugar guardado en la memoria
+                const mazoGuardado = localStorage.getItem('memoriaMazoTrivia');
+                if (mazoGuardado) {
+                    datosClasificados = JSON.parse(mazoGuardado);
+                    console.log("📚 Mazo recuperado de la memoria. Continuando sin repetir preguntas.");
+                } else {
+                    datosClasificados = JSON.parse(JSON.stringify(copiaMaestraPreguntas));
+                    localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados));
+                    console.log("📚 Nuevo mazo cargado y guardado en memoria.");
+                }
             } catch (error) {
                 console.error("Error al cargar preguntas.json:", error);
-                alert("Error: No se encontró el archivo preguntas.json");
             }
         }
 
-        // LÓGICA BOTÓN MODO AUTOMÁTICO
+        // LÓGICA DE REINICIO DE PARTIDA (Mantiene el mazo guardado intacto)
+        function reiniciarJuegoYControles() {
+            if(confirm("¿Deseas reiniciar las posiciones del tablero y los controles? (El mazo de preguntas no se perderá)")) {
+                reiniciarTodo();
+                document.getElementById('input-j1').value = "";
+                document.getElementById('input-j2').value = "";
+                document.getElementById('input-j3').value = "";
+                document.getElementById('input-j4').value = "";
+                actualizarNombresDesdeCampos(); 
+
+                if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
+                    socketAdmin.send(JSON.stringify({ tipo: 'REINICIAR_JUEGO' }));
+                }
+            }
+        }
+
         function toggleModoAuto() {
             if (estaMoviendose) return;
             modoAutoDificultad = !modoAutoDificultad;
@@ -389,7 +495,6 @@
             }
         }
 
-        // EVALUADOR INDIVIDUAL DE POSICIÓN
         function actualizarDificultadVisualPorTurno() {
             if (!modoAutoDificultad) return;
             const pos = posiciones[jugadorTurnoActual];
@@ -404,8 +509,6 @@
 
         function cambiarNivel(nuevoNivel) { 
             if(estaMoviendose) return; 
-            
-            // Si el Admin decide presionar un botón de dificultad manualmente, el Auto se apaga por respeto.
             if (modoAutoDificultad) {
                 modoAutoDificultad = false;
                 const btn = document.getElementById('btn-modo-auto');
@@ -425,9 +528,7 @@
             document.querySelectorAll('.btn-tematica').forEach(b => b.classList.remove('activa'));
             event.currentTarget.classList.add('activa');
 
-            avatarJugadores = {
-                1: tematicas[tema][1].emoji, 2: tematicas[tema][2].emoji, 3: tematicas[tema][3].emoji, 4: tematicas[tema][4].emoji
-            };
+            avatarJugadores = { 1: tematicas[tema][1].emoji, 2: tematicas[tema][2].emoji, 3: tematicas[tema][3].emoji, 4: tematicas[tema][4].emoji };
 
             actualizarNombresDesdeCampos();
             actualizarFichas(null, null);
@@ -585,16 +686,23 @@
                 document.getElementById('respuesta-tablero-texto').style.display = "none";
                 actualizarEstadosVisualesBotonesCategorias();
 
+                if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
+                    socketAdmin.send(JSON.stringify({ tipo: 'MOSTRAR_EN_CONTROL', fase: 'revelar', pregunta: preguntaCargadaEstructura.p, opciones: preguntaCargadaEstructura.o }));
+                }
+
             } else if (pasoFlujoActual === "conteo") {
                 pasoFlujoActual = "bloqueado"; actualizarEstadosVisualesBotonesCategorias();
                 clearInterval(intervaloReloj); tiempoRestante = 10; 
                 const barraReloj = document.getElementById('barra-reloj');
                 
+                if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
+                    socketAdmin.send(JSON.stringify({ tipo: 'MOSTRAR_EN_CONTROL', fase: 'conteo', tiempo: 10 }));
+                }
+
                 intervaloReloj = setInterval(() => {
                     tiempoRestante--;
                     if (tiempoRestante > 0) { 
                         barraReloj.style.width = (tiempoRestante * 10) + '%';
-                        
                         if(tiempoRestante <= 5 && tiempoRestante > 3) {
                             barraReloj.classList.add('alerta');
                         } else if(tiempoRestante <= 3) {
@@ -627,7 +735,12 @@
             });
         }
 
-        function liberarYResetearFlujoBotones() { clearInterval(intervaloReloj); pasoFlujoActual = "inicio"; categoriaSeleccionadaActiva = null; actualizarEstadosVisualesBotonesCategorias(); }
+        function liberarYResetearFlujoBotones() { 
+            clearInterval(intervaloReloj); pasoFlujoActual = "inicio"; categoriaSeleccionadaActiva = null; actualizarEstadosVisualesBotonesCategorias(); 
+            if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) { 
+                socketAdmin.send(JSON.stringify({ tipo: 'OCULTAR_PREGUNTA' })); 
+            }
+        }
         
         function revelarRespuesta() { 
             if(estaMoviendose || !preguntaCargadaEstructura) return;
@@ -647,6 +760,28 @@
             setTimeout(() => { estaMoviendose = false; liberarYResetearFlujoBotones(); rotarSiguienteTurno(); }, 1800);
         }
 
+        // FUNCION CRÍTICA RESTAURADA (Actualiza las posiciones y avatares en el tablero)
+        function actualizarFichas(posicionBrinco, jugadorBrinco) {
+            document.querySelectorAll('[id^="fichas-c-"]').forEach(el => el.innerHTML = '');
+            for (let j = 1; j <= cantidadJugadoresActual; j++) {
+                const pos = posiciones[j];
+                const contenedor = document.getElementById(`fichas-c-${pos}`);
+                if (contenedor) {
+                    const span = document.createElement('span');
+                    span.className = 'avatar-ficha';
+                    span.innerText = avatarJugadores[j];
+                    if (j === jugadorBrinco && pos === posicionBrinco) span.classList.add('efecto-brinco');
+                    contenedor.appendChild(span);
+                }
+            }
+            document.querySelectorAll('.casilla').forEach(c => c.classList.remove('casilla-activa'));
+            if(!juegoTerminado && pasoFlujoActual === "inicio") {
+                const posActual = posiciones[jugadorTurnoActual];
+                const casillaActual = document.getElementById(`casilla-${posActual}`);
+                if(casillaActual) casillaActual.classList.add('casilla-activa');
+            }
+        }
+
         function aplicarAvance(jugador) {
             if (document.activeElement.tagName === "INPUT" || jugador > cantidadJugadoresActual || juegoTerminado || estaMoviendose) return;
             estaMoviendose = true; let pasosPorDar = dadoNumeroActual || 1; dadoNumeroActual = 0; preguntaCargadaEstructura = null;
@@ -664,9 +799,7 @@
                     } else if (posFinal === 10 || posFinal === 25) {
                         setTimeout(() => { sonarEfectoEspecial(false); posiciones[jugador] -= 3; document.getElementById('anuncio-efecto').innerText = `💥 ¡TRAMPA! ${avatarJugadores[jugador]} retrocede 3 casillas.`; actualizarFichas(posiciones[jugador], jugador); concluirTurno(jugador, false); }, 400);
                     } else {
-                        if (posFinal === 15) {
-                            document.getElementById('anuncio-efecto').innerText = `🚨 ¡RETO EN VIVO PARA ${nombreJugadores[jugador]}!`;
-                        }
+                        if (posFinal === 15) { document.getElementById('anuncio-efecto').innerText = `🚨 ¡RETO EN VIVO PARA ${nombreJugadores[jugador]}!`; }
                         concluirTurno(jugador, false); 
                     }
                 }
@@ -694,18 +827,23 @@
             actualizarDificultadVisualPorTurno();
         }
         
+        // EL CRUPIER: Saca la carta y guarda el estado en la memoria local
         function obtenerPreguntaClasificada(cat, nivel) { 
             if (!datosClasificados) return { p: "Cargando preguntas...", o: ["A) -", "B) -", "C) -"], r: "A) -" };
-            
             let grupo = datosClasificados[cat][nivel]; 
             
+            // Si el mazo de esa categoría y dificultad se quedó vacío, lo rellena usando la copia maestra
             if (!grupo || grupo.length === 0) { 
                 datosClasificados[cat][nivel] = JSON.parse(JSON.stringify(copiaMaestraPreguntas[cat][nivel]));
                 grupo = datosClasificados[cat][nivel];
             }
             
             const rIdx = Math.floor(Math.random() * grupo.length); 
+            // Saca la carta para que no vuelva a salir
             const preguntaSeleccionada = grupo.splice(rIdx, 1)[0]; 
+            
+            // Actualiza la memoria del navegador inmediatamente
+            localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados));
             
             return preguntaSeleccionada; 
         }
@@ -718,12 +856,8 @@
             document.getElementById('capa-input-j3').style.display = (cant >= 3) ? "flex" : "none"; 
             document.getElementById('capa-input-j4').style.display = (cant >= 4) ? "flex" : "none"; 
             
-            if(jugadorTurnoActual > cantidadJugadoresActual) {
-                jugadorTurnoActual = 1;
-                actualizarVisualTurnoEspera();
-            } else {
-                actualizarNombresDesdeCampos();
-            }
+            if(jugadorTurnoActual > cantidadJugadoresActual) { jugadorTurnoActual = 1; actualizarVisualTurnoEspera(); } 
+            else { actualizarNombresDesdeCampos(); }
             actualizarFichas(null, null);
 
             if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
@@ -740,18 +874,6 @@
             actualizarFichas(null, null); liberarYResetearFlujoBotones(); actualizarVisualTurnoEspera();
         }
 
-        function actualizarFichas(casillaResaltar, jugadorMovido) {
-            for(let i=0; i<=30; i++) {
-                let casillaElemento = document.getElementById(`casilla-${i}`); if (casillaElemento) casillaElemento.classList.remove('casilla-activa');
-                let contenedorFichas = document.getElementById(`fichas-c-${i}`); if(contenedorFichas) contenedorFichas.innerHTML = "";
-            }
-            if (casillaResaltar !== null) { let casillaDestino = document.getElementById(`casilla-${casillaResaltar}`); if (casillaDestino) casillaDestino.classList.add('casilla-activa'); }
-            for(let j=1; j<=cantidadJugadoresActual; j++) {
-                let pos = posiciones[j]; let contenedorFichas = document.getElementById(`fichas-c-${pos}`);
-                if (contenedorFichas) { let claseAnimacion = (j === jugadorMovido) ? "avatar-ficha efecto-brinco" : "avatar-ficha"; contenedorFichas.innerHTML += `<span class="${claseAnimacion}">${avatarJugadores[j]}</span>`; }
-            }
-        }
-
         function reiniciarTodo() {
             if(estaMoviendose) return;
             posiciones = { 1: 0, 2: 0, 3: 0, 4: 0 }; juegoTerminado = false; dadoNumeroActual = 0; jugadorTurnoActual = 1; preguntaCargadaEstructura = null;
@@ -760,7 +882,7 @@
             actualizarDificultadVisualPorTurno();
         }
 
-        window.addEventListener('keydown', (e) => { if (document.activeElement.tagName === "INPUT") return; if (e.key === 'r' || e.key === 'R') reiniciarTodo(); });
+        window.addEventListener('keydown', (e) => { if (document.activeElement.tagName === "INPUT") return; if (e.key === 'r' || e.key === 'R') reiniciarJuegoYControles(); });
         
         construirTablero(); 
         cargarPreguntasJSON();
