@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <!-- Evitamos que el teléfono haga zoom nativo para tomar el control nosotros -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Trivia Live - Tablero Principal</title>
     <style>
@@ -12,10 +11,9 @@
             color: white;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* ELIMINA LAS BARRAS DE SCROLL */
+            overflow: hidden; 
         }
 
-        /* Wraper mágico que fuerza el panorama */
         #panorama-wrapper {
             width: 100vw;
             height: 100vh;
@@ -25,31 +23,30 @@
             background-color: #121212;
         }
 
-        /* Tu tablero siempre medirá esto lógicamente, como un monitor PC */
+        /* Medidas ajustadas al milímetro para matar los bordes negros */
         .game-container {
             display: flex;
-            width: 1300px;
-            height: 780px;
+            width: 1220px; 
+            height: 680px; 
             flex-shrink: 0;
-            gap: 15px;
+            gap: 10px; 
             justify-content: center;
             align-items: stretch;
-            /* La escala se inyectará por JS */
         }
 
-        /* PANEL IZQUIERDO */
+        /* PANEL IZQUIERDO MÁS COMPACTO */
         .sidebar {
-            width: 260px; background: #1e1e1e; padding: 15px; border-radius: 12px;
-            border: 2px solid #333; overflow-y: auto; display: flex; flex-direction: column; justify-content: space-between;
+            width: 250px; background: #1e1e1e; padding: 12px; border-radius: 12px;
+            border: 2px solid #333; display: flex; flex-direction: column; justify-content: space-between;
         }
 
-        /* PANEL DERECHO DE TEMÁTICAS */
+        /* PANEL DERECHO DE TEMÁTICAS MÁS COMPACTO */
         .sidebar-derecha {
-            width: 100px; background: #1e1e1e; padding: 12px; border-radius: 12px;
-            border: 2px solid #333; display: flex; flex-direction: column; align-items: center; overflow-y: auto;
+            width: 95px; background: #1e1e1e; padding: 10px; border-radius: 12px;
+            border: 2px solid #333; display: flex; flex-direction: column; align-items: center;
         }
-        .tit-tematica { font-size: 11px; color: #25f4ee; font-weight: bold; margin: 0 0 10px 0; text-transform: uppercase; text-align: center; line-height: 1.3;}
         
+        .tit-tematica { font-size: 11px; color: #25f4ee; font-weight: bold; margin: 0 0 10px 0; text-transform: uppercase; text-align: center; line-height: 1.3;}
         .grid-tematicas { display: flex; flex-direction: column; gap: 8px; width: 100%; }
         
         .btn-tematica {
@@ -61,7 +58,7 @@
         .btn-tematica.activa { border-color: #25f4ee; background: #1a3a3a; box-shadow: 0 0 10px rgba(37, 244, 238, 0.4); }
         .btn-tematica span { display: block; font-size: 9px; color: #aaa; margin-top: 4px; font-weight: bold; letter-spacing: 0.5px;}
 
-        .seccion-config { background: #151515; padding: 8px; border-radius: 8px; border: 1px solid #222; margin-bottom: 12px; }
+        .seccion-config { background: #151515; padding: 8px; border-radius: 8px; border: 1px solid #222; margin-bottom: 8px; }
         .tit-config { font-size: 11px; color: #aaa; font-weight: bold; margin: 0 0 5px 0; text-transform: uppercase;}
         .zona-botones { display: flex; gap: 5px; }
         
@@ -75,9 +72,7 @@
             flex: 1; padding: 8px; font-weight: bold; font-size: 10px; text-transform: uppercase;
             border-radius: 5px; cursor: pointer; border: 1px solid #444; background: #222; color: #888; transition: all 0.3s;
         }
-        .btn-modo-auto.encendido {
-            background: #25f4ee; color: #000; border-color: #fff; box-shadow: 0 0 10px rgba(37,244,238,0.5);
-        }
+        .btn-modo-auto.encendido { background: #25f4ee; color: #000; border-color: #fff; box-shadow: 0 0 10px rgba(37,244,238,0.5); }
 
         .grupo-input-nombre { display: flex; align-items: center; gap: 5px; margin-bottom: 5px; }
         .grupo-input-nombre span { font-size: 13px; min-width: 20px; }
@@ -89,8 +84,8 @@
         }
         .btn-dados-principal:active { transform: scale(0.97); }
 
-        .grid-categorias { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 15px; }
-        .btn-cat { border: none; padding: 14px; font-weight: bold; color: white; border-radius: 6px; cursor: pointer; text-shadow: 1px 1px 2px #000; font-size: 12px; transition: all 0.2s ease; text-transform: uppercase; }
+        .grid-categorias { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 10px; }
+        .btn-cat { border: none; padding: 12px; font-weight: bold; color: white; border-radius: 6px; cursor: pointer; text-shadow: 1px 1px 2px #000; font-size: 11px; transition: all 0.2s ease; text-transform: uppercase; }
         .azul { background: #007bff; } .rojo { background: #dc3545; } .verde { background: #28a745; } .amarillo { background: #ffc107; color: #000; text-shadow: none; }
 
         .btn-cat.esperando-pregunta { background: #25f4ee !important; color: #000 !important; text-shadow: none !important; animation: parpadeo-control 0.8s infinite alternate; font-size: 13px; }
@@ -100,15 +95,15 @@
         @keyframes parpadeo-control { from { box-shadow: 0 0 4px #25f4ee; } to { box-shadow: 0 0 15px #25f4ee; transform: scale(1.02); } }
         
         .btn-revelar { background: #25f4ee; color: #000; border: none; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 6px;}
-        .btn-fallo { background: #dc3545; color: white; border: none; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px; box-shadow: 0 0 10px rgba(220,53,69,0.3); }
-        .btn-reset { background: #8a1a1a; color: white; border: 1px solid #ff4444; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 15px; margin-top: 5px; transition: 0.2s;}
+        .btn-fallo { background: #dc3545; color: white; border: none; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 6px; box-shadow: 0 0 10px rgba(220,53,69,0.3); }
+        .btn-reset { background: #8a1a1a; color: white; border: 1px solid #ff4444; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px; margin-top: 5px; transition: 0.2s;}
         .btn-reset:hover { background: #ff1744; }
 
         .estado-conexion { font-size: 11px; font-weight: bold; padding: 4px; margin-bottom: 5px; border-radius: 4px; background: #3a1a1a; color: #ff6666;}
         .estado-conexion.conectado { background: #1a3a1a; color: #66ff66; }
 
-        /* TABLERO CENTRAL */
-        .tablero-wrapper { width: 880px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+        /* TABLERO CENTRAL REDIMENSIONADO */
+        .tablero-wrapper { width: 850px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 5px; }
         
         .tablero-monopolio { 
             display: grid; grid-template-columns: repeat(9, 1fr); grid-template-rows: repeat(7, 1fr);    
@@ -157,7 +152,6 @@
         .opcion-item { background: #181818; border: 1px solid #333; padding: 8px 12px; border-radius: 6px; font-size: 15px; font-weight: bold; color: #ddd; transition: all 0.3s ease; }
         .opcion-item span { color: #fe2c55; margin-right: 5px; }
 
-        /* EFECTOS DE RESPUESTA VISUALES */
         .opcion-seleccionada { background: #fff !important; color: #000 !important; border-color: #25f4ee !important; box-shadow: 0 0 15px #fff; transform: scale(1.02); }
         .opcion-correcta-iluminada { background: #ffc107 !important; color: #000 !important; border-color: #fff !important; box-shadow: 0 0 15px #ffc107; transform: scale(1.02); animation: parpadeo-respuesta 0.5s infinite alternate; }
         .opcion-correcta-iluminada span { color: #000 !important; }
@@ -189,12 +183,10 @@
         #anuncio-efecto { color: #25f4ee; font-weight: bold; font-size: 15px; margin-top: 10px; min-height: 20px; }
         #ganador-pantalla { font-size: 24px; font-weight: bold; color: #ffc107; margin-top: 5px; text-shadow: 0 0 10px rgba(255,193,7,0.5);}
 
-        /* Se han eliminado todas las @media queries. El escalado lo maneja el JS. */
     </style>
 </head>
 <body>
 
-    <!-- CONTENEDOR PANORAMA: Se encarga de hacer el zoom en pantallas pequeñas -->
     <div id="panorama-wrapper">
         <div class="game-container">
             
@@ -337,27 +329,27 @@
 
     <script>
         // ==========================================
-        // SISTEMA DE PANORAMA AUTOMÁTICO (ZOOM)
+        // SISTEMA DE PANORAMA (CUBRE TODA LA PANTALLA)
         // ==========================================
         function forzarPanorama() {
             const contenedor = document.querySelector('.game-container');
-            const anchoBase = 1300;
-            const altoBase = 800;
+            // Dimensiones súper justas sin márgenes sobrantes
+            const anchoBase = 1220;
+            const altoBase = 680;
             
             const anchoPantalla = window.innerWidth;
             const altoPantalla = window.innerHeight;
             
-            // Calculamos cuánto debemos encogerlo para que entre completo
             const escalaX = anchoPantalla / anchoBase;
             const escalaY = altoPantalla / altoBase;
-            // Elegimos la escala más restrictiva y le damos un 2% de margen respirable
-            const escalaFinal = Math.min(escalaX, escalaY) * 0.98; 
+            
+            // Le quitamos el reductor (*0.98) para que choque exactamente contra los bordes
+            const escalaFinal = Math.min(escalaX, escalaY); 
             
             contenedor.style.transform = `scale(${escalaFinal})`;
             contenedor.style.transformOrigin = 'center center';
         }
 
-        // Aplicamos el escalado al iniciar y al girar la pantalla del celular
         window.addEventListener('resize', forzarPanorama);
         window.addEventListener('orientationchange', () => setTimeout(forzarPanorama, 300));
         forzarPanorama();
