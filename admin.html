@@ -2,40 +2,51 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Evitamos que el teléfono haga zoom nativo para tomar el control nosotros -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Trivia Live - Tablero Principal</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             background-color: #121212;
             color: white;
-            text-align: center;
-            padding: 10px;
             margin: 0;
-            overflow-y: auto; 
-            overflow-x: hidden;
+            padding: 0;
+            overflow: hidden; /* ELIMINA LAS BARRAS DE SCROLL */
         }
 
+        /* Wraper mágico que fuerza el panorama */
+        #panorama-wrapper {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212;
+        }
+
+        /* Tu tablero siempre medirá esto lógicamente, como un monitor PC */
         .game-container {
             display: flex;
-            max-width: 1450px;
-            margin: 10px auto;
-            gap: 20px;
+            width: 1300px;
+            height: 780px;
+            flex-shrink: 0;
+            gap: 15px;
             justify-content: center;
-            align-items: flex-start;
+            align-items: stretch;
+            /* La escala se inyectará por JS */
         }
 
         /* PANEL IZQUIERDO */
         .sidebar {
-            flex: 1; background: #1e1e1e; padding: 15px; border-radius: 12px;
-            border: 2px solid #333; max-width: 280px; max-height: 95vh; overflow-y: auto;
+            width: 260px; background: #1e1e1e; padding: 15px; border-radius: 12px;
+            border: 2px solid #333; overflow-y: auto; display: flex; flex-direction: column; justify-content: space-between;
         }
 
         /* PANEL DERECHO DE TEMÁTICAS */
         .sidebar-derecha {
-            flex: 0.2; background: #1e1e1e; padding: 12px; border-radius: 12px;
-            border: 2px solid #333; min-width: 95px; max-width: 110px; max-height: 95vh;
-            display: flex; flex-direction: column; align-items: center; overflow-y: auto;
+            width: 100px; background: #1e1e1e; padding: 12px; border-radius: 12px;
+            border: 2px solid #333; display: flex; flex-direction: column; align-items: center; overflow-y: auto;
         }
         .tit-tematica { font-size: 11px; color: #25f4ee; font-weight: bold; margin: 0 0 10px 0; text-transform: uppercase; text-align: center; line-height: 1.3;}
         
@@ -96,13 +107,14 @@
         .estado-conexion { font-size: 11px; font-weight: bold; padding: 4px; margin-bottom: 5px; border-radius: 4px; background: #3a1a1a; color: #ff6666;}
         .estado-conexion.conectado { background: #1a3a1a; color: #66ff66; }
 
-        /* TABLERO CENTRAL RESPONSIVO */
-        .tablero-wrapper { flex: 2.2; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 15px; }
+        /* TABLERO CENTRAL */
+        .tablero-wrapper { width: 880px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
         
         .tablero-monopolio { 
             display: grid; grid-template-columns: repeat(9, 1fr); grid-template-rows: repeat(7, 1fr);    
             gap: 4px; background: #111; padding: 10px; border-radius: 12px; border: 3px solid #fe2c55; 
-            position: relative; box-shadow: 0 0 25px rgba(254, 44, 85, 0.2); width: 100%; max-width: 850px; aspect-ratio: 9 / 7; 
+            position: relative; box-shadow: 0 0 25px rgba(254, 44, 85, 0.2); width: 100%; aspect-ratio: 9 / 7; 
+            box-sizing: border-box;
         }
 
         .casilla { background: #2a2a2a; border: 1px solid #444; border-radius: 6px; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 14px; font-weight: bold; position: relative; color: #fff; padding: 3px; box-sizing: border-box; }
@@ -177,212 +189,182 @@
         #anuncio-efecto { color: #25f4ee; font-weight: bold; font-size: 15px; margin-top: 10px; min-height: 20px; }
         #ganador-pantalla { font-size: 24px; font-weight: bold; color: #ffc107; margin-top: 5px; text-shadow: 0 0 10px rgba(255,193,7,0.5);}
 
-        /* ========================================= */
-        /* ADAPTACIÓN MÓVIL (MANTENIENDO COLUMNAS)   */
-        /* ========================================= */
-        
-        @media (max-width: 1100px) {
-            .game-container { gap: 8px; padding: 0 5px; }
-            .sidebar { padding: 10px; max-width: 200px; }
-            .sidebar-derecha { padding: 10px; min-width: 80px; max-width: 90px; }
-        }
-
-        @media (max-width: 768px) {
-            .game-container { gap: 3px; padding: 2px; align-items: stretch; }
-            
-            /* Panel Izquierdo */
-            .sidebar { max-width: 110px; padding: 4px; border-radius: 6px; }
-            .tit-config { font-size: 8px; margin-bottom: 3px; }
-            .btn-config { padding: 4px 2px; font-size: 7px; }
-            .btn-modo-auto { padding: 4px 2px; font-size: 7px; margin-top: 3px; }
-            .grupo-input-nombre { flex-direction: column; gap: 1px; margin-bottom: 4px; }
-            .grupo-input-nombre span { font-size: 9px; }
-            .input-nombre-jug { font-size: 9px; padding: 2px; }
-            .btn-dados-principal { padding: 6px; font-size: 8px; margin-bottom: 6px; }
-            .grid-categorias { gap: 4px; margin-bottom: 8px; }
-            .btn-cat { padding: 6px 2px; font-size: 7px; border-radius: 4px; }
-            .btn-revelar, .btn-fallo, .btn-reset { padding: 6px; font-size: 8px; margin-bottom: 4px; }
-            .estado-conexion { font-size: 8px; padding: 3px; margin-bottom: 4px; }
-
-            /* Panel Derecho */
-            .sidebar-derecha { max-width: 65px; padding: 4px; border-radius: 6px; min-width: 50px; }
-            .tit-tematica { font-size: 7px; margin-bottom: 6px; line-height: 1.1; }
-            .btn-tematica { font-size: 14px; padding: 4px 1px; border-radius: 4px; }
-            .btn-tematica span { font-size: 6px; margin-top: 2px; }
-
-            /* Tablero Central */
-            .tablero-wrapper { padding-top: 0; }
-            .tablero-monopolio { gap: 2px; padding: 4px; border-width: 2px; border-radius: 8px; }
-            .casilla { font-size: 7px; padding: 1px; border-radius: 3px; }
-            .c-salida, .c-meta { font-size: 6px; border-width: 1px; }
-            .avatar-ficha { font-size: 11px; margin: 0; }
-            
-            .centro-tablero { padding: 4px; }
-            .titulo-centro { font-size: 14px; margin-top: 0; }
-            .btn-audio-directo { font-size: 7px; padding: 4px 6px; }
-            .marcador-turno-actual { font-size: 8px; padding: 4px 8px; margin-bottom: 2px; border-width: 1px; }
-            
-            .avatar-turno-gigante { font-size: 35px; }
-            .texto-turno-gigante { font-size: 9px; margin-top: 2px; }
-            
-            .dado-gigante { min-width: 45px; padding: 5px; border-width: 2px; border-radius: 6px; }
-            .dado-tit { font-size: 6px; margin-bottom: 2px; }
-            .dado-val { font-size: 9px; }
-            #dado-numero { font-size: 16px !important; }
-            
-            .pregunta-proyectada { padding: 6px; border-width: 1px; border-radius: 6px; }
-            .txt-pregunta-tablero { font-size: 9px; margin-bottom: 4px; line-height: 1.2; }
-            .bloque-opciones-tablero { gap: 3px; margin-bottom: 4px; }
-            .opcion-item { font-size: 8px; padding: 4px; border-radius: 4px; border-width: 1px; }
-            .contenedor-barra-tiempo { height: 10px; border-width: 1px; margin: 4px 0; border-radius: 6px; }
-            .txt-respuesta-tablero { font-size: 10px; margin-top: 4px; }
-            
-            .icono-celebracion, .carita-triste { font-size: 30px; }
-            .texto-celebracion-tit, .texto-error-tit { font-size: 10px; margin-top: 4px; }
-            
-            #anuncio-efecto { font-size: 8px; margin-top: 4px; min-height: 12px; }
-            #ganador-pantalla { font-size: 12px; margin-top: 3px; }
-        }
+        /* Se han eliminado todas las @media queries. El escalado lo maneja el JS. */
     </style>
 </head>
 <body>
 
-    <div class="game-container">
-        
-        <!-- SIDEBAR IZQUIERDA -->
-        <div class="sidebar">
-            <div id="conexion-ws" class="estado-conexion">🔴 Chat Desconectado</div>
-            <button id="btn-reset-global" class="btn-reset" onclick="reiniciarJuegoYControles()">🔄 REINICIAR TABLERO</button>
+    <!-- CONTENEDOR PANORAMA: Se encarga de hacer el zoom en pantallas pequeñas -->
+    <div id="panorama-wrapper">
+        <div class="game-container">
             
-            <div class="seccion-config">
-                <p class="tit-config">NÚMERO DE JUGADORES</p>
-                <div class="zona-botones">
-                    <button class="btn-config active-jugadores" data-cant="2" onclick="cambiarCantidadJugadores(2)">2 JUGS</button>
-                    <button class="btn-config" data-cant="3" onclick="cambiarCantidadJugadores(3)">3 JUGS</button>
-                    <button class="btn-config" data-cant="4" onclick="cambiarCantidadJugadores(4)">4 JUGS</button>
-                </div>
-            </div>
-
-            <div class="seccion-config">
-                <p class="tit-config">JUGADORES ASIGNADOS</p>
-                <div class="grupo-input-nombre">
-                    <span id="span-j1">Alien👽</span><input type="text" id="input-j1" class="input-nombre-jug" value="" placeholder="CHAT" oninput="actualizarNombresDesdeCampos()">
-                </div>
-                <div class="grupo-input-nombre">
-                    <span id="span-j2">Robot🤖</span><input type="text" id="input-j2" class="input-nombre-jug" value="" placeholder="CREADOR" oninput="actualizarNombresDesdeCampos()">
-                </div>
-                <div class="grupo-input-nombre" id="capa-input-j3" style="display: none;">
-                    <span id="span-j3">Zorro🦊</span><input type="text" id="input-j3" class="input-nombre-jug" value="" placeholder="MODERADOR" oninput="actualizarNombresDesdeCampos()">
-                </div>
-                <div class="grupo-input-nombre" id="capa-input-j4" style="display: none;">
-                    <span id="span-j4">Unic.🦄</span><input type="text" id="input-j4" class="input-nombre-jug" value="" placeholder="INVITADO" oninput="actualizarNombresDesdeCampos()">
-                </div>
-            </div>
-
-            <div class="seccion-config">
-                <p class="tit-config">DIFICULTAD PREGUNTAS</p>
-                <div class="zona-botones">
-                    <button class="btn-config active" data-nivel="facil" onclick="cambiarNivel('facil')">🟢 FÁCIL</button>
-                    <button class="btn-config" data-nivel="medio" onclick="cambiarNivel('medio')">🟡 MEDIO</button>
-                    <button class="btn-config" data-nivel="dificil" onclick="cambiarNivel('dificil')">🔴 DIFÍCIL</button>
-                </div>
-                <div style="display: flex; gap: 5px; margin-top: 6px;">
-                    <button id="btn-modo-auto" class="btn-modo-auto" onclick="toggleModoAuto()">⚙️ DIF. AUTO</button>
-                    <button id="btn-auto-conteo" class="btn-modo-auto" onclick="toggleAutoConteo()">⏱️ CONT. AUTO</button>
-                </div>
-            </div>
-
-            <button class="btn-dados-principal" onclick="tirarDadosAzar()">🎲 Tirar Dados al Azar</button>
-
-            <p style="font-size: 11px; color: #888; font-weight: bold; margin-bottom: 8px;">O SELECCIONAR CATEGORÍA MANUAL</p>
-            <div class="grid-categorias">
-                <button id="btn-cat-general" class="btn-cat azul" onclick="controlFlujoCategoria('general')">Conoc. General</button>
-                <button id="btn-cat-geografia" class="btn-cat verde" onclick="controlFlujoCategoria('geografia')">Geografía / Mundo</button>
-                <button id="btn-cat-entretenimiento" class="btn-cat rojo" onclick="controlFlujoCategoria('entretenimiento')">Entre. / Arte</button>
-                <button id="btn-cat-ciencia" class="btn-cat amarillo" onclick="controlFlujoCategoria('ciencia')">Ciencia / Nat.</button>
-            </div>
-
-            <button class="btn-revelar" onclick="marcarFalloManual()">❌ Incorrecto / No Contestó</button>
-        </div>
-
-        <!-- TABLERO CENTRAL -->
-        <div class="tablero-wrapper">
-            <div class="tablero-monopolio" id="tablero-fisico">
-                <div class="centro-tablero">
-                    <div class="titulo-centro">🎙️ TRIVIA LIVE 🎙️</div>
-                    <div class="zona-controles-musicales">
-                        <button id="btn-musica-id" class="btn-audio-directo muteada" onclick="conmutarMusicaAmbiente()">🎵 Ritmo Interactivo: APAGADO</button>
-                    </div>
-
-                    <div class="marcador-turno-actual">TURNO DE: <span id="nombre-turno-marcador">CHAT 👽</span></div>
-
-                    <div class="zona-dinamica-centro">
-                        <div class="contenedor-espera-turno" id="contenedor-espera-tablero">
-                            <div class="avatar-turno-gigante" id="avatar-turno-pantalla">👽</div>
-                            <div class="texto-turno-gigante" id="texto-turno-pantalla">TU TURNO</div>
-                        </div>
-
-                        <div class="zona-dados-centro" id="contenedor-dados-tablero">
-                            <div class="dado-gigante">
-                                <div class="dado-tit">🎨 Categoría</div>
-                                <div id="dado-color" class="dado-val">-</div>
-                            </div>
-                            <div class="dado-gigante">
-                                <div class="dado-tit">🎲 Pasos</div>
-                                <div id="dado-numero" class="dado-val" style="font-size: 40px; color: #25f4ee;">-</div>
-                            </div>
-                        </div>
-
-                        <div class="pregunta-proyectada" id="contenedor-pregunta-tablero">
-                            <div class="txt-pregunta-tablero" id="pregunta-tablero-texto">¿Pregunta?</div>
-                            <div class="bloque-opciones-tablero">
-                                <div class="opcion-item" id="opc-a"><span>A)</span> -</div>
-                                <div class="opcion-item" id="opc-b"><span>B)</span> -</div>
-                                <div class="opcion-item" id="opc-c"><span>C)</span> -</div>
-                            </div>
-                            
-                            <div class="contenedor-barra-tiempo">
-                                <div class="barra-tiempo" id="barra-reloj"></div>
-                            </div>
-
-                            <div class="txt-respuesta-tablero" id="respuesta-tablero-texto">R: Respuesta</div>
-                        </div>
-
-                        <div class="contenedor-error-centro" id="contenedor-error-tablero">
-                            <div class="carita-triste">😭</div>
-                            <div class="texto-error-tit">¡Respuesta Incorrecta!</div>
-                        </div>
-
-                        <div class="contenedor-celebracion-centro" id="contenedor-celebracion-tablero">
-                            <div class="icono-celebracion">🤩✨🎉</div>
-                            <div class="texto-celebracion-tit">¡AVANZA! 🔥</div>
+            <!-- SIDEBAR IZQUIERDA -->
+            <div class="sidebar">
+                <div>
+                    <div id="conexion-ws" class="estado-conexion">🔴 Chat Desconectado</div>
+                    <button id="btn-reset-global" class="btn-reset" onclick="reiniciarJuegoYControles()">🔄 REINICIAR TABLERO</button>
+                    
+                    <div class="seccion-config">
+                        <p class="tit-config">NÚMERO DE JUGADORES</p>
+                        <div class="zona-botones">
+                            <button class="btn-config active-jugadores" data-cant="2" onclick="cambiarCantidadJugadores(2)">2 JUGS</button>
+                            <button class="btn-config" data-cant="3" onclick="cambiarCantidadJugadores(3)">3 JUGS</button>
+                            <button class="btn-config" data-cant="4" onclick="cambiarCantidadJugadores(4)">4 JUGS</button>
                         </div>
                     </div>
 
-                    <div id="anuncio-efecto"></div>
-                    <div id="ganador-pantalla"></div>
+                    <div class="seccion-config">
+                        <p class="tit-config">JUGADORES ASIGNADOS</p>
+                        <div class="grupo-input-nombre">
+                            <span id="span-j1">Alien👽</span><input type="text" id="input-j1" class="input-nombre-jug" value="" placeholder="CHAT" oninput="actualizarNombresDesdeCampos()">
+                        </div>
+                        <div class="grupo-input-nombre">
+                            <span id="span-j2">Robot🤖</span><input type="text" id="input-j2" class="input-nombre-jug" value="" placeholder="CREADOR" oninput="actualizarNombresDesdeCampos()">
+                        </div>
+                        <div class="grupo-input-nombre" id="capa-input-j3" style="display: none;">
+                            <span id="span-j3">Zorro🦊</span><input type="text" id="input-j3" class="input-nombre-jug" value="" placeholder="MODERADOR" oninput="actualizarNombresDesdeCampos()">
+                        </div>
+                        <div class="grupo-input-nombre" id="capa-input-j4" style="display: none;">
+                            <span id="span-j4">Unic.🦄</span><input type="text" id="input-j4" class="input-nombre-jug" value="" placeholder="INVITADO" oninput="actualizarNombresDesdeCampos()">
+                        </div>
+                    </div>
+
+                    <div class="seccion-config">
+                        <p class="tit-config">DIFICULTAD PREGUNTAS</p>
+                        <div class="zona-botones">
+                            <button class="btn-config active" data-nivel="facil" onclick="cambiarNivel('facil')">🟢 FÁCIL</button>
+                            <button class="btn-config" data-nivel="medio" onclick="cambiarNivel('medio')">🟡 MEDIO</button>
+                            <button class="btn-config" data-nivel="dificil" onclick="cambiarNivel('dificil')">🔴 DIFÍCIL</button>
+                        </div>
+                        <div style="display: flex; gap: 5px; margin-top: 6px;">
+                            <button id="btn-modo-auto" class="btn-modo-auto" onclick="toggleModoAuto()">⚙️ DIF. AUTO</button>
+                            <button id="btn-auto-conteo" class="btn-modo-auto" onclick="toggleAutoConteo()">⏱️ CONT. AUTO</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn-dados-principal" onclick="tirarDadosAzar()">🎲 Tirar Dados al Azar</button>
+                    <p style="font-size: 11px; color: #888; font-weight: bold; margin-bottom: 8px;">O SELECCIONAR CATEGORÍA MANUAL</p>
+                    <div class="grid-categorias">
+                        <button id="btn-cat-general" class="btn-cat azul" onclick="controlFlujoCategoria('general')">Conoc. General</button>
+                        <button id="btn-cat-geografia" class="btn-cat verde" onclick="controlFlujoCategoria('geografia')">Geografía / Mundo</button>
+                        <button id="btn-cat-entretenimiento" class="btn-cat rojo" onclick="controlFlujoCategoria('entretenimiento')">Entre. / Arte</button>
+                        <button id="btn-cat-ciencia" class="btn-cat amarillo" onclick="controlFlujoCategoria('ciencia')">Ciencia / Nat.</button>
+                    </div>
+
+                    <button class="btn-revelar" onclick="marcarFalloManual()">❌ Incorrecto / No Contestó</button>
                 </div>
             </div>
-        </div>
 
-        <!-- SIDEBAR DERECHA: TEMÁTICAS -->
-        <div class="sidebar-derecha">
-            <p class="tit-tematica">TEMÁTICA<br>DE AVATARES</p>
-            <div class="grid-tematicas">
-                <button class="btn-tematica activa" onclick="cambiarTematica('clasica')" title="Clásica">👽🤖<br><span>CLÁSICA</span></button>
-                <button class="btn-tematica" onclick="cambiarTematica('animales')" title="Animales">🐶🐱<br><span>ANIMALES</span></button>
-                <button class="btn-tematica" onclick="cambiarTematica('musica')" title="Música">🎙️🎸<br><span>MÚSICA</span></button>
-                <button class="btn-tematica" onclick="cambiarTematica('fitness')" title="Fitness">🍏🥑<br><span>FITNESS</span></button>
-                <button class="btn-tematica" onclick="cambiarTematica('dulces')" title="Dulces">🍦🍩<br><span>DULCES</span></button>
-                <button class="btn-tematica" onclick="cambiarTematica('deportes')" title="Deportes">⚽🏀<br><span>DEPORTES</span></button>
-                <button class="btn-tematica" onclick="cambiarTematica('espacio')" title="Espacio">🚀🛸<br><span>ESPACIO</span></button>
-                <button class="btn-tematica" onclick="cambiarTematica('terror')" title="Terror">👻💀<br><span>TERROR</span></button>
+            <!-- TABLERO CENTRAL -->
+            <div class="tablero-wrapper">
+                <div class="tablero-monopolio" id="tablero-fisico">
+                    <div class="centro-tablero">
+                        <div class="titulo-centro">🎙️ TRIVIA LIVE 🎙️</div>
+                        <div class="zona-controles-musicales">
+                            <button id="btn-musica-id" class="btn-audio-directo muteada" onclick="conmutarMusicaAmbiente()">🎵 Ritmo Interactivo: APAGADO</button>
+                        </div>
+
+                        <div class="marcador-turno-actual">TURNO DE: <span id="nombre-turno-marcador">CHAT 👽</span></div>
+
+                        <div class="zona-dinamica-centro">
+                            <div class="contenedor-espera-turno" id="contenedor-espera-tablero">
+                                <div class="avatar-turno-gigante" id="avatar-turno-pantalla">👽</div>
+                                <div class="texto-turno-gigante" id="texto-turno-pantalla">TU TURNO</div>
+                            </div>
+
+                            <div class="zona-dados-centro" id="contenedor-dados-tablero">
+                                <div class="dado-gigante">
+                                    <div class="dado-tit">🎨 Categoría</div>
+                                    <div id="dado-color" class="dado-val">-</div>
+                                </div>
+                                <div class="dado-gigante">
+                                    <div class="dado-tit">🎲 Pasos</div>
+                                    <div id="dado-numero" class="dado-val" style="font-size: 40px; color: #25f4ee;">-</div>
+                                </div>
+                            </div>
+
+                            <div class="pregunta-proyectada" id="contenedor-pregunta-tablero">
+                                <div class="txt-pregunta-tablero" id="pregunta-tablero-texto">¿Pregunta?</div>
+                                <div class="bloque-opciones-tablero">
+                                    <div class="opcion-item" id="opc-a"><span>A)</span> -</div>
+                                    <div class="opcion-item" id="opc-b"><span>B)</span> -</div>
+                                    <div class="opcion-item" id="opc-c"><span>C)</span> -</div>
+                                </div>
+                                
+                                <div class="contenedor-barra-tiempo">
+                                    <div class="barra-tiempo" id="barra-reloj"></div>
+                                </div>
+
+                                <div class="txt-respuesta-tablero" id="respuesta-tablero-texto">R: Respuesta</div>
+                            </div>
+
+                            <div class="contenedor-error-centro" id="contenedor-error-tablero">
+                                <div class="carita-triste">😭</div>
+                                <div class="texto-error-tit">¡Respuesta Incorrecta!</div>
+                            </div>
+
+                            <div class="contenedor-celebracion-centro" id="contenedor-celebracion-tablero">
+                                <div class="icono-celebracion">🤩✨🎉</div>
+                                <div class="texto-celebracion-tit">¡AVANZA! 🔥</div>
+                            </div>
+                        </div>
+
+                        <div id="anuncio-efecto"></div>
+                        <div id="ganador-pantalla"></div>
+                    </div>
+                </div>
             </div>
-        </div>
 
+            <!-- SIDEBAR DERECHA: TEMÁTICAS -->
+            <div class="sidebar-derecha">
+                <p class="tit-tematica">TEMÁTICA<br>DE AVATARES</p>
+                <div class="grid-tematicas">
+                    <button class="btn-tematica activa" onclick="cambiarTematica('clasica')" title="Clásica">👽🤖<br><span>CLÁSICA</span></button>
+                    <button class="btn-tematica" onclick="cambiarTematica('animales')" title="Animales">🐶🐱<br><span>ANIMALES</span></button>
+                    <button class="btn-tematica" onclick="cambiarTematica('musica')" title="Música">🎙️🎸<br><span>MÚSICA</span></button>
+                    <button class="btn-tematica" onclick="cambiarTematica('fitness')" title="Fitness">🍏🥑<br><span>FITNESS</span></button>
+                    <button class="btn-tematica" onclick="cambiarTematica('dulces')" title="Dulces">🍦🍩<br><span>DULCES</span></button>
+                    <button class="btn-tematica" onclick="cambiarTematica('deportes')" title="Deportes">⚽🏀<br><span>DEPORTES</span></button>
+                    <button class="btn-tematica" onclick="cambiarTematica('espacio')" title="Espacio">🚀🛸<br><span>ESPACIO</span></button>
+                    <button class="btn-tematica" onclick="cambiarTematica('terror')" title="Terror">👻💀<br><span>TERROR</span></button>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <script>
+        // ==========================================
+        // SISTEMA DE PANORAMA AUTOMÁTICO (ZOOM)
+        // ==========================================
+        function forzarPanorama() {
+            const contenedor = document.querySelector('.game-container');
+            const anchoBase = 1300;
+            const altoBase = 800;
+            
+            const anchoPantalla = window.innerWidth;
+            const altoPantalla = window.innerHeight;
+            
+            // Calculamos cuánto debemos encogerlo para que entre completo
+            const escalaX = anchoPantalla / anchoBase;
+            const escalaY = altoPantalla / altoBase;
+            // Elegimos la escala más restrictiva y le damos un 2% de margen respirable
+            const escalaFinal = Math.min(escalaX, escalaY) * 0.98; 
+            
+            contenedor.style.transform = `scale(${escalaFinal})`;
+            contenedor.style.transformOrigin = 'center center';
+        }
+
+        // Aplicamos el escalado al iniciar y al girar la pantalla del celular
+        window.addEventListener('resize', forzarPanorama);
+        window.addEventListener('orientationchange', () => setTimeout(forzarPanorama, 300));
+        forzarPanorama();
+
+        // ==========================================
+        // LÓGICA DEL JUEGO
+        // ==========================================
         const rutaTablero = [
             { r: 7, c: 1, tipo: "c-salida", txt: "SALIDA" }, { r: 6, c: 1, tipo: "c-azul", txt: "1" }, { r: 5, c: 1, tipo: "c-rojo", txt: "2" }, { r: 4, c: 1, tipo: "c-verde", txt: "3" },
             { r: 3, c: 1, tipo: "c-amarillo", txt: "4" }, { r: 2, c: 1, tipo: "c-avanza", txt: "🚀 +3" }, { r: 1, c: 1, tipo: "c-azul", txt: "6" }, { r: 1, c: 2, tipo: "c-rojo", txt: "7" },
