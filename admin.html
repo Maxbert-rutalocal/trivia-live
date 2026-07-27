@@ -252,8 +252,8 @@
         <!-- SIDEBAR IZQUIERDA -->
         <div class="sidebar">
             <div id="conexion-ws" class="estado-conexion">🔴 Chat Desconectado</div>
-            <!-- NUEVO BOTÓN DE REINICIO GLOBAL -->
-            <button id="btn-reset-global" class="btn-reset" onclick="reiniciarJuegoYControles()">🔄 REINICIAR TODO</button>
+            <!-- BOTÓN DE REINICIO DE PARTIDA -->
+            <button id="btn-reset-global" class="btn-reset" onclick="reiniciarJuegoYControles()">🔄 REINICIAR TABLERO</button>
             
             <div class="seccion-config">
                 <p class="tit-config">NÚMERO DE JUGADORES</p>
@@ -423,17 +423,51 @@
         async function cargarPreguntasJSON() {
             try {
                 const respuesta = await fetch('preguntas.json');
-                datosClasificados = await respuesta.json();
-                copiaMaestraPreguntas = JSON.parse(JSON.stringify(datosClasificados));
-                console.log("📚 Archivo preguntas.json cargado exitosamente.");
+                const datosCrudos = await respuesta.json();
+
+                // 1. Preparamos el formato maestro para reinicios
+                copiaMaestraPreguntas = { 
+                    general: {facil:[], medio:[], dificil:[]}, 
+                    geografia: {facil:[], medio:[], dificil:[]}, 
+                    entretenimiento: {facil:[], medio:[], dificil:[]}, 
+                    ciencia: {facil:[], medio:[], dificil:[]} 
+                };
+
+                // 2. Traductor Automático del nuevo formato de lista plana
+                if (Array.isArray(datosCrudos)) {
+                    datosCrudos.forEach(item => {
+                        let cat = item.Categoria.toLowerCase();
+                        let dif = item.Dificultad.toLowerCase();
+                        if (copiaMaestraPreguntas[cat] && copiaMaestraPreguntas[cat][dif]) {
+                            copiaMaestraPreguntas[cat][dif].push({
+                                p: item.Pregunta,
+                                o: [item.OpcionA, item.OpcionB, item.OpcionC],
+                                r: item.Respuesta
+                            });
+                        }
+                    });
+                } else {
+                    copiaMaestraPreguntas = JSON.parse(JSON.stringify(datosCrudos));
+                }
+
+                // 3. Verificamos si hay un mazo a medio jugar guardado en la memoria
+                const mazoGuardado = localStorage.getItem('memoriaMazoTrivia');
+                if (mazoGuardado) {
+                    datosClasificados = JSON.parse(mazoGuardado);
+                    console.log("📚 Mazo recuperado de la memoria. Continuando sin repetir preguntas.");
+                } else {
+                    datosClasificados = JSON.parse(JSON.stringify(copiaMaestraPreguntas));
+                    localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados));
+                    console.log("📚 Nuevo mazo cargado y guardado en memoria.");
+                }
             } catch (error) {
                 console.error("Error al cargar preguntas.json:", error);
             }
         }
 
-        // LÓGICA DE REINICIO GLOBAL
+        // LÓGICA DE REINICIO DE PARTIDA (Mantiene el mazo guardado intacto)
         function reiniciarJuegoYControles() {
-            if(confirm("¿Estás seguro de que deseas reiniciar TODO el juego y expulsar a los jugadores actuales de sus controles?")) {
+            if(confirm("¿Deseas reiniciar las posiciones del tablero y los controles? (El mazo de preguntas no se perderá)")) {
                 reiniciarTodo();
                 document.getElementById('input-j1').value = "";
                 document.getElementById('input-j2').value = "";
@@ -669,12 +703,18 @@
                     tiempoRestante--;
                     if (tiempoRestante > 0) { 
                         barraReloj.style.width = (tiempoRestante * 10) + '%';
-                        if(tiempoRestante <= 5 && tiempoRestante > 3) barraReloj.classList.add('alerta');
-                        else if(tiempoRestante <= 3) { barraReloj.classList.remove('alerta'); barraReloj.classList.add('peligro'); }
+                        if(tiempoRestante <= 5 && tiempoRestante > 3) {
+                            barraReloj.classList.add('alerta');
+                        } else if(tiempoRestante <= 3) {
+                            barraReloj.classList.remove('alerta');
+                            barraReloj.classList.add('peligro');
+                        }
                         sonarClickSegundero(tiempoRestante <= 3); 
                     } 
                     else { 
-                        clearInterval(intervaloReloj); barraReloj.style.width = '0%'; activarFalloUrgente(); 
+                        clearInterval(intervaloReloj); 
+                        barraReloj.style.width = '0%';
+                        activarFalloUrgente(); 
                     }
                 }, 1000);
             }
@@ -718,6 +758,28 @@
             document.getElementById('contenedor-pregunta-tablero').style.display = "none"; document.getElementById('contenedor-error-tablero').style.display = "block";
             sonarFalloCritico(); dadoNumeroActual = 0; preguntaCargadaEstructura = null; estaMoviendose = true; 
             setTimeout(() => { estaMoviendose = false; liberarYResetearFlujoBotones(); rotarSiguienteTurno(); }, 1800);
+        }
+
+        // FUNCION CRÍTICA RESTAURADA (Actualiza las posiciones y avatares en el tablero)
+        function actualizarFichas(posicionBrinco, jugadorBrinco) {
+            document.querySelectorAll('[id^="fichas-c-"]').forEach(el => el.innerHTML = '');
+            for (let j = 1; j <= cantidadJugadoresActual; j++) {
+                const pos = posiciones[j];
+                const contenedor = document.getElementById(`fichas-c-${pos}`);
+                if (contenedor) {
+                    const span = document.createElement('span');
+                    span.className = 'avatar-ficha';
+                    span.innerText = avatarJugadores[j];
+                    if (j === jugadorBrinco && pos === posicionBrinco) span.classList.add('efecto-brinco');
+                    contenedor.appendChild(span);
+                }
+            }
+            document.querySelectorAll('.casilla').forEach(c => c.classList.remove('casilla-activa'));
+            if(!juegoTerminado && pasoFlujoActual === "inicio") {
+                const posActual = posiciones[jugadorTurnoActual];
+                const casillaActual = document.getElementById(`casilla-${posActual}`);
+                if(casillaActual) casillaActual.classList.add('casilla-activa');
+            }
         }
 
         function aplicarAvance(jugador) {
@@ -765,15 +827,24 @@
             actualizarDificultadVisualPorTurno();
         }
         
+        // EL CRUPIER: Saca la carta y guarda el estado en la memoria local
         function obtenerPreguntaClasificada(cat, nivel) { 
             if (!datosClasificados) return { p: "Cargando preguntas...", o: ["A) -", "B) -", "C) -"], r: "A) -" };
             let grupo = datosClasificados[cat][nivel]; 
+            
+            // Si el mazo de esa categoría y dificultad se quedó vacío, lo rellena usando la copia maestra
             if (!grupo || grupo.length === 0) { 
                 datosClasificados[cat][nivel] = JSON.parse(JSON.stringify(copiaMaestraPreguntas[cat][nivel]));
                 grupo = datosClasificados[cat][nivel];
             }
+            
             const rIdx = Math.floor(Math.random() * grupo.length); 
+            // Saca la carta para que no vuelva a salir
             const preguntaSeleccionada = grupo.splice(rIdx, 1)[0]; 
+            
+            // Actualiza la memoria del navegador inmediatamente
+            localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados));
+            
             return preguntaSeleccionada; 
         }
         
