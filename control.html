@@ -221,9 +221,17 @@
             }
         }
 
+        // AQUÍ ESTÁ EL REFUERZO DE SEGURIDAD. Ahora el control manda su 'credencial' de Avatar.
         function enviarRespuesta(opcion) {
             const usernameInput = document.getElementById('username').value.trim();
-            if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify({ tipo: 'RESPUESTA_CHAT', usuario: usernameInput, opcion: opcion }));
+            if (ws.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({ 
+                    tipo: 'RESPUESTA_CHAT', 
+                    usuario: usernameInput, 
+                    avatar: avatarElegidoGlobal, 
+                    opcion: opcion 
+                }));
+            }
         }
 
         conectarWebSocket(); 

@@ -459,13 +459,19 @@
                     else if (avElegido === td[4].id && cantidadJugadoresActual >= 4) { document.getElementById('input-j4').value = datos.usuario; }
                     actualizarNombresDesdeCampos();
                 }
+                
+                // AQUÍ ESTÁ LA CORRECCIÓN DEL FILTRO ANTI-SABOTAJE
                 if (datos.tipo === 'RESPUESTA_CHAT' && pasoFlujoActual === "bloqueado" && !estaMoviendose) {
-                    const nombreTurnoActual = nombreJugadores[jugadorTurnoActual].split(' ')[0].trim().toUpperCase();
+                    const defNames = ["", "CHAT", "CREADOR", "MODERADOR", "INVITADO"];
+                    let nombreAceptado = document.getElementById('input-j' + jugadorTurnoActual).value.trim().toUpperCase();
+                    if (nombreAceptado === "") nombreAceptado = defNames[jugadorTurnoActual];
+
                     const nombreRemitente = datos.usuario.trim().toUpperCase();
+                    const avatarEsperado = tematicas[tematicaActual][jugadorTurnoActual].id;
                     
-                    // ANTI-SABOTAJE: Solo si es el turno exacto del jugador
-                    if (nombreRemitente === nombreTurnoActual) {
-                        pasoFlujoActual = "evaluando"; // BLOQUEA INMEDIATAMENTE EL CHAT
+                    // Compara el nombre exacto con espacios O el avatar que se envía desde el control
+                    if (nombreRemitente === nombreAceptado || datos.avatar === avatarEsperado) {
+                        pasoFlujoActual = "evaluando"; 
                         procesarRespuestaElegidaChat(datos.opcion.toUpperCase());
                     }
                 }
@@ -499,12 +505,11 @@
         function procesarRespuestaElegidaChat(letraOpcion) {
             if(!preguntaCargadaEstructura) return;
             clearInterval(intervaloReloj); 
-            pasoFlujoActual = "evaluando"; // Seguro extra
+            pasoFlujoActual = "evaluando"; 
             
             const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase();
             const mapOpciones = {'A': 'opc-a', 'B': 'opc-b', 'C': 'opc-c'};
 
-            // PASO 1: Marcar la que el jugador eligió de inmediato (Blanco)
             if(letraOpcion && mapOpciones[letraOpcion]) {
                 document.getElementById(mapOpciones[letraOpcion]).classList.add('opcion-seleccionada');
                 if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
@@ -512,7 +517,6 @@
                 }
             }
 
-            // PASO 2: Esperar 1 segundo de suspenso y revelar la correcta (Amarillo / Rojo)
             setTimeout(() => {
                 revelarRespuesta(letraOpcion, letraCorrecta, mapOpciones);
                 
@@ -520,31 +524,26 @@
                     socketAdmin.send(JSON.stringify({ tipo: 'REVELAR_CON_SELECCION', correcta: letraCorrecta, elegida: letraOpcion }));
                 }
 
-                // PASO 3: Esperar 2 segundos para que todos lo vean y avanzar el juego
                 setTimeout(() => { 
                     if (letraOpcion === letraCorrecta) aplicarAvance(jugadorTurnoActual); 
                     else activarFalloUrgente(); 
                 }, 2000);
 
-            }, 1000); // 1 Segundo
+            }, 1000); 
         }
 
-        // Pinta las respuestas según lo que el usuario eligió y la que es real
         function revelarRespuesta(letraElegida, letraCorrecta, mapOpciones) { 
             document.getElementById('respuesta-tablero-texto').style.display = "block";
             limpiarIluminacionOpciones(); 
             
             if(letraElegida && mapOpciones[letraElegida]) {
                 if(letraElegida === letraCorrecta) {
-                    // Si acertó, la elegida se pone amarilla
                     document.getElementById(mapOpciones[letraElegida]).classList.add('opcion-correcta-iluminada');
                 } else {
-                    // Si falló, la elegida se pone roja y la correcta amarilla
                     document.getElementById(mapOpciones[letraElegida]).classList.add('opcion-error');
                     document.getElementById(mapOpciones[letraCorrecta]).classList.add('opcion-correcta-iluminada');
                 }
             } else {
-                // Si se acabó el tiempo, solo muestra la amarilla
                 document.getElementById(mapOpciones[letraCorrecta]).classList.add('opcion-correcta-iluminada');
             }
         }
@@ -620,7 +619,6 @@
                     preguntaCargadaEstructura = obtenerPreguntaClasificada(categoria, nivelActual);
                     actualizarEstadosVisualesBotonesCategorias();
 
-                    // SI CONT. AUTO ESTÁ ACTIVO, MUESTRA PREGUNTA 3 SEGUNDOS ANTES DEL RELOJ
                     if (modoAutoConteo) {
                         setTimeout(() => { controlFlujoCategoria(categoriaSeleccionadaActiva); }, 500);
                     }
@@ -645,7 +643,6 @@
                     socketAdmin.send(JSON.stringify({ tipo: 'MOSTRAR_EN_CONTROL', fase: 'revelar', pregunta: preguntaCargadaEstructura.p, opciones: preguntaCargadaEstructura.o }));
                 }
 
-                // SI CONT. AUTO ESTÁ ACTIVO, INICIA EL RELOJ A LOS 3 SEGUNDOS DE LEER
                 if (modoAutoConteo) {
                     setTimeout(() => { controlFlujoCategoria(categoriaSeleccionadaActiva); }, 3000);
                 }
@@ -669,7 +666,7 @@
                     } 
                     else { 
                         clearInterval(intervaloReloj); barraReloj.style.width = '0%'; 
-                        marcarFalloManual(); // Si se acaba el tiempo lanza fallo evaluado
+                        marcarFalloManual(); 
                     }
                 }, 1000);
             }
