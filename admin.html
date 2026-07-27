@@ -177,30 +177,71 @@
         #anuncio-efecto { color: #25f4ee; font-weight: bold; font-size: 15px; margin-top: 10px; min-height: 20px; }
         #ganador-pantalla { font-size: 24px; font-weight: bold; color: #ffc107; margin-top: 5px; text-shadow: 0 0 10px rgba(255,193,7,0.5);}
 
-        /* RESPONSIVO */
+        /* ========================================= */
+        /* ADAPTACIÓN MÓVIL (MANTENIENDO COLUMNAS)   */
+        /* ========================================= */
+        
         @media (max-width: 1100px) {
-            .game-container { flex-direction: column; align-items: center; gap: 15px; }
-            .sidebar, .tablero-wrapper, .sidebar-derecha { width: 100%; max-width: 100%; max-height: none; box-sizing: border-box; }
-            .sidebar-derecha { padding: 15px; flex: none; min-width: auto; }
-            .grid-tematicas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+            .game-container { gap: 8px; padding: 0 5px; }
+            .sidebar { padding: 10px; max-width: 200px; }
+            .sidebar-derecha { padding: 10px; min-width: 80px; max-width: 90px; }
         }
+
         @media (max-width: 768px) {
-            .grid-tematicas { grid-template-columns: repeat(2, 1fr); } 
-            .tablero-monopolio { gap: 2px; padding: 5px; border-width: 2px; border-radius: 8px;}
-            .casilla { font-size: 9px; padding: 1px; }
-            .c-salida, .c-meta { font-size: 8px; }
-            .avatar-ficha { font-size: 14px; margin: 1px; }
-            .centro-tablero { padding: 5px; }
-            .titulo-centro { font-size: 16px; margin-top: 0; }
-            .avatar-turno-gigante { font-size: 40px; }
-            .texto-turno-gigante { font-size: 11px; margin-top: 5px; }
-            .dado-gigante { min-width: 60px; padding: 8px; }
-            .dado-val { font-size: 14px; }
-            #dado-numero { font-size: 20px !important; }
-            .txt-pregunta-tablero { font-size: 12px; margin-bottom: 5px; }
-            .opcion-item { font-size: 11px; padding: 5px; }
-            .icono-celebracion { font-size: 40px; }
-            .texto-celebracion-tit { font-size: 16px; }
+            .game-container { gap: 3px; padding: 2px; align-items: stretch; }
+            
+            /* Panel Izquierdo */
+            .sidebar { max-width: 110px; padding: 4px; border-radius: 6px; }
+            .tit-config { font-size: 8px; margin-bottom: 3px; }
+            .btn-config { padding: 4px 2px; font-size: 7px; }
+            .btn-modo-auto { padding: 4px 2px; font-size: 7px; margin-top: 3px; }
+            .grupo-input-nombre { flex-direction: column; gap: 1px; margin-bottom: 4px; }
+            .grupo-input-nombre span { font-size: 9px; }
+            .input-nombre-jug { font-size: 9px; padding: 2px; }
+            .btn-dados-principal { padding: 6px; font-size: 8px; margin-bottom: 6px; }
+            .grid-categorias { gap: 4px; margin-bottom: 8px; }
+            .btn-cat { padding: 6px 2px; font-size: 7px; border-radius: 4px; }
+            .btn-revelar, .btn-fallo, .btn-reset { padding: 6px; font-size: 8px; margin-bottom: 4px; }
+            .estado-conexion { font-size: 8px; padding: 3px; margin-bottom: 4px; }
+
+            /* Panel Derecho */
+            .sidebar-derecha { max-width: 65px; padding: 4px; border-radius: 6px; min-width: 50px; }
+            .tit-tematica { font-size: 7px; margin-bottom: 6px; line-height: 1.1; }
+            .btn-tematica { font-size: 14px; padding: 4px 1px; border-radius: 4px; }
+            .btn-tematica span { font-size: 6px; margin-top: 2px; }
+
+            /* Tablero Central */
+            .tablero-wrapper { padding-top: 0; }
+            .tablero-monopolio { gap: 2px; padding: 4px; border-width: 2px; border-radius: 8px; }
+            .casilla { font-size: 7px; padding: 1px; border-radius: 3px; }
+            .c-salida, .c-meta { font-size: 6px; border-width: 1px; }
+            .avatar-ficha { font-size: 11px; margin: 0; }
+            
+            .centro-tablero { padding: 4px; }
+            .titulo-centro { font-size: 14px; margin-top: 0; }
+            .btn-audio-directo { font-size: 7px; padding: 4px 6px; }
+            .marcador-turno-actual { font-size: 8px; padding: 4px 8px; margin-bottom: 2px; border-width: 1px; }
+            
+            .avatar-turno-gigante { font-size: 35px; }
+            .texto-turno-gigante { font-size: 9px; margin-top: 2px; }
+            
+            .dado-gigante { min-width: 45px; padding: 5px; border-width: 2px; border-radius: 6px; }
+            .dado-tit { font-size: 6px; margin-bottom: 2px; }
+            .dado-val { font-size: 9px; }
+            #dado-numero { font-size: 16px !important; }
+            
+            .pregunta-proyectada { padding: 6px; border-width: 1px; border-radius: 6px; }
+            .txt-pregunta-tablero { font-size: 9px; margin-bottom: 4px; line-height: 1.2; }
+            .bloque-opciones-tablero { gap: 3px; margin-bottom: 4px; }
+            .opcion-item { font-size: 8px; padding: 4px; border-radius: 4px; border-width: 1px; }
+            .contenedor-barra-tiempo { height: 10px; border-width: 1px; margin: 4px 0; border-radius: 6px; }
+            .txt-respuesta-tablero { font-size: 10px; margin-top: 4px; }
+            
+            .icono-celebracion, .carita-triste { font-size: 30px; }
+            .texto-celebracion-tit, .texto-error-tit { font-size: 10px; margin-top: 4px; }
+            
+            #anuncio-efecto { font-size: 8px; margin-top: 4px; min-height: 12px; }
+            #ganador-pantalla { font-size: 12px; margin-top: 3px; }
         }
     </style>
 </head>
@@ -460,7 +501,6 @@
                     actualizarNombresDesdeCampos();
                 }
                 
-                // AQUÍ ESTÁ LA CORRECCIÓN DEL FILTRO ANTI-SABOTAJE
                 if (datos.tipo === 'RESPUESTA_CHAT' && pasoFlujoActual === "bloqueado" && !estaMoviendose) {
                     const defNames = ["", "CHAT", "CREADOR", "MODERADOR", "INVITADO"];
                     let nombreAceptado = document.getElementById('input-j' + jugadorTurnoActual).value.trim().toUpperCase();
@@ -469,7 +509,6 @@
                     const nombreRemitente = datos.usuario.trim().toUpperCase();
                     const avatarEsperado = tematicas[tematicaActual][jugadorTurnoActual].id;
                     
-                    // Compara el nombre exacto con espacios O el avatar que se envía desde el control
                     if (nombreRemitente === nombreAceptado || datos.avatar === avatarEsperado) {
                         pasoFlujoActual = "evaluando"; 
                         procesarRespuestaElegidaChat(datos.opcion.toUpperCase());
@@ -501,7 +540,6 @@
             }
         }
 
-        // LÓGICA DE REVELACIÓN (Marcado inmediato, suspenso de 1s, resultado de 2s)
         function procesarRespuestaElegidaChat(letraOpcion) {
             if(!preguntaCargadaEstructura) return;
             clearInterval(intervaloReloj); 

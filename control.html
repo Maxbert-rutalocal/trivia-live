@@ -221,7 +221,7 @@
             }
         }
 
-        // AQUÍ ESTÁ EL REFUERZO DE SEGURIDAD. Ahora el control manda su 'credencial' de Avatar.
+        // FUNCIÓN SEGURA PARA EL TABLERO
         function enviarRespuesta(opcion) {
             const usernameInput = document.getElementById('username').value.trim();
             if (ws.readyState === WebSocket.OPEN) {
