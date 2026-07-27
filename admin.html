@@ -23,7 +23,6 @@
             background-color: #121212;
         }
 
-        /* Medidas ajustadas al milímetro para matar los bordes negros */
         .game-container {
             display: flex;
             width: 1220px; 
@@ -187,6 +186,7 @@
 </head>
 <body>
 
+    <!-- CONTENEDOR PANORAMA: Se estira independiente a lo ancho y a lo alto -->
     <div id="panorama-wrapper">
         <div class="game-container">
             
@@ -329,11 +329,10 @@
 
     <script>
         // ==========================================
-        // SISTEMA DE PANORAMA (CUBRE TODA LA PANTALLA)
+        // SISTEMA DE PANORAMA (ESTIRAMIENTO INDEPENDIENTE)
         // ==========================================
         function forzarPanorama() {
             const contenedor = document.querySelector('.game-container');
-            // Dimensiones súper justas sin márgenes sobrantes
             const anchoBase = 1220;
             const altoBase = 680;
             
@@ -343,10 +342,8 @@
             const escalaX = anchoPantalla / anchoBase;
             const escalaY = altoPantalla / altoBase;
             
-            // Le quitamos el reductor (*0.98) para que choque exactamente contra los bordes
-            const escalaFinal = Math.min(escalaX, escalaY); 
-            
-            contenedor.style.transform = `scale(${escalaFinal})`;
+            // ESTIRAMIENTO ELÁSTICO: Ajusta ancho y alto independientemente para llenar el 100% de la pantalla
+            contenedor.style.transform = `scale(${escalaX}, ${escalaY})`;
             contenedor.style.transformOrigin = 'center center';
         }
 
