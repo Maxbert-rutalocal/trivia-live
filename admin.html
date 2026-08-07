@@ -25,7 +25,7 @@
 
         .game-container {
             display: flex;
-            width: 1320px; /* Tablero más grande y espacioso */
+            width: 1320px; 
             height: 760px; 
             flex-shrink: 0;
             gap: 12px; 
@@ -146,8 +146,29 @@
         .dado-tit { font-size: 14px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;}
         .dado-val { font-size: 20px; font-weight: bold; color: #fff; }
 
-        .pregunta-proyectada { background: rgba(0, 0, 0, 0.95); border: 2px solid #25f4ee; border-radius: 12px; padding: 18px; width: 98%; box-sizing: border-box; box-shadow: 0 0 20px rgba(37, 244, 238, 0.4); display: none; text-align: left; }
-        .txt-pregunta-tablero { font-size: 19px; font-weight: bold; color: #fff; line-height: 1.4; margin-bottom: 10px; text-align: center; }
+        /* AJUSTE VISUAL: Caja de la pregunta anclada al fondo (línea roja) y con más espacio */
+        .pregunta-proyectada { 
+            background: rgba(0, 0, 0, 0.95); 
+            border: 2px solid #25f4ee; 
+            border-radius: 12px; 
+            padding: 18px; 
+            width: 98%; 
+            box-sizing: border-box; 
+            box-shadow: 0 0 20px rgba(37, 244, 238, 0.4); 
+            display: none; 
+            text-align: left; 
+            margin-top: auto; 
+            margin-bottom: 5px; 
+        }
+        
+        .txt-pregunta-tablero { 
+            font-size: 21px; 
+            font-weight: bold; 
+            color: #fff; 
+            line-height: 1.4; 
+            margin-bottom: 18px; 
+            text-align: center; 
+        }
         
         .bloque-opciones-tablero { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
         .opcion-item { background: #181818; border: 1px solid #333; padding: 10px 14px; border-radius: 8px; font-size: 17px; font-weight: bold; color: #ddd; transition: all 0.3s ease; }
