@@ -103,7 +103,7 @@
         .estado-conexion.conectado { background: #1a3a1a; color: #66ff66; }
 
         /* TABLERO CENTRAL REDIMENSIONADO */
-        .tablero-wrapper { width: 930px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 5px; }
+        .tablero-wrapper { width: 930px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 5px; position: relative;}
         
         .tablero-monopolio { 
             display: grid; grid-template-columns: repeat(9, 1fr); grid-template-rows: repeat(7, 1fr);    
@@ -152,7 +152,7 @@
             border: 2px solid #25f4ee; 
             border-radius: 12px; 
             padding: 20px; 
-            width: 100%; 
+            width: 80%; /* Ajustado para que quepa bien dentro del cuadro central */
             box-sizing: border-box; 
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.9); 
             display: none; 
@@ -448,7 +448,7 @@
 
         async function cargarPreguntasJSON() {
             try {
-                // EL TRUCO MAGICO ANTI-CACHÉ: Evita que Chrome recuerde el archivo viejo
+                // ESCUDO ANTI-CACHÉ
                 const respuesta = await fetch('preguntas.json?nocache=' + new Date().getTime(), { cache: "no-store" });
                 const datosCrudos = await respuesta.json();
 
