@@ -146,29 +146,25 @@
         .dado-tit { font-size: 14px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;}
         .dado-val { font-size: 20px; font-weight: bold; color: #fff; }
 
-        /* AJUSTE VISUAL: Caja de la pregunta anclada al fondo (línea roja) y con más espacio */
+        /* AJUSTE VISUAL: Caja flotante absolutamente centrada por encima de todo */
         .pregunta-proyectada { 
-            background: rgba(0, 0, 0, 0.95); 
+            background: rgba(12, 12, 12, 0.97); 
             border: 2px solid #25f4ee; 
             border-radius: 12px; 
-            padding: 18px; 
-            width: 98%; 
+            padding: 20px; 
+            width: 100%; 
             box-sizing: border-box; 
-            box-shadow: 0 0 20px rgba(37, 244, 238, 0.4); 
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9); 
             display: none; 
             text-align: left; 
-            margin-top: auto; 
-            margin-bottom: 5px; 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
         }
         
-        .txt-pregunta-tablero { 
-            font-size: 21px; 
-            font-weight: bold; 
-            color: #fff; 
-            line-height: 1.4; 
-            margin-bottom: 18px; 
-            text-align: center; 
-        }
+        .txt-pregunta-tablero { font-size: 19px; font-weight: bold; color: #fff; line-height: 1.4; margin-bottom: 10px; text-align: center; }
         
         .bloque-opciones-tablero { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
         .opcion-item { background: #181818; border: 1px solid #333; padding: 10px 14px; border-radius: 8px; font-size: 17px; font-weight: bold; color: #ddd; transition: all 0.3s ease; }
@@ -183,7 +179,7 @@
         @keyframes parpadeo-respuesta { from { box-shadow: 0 0 8px #ffc107; } to { box-shadow: 0 0 25px #ffc107; } }
         @keyframes sacudir-error { 0%, 100% { transform: scale(1.02) translateX(0); } 25% { transform: scale(1.02) translateX(-5px); } 75% { transform: scale(1.02) translateX(5px); } }
 
-        /* BARRA DE TIEMPO SUBIDA Y MÁS ESPACIOSA */
+        /* BARRA DE TIEMPO */
         .contenedor-barra-tiempo { width: 100%; height: 22px; background: #222; border-radius: 12px; margin: 10px 0 15px 0; overflow: hidden; border: 2px solid #444; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
         .barra-tiempo { height: 100%; width: 100%; background: #00e676; transition: width 1s linear, background-color 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 0 12px #00e676; }
         .barra-tiempo.alerta { background: #ffc107; box-shadow: 0 0 12px #ffc107; }
