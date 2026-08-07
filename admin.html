@@ -448,7 +448,8 @@
 
         async function cargarPreguntasJSON() {
             try {
-                const respuesta = await fetch('preguntas.json');
+                // EL TRUCO MAGICO ANTI-CACHÉ: Evita que Chrome recuerde el archivo viejo
+                const respuesta = await fetch('preguntas.json?nocache=' + new Date().getTime(), { cache: "no-store" });
                 const datosCrudos = await respuesta.json();
 
                 copiaMaestraPreguntas = { 
