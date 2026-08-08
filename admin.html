@@ -152,7 +152,7 @@
             border: 2px solid #25f4ee; 
             border-radius: 12px; 
             padding: 20px; 
-            width: 80%; /* Ajustado para que quepa bien dentro del cuadro central */
+            width: 80%; 
             box-sizing: border-box; 
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.9); 
             display: none; 
@@ -202,6 +202,33 @@
         .dado-animado { animation: agitar-dado 0.15s infinite; border-color: #ffc107 !important; box-shadow: 0 0 25px rgba(255,193,7,0.6) !important; }
         #anuncio-efecto { color: #25f4ee; font-weight: bold; font-size: 16px; margin-top: 10px; min-height: 20px; }
         #ganador-pantalla { font-size: 26px; font-weight: bold; color: #ffc107; margin-top: 5px; text-shadow: 0 0 10px rgba(255,193,7,0.5);}
+
+        /* ALERTA DE BIENVENIDA TIKTOK */
+        #alerta-bienvenida {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #25f4ee, #00e676);
+            color: #000;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 0 25px rgba(37, 244, 238, 0.8);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .mostrar-alerta {
+            animation: deslizar-alerta 4s ease-in-out forwards;
+        }
+        @keyframes deslizar-alerta {
+            0% { top: -50px; opacity: 0; }
+            10% { top: 30px; opacity: 1; }
+            90% { top: 30px; opacity: 1; }
+            100% { top: -50px; opacity: 0; }
+        }
 
         /* ========================================= */
         /* ADAPTACIÓN MÓVIL Y RESPONSIVA COMPLETA    */
@@ -300,6 +327,7 @@
 
             <!-- TABLERO CENTRAL -->
             <div class="tablero-wrapper">
+                <div id="alerta-bienvenida">👋 ¡Bienvenido al Live, <span id="nombre-bienvenida"></span>!</div>
                 <div class="tablero-monopolio" id="tablero-fisico">
                     <div class="centro-tablero">
                         <div class="titulo-centro">🎙️ TRIVIA LIVE 🎙️</div>
@@ -446,6 +474,15 @@
         
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); let nodoMusicaAmbiente = null; let musicaEncendida = false; let socketAdmin; 
 
+        // FUNCIÓN PARA MOSTRAR LA ALERTA DE TIKTOK
+        function mostrarSaludoTikTok(nombre) {
+            const alerta = document.getElementById('alerta-bienvenida');
+            document.getElementById('nombre-bienvenida').innerText = nombre.toUpperCase();
+            alerta.classList.remove('mostrar-alerta');
+            void alerta.offsetWidth; // Truco de código para reiniciar la animación
+            alerta.classList.add('mostrar-alerta');
+        }
+
         async function cargarPreguntasJSON() {
             try {
                 // ESCUDO ANTI-CACHÉ
@@ -561,6 +598,11 @@
             socketAdmin.onmessage = (event) => {
                 const datos = JSON.parse(event.data);
                 
+                // ESCUCHANDO A TIKTOK LIVE
+                if (datos.tipo === 'NUEVO_ESPECTADOR') {
+                    mostrarSaludoTikTok(datos.usuario);
+                }
+
                 if (datos.tipo === 'SOLICITAR_AVATARES') { socketAdmin.send(JSON.stringify({ tipo: 'CAMBIO_TEMATICA', datos: tematicas[tematicaActual], cantidadJugadores: cantidadJugadoresActual })); setTimeout(actualizarNombresDesdeCampos, 100); }
 
                 if (datos.tipo === 'SELECCION_AVATAR') {
