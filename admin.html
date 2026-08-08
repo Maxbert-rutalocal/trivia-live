@@ -275,7 +275,7 @@
                     <button class="btn-config" data-nivel="medio" onclick="cambiarNivel('medio')">🟡 MEDIO</button>
                     <button class="btn-config" data-nivel="dificil" onclick="cambiarNivel('dificil')">🔴 DIFÍCIL</button>
                 </div>
-                <!-- NUEVOS BOTONES AUTOMÁTICOS INDEPENDIENTES -->
+                <!-- BOTONES AUTOMÁTICOS INDEPENDIENTES -->
                 <div style="display: flex; gap: 4px; margin-top: 6px;">
                     <button id="btn-modo-auto" class="btn-modo-auto" onclick="toggleModoAuto()" title="Dificultad Automática">⚙️ DIF.</button>
                     <button id="btn-auto-conteo" class="btn-modo-auto" onclick="toggleAutoConteo()" title="Conteo Automático">⏱️ CONT.</button>
@@ -460,13 +460,55 @@
                     copiaMaestraPreguntas = JSON.parse(JSON.stringify(datosCrudos));
                 }
 
-                // 💣 DESTRUCCIÓN DE MEMORIA VIEJA
+                // 💣 DESTRUCCIÓN DE MEMORIA VIEJA: Obligamos al juego a usar el archivo fresco
                 localStorage.removeItem('memoriaMazoTrivia');
                 datosClasificados = JSON.parse(JSON.stringify(copiaMaestraPreguntas));
                 localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados));
                 console.log("📚 Memoria purgada. Nuevo mazo cargado directo de la nube.");
                 
             } catch (error) { console.error("Error al cargar preguntas.json:", error); }
+        }
+
+        // ==========================================
+        // LA INTELIGENCIA DE RESCATE (BLINDAJE ANTI-CRASH)
+        // ==========================================
+        function obtenerPreguntaClasificada(cat, nivel) { 
+            if (!datosClasificados) return { p: "Cargando preguntas...", o: ["A) -", "B) -", "C) -"], r: "A) -" };
+            
+            let grupo = datosClasificados[cat][nivel]; 
+            
+            // Si el grupo está vacío, lo rellenamos desde la copia maestra
+            if (!grupo || grupo.length === 0) { 
+                if(copiaMaestraPreguntas[cat] && copiaMaestraPreguntas[cat][nivel] && copiaMaestraPreguntas[cat][nivel].length > 0) {
+                    datosClasificados[cat][nivel] = JSON.parse(JSON.stringify(copiaMaestraPreguntas[cat][nivel]));
+                    grupo = datosClasificados[cat][nivel];
+                }
+            }
+
+            // BLINDAJE: Si SIGUE vacío (porque tu archivo NO tiene preguntas "Medio" o "Difícil"), 
+            // tomamos prestadas de las Fáciles para que el juego nunca crashee.
+            if (!grupo || grupo.length === 0) {
+                if(copiaMaestraPreguntas[cat] && copiaMaestraPreguntas[cat]["facil"] && copiaMaestraPreguntas[cat]["facil"].length > 0) {
+                    datosClasificados[cat][nivel] = JSON.parse(JSON.stringify(copiaMaestraPreguntas[cat]["facil"]));
+                    grupo = datosClasificados[cat][nivel];
+                }
+            }
+            
+            // Salvavidas extremo por si toda la categoría no existe
+            if (!grupo || grupo.length === 0) { 
+                return {
+                    p: `PREGUNTA DE RESCATE (${cat.toUpperCase()}): ¿De qué color es el cielo?`,
+                    o: ["A) Verde", "B) Azul", "C) Rojo"],
+                    r: "B) Azul"
+                };
+            }
+            
+            const rIdx = Math.floor(Math.random() * grupo.length); 
+            const preguntaSeleccionada = grupo.splice(rIdx, 1)[0]; 
+            
+            localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados));
+            
+            return preguntaSeleccionada; 
         }
 
         // Toggles Automáticos Independientes
@@ -667,14 +709,16 @@
                 });
 
             } else if (pasoFlujoActual === "revelar") {
+                pasoFlujoActual = "conteo"; // ARREGLO DEL BUG DEL BUCLE INFINITO
                 sonarAparicionPregunta();
                 document.getElementById('contenedor-dados-tablero').style.display = "none"; 
                 document.getElementById('contenedor-pregunta-tablero').style.display = "block";
                 
-                document.getElementById('pregunta-tablero-texto').innerText = preguntaCargadaEstructura.p;
-                let optA = preguntaCargadaEstructura.o[0]; if(optA.startsWith("A)")) optA = optA.substring(3);
-                let optB = preguntaCargadaEstructura.o[1]; if(optB.startsWith("B)")) optB = optB.substring(3);
-                let optC = preguntaCargadaEstructura.o[2]; if(optC.startsWith("C)")) optC = optC.substring(3);
+                // Formateo para leer limpio y a prueba de fallos
+                document.getElementById('pregunta-tablero-texto').innerText = preguntaCargadaEstructura.p || "¿Pregunta vacía?";
+                let optA = preguntaCargadaEstructura.o[0] || "A) -"; if(optA.startsWith("A)")) optA = optA.substring(3);
+                let optB = preguntaCargadaEstructura.o[1] || "B) -"; if(optB.startsWith("B)")) optB = optB.substring(3);
+                let optC = preguntaCargadaEstructura.o[2] || "C) -"; if(optC.startsWith("C)")) optC = optC.substring(3);
                 
                 document.getElementById('opc-a').innerHTML = `<span>A)</span> ${optA.trim()}`;
                 document.getElementById('opc-b').innerHTML = `<span>B)</span> ${optB.trim()}`;
@@ -684,18 +728,17 @@
                 barraReloj.style.width = '100%';
                 barraReloj.className = 'barra-tiempo';
 
-                document.getElementById('respuesta-tablero-texto').innerText = "R: " + preguntaCargadaEstructura.r;
+                let resText = preguntaCargadaEstructura.r || "A) -";
+                document.getElementById('respuesta-tablero-texto').innerText = "R: " + resText;
                 document.getElementById('respuesta-tablero-texto').style.display = "none";
 
                 if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
                     socketAdmin.send(JSON.stringify({ tipo: 'MOSTRAR_EN_CONTROL', fase: 'revelar', pregunta: preguntaCargadaEstructura.p, opciones: preguntaCargadaEstructura.o }));
                 }
 
-                // Si tiene el "Conteo Auto" encendido, pasa directamente al reloj
                 if (modoAutoConteo) {
                     setTimeout(() => { controlFlujoCategoria(categoriaSeleccionadaActiva); }, 3000);
                 } else {
-                    pasoFlujoActual = "conteo"; 
                     actualizarEstadosVisualesBotonesCategorias();
                 }
 
@@ -727,14 +770,13 @@
                     }
                 }, 1000);
 
-            // NUEVO PASO DE SUSPENSO: Revela la respuesta y decide si avanza o falla
+            // PASO DE SUSPENSO
             } else if (pasoFlujoActual === "suspenso") {
-                pasoFlujoActual = "bloqueado"; // Bloquea clics dobles
+                pasoFlujoActual = "bloqueado"; 
                 actualizarEstadosVisualesBotonesCategorias();
                 
                 revelarRespuestaVisual(); 
                 
-                // Efecto dramático de 2 segundos antes de que la ficha se mueva
                 setTimeout(() => { 
                     if (resultadoPendiente === "avance") aplicarAvance(jugadorTurnoActual); 
                     else activarFalloUrgente(); 
@@ -784,7 +826,6 @@
             
             actualizarEstadosVisualesBotonesCategorias();
 
-            // Si "Suspenso Auto" está activo, no espera a que des click
             if(modoAutoSuspenso) {
                 setTimeout(() => {
                     if(pasoFlujoActual === "suspenso") controlFlujoCategoria(categoriaSeleccionadaActiva);
@@ -792,7 +833,7 @@
             }
         }
 
-        // FALLO MANUAL (Ej. se acaba el tiempo o dicen tonterías) Y ENTRA AL SUSPENSO
+        // FALLO MANUAL Y ENTRA AL SUSPENSO
         function marcarFalloManual() {
             if(estaMoviendose || !preguntaCargadaEstructura || pasoFlujoActual === "suspenso") return;
             clearInterval(intervaloReloj);
