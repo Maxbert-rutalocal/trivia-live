@@ -81,7 +81,7 @@
         .azul { background: #007bff; } .rojo { background: #dc3545; } .verde { background: #28a745; } .amarillo { background: #ffc107; color: #000; text-shadow: none; }
 
         .btn-cat.esperando-pregunta { background: #25f4ee !important; color: #000 !important; text-shadow: none !important; animation: parpadeo-control 0.8s infinite alternate; font-size: 13px; }
-        .btn-cat.esperando-conteo { background: #ffc107 !important; color: #000 !important; text-shadow: none !important; animation: parpadeo-control 0.8s infinite alternate; font-size: 13px; }
+        .btn-cat.esperando-conteo { background: #ffc107 !important; color: #000 !important; text-shadow: none !important; font-size: 13px; }
         .btn-cat.desactivado { opacity: 0.2; cursor: not-allowed; pointer-events: none; }
 
         @keyframes parpadeo-control { from { box-shadow: 0 0 4px #25f4ee; } to { box-shadow: 0 0 15px #25f4ee; transform: scale(1.02); } }
@@ -145,13 +145,13 @@
         .dado-tit { font-size: 12px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;}
         .dado-val { font-size: 18px; font-weight: bold; color: #fff; }
 
-        /* NUEVA CAJA FLOTANTE PARA LA PREGUNTA */
+        /* PREGUNTA CENTRAL (Estilo Flotante) */
         .pregunta-proyectada { 
             background: rgba(12, 12, 12, 0.97); 
             border: 2px solid #25f4ee; 
             border-radius: 12px; 
             padding: 20px; 
-            width: 80%; 
+            width: 85%; 
             box-sizing: border-box; 
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.9); 
             display: none; 
@@ -162,13 +162,12 @@
             transform: translate(-50%, -50%);
             z-index: 100;
         }
-
+        
         .txt-pregunta-tablero { font-size: 17px; font-weight: bold; color: #fff; line-height: 1.4; margin-bottom: 12px; text-align: center; }
         .bloque-opciones-tablero { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
         .opcion-item { background: #181818; border: 1px solid #333; padding: 8px 12px; border-radius: 6px; font-size: 15px; font-weight: bold; color: #ddd; transition: all 0.3s ease; }
         .opcion-item span { color: #fe2c55; margin-right: 5px; }
 
-        /* EFECTOS VISUALES OPCIONES */
         .opcion-seleccionada { background: #fff !important; color: #000 !important; border-color: #25f4ee !important; box-shadow: 0 0 20px #fff; transform: scale(1.02); }
         .opcion-correcta-iluminada { background: #ffc107 !important; color: #000 !important; border-color: #fff !important; box-shadow: 0 0 15px #ffc107; transform: scale(1.02); animation: parpadeo-respuesta 0.5s infinite alternate; }
         .opcion-correcta-iluminada span { color: #000 !important; }
@@ -178,12 +177,8 @@
         @keyframes parpadeo-respuesta { from { box-shadow: 0 0 8px #ffc107; } to { box-shadow: 0 0 22px #ffc107; } }
         @keyframes sacudir-error { 0%, 100% { transform: scale(1.02) translateX(0); } 25% { transform: scale(1.02) translateX(-5px); } 75% { transform: scale(1.02) translateX(5px); } }
 
-        .contenedor-barra-tiempo { 
-            width: 100%; height: 20px; background: #222; border-radius: 12px; margin: 10px 0; overflow: hidden; border: 2px solid #444; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); 
-        }
-        .barra-tiempo { 
-            height: 100%; width: 100%; background: #00e676; transition: width 1s linear, background-color 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 0 12px #00e676; 
-        }
+        .contenedor-barra-tiempo { width: 100%; height: 20px; background: #222; border-radius: 12px; margin: 10px 0; overflow: hidden; border: 2px solid #444; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
+        .barra-tiempo { height: 100%; width: 100%; background: #00e676; transition: width 1s linear, background-color 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 0 12px #00e676; }
         .barra-tiempo.alerta { background: #ffc107; box-shadow: 0 0 12px #ffc107; }
         .barra-tiempo.peligro { background: #ff1744; box-shadow: 0 0 15px #ff1744; }
 
@@ -207,7 +202,7 @@
         #anuncio-efecto { color: #25f4ee; font-weight: bold; font-size: 15px; margin-top: 10px; min-height: 20px; }
         #ganador-pantalla { font-size: 24px; font-weight: bold; color: #ffc107; margin-top: 5px; text-shadow: 0 0 10px rgba(255,193,7,0.5);}
 
-        /* ALERTA DE BIENVENIDA TIKTOK */
+        /* ALERTA DE TIKTOK */
         #alerta-bienvenida {
             position: absolute;
             top: 20px;
@@ -224,9 +219,7 @@
             opacity: 0;
             pointer-events: none;
         }
-        .mostrar-alerta {
-            animation: deslizar-alerta 4s ease-in-out forwards;
-        }
+        .mostrar-alerta { animation: deslizar-alerta 4s ease-in-out forwards; }
         @keyframes deslizar-alerta {
             0% { top: -50px; opacity: 0; }
             10% { top: 30px; opacity: 1; }
@@ -275,7 +268,7 @@
                     <button class="btn-config" data-nivel="medio" onclick="cambiarNivel('medio')">🟡 MEDIO</button>
                     <button class="btn-config" data-nivel="dificil" onclick="cambiarNivel('dificil')">🔴 DIFÍCIL</button>
                 </div>
-                <!-- BOTONES AUTOMÁTICOS INDEPENDIENTES -->
+                <!-- BOTONES AUTOMÁTICOS -->
                 <div style="display: flex; gap: 4px; margin-top: 6px;">
                     <button id="btn-modo-auto" class="btn-modo-auto" onclick="toggleModoAuto()" title="Dificultad Automática">⚙️ DIF.</button>
                     <button id="btn-auto-conteo" class="btn-modo-auto" onclick="toggleAutoConteo()" title="Conteo Automático">⏱️ CONT.</button>
@@ -298,7 +291,7 @@
 
         <!-- TABLERO CENTRAL -->
         <div class="tablero-wrapper">
-            <!-- ALERTA DE TIKTOK FLOTANTE -->
+            
             <div id="alerta-bienvenida">👋 ¡Bienvenido al Live, <span id="nombre-bienvenida"></span>!</div>
 
             <div class="tablero-monopolio" id="tablero-fisico">
@@ -327,7 +320,6 @@
                             </div>
                         </div>
 
-                        <!-- NUEVA ESTRUCTURA DE LA PREGUNTA -->
                         <div class="pregunta-proyectada" id="contenedor-pregunta-tablero">
                             <div class="txt-pregunta-tablero" id="pregunta-tablero-texto">¿Pregunta?</div>
                             
@@ -340,7 +332,7 @@
                                 <div class="opcion-item" id="opc-b"><span>B)</span> -</div>
                                 <div class="opcion-item" id="opc-c"><span>C)</span> -</div>
                             </div>
-
+                            
                             <div class="txt-respuesta-tablero" id="respuesta-tablero-texto">R: Respuesta</div>
                         </div>
 
@@ -407,7 +399,6 @@
 
         let datosClasificados = null; 
         let copiaMaestraPreguntas = null; 
-        
         let modoAutoDificultad = false; 
         let modoAutoConteo = false;
         let modoAutoSuspenso = false;
@@ -422,96 +413,96 @@
 
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); let nodoMusicaAmbiente = null; let musicaEncendida = false; let socketAdmin; 
 
-        // FUNCIÓN PARA MOSTRAR LA ALERTA DE TIKTOK
         function mostrarSaludoTikTok(nombre) {
             const alerta = document.getElementById('alerta-bienvenida');
             document.getElementById('nombre-bienvenida').innerText = nombre.toUpperCase();
             alerta.classList.remove('mostrar-alerta');
-            void alerta.offsetWidth; // Truco de código para reiniciar la animación
+            void alerta.offsetWidth; 
             alerta.classList.add('mostrar-alerta');
         }
 
+        // ====================================================
+        // 🔬 EL TRADUCTOR UNIVERSAL (Aquí estaba el bug antes)
+        // ====================================================
         async function cargarPreguntasJSON() {
             try {
-                // ESCUDO ANTI-CACHÉ
+                // Sigue buscando tu archivo preguntas.json normal, pero le añadimos escudo anti-caché
                 const respuesta = await fetch('preguntas.json?nocache=' + new Date().getTime(), { cache: "no-store" });
-                const datosCrudos = await respuesta.json();
-
-                copiaMaestraPreguntas = { 
+                const crudo = await respuesta.json();
+                
+                // Forzamos a que siempre tenga formato de cajones (Objeto)
+                let estructurado = { 
                     general: {facil:[], medio:[], dificil:[]}, 
                     geografia: {facil:[], medio:[], dificil:[]}, 
                     entretenimiento: {facil:[], medio:[], dificil:[]}, 
                     ciencia: {facil:[], medio:[], dificil:[]} 
                 };
-
-                if (Array.isArray(datosCrudos)) {
-                    datosCrudos.forEach(item => {
-                        let cat = (item.Categoria || item.cat || "general").toLowerCase();
-                        let dif = (item.Dificultad || item.dif || "facil").toLowerCase();
-                        if (copiaMaestraPreguntas[cat] && copiaMaestraPreguntas[cat][dif]) {
-                            copiaMaestraPreguntas[cat][dif].push({
-                                p: item.Pregunta || item.p,
-                                o: item.o ? item.o : [item.OpcionA, item.OpcionB, item.OpcionC],
-                                r: item.Respuesta || item.r
+                
+                // Si el archivo viene como lista plana (Array), lo acomodamos en los cajones
+                if (Array.isArray(crudo)) {
+                    crudo.forEach(q => {
+                        let c = (q.Categoria || q.cat || "general").toLowerCase();
+                        let d = (q.Dificultad || q.dif || "facil").toLowerCase();
+                        if(estructurado[c] && estructurado[c][d]) {
+                            estructurado[c][d].push({
+                                p: q.Pregunta || q.p, 
+                                o: q.o ? q.o : [q.OpcionA, q.OpcionB, q.OpcionC], 
+                                r: q.Respuesta || q.r
                             });
                         }
                     });
                 } else {
-                    copiaMaestraPreguntas = JSON.parse(JSON.stringify(datosCrudos));
+                    // Si ya venía como cajones desde antes, lo pasamos directo
+                    estructurado = crudo; 
                 }
 
-                // 💣 DESTRUCCIÓN DE MEMORIA VIEJA: Obligamos al juego a usar el archivo fresco
-                localStorage.removeItem('memoriaMazoTrivia');
-                datosClasificados = JSON.parse(JSON.stringify(copiaMaestraPreguntas));
-                localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados));
-                console.log("📚 Memoria purgada. Nuevo mazo cargado directo de la nube.");
-                
-            } catch (error) { console.error("Error al cargar preguntas.json:", error); }
+                copiaMaestraPreguntas = JSON.parse(JSON.stringify(estructurado));
+                datosClasificados = JSON.parse(JSON.stringify(estructurado));
+                console.log("📚 Archivo procesado y estructurado a la perfección. ¡Sistema blindado!");
+            } catch (error) {
+                console.error("Error al cargar preguntas.json:", error);
+            }
         }
 
-        // ==========================================
-        // LA INTELIGENCIA DE RESCATE (BLINDAJE ANTI-CRASH)
-        // ==========================================
+        // ====================================================
+        // MOTOR DE SELECCIÓN CON PROTECCIÓN ANTI-VACÍOS
+        // ====================================================
         function obtenerPreguntaClasificada(cat, nivel) { 
             if (!datosClasificados) return { p: "Cargando preguntas...", o: ["A) -", "B) -", "C) -"], r: "A) -" };
             
-            let grupo = datosClasificados[cat][nivel]; 
+            // 1. Busca en el cajón
+            let grupo = datosClasificados[cat] && datosClasificados[cat][nivel] ? datosClasificados[cat][nivel] : []; 
             
-            // Si el grupo está vacío, lo rellenamos desde la copia maestra
-            if (!grupo || grupo.length === 0) { 
+            // 2. Si se acabó, saca de la bodega original (copiaMaestra)
+            if (grupo.length === 0) { 
                 if(copiaMaestraPreguntas[cat] && copiaMaestraPreguntas[cat][nivel] && copiaMaestraPreguntas[cat][nivel].length > 0) {
                     datosClasificados[cat][nivel] = JSON.parse(JSON.stringify(copiaMaestraPreguntas[cat][nivel]));
                     grupo = datosClasificados[cat][nivel];
                 }
             }
-
-            // BLINDAJE: Si SIGUE vacío (porque tu archivo NO tiene preguntas "Medio" o "Difícil"), 
-            // tomamos prestadas de las Fáciles para que el juego nunca crashee.
-            if (!grupo || grupo.length === 0) {
+            
+            // 3. Si la bodega también estaba vacía (porque nunca tuviste preguntas medias/difíciles), roba de las Fáciles
+            if (grupo.length === 0) {
                 if(copiaMaestraPreguntas[cat] && copiaMaestraPreguntas[cat]["facil"] && copiaMaestraPreguntas[cat]["facil"].length > 0) {
                     datosClasificados[cat][nivel] = JSON.parse(JSON.stringify(copiaMaestraPreguntas[cat]["facil"]));
                     grupo = datosClasificados[cat][nivel];
                 }
             }
-            
-            // Salvavidas extremo por si toda la categoría no existe
-            if (!grupo || grupo.length === 0) { 
-                return {
-                    p: `PREGUNTA DE RESCATE (${cat.toUpperCase()}): ¿De qué color es el cielo?`,
-                    o: ["A) Verde", "B) Azul", "C) Rojo"],
-                    r: "B) Azul"
-                };
+
+            // 4. Si todo el juego está vacío (emergencia extrema)
+            if (grupo.length === 0) {
+                return { p: `PREGUNTA COMODÍN (${cat.toUpperCase()})`, o: ["A) Sí", "B) No", "C) Tal vez"], r: "A) Sí" };
             }
             
+            // 5. Elimina la pregunta seleccionada del descarte para que no se repita
             const rIdx = Math.floor(Math.random() * grupo.length); 
             const preguntaSeleccionada = grupo.splice(rIdx, 1)[0]; 
-            
-            localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados));
             
             return preguntaSeleccionada; 
         }
 
-        // Toggles Automáticos Independientes
+
+        // BOTONES DE AUTOMATIZACIÓN
         function toggleModoAuto() {
             if (estaMoviendose) return;
             modoAutoDificultad = !modoAutoDificultad;
@@ -569,7 +560,6 @@
 
             if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
                 socketAdmin.send(JSON.stringify({ tipo: 'CAMBIO_TEMATICA', datos: tematicas[tema], cantidadJugadores: cantidadJugadoresActual }));
-                setTimeout(actualizarNombresDesdeCampos, 100);
             }
         }
 
@@ -592,7 +582,6 @@
             socketAdmin.onmessage = (event) => {
                 const datos = JSON.parse(event.data);
                 
-                // ESCUCHANDO A TIKTOK LIVE
                 if (datos.tipo === 'NUEVO_ESPECTADOR') {
                     mostrarSaludoTikTok(datos.usuario);
                 }
@@ -652,9 +641,7 @@
             }
         }
 
-        // =====================================
-        // SONIDOS Y AUDIOS
-        // =====================================
+        // SONIDOS
         function sonarBrinco() { const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination); osc.type = 'sine'; osc.frequency.setValueAtTime(260, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(650, audioCtx.currentTime + 0.12); gain.gain.setValueAtTime(0.12, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12); osc.start(); osc.stop(audioCtx.currentTime + 0.12); }
         function sonarCelebracionAvance() { const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination); osc.type = 'triangle'; const t = audioCtx.currentTime; osc.frequency.setValueAtTime(320, t); osc.frequency.setValueAtTime(480, t + 0.06); osc.frequency.setValueAtTime(640, t + 0.12); osc.frequency.setValueAtTime(960, t + 0.18); gain.gain.setValueAtTime(0.15, t); gain.gain.linearRampToValueAtTime(0.01, t + 0.3); osc.start(); osc.stop(t + 0.3); }
         function sonarFalloCritico() { const osc1 = audioCtx.createOscillator(); const osc2 = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc1.connect(gain); osc2.connect(gain); gain.connect(audioCtx.destination); osc1.type = 'sawtooth'; osc2.type = 'square'; osc1.frequency.setValueAtTime(160, audioCtx.currentTime); osc1.frequency.linearRampToValueAtTime(50, audioCtx.currentTime + 0.6); osc2.frequency.setValueAtTime(155, audioCtx.currentTime); osc2.frequency.linearRampToValueAtTime(45, audioCtx.currentTime + 0.6); gain.gain.setValueAtTime(0.2, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.6); osc1.start(); osc2.start(); osc1.stop(audioCtx.currentTime + 0.6); osc2.stop(audioCtx.currentTime + 0.6); }
@@ -664,9 +651,7 @@
         function conmutarMusicaAmbiente() { if (audioCtx.state === 'suspended') audioCtx.resume(); const btn = document.getElementById('btn-musica-id'); if (musicaEncendida) { if(nodoMusicaAmbiente) { nodoMusicaAmbiente.stop(); nodoMusicaAmbiente = null; } musicaEncendida = false; btn.innerText = "🎵 Ritmo Interactivo: APAGADO"; btn.className = "btn-audio-directo muteada"; } else { musicaEncendida = true; btn.innerText = "⚡ Ritmo Interactivo: EN VIVO"; btn.className = "btn-audio-directo"; reproducirSúperFondoProcedural(); } }
         function reproducirSúperFondoProcedural() { if (!musicaEncendida) return; const ritmoBPM = 125; const duracionNegra = 60 / ritmoBPM; const bufferSize = audioCtx.sampleRate * (duracionNegra * 4); const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate); const canalMuestra = buffer.getChannelData(0); for (let i = 0; i < bufferSize; i++) { let t = i / audioCtx.sampleRate; let ondaGrave = Math.sin(2 * Math.PI * 55.0 * t) * Math.exp(-(t % (duracionNegra / 2)) * 10); canalMuestra[i] = (ondaGrave * 0.1); } nodoMusicaAmbiente = audioCtx.createBufferSource(); nodoMusicaAmbiente.buffer = buffer; nodoMusicaAmbiente.loop = true; const gain = audioCtx.createGain(); gain.gain.value = 0.38; nodoMusicaAmbiente.connect(gain); gain.connect(audioCtx.destination); nodoMusicaAmbiente.start(); }
 
-        // =====================================
-        // MOTOR DE JUEGO PRINCIPAL
-        // =====================================
+        // MOTOR
         function tirarDadosAzar() {
             if(juegoTerminado || estaMoviendose) return;
             const keysCats = ['general', 'geografia', 'entretenimiento', 'ciencia'];
@@ -690,6 +675,7 @@
             }, 100);
         }
 
+        // FLUJO UNIFICADO DE PREGUNTAS
         function controlFlujoCategoria(categoria) {
             if(juegoTerminado || estaMoviendose) return;
             if(audioCtx.state === 'suspended') audioCtx.resume();
@@ -709,16 +695,15 @@
                 });
 
             } else if (pasoFlujoActual === "revelar") {
-                pasoFlujoActual = "conteo"; // ARREGLO DEL BUG DEL BUCLE INFINITO
+                pasoFlujoActual = "conteo"; 
                 sonarAparicionPregunta();
                 document.getElementById('contenedor-dados-tablero').style.display = "none"; 
                 document.getElementById('contenedor-pregunta-tablero').style.display = "block";
                 
-                // Formateo para leer limpio y a prueba de fallos
                 document.getElementById('pregunta-tablero-texto').innerText = preguntaCargadaEstructura.p || "¿Pregunta vacía?";
-                let optA = preguntaCargadaEstructura.o[0] || "A) -"; if(optA.startsWith("A)")) optA = optA.substring(3);
-                let optB = preguntaCargadaEstructura.o[1] || "B) -"; if(optB.startsWith("B)")) optB = optB.substring(3);
-                let optC = preguntaCargadaEstructura.o[2] || "C) -"; if(optC.startsWith("C)")) optC = optC.substring(3);
+                let optA = preguntaCargadaEstructura.o && preguntaCargadaEstructura.o[0] ? preguntaCargadaEstructura.o[0] : "A) -"; if(optA.startsWith("A)")) optA = optA.substring(3);
+                let optB = preguntaCargadaEstructura.o && preguntaCargadaEstructura.o[1] ? preguntaCargadaEstructura.o[1] : "B) -"; if(optB.startsWith("B)")) optB = optB.substring(3);
+                let optC = preguntaCargadaEstructura.o && preguntaCargadaEstructura.o[2] ? preguntaCargadaEstructura.o[2] : "C) -"; if(optC.startsWith("C)")) optC = optC.substring(3);
                 
                 document.getElementById('opc-a').innerHTML = `<span>A)</span> ${optA.trim()}`;
                 document.getElementById('opc-b').innerHTML = `<span>B)</span> ${optB.trim()}`;
@@ -770,11 +755,9 @@
                     }
                 }, 1000);
 
-            // PASO DE SUSPENSO
             } else if (pasoFlujoActual === "suspenso") {
                 pasoFlujoActual = "bloqueado"; 
                 actualizarEstadosVisualesBotonesCategorias();
-                
                 revelarRespuestaVisual(); 
                 
                 setTimeout(() => { 
@@ -784,7 +767,6 @@
             }
         }
 
-        // CONTROL DE BOTONES EN EL PANEL IZQUIERDO
         function actualizarEstadosVisualesBotonesCategorias() {
             const categories = ['general', 'geografia', 'entretenimiento', 'ciencia'];
             categories.forEach(cat => {
@@ -802,7 +784,6 @@
             });
         }
 
-        // CHAT RESPONDE Y ENTRA AL SUSPENSO
         function procesarRespuestaElegidaChat(letraOpcion) {
             if(!preguntaCargadaEstructura || pasoFlujoActual !== "bloqueado") return;
             clearInterval(intervaloReloj); 
@@ -810,7 +791,6 @@
             opcionElegidaGlobal = letraOpcion;
             const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase();
             
-            // 1. Mostrar la opción que eligió el chat en blanco brillante
             const mapOpciones = {'A': 'opc-a', 'B': 'opc-b', 'C': 'opc-c'};
             if(letraOpcion && mapOpciones[letraOpcion]) {
                 document.getElementById(mapOpciones[letraOpcion]).classList.add('opcion-seleccionada');
@@ -819,7 +799,6 @@
                 }
             }
 
-            // 2. Preparar el resultado
             pasoFlujoActual = "suspenso";
             if (letraOpcion === letraCorrecta) resultadoPendiente = "avance";
             else resultadoPendiente = "fallo";
@@ -833,7 +812,6 @@
             }
         }
 
-        // FALLO MANUAL Y ENTRA AL SUSPENSO
         function marcarFalloManual() {
             if(estaMoviendose || !preguntaCargadaEstructura || pasoFlujoActual === "suspenso") return;
             clearInterval(intervaloReloj);
