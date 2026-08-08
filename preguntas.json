@@ -610,8 +610,7 @@
     "OpcionB": "B) Huitzilopochtli",
     "OpcionC": "C) Tonatiuh",
     "Respuesta": "B) Huitzilopochtli"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -1511,8 +1510,7 @@
     "OpcionB": "B) The Legend of Zelda: Link's Awakening",
     "OpcionC": "C) Pokémon Rojo y Azul",
     "Respuesta": "C) Pokémon Rojo y Azul"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -2412,8 +2410,7 @@
     "OpcionB": "B) Timón de codaste",
     "OpcionC": "C) Vela latina (triangular)",
     "Respuesta": "C) Vela latina (triangular)"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -3277,8 +3274,7 @@
     "OpcionB": "B) Manuscrito Voynich",
     "OpcionC": "C) Códice de Rohonc",
     "Respuesta": "B) Manuscrito Voynich"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -4151,8 +4147,7 @@
     "OpcionB": "B) Seúl",
     "OpcionC": "C) Pekín (Beijing)",
     "Respuesta": "C) Pekín (Beijing)"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -5052,8 +5047,7 @@
     "OpcionB": "B) Doblón",
     "OpcionC": "C) Escudo",
     "Respuesta": "B) Doblón"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -7755,8 +7749,7 @@
     "OpcionB": "B) Roma",
     "OpcionC": "C) Milán",
     "Respuesta": "C) Milán"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -8656,8 +8649,7 @@
     "OpcionB": "B) Arquímedes",
     "OpcionC": "C) Dédalo",
     "Respuesta": "C) Dédalo"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -9557,8 +9549,7 @@
     "OpcionB": "B) Neil Armstrong",
     "OpcionC": "C) Yuri Gagarin",
     "Respuesta": "B) Neil Armstrong"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -11349,8 +11340,7 @@
     "OpcionB": "B) RMS Titanic",
     "OpcionC": "C) HMHS Britannic",
     "Respuesta": "B) RMS Titanic"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -12250,8 +12240,8 @@
     "OpcionB": "B) RMS Titanic",
     "OpcionC": "C) HMHS Britannic",
     "Respuesta": "B) RMS Titanic"
-  }
-]
+  }.
+  {
     "Categoria": "general",
     "Dificultad": "medio",
     "Pregunta": "¿En la alta gastronomía mundial, qué raro y aromático hongo subterráneo comestible es considerado un manjar de lujo absoluto y tradicionalmente se busca utilizando cerdos o perros adiestrados para rastrearlo bajo tierra?",
@@ -12259,8 +12249,7 @@
     "OpcionB": "B) Hongo Shiitake",
     "OpcionC": "C) Trufa",
     "Respuesta": "C) Trufa"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -13160,8 +13149,7 @@
     "OpcionB": "B) Penalti (Tiro penal)",
     "OpcionC": "C) Saque de meta",
     "Respuesta": "B) Penalti (Tiro penal)"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -14890,8 +14878,7 @@
     "OpcionB": "B) Arquímedes",
     "OpcionC": "C) Euclides",
     "Respuesta": "B) Arquímedes"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -15764,7 +15751,7 @@
     "OpcionB": "B) Manatí",
     "OpcionC": "C) Nutria",
     "Respuesta": "B) Manatí"
-  },[
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -16664,8 +16651,7 @@
     "OpcionB": "B) Océano Índico",
     "OpcionC": "C) Océano Pacífico",
     "Respuesta": "C) Océano Pacífico"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -17529,7 +17515,7 @@
     "OpcionB": "B) Océano Índico",
     "OpcionC": "C) Océano Pacífico",
     "Respuesta": "C) Océano Pacífico"
-  },[
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -18393,7 +18379,7 @@
     "OpcionB": "B) Océano Índico",
     "OpcionC": "C) Océano Pacífico",
     "Respuesta": "C) Océano Pacífico"
-  },[
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -19203,7 +19189,7 @@
     "OpcionB": "B) Océano Índico",
     "OpcionC": "C) Océano Pacífico",
     "Respuesta": "C) Océano Pacífico"
-  },[
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -20013,7 +19999,7 @@
     "OpcionB": "B) Océano Índico",
     "OpcionC": "C) Océano Pacífico",
     "Respuesta": "C) Océano Pacífico"
-  },[
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -20823,7 +20809,7 @@
     "OpcionB": "B) Océano Índico",
     "OpcionC": "C) Océano Pacífico",
     "Respuesta": "C) Océano Pacífico"
-  },[
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -21633,7 +21619,7 @@
     "OpcionB": "B) Océano Índico",
     "OpcionC": "C) Océano Pacífico",
     "Respuesta": "C) Océano Pacífico"
-  },[
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -22443,7 +22429,7 @@
     "OpcionB": "B) Océano Índico",
     "OpcionC": "C) Océano Pacífico",
     "Respuesta": "C) Océano Pacífico"
-  },[
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -23253,7 +23239,7 @@
     "OpcionB": "B) Océano Índico",
     "OpcionC": "C) Océano Pacífico",
     "Respuesta": "C) Océano Pacífico"
-  },[
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -24117,7 +24103,7 @@
     "OpcionB": "B) Océano Índico",
     "OpcionC": "C) Océano Pacífico",
     "Respuesta": "C) Océano Pacífico"
-  },[
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -24954,7 +24940,7 @@
     "OpcionB": "B) Océano Índico",
     "OpcionC": "C) Océano Pacífico",
     "Respuesta": "C) Océano Pacífico"
-  },[
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -25845,7 +25831,7 @@
     "OpcionB": "B) Océano Índico",
     "OpcionC": "C) Océano Pacífico",
     "Respuesta": "C) Océano Pacífico"
-  },[
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
