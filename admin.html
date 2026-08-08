@@ -61,12 +61,10 @@
         .btn-config.active-jugadores { background: #fe2c55; color: white; box-shadow: 0 0 8px rgba(254,44,85,0.5); }
 
         .btn-modo-auto {
-            width: 100%; margin-top: 6px; padding: 8px; font-weight: bold; font-size: 11px; text-transform: uppercase;
+            flex: 1; padding: 8px 0; font-weight: bold; font-size: 9px; text-transform: uppercase; text-align: center;
             border-radius: 5px; cursor: pointer; border: 1px solid #444; background: #222; color: #888; transition: all 0.3s;
         }
-        .btn-modo-auto.encendido {
-            background: #25f4ee; color: #000; border-color: #fff; box-shadow: 0 0 10px rgba(37,244,238,0.5);
-        }
+        .btn-modo-auto.encendido { background: #25f4ee; color: #000; border-color: #fff; box-shadow: 0 0 10px rgba(37,244,238,0.5); }
 
         .grupo-input-nombre { display: flex; align-items: center; gap: 5px; margin-bottom: 5px; }
         .grupo-input-nombre span { font-size: 13px; min-width: 20px; }
@@ -83,12 +81,11 @@
         .azul { background: #007bff; } .rojo { background: #dc3545; } .verde { background: #28a745; } .amarillo { background: #ffc107; color: #000; text-shadow: none; }
 
         .btn-cat.esperando-pregunta { background: #25f4ee !important; color: #000 !important; text-shadow: none !important; animation: parpadeo-control 0.8s infinite alternate; font-size: 13px; }
-        .btn-cat.esperando-conteo { background: #ffc107 !important; color: #000 !important; text-shadow: none !important; font-size: 13px; }
+        .btn-cat.esperando-conteo { background: #ffc107 !important; color: #000 !important; text-shadow: none !important; animation: parpadeo-control 0.8s infinite alternate; font-size: 13px; }
         .btn-cat.desactivado { opacity: 0.2; cursor: not-allowed; pointer-events: none; }
 
         @keyframes parpadeo-control { from { box-shadow: 0 0 4px #25f4ee; } to { box-shadow: 0 0 15px #25f4ee; transform: scale(1.02); } }
         
-        .btn-revelar { background: #25f4ee; color: #000; border: none; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 6px;}
         .btn-fallo { background: #dc3545; color: white; border: none; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px; box-shadow: 0 0 10px rgba(220,53,69,0.3); }
 
         .estado-conexion { font-size: 11px; font-weight: bold; padding: 4px; margin-bottom: 10px; border-radius: 4px; background: #3a1a1a; color: #ff6666;}
@@ -102,6 +99,7 @@
             align-items: center; 
             justify-content: flex-start; 
             padding-top: 15px;
+            position: relative;
         }
         
         .tablero-monopolio { 
@@ -147,16 +145,38 @@
         .dado-tit { font-size: 12px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;}
         .dado-val { font-size: 18px; font-weight: bold; color: #fff; }
 
-        .pregunta-proyectada { background: rgba(0, 0, 0, 0.95); border: 2px solid #25f4ee; border-radius: 12px; padding: 15px; width: 95%; box-sizing: border-box; box-shadow: 0 0 20px rgba(37, 244, 238, 0.4); display: none; text-align: left; }
+        /* NUEVA CAJA FLOTANTE PARA LA PREGUNTA */
+        .pregunta-proyectada { 
+            background: rgba(12, 12, 12, 0.97); 
+            border: 2px solid #25f4ee; 
+            border-radius: 12px; 
+            padding: 20px; 
+            width: 80%; 
+            box-sizing: border-box; 
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9); 
+            display: none; 
+            text-align: left; 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+        }
+
         .txt-pregunta-tablero { font-size: 17px; font-weight: bold; color: #fff; line-height: 1.4; margin-bottom: 12px; text-align: center; }
         .bloque-opciones-tablero { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
         .opcion-item { background: #181818; border: 1px solid #333; padding: 8px 12px; border-radius: 6px; font-size: 15px; font-weight: bold; color: #ddd; transition: all 0.3s ease; }
         .opcion-item span { color: #fe2c55; margin-right: 5px; }
 
+        /* EFECTOS VISUALES OPCIONES */
+        .opcion-seleccionada { background: #fff !important; color: #000 !important; border-color: #25f4ee !important; box-shadow: 0 0 20px #fff; transform: scale(1.02); }
         .opcion-correcta-iluminada { background: #ffc107 !important; color: #000 !important; border-color: #fff !important; box-shadow: 0 0 15px #ffc107; transform: scale(1.02); animation: parpadeo-respuesta 0.5s infinite alternate; }
         .opcion-correcta-iluminada span { color: #000 !important; }
+        .opcion-error { background: #dc3545 !important; border-color: #ff4444 !important; box-shadow: 0 0 15px #dc3545; transform: scale(1.02); animation: sacudir-error 0.3s ease-in-out; }
+        .opcion-error span { color: #fff !important; }
 
         @keyframes parpadeo-respuesta { from { box-shadow: 0 0 8px #ffc107; } to { box-shadow: 0 0 22px #ffc107; } }
+        @keyframes sacudir-error { 0%, 100% { transform: scale(1.02) translateX(0); } 25% { transform: scale(1.02) translateX(-5px); } 75% { transform: scale(1.02) translateX(5px); } }
 
         .contenedor-barra-tiempo { 
             width: 100%; height: 20px; background: #222; border-radius: 12px; margin: 10px 0; overflow: hidden; border: 2px solid #444; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); 
@@ -181,19 +201,45 @@
         @keyframes latido-triste { from { transform: scale(1); } to { transform: scale(1.1); } }
         @keyframes latido-espera { from { transform: scale(0.95); opacity: 0.8; } to { transform: scale(1.05); opacity: 1; } }
         @keyframes pulso-fiesta { from { transform: scale(0.95) rotate(-5deg); } to { transform: scale(1.1) rotate(5deg); } }
-        @keyframes parpadeo { from { opacity: 1; } to { opacity: 0.4; } }
         @keyframes agitar-dado { 0% { transform: rotate(0deg) scale(1); } 25% { transform: rotate(-3deg) scale(1.05); } 50% { transform: rotate(3deg) scale(1.05); } 75% { transform: rotate(-3deg) scale(1.05); } 100% { transform: rotate(0deg) scale(1); } }
         
         .dado-animado { animation: agitar-dado 0.15s infinite; border-color: #ffc107 !important; box-shadow: 0 0 25px rgba(255,193,7,0.6) !important; }
         #anuncio-efecto { color: #25f4ee; font-weight: bold; font-size: 15px; margin-top: 10px; min-height: 20px; }
         #ganador-pantalla { font-size: 24px; font-weight: bold; color: #ffc107; margin-top: 5px; text-shadow: 0 0 10px rgba(255,193,7,0.5);}
+
+        /* ALERTA DE BIENVENIDA TIKTOK */
+        #alerta-bienvenida {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #25f4ee, #00e676);
+            color: #000;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 0 25px rgba(37, 244, 238, 0.8);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .mostrar-alerta {
+            animation: deslizar-alerta 4s ease-in-out forwards;
+        }
+        @keyframes deslizar-alerta {
+            0% { top: -50px; opacity: 0; }
+            10% { top: 30px; opacity: 1; }
+            90% { top: 30px; opacity: 1; }
+            100% { top: -50px; opacity: 0; }
+        }
     </style>
 </head>
 <body>
 
     <div class="game-container">
         
-        <!-- SIDEBAR IZQUIERDA -->
+        <!-- PANEL IZQUIERDO -->
         <div class="sidebar">
             <div id="conexion-ws" class="estado-conexion">🔴 Chat Desconectado</div>
             
@@ -229,7 +275,12 @@
                     <button class="btn-config" data-nivel="medio" onclick="cambiarNivel('medio')">🟡 MEDIO</button>
                     <button class="btn-config" data-nivel="dificil" onclick="cambiarNivel('dificil')">🔴 DIFÍCIL</button>
                 </div>
-                <button id="btn-modo-auto" class="btn-modo-auto" onclick="toggleModoAuto()">⚙️ AUTO: APAGADO</button>
+                <!-- NUEVOS BOTONES AUTOMÁTICOS INDEPENDIENTES -->
+                <div style="display: flex; gap: 4px; margin-top: 6px;">
+                    <button id="btn-modo-auto" class="btn-modo-auto" onclick="toggleModoAuto()" title="Dificultad Automática">⚙️ DIF.</button>
+                    <button id="btn-auto-conteo" class="btn-modo-auto" onclick="toggleAutoConteo()" title="Conteo Automático">⏱️ CONT.</button>
+                    <button id="btn-auto-suspenso" class="btn-modo-auto" onclick="toggleAutoSuspenso()" title="Suspenso Automático">🥁 SUSP.</button>
+                </div>
             </div>
 
             <button class="btn-dados-principal" onclick="tirarDadosAzar()">🎲 Tirar Dados al Azar</button>
@@ -242,12 +293,14 @@
                 <button id="btn-cat-ciencia" class="btn-cat amarillo" onclick="controlFlujoCategoria('ciencia')">Ciencia / Nat.</button>
             </div>
 
-            <button class="btn-revelar" onclick="revelarRespuesta()">👁️ Mostrar Respuesta</button>
-            <button class="btn-fallo" onclick="activarFalloUrgente()">❌ Incorrecto / No Contestó</button>
+            <button class="btn-fallo" onclick="marcarFalloManual()">❌ Forzar Fallo / Tiempo</button>
         </div>
 
         <!-- TABLERO CENTRAL -->
         <div class="tablero-wrapper">
+            <!-- ALERTA DE TIKTOK FLOTANTE -->
+            <div id="alerta-bienvenida">👋 ¡Bienvenido al Live, <span id="nombre-bienvenida"></span>!</div>
+
             <div class="tablero-monopolio" id="tablero-fisico">
                 <div class="centro-tablero">
                     <div class="titulo-centro">🎙️ TRIVIA LIVE 🎙️</div>
@@ -274,16 +327,18 @@
                             </div>
                         </div>
 
+                        <!-- NUEVA ESTRUCTURA DE LA PREGUNTA -->
                         <div class="pregunta-proyectada" id="contenedor-pregunta-tablero">
                             <div class="txt-pregunta-tablero" id="pregunta-tablero-texto">¿Pregunta?</div>
+                            
+                            <div class="contenedor-barra-tiempo">
+                                <div class="barra-tiempo" id="barra-reloj"></div>
+                            </div>
+
                             <div class="bloque-opciones-tablero">
                                 <div class="opcion-item" id="opc-a"><span>A)</span> -</div>
                                 <div class="opcion-item" id="opc-b"><span>B)</span> -</div>
                                 <div class="opcion-item" id="opc-c"><span>C)</span> -</div>
-                            </div>
-                            
-                            <div class="contenedor-barra-tiempo">
-                                <div class="barra-tiempo" id="barra-reloj"></div>
                             </div>
 
                             <div class="txt-respuesta-tablero" id="respuesta-tablero-texto">R: Respuesta</div>
@@ -306,7 +361,7 @@
             </div>
         </div>
 
-        <!-- SIDEBAR DERECHA: 8 TEMÁTICAS EN LISTA VERTICAL -->
+        <!-- PANEL DERECHO DE TEMÁTICAS -->
         <div class="sidebar-derecha">
             <p class="tit-tematica">TEMÁTICA<br>DE AVATARES</p>
             <div class="grid-tematicas">
@@ -352,7 +407,10 @@
 
         let datosClasificados = null; 
         let copiaMaestraPreguntas = null; 
-        let modoAutoDificultad = false; // VARIABLE DEL NUEVO MODO AUTO
+        
+        let modoAutoDificultad = false; 
+        let modoAutoConteo = false;
+        let modoAutoSuspenso = false;
 
         const colorCategoriasMapeo = { 'general': 'GENERAL 🔵', 'entretenimiento': 'ENTRE./ARTE 🔴', 'geografia': 'GEOGRAFÍA 🟢', 'ciencia': 'CIENCIA 🟡' };
         const nombresOriginalesBotones = { 'general': 'Conoc. General', 'geografia': 'Geografía / Mundo', 'entretenimiento': 'Entre. / Arte', 'ciencia': 'Ciencia / Nat.' };
@@ -360,36 +418,82 @@
         let dadoNumeroActual = 0; let juegoTerminado = false; let nivelActual = "facil"; let cantidadJugadoresActual = 2; 
         let posiciones = { 1: 0, 2: 0, 3: 0, 4: 0 }; let estaMoviendose = false; let jugadorTurnoActual = 1; 
         let intervaloReloj; let tiempoRestante = 10; let preguntaCargadaEstructura = null; let pasoFlujoActual = "inicio"; let categoriaSeleccionadaActiva = null;
+        let opcionElegidaGlobal = null; let resultadoPendiente = null;
+
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); let nodoMusicaAmbiente = null; let musicaEncendida = false; let socketAdmin; 
+
+        // FUNCIÓN PARA MOSTRAR LA ALERTA DE TIKTOK
+        function mostrarSaludoTikTok(nombre) {
+            const alerta = document.getElementById('alerta-bienvenida');
+            document.getElementById('nombre-bienvenida').innerText = nombre.toUpperCase();
+            alerta.classList.remove('mostrar-alerta');
+            void alerta.offsetWidth; // Truco de código para reiniciar la animación
+            alerta.classList.add('mostrar-alerta');
+        }
 
         async function cargarPreguntasJSON() {
             try {
-                const respuesta = await fetch('preguntas.json');
-                datosClasificados = await respuesta.json();
-                copiaMaestraPreguntas = JSON.parse(JSON.stringify(datosClasificados));
-                console.log("📚 Archivo preguntas.json cargado exitosamente. Sistema de mazo activado.");
-            } catch (error) {
-                console.error("Error al cargar preguntas.json:", error);
-                alert("Error: No se encontró el archivo preguntas.json");
-            }
+                // ESCUDO ANTI-CACHÉ
+                const respuesta = await fetch('preguntas.json?nocache=' + new Date().getTime(), { cache: "no-store" });
+                const datosCrudos = await respuesta.json();
+
+                copiaMaestraPreguntas = { 
+                    general: {facil:[], medio:[], dificil:[]}, 
+                    geografia: {facil:[], medio:[], dificil:[]}, 
+                    entretenimiento: {facil:[], medio:[], dificil:[]}, 
+                    ciencia: {facil:[], medio:[], dificil:[]} 
+                };
+
+                if (Array.isArray(datosCrudos)) {
+                    datosCrudos.forEach(item => {
+                        let cat = (item.Categoria || item.cat || "general").toLowerCase();
+                        let dif = (item.Dificultad || item.dif || "facil").toLowerCase();
+                        if (copiaMaestraPreguntas[cat] && copiaMaestraPreguntas[cat][dif]) {
+                            copiaMaestraPreguntas[cat][dif].push({
+                                p: item.Pregunta || item.p,
+                                o: item.o ? item.o : [item.OpcionA, item.OpcionB, item.OpcionC],
+                                r: item.Respuesta || item.r
+                            });
+                        }
+                    });
+                } else {
+                    copiaMaestraPreguntas = JSON.parse(JSON.stringify(datosCrudos));
+                }
+
+                // 💣 DESTRUCCIÓN DE MEMORIA VIEJA
+                localStorage.removeItem('memoriaMazoTrivia');
+                datosClasificados = JSON.parse(JSON.stringify(copiaMaestraPreguntas));
+                localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados));
+                console.log("📚 Memoria purgada. Nuevo mazo cargado directo de la nube.");
+                
+            } catch (error) { console.error("Error al cargar preguntas.json:", error); }
         }
 
-        // LÓGICA BOTÓN MODO AUTOMÁTICO
+        // Toggles Automáticos Independientes
         function toggleModoAuto() {
             if (estaMoviendose) return;
             modoAutoDificultad = !modoAutoDificultad;
             const btn = document.getElementById('btn-modo-auto');
-            if (modoAutoDificultad) {
-                btn.innerText = "⚙️ AUTO: ENCENDIDO";
-                btn.classList.add('encendido');
-                actualizarDificultadVisualPorTurno();
-            } else {
-                btn.innerText = "⚙️ AUTO: APAGADO";
-                btn.classList.remove('encendido');
-            }
+            if (modoAutoDificultad) { btn.classList.add('encendido'); actualizarDificultadVisualPorTurno(); } 
+            else { btn.classList.remove('encendido'); }
         }
 
-        // EVALUADOR INDIVIDUAL DE POSICIÓN
+        function toggleAutoConteo() {
+            if (estaMoviendose) return; 
+            modoAutoConteo = !modoAutoConteo; 
+            const btn = document.getElementById('btn-auto-conteo');
+            if (modoAutoConteo) { btn.classList.add('encendido'); } 
+            else { btn.classList.remove('encendido'); }
+        }
+
+        function toggleAutoSuspenso() {
+            if (estaMoviendose) return; 
+            modoAutoSuspenso = !modoAutoSuspenso; 
+            const btn = document.getElementById('btn-auto-suspenso');
+            if (modoAutoSuspenso) { btn.classList.add('encendido'); } 
+            else { btn.classList.remove('encendido'); }
+        }
+
         function actualizarDificultadVisualPorTurno() {
             if (!modoAutoDificultad) return;
             const pos = posiciones[jugadorTurnoActual];
@@ -404,15 +508,7 @@
 
         function cambiarNivel(nuevoNivel) { 
             if(estaMoviendose) return; 
-            
-            // Si el Admin decide presionar un botón de dificultad manualmente, el Auto se apaga por respeto.
-            if (modoAutoDificultad) {
-                modoAutoDificultad = false;
-                const btn = document.getElementById('btn-modo-auto');
-                btn.innerText = "⚙️ AUTO: APAGADO";
-                btn.classList.remove('encendido');
-            }
-
+            if (modoAutoDificultad) { modoAutoDificultad = false; document.getElementById('btn-modo-auto').classList.remove('encendido'); }
             nivelActual = nuevoNivel; 
             document.querySelectorAll('[data-nivel]').forEach(btn => btn.classList.remove('active')); 
             document.querySelector(`[data-nivel="${nuevoNivel}"]`).classList.add('active'); 
@@ -425,10 +521,7 @@
             document.querySelectorAll('.btn-tematica').forEach(b => b.classList.remove('activa'));
             event.currentTarget.classList.add('activa');
 
-            avatarJugadores = {
-                1: tematicas[tema][1].emoji, 2: tematicas[tema][2].emoji, 3: tematicas[tema][3].emoji, 4: tematicas[tema][4].emoji
-            };
-
+            avatarJugadores = { 1: tematicas[tema][1].emoji, 2: tematicas[tema][2].emoji, 3: tematicas[tema][3].emoji, 4: tematicas[tema][4].emoji };
             actualizarNombresDesdeCampos();
             actualizarFichas(null, null);
 
@@ -457,6 +550,11 @@
             socketAdmin.onmessage = (event) => {
                 const datos = JSON.parse(event.data);
                 
+                // ESCUCHANDO A TIKTOK LIVE
+                if (datos.tipo === 'NUEVO_ESPECTADOR') {
+                    mostrarSaludoTikTok(datos.usuario);
+                }
+
                 if (datos.tipo === 'SOLICITAR_AVATARES') {
                     socketAdmin.send(JSON.stringify({ tipo: 'CAMBIO_TEMATICA', datos: tematicas[tematicaActual], cantidadJugadores: cantidadJugadoresActual }));
                     setTimeout(actualizarNombresDesdeCampos, 100);
@@ -512,13 +610,9 @@
             }
         }
 
-        function procesarRespuestaElegidaChat(letraOpcion) {
-            if(!preguntaCargadaEstructura) return;
-            clearInterval(intervaloReloj); revelarRespuesta();
-            const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase();
-            setTimeout(() => { if (letraOpcion === letraCorrecta) aplicarAvance(jugadorTurnoActual); else activarFalloUrgente(); }, 1500);
-        }
-
+        // =====================================
+        // SONIDOS Y AUDIOS
+        // =====================================
         function sonarBrinco() { const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination); osc.type = 'sine'; osc.frequency.setValueAtTime(260, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(650, audioCtx.currentTime + 0.12); gain.gain.setValueAtTime(0.12, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12); osc.start(); osc.stop(audioCtx.currentTime + 0.12); }
         function sonarCelebracionAvance() { const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination); osc.type = 'triangle'; const t = audioCtx.currentTime; osc.frequency.setValueAtTime(320, t); osc.frequency.setValueAtTime(480, t + 0.06); osc.frequency.setValueAtTime(640, t + 0.12); osc.frequency.setValueAtTime(960, t + 0.18); gain.gain.setValueAtTime(0.15, t); gain.gain.linearRampToValueAtTime(0.01, t + 0.3); osc.start(); osc.stop(t + 0.3); }
         function sonarFalloCritico() { const osc1 = audioCtx.createOscillator(); const osc2 = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc1.connect(gain); osc2.connect(gain); gain.connect(audioCtx.destination); osc1.type = 'sawtooth'; osc2.type = 'square'; osc1.frequency.setValueAtTime(160, audioCtx.currentTime); osc1.frequency.linearRampToValueAtTime(50, audioCtx.currentTime + 0.6); osc2.frequency.setValueAtTime(155, audioCtx.currentTime); osc2.frequency.linearRampToValueAtTime(45, audioCtx.currentTime + 0.6); gain.gain.setValueAtTime(0.2, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.6); osc1.start(); osc2.start(); osc1.stop(audioCtx.currentTime + 0.6); osc2.stop(audioCtx.currentTime + 0.6); }
@@ -528,6 +622,9 @@
         function conmutarMusicaAmbiente() { if (audioCtx.state === 'suspended') audioCtx.resume(); const btn = document.getElementById('btn-musica-id'); if (musicaEncendida) { if(nodoMusicaAmbiente) { nodoMusicaAmbiente.stop(); nodoMusicaAmbiente = null; } musicaEncendida = false; btn.innerText = "🎵 Ritmo Interactivo: APAGADO"; btn.className = "btn-audio-directo muteada"; } else { musicaEncendida = true; btn.innerText = "⚡ Ritmo Interactivo: EN VIVO"; btn.className = "btn-audio-directo"; reproducirSúperFondoProcedural(); } }
         function reproducirSúperFondoProcedural() { if (!musicaEncendida) return; const ritmoBPM = 125; const duracionNegra = 60 / ritmoBPM; const bufferSize = audioCtx.sampleRate * (duracionNegra * 4); const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate); const canalMuestra = buffer.getChannelData(0); for (let i = 0; i < bufferSize; i++) { let t = i / audioCtx.sampleRate; let ondaGrave = Math.sin(2 * Math.PI * 55.0 * t) * Math.exp(-(t % (duracionNegra / 2)) * 10); canalMuestra[i] = (ondaGrave * 0.1); } nodoMusicaAmbiente = audioCtx.createBufferSource(); nodoMusicaAmbiente.buffer = buffer; nodoMusicaAmbiente.loop = true; const gain = audioCtx.createGain(); gain.gain.value = 0.38; nodoMusicaAmbiente.connect(gain); gain.connect(audioCtx.destination); nodoMusicaAmbiente.start(); }
 
+        // =====================================
+        // MOTOR DE JUEGO PRINCIPAL
+        // =====================================
         function tirarDadosAzar() {
             if(juegoTerminado || estaMoviendose) return;
             const keysCats = ['general', 'geografia', 'entretenimiento', 'ciencia'];
@@ -570,12 +667,18 @@
                 });
 
             } else if (pasoFlujoActual === "revelar") {
-                pasoFlujoActual = "conteo"; sonarAparicionPregunta();
-                document.getElementById('contenedor-dados-tablero').style.display = "none"; document.getElementById('contenedor-pregunta-tablero').style.display = "block";
+                sonarAparicionPregunta();
+                document.getElementById('contenedor-dados-tablero').style.display = "none"; 
+                document.getElementById('contenedor-pregunta-tablero').style.display = "block";
+                
                 document.getElementById('pregunta-tablero-texto').innerText = preguntaCargadaEstructura.p;
-                document.getElementById('opc-a').innerHTML = `<span>A)</span> ${preguntaCargadaEstructura.o[0].substring(3)}`;
-                document.getElementById('opc-b').innerHTML = `<span>B)</span> ${preguntaCargadaEstructura.o[1].substring(3)}`;
-                document.getElementById('opc-c').innerHTML = `<span>C)</span> ${preguntaCargadaEstructura.o[2].substring(3)}`;
+                let optA = preguntaCargadaEstructura.o[0]; if(optA.startsWith("A)")) optA = optA.substring(3);
+                let optB = preguntaCargadaEstructura.o[1]; if(optB.startsWith("B)")) optB = optB.substring(3);
+                let optC = preguntaCargadaEstructura.o[2]; if(optC.startsWith("C)")) optC = optC.substring(3);
+                
+                document.getElementById('opc-a').innerHTML = `<span>A)</span> ${optA.trim()}`;
+                document.getElementById('opc-b').innerHTML = `<span>B)</span> ${optB.trim()}`;
+                document.getElementById('opc-c').innerHTML = `<span>C)</span> ${optC.trim()}`;
                 
                 const barraReloj = document.getElementById('barra-reloj');
                 barraReloj.style.width = '100%';
@@ -583,18 +686,32 @@
 
                 document.getElementById('respuesta-tablero-texto').innerText = "R: " + preguntaCargadaEstructura.r;
                 document.getElementById('respuesta-tablero-texto').style.display = "none";
-                actualizarEstadosVisualesBotonesCategorias();
+
+                if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
+                    socketAdmin.send(JSON.stringify({ tipo: 'MOSTRAR_EN_CONTROL', fase: 'revelar', pregunta: preguntaCargadaEstructura.p, opciones: preguntaCargadaEstructura.o }));
+                }
+
+                // Si tiene el "Conteo Auto" encendido, pasa directamente al reloj
+                if (modoAutoConteo) {
+                    setTimeout(() => { controlFlujoCategoria(categoriaSeleccionadaActiva); }, 3000);
+                } else {
+                    pasoFlujoActual = "conteo"; 
+                    actualizarEstadosVisualesBotonesCategorias();
+                }
 
             } else if (pasoFlujoActual === "conteo") {
                 pasoFlujoActual = "bloqueado"; actualizarEstadosVisualesBotonesCategorias();
                 clearInterval(intervaloReloj); tiempoRestante = 10; 
                 const barraReloj = document.getElementById('barra-reloj');
                 
+                if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
+                    socketAdmin.send(JSON.stringify({ tipo: 'MOSTRAR_EN_CONTROL', fase: 'conteo', tiempo: 10 }));
+                }
+
                 intervaloReloj = setInterval(() => {
                     tiempoRestante--;
                     if (tiempoRestante > 0) { 
                         barraReloj.style.width = (tiempoRestante * 10) + '%';
-                        
                         if(tiempoRestante <= 5 && tiempoRestante > 3) {
                             barraReloj.classList.add('alerta');
                         } else if(tiempoRestante <= 3) {
@@ -606,12 +723,26 @@
                     else { 
                         clearInterval(intervaloReloj); 
                         barraReloj.style.width = '0%';
-                        activarFalloUrgente(); 
+                        marcarFalloManual(); 
                     }
                 }, 1000);
+
+            // NUEVO PASO DE SUSPENSO: Revela la respuesta y decide si avanza o falla
+            } else if (pasoFlujoActual === "suspenso") {
+                pasoFlujoActual = "bloqueado"; // Bloquea clics dobles
+                actualizarEstadosVisualesBotonesCategorias();
+                
+                revelarRespuestaVisual(); 
+                
+                // Efecto dramático de 2 segundos antes de que la ficha se mueva
+                setTimeout(() => { 
+                    if (resultadoPendiente === "avance") aplicarAvance(jugadorTurnoActual); 
+                    else activarFalloUrgente(); 
+                }, 2000);
             }
         }
 
+        // CONTROL DE BOTONES EN EL PANEL IZQUIERDO
         function actualizarEstadosVisualesBotonesCategorias() {
             const categories = ['general', 'geografia', 'entretenimiento', 'ciencia'];
             categories.forEach(cat => {
@@ -619,25 +750,99 @@
                 btn.className = `btn-cat ${colorCategoriasMapeo[cat].includes('🔵') ? 'azul' : colorCategoriasMapeo[cat].includes('🟢') ? 'verde' : colorCategoriasMapeo[cat].includes('🔴') ? 'rojo' : 'amarillo'}`; 
                 btn.innerText = nombresOriginalesBotones[cat];
                 if (pasoFlujoActual === "inicio") return;
+                
                 if (categoriaSeleccionadaActiva === cat) {
                     if (pasoFlujoActual === "revelar") { btn.classList.add('esperando-pregunta'); btn.innerText = "👁️ Mostrar Pregunta"; } 
                     else if (pasoFlujoActual === "conteo") { btn.classList.add('esperando-conteo'); btn.innerText = "⏱️ Iniciar Conteo"; } 
+                    else if (pasoFlujoActual === "suspenso") { btn.classList.add('esperando-conteo'); btn.innerText = "🥁 Revelar Resultado"; } 
                     else if (pasoFlujoActual === "bloqueado") { btn.classList.add('desactivado'); }
                 } else { btn.classList.add('desactivado'); }
             });
         }
 
-        function liberarYResetearFlujoBotones() { clearInterval(intervaloReloj); pasoFlujoActual = "inicio"; categoriaSeleccionadaActiva = null; actualizarEstadosVisualesBotonesCategorias(); }
-        
-        function revelarRespuesta() { 
-            if(estaMoviendose || !preguntaCargadaEstructura) return;
-            clearInterval(intervaloReloj); document.getElementById('respuesta-tablero-texto').style.display = "block";
-            const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase(); limpiarIluminacionOpciones();
-            if(letraCorrecta === "A") document.getElementById('opc-a').classList.add('opcion-correcta-iluminada');
-            else if(letraCorrecta === "B") document.getElementById('opc-b').classList.add('opcion-correcta-iluminada');
-            else if(letraCorrecta === "C") document.getElementById('opc-c').classList.add('opcion-correcta-iluminada');
+        // CHAT RESPONDE Y ENTRA AL SUSPENSO
+        function procesarRespuestaElegidaChat(letraOpcion) {
+            if(!preguntaCargadaEstructura || pasoFlujoActual !== "bloqueado") return;
+            clearInterval(intervaloReloj); 
+            
+            opcionElegidaGlobal = letraOpcion;
+            const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase();
+            
+            // 1. Mostrar la opción que eligió el chat en blanco brillante
+            const mapOpciones = {'A': 'opc-a', 'B': 'opc-b', 'C': 'opc-c'};
+            if(letraOpcion && mapOpciones[letraOpcion]) {
+                document.getElementById(mapOpciones[letraOpcion]).classList.add('opcion-seleccionada');
+                if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
+                    socketAdmin.send(JSON.stringify({ tipo: 'MARCAR_SELECCION', elegida: letraOpcion }));
+                }
+            }
+
+            // 2. Preparar el resultado
+            pasoFlujoActual = "suspenso";
+            if (letraOpcion === letraCorrecta) resultadoPendiente = "avance";
+            else resultadoPendiente = "fallo";
+            
+            actualizarEstadosVisualesBotonesCategorias();
+
+            // Si "Suspenso Auto" está activo, no espera a que des click
+            if(modoAutoSuspenso) {
+                setTimeout(() => {
+                    if(pasoFlujoActual === "suspenso") controlFlujoCategoria(categoriaSeleccionadaActiva);
+                }, 3000);
+            }
         }
-        function limpiarIluminacionOpciones() { document.getElementById('opc-a').classList.remove('opcion-correcta-iluminada'); document.getElementById('opc-b').classList.remove('opcion-correcta-iluminada'); document.getElementById('opc-c').classList.remove('opcion-correcta-iluminada'); }
+
+        // FALLO MANUAL (Ej. se acaba el tiempo o dicen tonterías) Y ENTRA AL SUSPENSO
+        function marcarFalloManual() {
+            if(estaMoviendose || !preguntaCargadaEstructura || pasoFlujoActual === "suspenso") return;
+            clearInterval(intervaloReloj);
+            
+            opcionElegidaGlobal = null;
+            pasoFlujoActual = "suspenso";
+            resultadoPendiente = "fallo";
+            
+            actualizarEstadosVisualesBotonesCategorias();
+
+            if(modoAutoSuspenso) {
+                setTimeout(() => {
+                    if(pasoFlujoActual === "suspenso") controlFlujoCategoria(categoriaSeleccionadaActiva);
+                }, 2000);
+            }
+        }
+
+        function revelarRespuestaVisual() { 
+            document.getElementById('respuesta-tablero-texto').style.display = "block";
+            const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase(); 
+            limpiarIluminacionOpciones(); 
+            
+            const mapOpciones = {'A': 'opc-a', 'B': 'opc-b', 'C': 'opc-c'};
+            if(opcionElegidaGlobal && mapOpciones[opcionElegidaGlobal]) {
+                if(opcionElegidaGlobal === letraCorrecta) {
+                    document.getElementById(mapOpciones[opcionElegidaGlobal]).classList.add('opcion-correcta-iluminada');
+                } else {
+                    document.getElementById(mapOpciones[opcionElegidaGlobal]).classList.add('opcion-error');
+                    document.getElementById(mapOpciones[letraCorrecta]).classList.add('opcion-correcta-iluminada');
+                }
+            } else {
+                document.getElementById(mapOpciones[letraCorrecta]).classList.add('opcion-correcta-iluminada');
+            }
+
+            if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
+                socketAdmin.send(JSON.stringify({ tipo: 'REVELAR_CON_SELECCION', correcta: letraCorrecta, elegida: opcionElegidaGlobal }));
+            }
+        }
+
+        function limpiarIluminacionOpciones() { 
+            document.getElementById('opc-a').classList.remove('opcion-correcta-iluminada', 'opcion-error', 'opcion-seleccionada'); 
+            document.getElementById('opc-b').classList.remove('opcion-correcta-iluminada', 'opcion-error', 'opcion-seleccionada'); 
+            document.getElementById('opc-c').classList.remove('opcion-correcta-iluminada', 'opcion-error', 'opcion-seleccionada'); 
+        }
+
+        function liberarYResetearFlujoBotones() { 
+            clearInterval(intervaloReloj); pasoFlujoActual = "inicio"; categoriaSeleccionadaActiva = null; opcionElegidaGlobal = null; resultadoPendiente = null;
+            actualizarEstadosVisualesBotonesCategorias(); 
+            if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) { socketAdmin.send(JSON.stringify({ tipo: 'OCULTAR_PREGUNTA' })); }
+        }
         
         function activarFalloUrgente() {
             if(estaMoviendose || juegoTerminado) return;
@@ -645,6 +850,25 @@
             document.getElementById('contenedor-pregunta-tablero').style.display = "none"; document.getElementById('contenedor-error-tablero').style.display = "block";
             sonarFalloCritico(); dadoNumeroActual = 0; preguntaCargadaEstructura = null; estaMoviendose = true; 
             setTimeout(() => { estaMoviendose = false; liberarYResetearFlujoBotones(); rotarSiguienteTurno(); }, 1800);
+        }
+
+        function actualizarFichas(casillaResaltar, jugadorMovido) {
+            for(let i=0; i<=30; i++) {
+                let casillaElemento = document.getElementById(`casilla-${i}`); if (casillaElemento) casillaElemento.classList.remove('casilla-activa');
+                let contenedorFichas = document.getElementById(`fichas-c-${i}`); if(contenedorFichas) contenedorFichas.innerHTML = "";
+            }
+            if(!juegoTerminado && pasoFlujoActual === "inicio" && casillaResaltar === null) {
+                let casillaDestino = document.getElementById(`casilla-${posiciones[jugadorTurnoActual]}`);
+                if(casillaDestino) casillaDestino.classList.add('casilla-activa');
+            } else if (casillaResaltar !== null) { 
+                let casillaDestino = document.getElementById(`casilla-${casillaResaltar}`); 
+                if (casillaDestino) casillaDestino.classList.add('casilla-activa'); 
+            }
+            
+            for(let j=1; j<=cantidadJugadoresActual; j++) {
+                let pos = posiciones[j]; let contenedorFichas = document.getElementById(`fichas-c-${pos}`);
+                if (contenedorFichas) { let claseAnimacion = (j === jugadorMovido) ? "avatar-ficha efecto-brinco" : "avatar-ficha"; contenedorFichas.innerHTML += `<span class="${claseAnimacion}">${avatarJugadores[j]}</span>`; }
+            }
         }
 
         function aplicarAvance(jugador) {
@@ -692,22 +916,7 @@
             jugadorTurnoActual = (jugadorTurnoActual % cantidadJugadoresActual) + 1; 
             actualizarVisualTurnoEspera(); 
             actualizarDificultadVisualPorTurno();
-        }
-        
-        function obtenerPreguntaClasificada(cat, nivel) { 
-            if (!datosClasificados) return { p: "Cargando preguntas...", o: ["A) -", "B) -", "C) -"], r: "A) -" };
-            
-            let grupo = datosClasificados[cat][nivel]; 
-            
-            if (!grupo || grupo.length === 0) { 
-                datosClasificados[cat][nivel] = JSON.parse(JSON.stringify(copiaMaestraPreguntas[cat][nivel]));
-                grupo = datosClasificados[cat][nivel];
-            }
-            
-            const rIdx = Math.floor(Math.random() * grupo.length); 
-            const preguntaSeleccionada = grupo.splice(rIdx, 1)[0]; 
-            
-            return preguntaSeleccionada; 
+            actualizarFichas(null, null);
         }
         
         function cambiarCantidadJugadores(cant) { 
@@ -738,18 +947,6 @@
                 div.innerHTML = `<div>${casilla.txt}</div><div id="fichas-c-${index}" style="display:flex; gap:3px; margin-top:5px; flex-wrap:wrap; justify-content:center;"></div>`; contenedor.appendChild(div);
             });
             actualizarFichas(null, null); liberarYResetearFlujoBotones(); actualizarVisualTurnoEspera();
-        }
-
-        function actualizarFichas(casillaResaltar, jugadorMovido) {
-            for(let i=0; i<=30; i++) {
-                let casillaElemento = document.getElementById(`casilla-${i}`); if (casillaElemento) casillaElemento.classList.remove('casilla-activa');
-                let contenedorFichas = document.getElementById(`fichas-c-${i}`); if(contenedorFichas) contenedorFichas.innerHTML = "";
-            }
-            if (casillaResaltar !== null) { let casillaDestino = document.getElementById(`casilla-${casillaResaltar}`); if (casillaDestino) casillaDestino.classList.add('casilla-activa'); }
-            for(let j=1; j<=cantidadJugadoresActual; j++) {
-                let pos = posiciones[j]; let contenedorFichas = document.getElementById(`fichas-c-${pos}`);
-                if (contenedorFichas) { let claseAnimacion = (j === jugadorMovido) ? "avatar-ficha efecto-brinco" : "avatar-ficha"; contenedorFichas.innerHTML += `<span class="${claseAnimacion}">${avatarJugadores[j]}</span>`; }
-            }
         }
 
         function reiniciarTodo() {
