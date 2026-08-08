@@ -90,7 +90,6 @@
         .azul { background: #007bff; } .rojo { background: #dc3545; } .verde { background: #28a745; } .amarillo { background: #ffc107; color: #000; text-shadow: none; }
 
         .btn-cat.esperando-pregunta { background: #25f4ee !important; color: #000 !important; text-shadow: none !important; animation: parpadeo-control 0.8s infinite alternate; font-size: 14px; }
-        .btn-cat.esperando-conteo { background: #ffc107 !important; color: #000 !important; text-shadow: none !important; animation: parpadeo-control 0.8s infinite alternate; font-size: 14px; }
         .btn-cat.desactivado { opacity: 0.2; cursor: not-allowed; pointer-events: none; }
 
         @keyframes parpadeo-control { from { box-shadow: 0 0 4px currentColor; } to { box-shadow: 0 0 15px currentColor; transform: scale(1.02); } }
@@ -308,7 +307,6 @@
                     <!-- BOTONES DE AUTOMATIZACIÓN POR PASOS -->
                     <div style="display: flex; gap: 4px; margin-top: 6px;">
                         <button id="btn-modo-auto" class="btn-modo-auto" onclick="toggleModoAuto()" title="Dificultad Automática">⚙️ DIF.</button>
-                        <button id="btn-auto-conteo" class="btn-modo-auto" onclick="toggleAutoConteo()" title="Conteo Automático">⏱️ CONT.</button>
                         <button id="btn-auto-suspenso" class="btn-modo-auto" onclick="toggleAutoSuspenso()" title="Suspenso Automático">🥁 SUSP.</button>
                     </div>
                 </div>
@@ -461,7 +459,6 @@
         let copiaMaestraPreguntas = null; 
         
         let modoAutoDificultad = false; 
-        let modoAutoConteo = false;
         let modoAutoSuspenso = false;
 
         const colorCategoriasMapeo = { 'general': 'GENERAL 🔵', 'entretenimiento': 'ENTRE./ARTE 🔴', 'geografia': 'GEOGRAFÍA 🟢', 'ciencia': 'CIENCIA 🟡' };
@@ -540,14 +537,6 @@
             modoAutoDificultad = !modoAutoDificultad;
             const btn = document.getElementById('btn-modo-auto');
             if (modoAutoDificultad) { btn.classList.add('encendido'); actualizarDificultadVisualPorTurno(); } 
-            else { btn.classList.remove('encendido'); }
-        }
-
-        function toggleAutoConteo() {
-            if (estaMoviendose) return; 
-            modoAutoConteo = !modoAutoConteo; 
-            const btn = document.getElementById('btn-auto-conteo');
-            if (modoAutoConteo) { btn.classList.add('encendido'); } 
             else { btn.classList.remove('encendido'); }
         }
 
@@ -701,8 +690,9 @@
                 });
 
             } else if (pasoFlujoActual === "revelar") {
-                pasoFlujoActual = "conteo"; sonarAparicionPregunta();
-                document.getElementById('contenedor-dados-tablero').style.display = "none"; document.getElementById('contenedor-pregunta-tablero').style.display = "block";
+                sonarAparicionPregunta();
+                document.getElementById('contenedor-dados-tablero').style.display = "none"; 
+                document.getElementById('contenedor-pregunta-tablero').style.display = "block";
                 
                 // Formateo para leer limpio
                 document.getElementById('pregunta-tablero-texto').innerText = preguntaCargadaEstructura.p;
@@ -720,21 +710,16 @@
 
                 document.getElementById('respuesta-tablero-texto').innerText = "R: " + preguntaCargadaEstructura.r;
                 document.getElementById('respuesta-tablero-texto').style.display = "none";
-                actualizarEstadosVisualesBotonesCategorias();
 
                 if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
                     socketAdmin.send(JSON.stringify({ tipo: 'MOSTRAR_EN_CONTROL', fase: 'revelar', pregunta: preguntaCargadaEstructura.p, opciones: preguntaCargadaEstructura.o }));
                 }
 
-                // Si tiene el "Conteo Auto" encendido, pasa directamente al reloj
-                if (modoAutoConteo) {
-                    setTimeout(() => { controlFlujoCategoria(categoriaSeleccionadaActiva); }, 3000);
-                }
-
-            } else if (pasoFlujoActual === "conteo") {
-                pasoFlujoActual = "bloqueado"; actualizarEstadosVisualesBotonesCategorias();
-                clearInterval(intervaloReloj); tiempoRestante = 10; 
-                const barraReloj = document.getElementById('barra-reloj');
+                // INICIO INMEDIATO DEL CONTEO AL MOSTRAR LA PREGUNTA
+                pasoFlujoActual = "bloqueado"; 
+                actualizarEstadosVisualesBotonesCategorias();
+                clearInterval(intervaloReloj); 
+                tiempoRestante = 10; 
                 
                 if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
                     socketAdmin.send(JSON.stringify({ tipo: 'MOSTRAR_EN_CONTROL', fase: 'conteo', tiempo: 10 }));
@@ -785,7 +770,6 @@
                 
                 if (categoriaSeleccionadaActiva === cat) {
                     if (pasoFlujoActual === "revelar") { btn.classList.add('esperando-pregunta'); btn.innerText = "👁️ Mostrar Pregunta"; } 
-                    else if (pasoFlujoActual === "conteo") { btn.classList.add('esperando-conteo'); btn.innerText = "⏱️ Iniciar Conteo"; } 
                     else if (pasoFlujoActual === "suspenso") { btn.classList.add('esperando-conteo'); btn.innerText = "🥁 Revelar Resultado"; } 
                     else if (pasoFlujoActual === "bloqueado") { btn.classList.add('desactivado'); }
                 } else { btn.classList.add('desactivado'); }
