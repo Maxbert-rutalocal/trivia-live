@@ -5947,8 +5947,7 @@
     "OpcionB": "B) Murciélago",
     "OpcionC": "C) Colugo",
     "Respuesta": "B) Murciélago"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -6848,8 +6847,7 @@
     "OpcionB": "B) La Batalla de Leipzig",
     "OpcionC": "C) La Guerra de la Sexta Coalición",
     "Respuesta": "A) La Invasión Francesa de Rusia"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -12240,7 +12238,7 @@
     "OpcionB": "B) RMS Titanic",
     "OpcionC": "C) HMHS Britannic",
     "Respuesta": "B) RMS Titanic"
-  }.
+  },
   {
     "Categoria": "general",
     "Dificultad": "medio",
@@ -14049,8 +14047,7 @@
     "OpcionB": "B) Galileo Galilei",
     "OpcionC": "C) Giordano Bruno",
     "Respuesta": "B) Galileo Galilei"
-  }
-,
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -14178,16 +14175,7 @@
     "Respuesta": "B) Esfigmomanómetro"
   },
   {
-    "Categoria": "ciencia",
-    "DIFICULTAD": "dificil",
-    "Pregunta": "¿Qué técnica médica de diagnóstico por imagen utiliza campos magnéticos potentes y ondas de radio para generar imágenes detalladas del interior del cuerpo?",
-    "OpcionA": "A) Tomografía computarizada (TAC)",
-    "OpcionB": "B) Resonancia magnética (MRI)",
-    "OpcionC": "C) Radiografía de rayos X",
-    "Respuesta": "B) Resonancia magnética (MRI)"
-  },
-  {
-    "Categoria": "ciencia",
+    "Categoria": "ciencia',\n    'DIFICULTAD': 'dificil',\n    'Pregunta': '¿Qué técnica médica de diagnóstico por imagen utiliza campos magnéticos potentes y ondas de radio para generar imágenes detalladas del interior del cuerpo?',\n    'OpcionA': 'A) Tomografía computarizada (TAC)',\n    'OpcionB': 'B) Resonancia magnética (MRI)',\n    'OpcionC': 'C) Radiografía de rayos X',\n    'Respuesta': 'B) Resonancia magnética (MRI)'\n  },\n  {\n    'Categoria': 'ciencia",
     "Dificultad": "facil",
     "Pregunta": "¿Cuál es el satélite natural único que orbita alrededor de nuestro planeta Tierra?",
     "OpcionA": "A) Fobos",
@@ -26695,7 +26683,7 @@
     "OpcionB": "B) Manatí",
     "OpcionC": "C) Nutria",
     "Respuesta": "B) Manatí"
-  },[
+  },
   {
     "Categoria": "ciencia",
     "Dificultad": "facil",
@@ -27507,7 +27495,7 @@
     "Respuesta": "C) Océano Pacífico"
   },
   {
-   "Categoria": "ciencia",
+    "Categoria": "ciencia",
     "Dificultad": "medio",
     "Pregunta": "¿Qué nombre técnico recibe la mezcla homogénea de dos o más sustancias en la que no se distinguen sus componentes a simple vista?",
     "OpcionA": "A) Una suspensión",
@@ -27516,7 +27504,7 @@
     "Respuesta": "B) Una disolución (solución)"
   },
   {
-   "Categoria": "ciencia",
+    "Categoria": "ciencia",
     "Dificultad": "medio",
     "Pregunta": "¿Qué nombre técnico recibe la mezcla homogénea de dos o más sustancias en la que no se distinguen sus componentes a simple vista?",
     "OpcionA": "A) Una suspensión",
@@ -27541,5 +27529,5 @@
     "OpcionB": "B) Una disolución (solución)",
     "OpcionC": "C) Un coloide",
     "Respuesta": "B) Una disolución (solución)"
-  },
+  }
 ]

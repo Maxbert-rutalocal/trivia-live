@@ -2,43 +2,52 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Trivia Live - Tablero Principal</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             background-color: #121212;
             color: white;
-            text-align: center;
-            padding: 10px;
             margin: 0;
-            overflow-y: auto; 
-            overflow-x: hidden;
+            padding: 0;
+            overflow: hidden; 
+        }
+
+        #panorama-wrapper {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212;
         }
 
         .game-container {
             display: flex;
-            max-width: 1450px;
-            margin: 10px auto;
-            gap: 20px;
+            width: 1320px; 
+            height: 760px; 
+            flex-shrink: 0;
+            gap: 12px; 
             justify-content: center;
-            align-items: flex-start;
+            align-items: stretch;
         }
 
-        /* PANEL IZQUIERDO */
+        /* PANEL IZQUIERDO COMPACTO Y SCROLLABLE */
         .sidebar {
-            flex: 1; background: #1e1e1e; padding: 15px; border-radius: 12px;
-            border: 2px solid #333; max-width: 280px; max-height: 95vh; overflow-y: auto;
+            width: 260px; background: #1e1e1e; padding: 12px; border-radius: 12px;
+            border: 2px solid #333; display: flex; flex-direction: column; 
+            overflow-y: auto; overflow-x: hidden; gap: 2px;
         }
 
         /* PANEL DERECHO DE TEMÁTICAS */
         .sidebar-derecha {
-            flex: 0.2; background: #1e1e1e; padding: 12px; border-radius: 12px;
-            border: 2px solid #333; min-width: 95px; max-width: 110px; max-height: 95vh;
-            display: flex; flex-direction: column; align-items: center; overflow-y: auto;
+            width: 100px; background: #1e1e1e; padding: 10px; border-radius: 12px;
+            border: 2px solid #333; display: flex; flex-direction: column; align-items: center;
+            overflow-y: auto; overflow-x: hidden;
         }
-        .tit-tematica { font-size: 11px; color: #25f4ee; font-weight: bold; margin: 0 0 10px 0; text-transform: uppercase; text-align: center; line-height: 1.3;}
         
+        .tit-tematica { font-size: 11px; color: #25f4ee; font-weight: bold; margin: 0 0 10px 0; text-transform: uppercase; text-align: center; line-height: 1.3;}
         .grid-tematicas { display: flex; flex-direction: column; gap: 8px; width: 100%; }
         
         .btn-tematica {
@@ -50,7 +59,7 @@
         .btn-tematica.activa { border-color: #25f4ee; background: #1a3a3a; box-shadow: 0 0 10px rgba(37, 244, 238, 0.4); }
         .btn-tematica span { display: block; font-size: 9px; color: #aaa; margin-top: 4px; font-weight: bold; letter-spacing: 0.5px;}
 
-        .seccion-config { background: #151515; padding: 8px; border-radius: 8px; border: 1px solid #222; margin-bottom: 12px; }
+        .seccion-config { background: #151515; padding: 8px; border-radius: 8px; border: 1px solid #222; margin-bottom: 6px; }
         .tit-config { font-size: 11px; color: #aaa; font-weight: bold; margin: 0 0 5px 0; text-transform: uppercase;}
         .zona-botones { display: flex; gap: 5px; }
         
@@ -61,12 +70,10 @@
         .btn-config.active-jugadores { background: #fe2c55; color: white; box-shadow: 0 0 8px rgba(254,44,85,0.5); }
 
         .btn-modo-auto {
-            width: 100%; margin-top: 6px; padding: 8px; font-weight: bold; font-size: 11px; text-transform: uppercase;
+            flex: 1; padding: 8px 0; font-weight: bold; font-size: 9px; text-transform: uppercase; text-align: center;
             border-radius: 5px; cursor: pointer; border: 1px solid #444; background: #222; color: #888; transition: all 0.3s;
         }
-        .btn-modo-auto.encendido {
-            background: #25f4ee; color: #000; border-color: #fff; box-shadow: 0 0 10px rgba(37,244,238,0.5);
-        }
+        .btn-modo-auto.encendido { background: #25f4ee; color: #000; border-color: #fff; box-shadow: 0 0 10px rgba(37,244,238,0.5); }
 
         .grupo-input-nombre { display: flex; align-items: center; gap: 5px; margin-bottom: 5px; }
         .grupo-input-nombre span { font-size: 13px; min-width: 20px; }
@@ -74,48 +81,35 @@
         .input-nombre-jug:focus { border-color: #25f4ee; outline: none; }
 
         .btn-dados-principal {
-            background: linear-gradient(135deg, #ff1744, #ff9100); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 6px; cursor: pointer; width: 100%; font-size: 13px; text-transform: uppercase; box-shadow: 0 0 12px rgba(255, 145, 0, 0.4); margin-bottom: 12px; transition: transform 0.1s;
+            background: linear-gradient(135deg, #ff1744, #ff9100); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 6px; cursor: pointer; width: 100%; font-size: 13px; text-transform: uppercase; box-shadow: 0 0 12px rgba(255, 145, 0, 0.4); margin-bottom: 8px; margin-top: 5px; transition: transform 0.1s;
         }
         .btn-dados-principal:active { transform: scale(0.97); }
 
-        .grid-categorias { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 15px; }
-        .btn-cat { border: none; padding: 14px; font-weight: bold; color: white; border-radius: 6px; cursor: pointer; text-shadow: 1px 1px 2px #000; font-size: 12px; transition: all 0.2s ease; text-transform: uppercase; }
+        .grid-categorias { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 8px; }
+        .btn-cat { border: none; padding: 12px; font-weight: bold; color: white; border-radius: 6px; cursor: pointer; text-shadow: 1px 1px 2px #000; font-size: 12px; transition: all 0.2s ease; text-transform: uppercase; }
         .azul { background: #007bff; } .rojo { background: #dc3545; } .verde { background: #28a745; } .amarillo { background: #ffc107; color: #000; text-shadow: none; }
 
-        .btn-cat.esperando-pregunta { background: #25f4ee !important; color: #000 !important; text-shadow: none !important; animation: parpadeo-control 0.8s infinite alternate; font-size: 13px; }
-        .btn-cat.esperando-conteo { background: #ffc107 !important; color: #000 !important; text-shadow: none !important; font-size: 13px; }
+        .btn-cat.esperando-pregunta { background: #25f4ee !important; color: #000 !important; text-shadow: none !important; animation: parpadeo-control 0.8s infinite alternate; font-size: 14px; }
+        .btn-cat.esperando-conteo { background: #ffc107 !important; color: #000 !important; text-shadow: none !important; animation: parpadeo-control 0.8s infinite alternate; font-size: 14px; }
         .btn-cat.desactivado { opacity: 0.2; cursor: not-allowed; pointer-events: none; }
 
-        @keyframes parpadeo-control { from { box-shadow: 0 0 4px #25f4ee; } to { box-shadow: 0 0 15px #25f4ee; transform: scale(1.02); } }
+        @keyframes parpadeo-control { from { box-shadow: 0 0 4px currentColor; } to { box-shadow: 0 0 15px currentColor; transform: scale(1.02); } }
         
-        .btn-revelar { background: #25f4ee; color: #000; border: none; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 6px;}
-        .btn-fallo { background: #dc3545; color: white; border: none; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 10px; box-shadow: 0 0 10px rgba(220,53,69,0.3); }
-        .btn-reset { background: #8a1a1a; color: white; border: 1px solid #ff4444; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 15px; margin-top: 5px; transition: 0.2s;}
+        .btn-fallo { background: #dc3545; color: white; border: none; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; box-shadow: 0 0 10px rgba(220,53,69,0.3); }
+        .btn-reset { background: #8a1a1a; color: white; border: 1px solid #ff4444; padding: 8px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 6px; transition: 0.2s;}
         .btn-reset:hover { background: #ff1744; }
 
-        .estado-conexion { font-size: 11px; font-weight: bold; padding: 4px; margin-bottom: 5px; border-radius: 4px; background: #3a1a1a; color: #ff6666;}
+        .estado-conexion { font-size: 11px; font-weight: bold; padding: 4px; margin-bottom: 5px; border-radius: 4px; background: #3a1a1a; color: #ff6666; text-align: center;}
         .estado-conexion.conectado { background: #1a3a1a; color: #66ff66; }
 
-        /* TABLERO CENTRAL RESPONSIVO */
-        .tablero-wrapper { 
-            flex: 2.2; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: flex-start; 
-            padding-top: 15px;
-        }
+        /* TABLERO CENTRAL REDIMENSIONADO */
+        .tablero-wrapper { width: 930px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 5px; position: relative;}
         
         .tablero-monopolio { 
-            display: grid; 
-            grid-template-columns: repeat(9, 1fr); 
-            grid-template-rows: repeat(7, 1fr);    
-            gap: 4px; 
-            background: #111; padding: 10px; border-radius: 12px; border: 3px solid #fe2c55; 
-            position: relative; box-shadow: 0 0 25px rgba(254, 44, 85, 0.2); 
-            width: 100%;
-            max-width: 850px;
-            aspect-ratio: 9 / 7; 
+            display: grid; grid-template-columns: repeat(9, 1fr); grid-template-rows: repeat(7, 1fr);    
+            gap: 4px; background: #111; padding: 10px; border-radius: 12px; border: 3px solid #fe2c55; 
+            position: relative; box-shadow: 0 0 25px rgba(254, 44, 85, 0.2); width: 100%; aspect-ratio: 9 / 7; 
+            box-sizing: border-box;
         }
 
         .casilla { background: #2a2a2a; border: 1px solid #444; border-radius: 6px; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 14px; font-weight: bold; position: relative; color: #fff; padding: 3px; box-sizing: border-box; }
@@ -125,7 +119,7 @@
         .c-verde { border-top: 5px solid #28a745; } .c-amarillo { border-top: 5px solid #ffc107; }
         .c-reto { background: #8a1a1a; border: 1px solid #ff4444; } .c-avanza { background: #1a5e3a; } .c-retrocede { background: #5c1d1d; }
 
-        .avatar-ficha { font-size: 24px; margin: 2px; display: inline-block; } 
+        .avatar-ficha { font-size: 26px; margin: 2px; display: inline-block; } 
         .efecto-brinco { animation: brincar 0.2s ease-out both; }
         .casilla-activa { background: #3a3a3a !important; box-shadow: inset 0 0 15px #25f4ee, 0 0 20px #25f4ee !important; transform: scale(1.08); z-index: 10; }
         .efecto-victoria { animation: disco 0.4s infinite alternate; border-color: #ffc107 !important; }
@@ -135,111 +129,106 @@
 
         .centro-tablero { grid-column: 2 / 9; grid-row: 2 / 7; background: #1e1e1e; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 15px; position: relative; }
 
-        .titulo-centro { color: #fe2c55; font-size: 24px; font-weight: bold; margin: 5px 0 0 0; text-shadow: 0 0 12px rgba(254,44,85,0.7); }
+        .titulo-centro { color: #fe2c55; font-size: 26px; font-weight: bold; margin: 5px 0 0 0; text-shadow: 0 0 12px rgba(254,44,85,0.7); }
         .zona-controles-musicales { display: flex; gap: 10px; margin: 5px 0; }
         .btn-audio-directo { background: #252525; border: 1px solid #444; color: #25f4ee; font-size: 11px; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-weight: bold; box-shadow: 0 0 6px rgba(37,244,238,0.2); }
         .btn-audio-directo.muteada { color: #888; box-shadow: none; }
-        .marcador-turno-actual { background: #151515; border: 1px solid #333; padding: 6px 20px; border-radius: 20px; font-size: 14px; font-weight: bold; color: #aaa; margin-bottom: 5px; }
+        .marcador-turno-actual { background: #151515; border: 1px solid #333; padding: 8px 25px; border-radius: 20px; font-size: 16px; font-weight: bold; color: #aaa; margin-bottom: 5px; }
         .marcador-turno-actual span { color: #25f4ee; text-shadow: 0 0 5px rgba(37,244,238,0.5); }
 
         .zona-dinamica-centro { width: 100%; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         .contenedor-espera-turno { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .avatar-turno-gigante { font-size: 90px; margin: 0; animation: latido-espera 1s infinite alternate; }
-        .texto-turno-gigante { font-size: 17px; color: #25f4ee; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; margin-top: 10px; }
+        .avatar-turno-gigante { font-size: 100px; margin: 0; animation: latido-espera 1s infinite alternate; }
+        .texto-turno-gigante { font-size: 19px; color: #25f4ee; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; margin-top: 10px; }
 
         .zona-dados-centro { display: flex; gap: 20px; display: none; }
-        .dado-gigante { background: #252525; border: 3px solid #fe2c55; border-radius: 12px; padding: 15px; min-width: 140px; box-shadow: 0 0 15px rgba(254, 44, 85, 0.3); }
-        .dado-tit { font-size: 12px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;}
-        .dado-val { font-size: 18px; font-weight: bold; color: #fff; }
+        .dado-gigante { background: #252525; border: 3px solid #fe2c55; border-radius: 12px; padding: 15px; min-width: 150px; box-shadow: 0 0 15px rgba(254, 44, 85, 0.3); }
+        .dado-tit { font-size: 14px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;}
+        .dado-val { font-size: 20px; font-weight: bold; color: #fff; }
 
-        .pregunta-proyectada { background: rgba(0, 0, 0, 0.95); border: 2px solid #25f4ee; border-radius: 12px; padding: 15px; width: 95%; box-sizing: border-box; box-shadow: 0 0 20px rgba(37, 244, 238, 0.4); display: none; text-align: left; }
-        .txt-pregunta-tablero { font-size: 17px; font-weight: bold; color: #fff; line-height: 1.4; margin-bottom: 12px; text-align: center; }
-        .bloque-opciones-tablero { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
-        .opcion-item { background: #181818; border: 1px solid #333; padding: 8px 12px; border-radius: 6px; font-size: 15px; font-weight: bold; color: #ddd; transition: all 0.3s ease; }
+        /* AJUSTE VISUAL: Caja flotante absolutamente centrada por encima de todo */
+        .pregunta-proyectada { 
+            background: rgba(12, 12, 12, 0.97); 
+            border: 2px solid #25f4ee; 
+            border-radius: 12px; 
+            padding: 20px; 
+            width: 80%; /* Ajustado para que quepa bien dentro del cuadro central */
+            box-sizing: border-box; 
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9); 
+            display: none; 
+            text-align: left; 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+        }
+        
+        .txt-pregunta-tablero { font-size: 19px; font-weight: bold; color: #fff; line-height: 1.4; margin-bottom: 10px; text-align: center; }
+        
+        .bloque-opciones-tablero { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+        .opcion-item { background: #181818; border: 1px solid #333; padding: 10px 14px; border-radius: 8px; font-size: 17px; font-weight: bold; color: #ddd; transition: all 0.3s ease; }
         .opcion-item span { color: #fe2c55; margin-right: 5px; }
 
-        .opcion-correcta-iluminada { background: #ffc107 !important; color: #000 !important; border-color: #fff !important; box-shadow: 0 0 15px #ffc107; transform: scale(1.02); animation: parpadeo-respuesta 0.5s infinite alternate; }
+        .opcion-seleccionada { background: #fff !important; color: #000 !important; border-color: #25f4ee !important; box-shadow: 0 0 20px #fff; transform: scale(1.02); }
+        .opcion-correcta-iluminada { background: #ffc107 !important; color: #000 !important; border-color: #fff !important; box-shadow: 0 0 20px #ffc107; transform: scale(1.03); animation: parpadeo-respuesta 0.5s infinite alternate; }
         .opcion-correcta-iluminada span { color: #000 !important; }
+        .opcion-error { background: #dc3545 !important; border-color: #ff4444 !important; box-shadow: 0 0 15px #dc3545; transform: scale(1.02); animation: sacudir-error 0.3s ease-in-out; }
+        .opcion-error span { color: #fff !important; }
 
-        @keyframes parpadeo-respuesta { from { box-shadow: 0 0 8px #ffc107; } to { box-shadow: 0 0 22px #ffc107; } }
+        @keyframes parpadeo-respuesta { from { box-shadow: 0 0 8px #ffc107; } to { box-shadow: 0 0 25px #ffc107; } }
+        @keyframes sacudir-error { 0%, 100% { transform: scale(1.02) translateX(0); } 25% { transform: scale(1.02) translateX(-5px); } 75% { transform: scale(1.02) translateX(5px); } }
 
-        .contenedor-barra-tiempo { 
-            width: 100%; height: 20px; background: #222; border-radius: 12px; margin: 10px 0; overflow: hidden; border: 2px solid #444; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); 
-        }
-        .barra-tiempo { 
-            height: 100%; width: 100%; background: #00e676; transition: width 1s linear, background-color 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 0 12px #00e676; 
-        }
+        /* BARRA DE TIEMPO */
+        .contenedor-barra-tiempo { width: 100%; height: 22px; background: #222; border-radius: 12px; margin: 10px 0 15px 0; overflow: hidden; border: 2px solid #444; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
+        .barra-tiempo { height: 100%; width: 100%; background: #00e676; transition: width 1s linear, background-color 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 0 12px #00e676; }
         .barra-tiempo.alerta { background: #ffc107; box-shadow: 0 0 12px #ffc107; }
         .barra-tiempo.peligro { background: #ff1744; box-shadow: 0 0 15px #ff1744; }
 
-        .txt-respuesta-tablero { font-size: 18px; font-weight: bold; color: #25f4ee; margin-top: 10px; text-shadow: 0 0 10px rgba(37, 244, 238, 0.6); display: none; text-align: center; }
+        .txt-respuesta-tablero { font-size: 20px; font-weight: bold; color: #25f4ee; margin-top: 10px; text-shadow: 0 0 10px rgba(37, 244, 238, 0.6); display: none; text-align: center; }
 
         .contenedor-error-centro { display: none; animation: sacudir 0.4s ease-in-out; }
-        .carita-triste { font-size: 75px; margin: 0; animation: latido-triste 0.6s infinite alternate; }
-        .texto-error-tit { font-size: 18px; color: #dc3545; font-weight: bold; margin-top: 10px; text-transform: uppercase; }
-
+        .carita-triste { font-size: 85px; margin: 0; animation: latido-triste 0.6s infinite alternate; }
+        .texto-error-tit { font-size: 20px; color: #dc3545; font-weight: bold; margin-top: 10px; text-transform: uppercase; }
         .contenedor-celebracion-centro { display: none; }
-        .icono-celebracion { font-size: 75px; margin: 0; animation: pulso-fiesta 0.4s infinite alternate; }
-        .texto-celebracion-tit { font-size: 22px; color: #28a745; font-weight: bold; margin-top: 10px; text-transform: uppercase; }
+        .icono-celebracion { font-size: 85px; margin: 0; animation: pulso-fiesta 0.4s infinite alternate; }
+        .texto-celebracion-tit { font-size: 24px; color: #28a745; font-weight: bold; margin-top: 10px; text-transform: uppercase; }
 
         @keyframes sacudir { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-10px); } 40%, 80% { transform: translateX(10px); } }
         @keyframes latido-triste { from { transform: scale(1); } to { transform: scale(1.1); } }
         @keyframes latido-espera { from { transform: scale(0.95); opacity: 0.8; } to { transform: scale(1.05); opacity: 1; } }
         @keyframes pulso-fiesta { from { transform: scale(0.95) rotate(-5deg); } to { transform: scale(1.1) rotate(5deg); } }
-        @keyframes parpadeo { from { opacity: 1; } to { opacity: 0.4; } }
         @keyframes agitar-dado { 0% { transform: rotate(0deg) scale(1); } 25% { transform: rotate(-3deg) scale(1.05); } 50% { transform: rotate(3deg) scale(1.05); } 75% { transform: rotate(-3deg) scale(1.05); } 100% { transform: rotate(0deg) scale(1); } }
-        
         .dado-animado { animation: agitar-dado 0.15s infinite; border-color: #ffc107 !important; box-shadow: 0 0 25px rgba(255,193,7,0.6) !important; }
-        #anuncio-efecto { color: #25f4ee; font-weight: bold; font-size: 15px; margin-top: 10px; min-height: 20px; }
-        #ganador-pantalla { font-size: 24px; font-weight: bold; color: #ffc107; margin-top: 5px; text-shadow: 0 0 10px rgba(255,193,7,0.5);}
+        #anuncio-efecto { color: #25f4ee; font-weight: bold; font-size: 16px; margin-top: 10px; min-height: 20px; }
+        #ganador-pantalla { font-size: 26px; font-weight: bold; color: #ffc107; margin-top: 5px; text-shadow: 0 0 10px rgba(255,193,7,0.5);}
 
         /* ========================================= */
         /* ADAPTACIÓN MÓVIL Y RESPONSIVA COMPLETA    */
         /* ========================================= */
         
-        /* Ajuste general para apilar los paneles */
         @media (max-width: 1100px) {
-            .game-container {
-                flex-direction: column; 
-                align-items: center;
-                gap: 15px;
-            }
-            .sidebar, .tablero-wrapper, .sidebar-derecha {
-                width: 100%;
-                max-width: 100%; 
-                max-height: none; 
-                box-sizing: border-box;
-            }
-            
-            /* Ajuste del Panel de Temáticas a cuadrícula para ahorrar espacio vertical */
+            .game-container { flex-direction: column; align-items: center; gap: 15px; }
+            .sidebar, .tablero-wrapper, .sidebar-derecha { width: 100%; max-width: 100%; max-height: none; box-sizing: border-box; }
             .sidebar-derecha { padding: 15px; flex: none; min-width: auto; }
-            .grid-tematicas {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 10px;
-            }
+            .grid-tematicas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
         }
 
-        /* Ajuste fino de textos y elementos internos para pantallas pequeñas (Teléfonos) */
         @media (max-width: 768px) {
             .grid-tematicas { grid-template-columns: repeat(2, 1fr); } 
-            
             .tablero-monopolio { gap: 2px; padding: 5px; border-width: 2px; border-radius: 8px;}
             .casilla { font-size: 9px; padding: 1px; }
             .c-salida, .c-meta { font-size: 8px; }
             .avatar-ficha { font-size: 14px; margin: 1px; }
-            
             .centro-tablero { padding: 5px; }
             .titulo-centro { font-size: 16px; margin-top: 0; }
             .avatar-turno-gigante { font-size: 40px; }
             .texto-turno-gigante { font-size: 11px; margin-top: 5px; }
-            
             .dado-gigante { min-width: 60px; padding: 8px; }
             .dado-val { font-size: 14px; }
             #dado-numero { font-size: 20px !important; }
-            
-            .txt-pregunta-tablero { font-size: 12px; margin-bottom: 5px; }
-            .opcion-item { font-size: 11px; padding: 5px; }
+            .txt-pregunta-tablero { font-size: 14px; margin-bottom: 5px; }
+            .opcion-item { font-size: 12px; padding: 6px; }
             .icono-celebracion { font-size: 40px; }
             .texto-celebracion-tit { font-size: 16px; }
         }
@@ -247,141 +236,173 @@
 </head>
 <body>
 
-    <div class="game-container">
-        
-        <!-- SIDEBAR IZQUIERDA -->
-        <div class="sidebar">
-            <div id="conexion-ws" class="estado-conexion">🔴 Chat Desconectado</div>
-            <!-- BOTÓN DE REINICIO DE PARTIDA -->
-            <button id="btn-reset-global" class="btn-reset" onclick="reiniciarJuegoYControles()">🔄 REINICIAR TABLERO</button>
+    <!-- CONTENEDOR PANORAMA -->
+    <div id="panorama-wrapper">
+        <div class="game-container">
             
-            <div class="seccion-config">
-                <p class="tit-config">NÚMERO DE JUGADORES</p>
-                <div class="zona-botones">
-                    <button class="btn-config active-jugadores" data-cant="2" onclick="cambiarCantidadJugadores(2)">2 JUGS</button>
-                    <button class="btn-config" data-cant="3" onclick="cambiarCantidadJugadores(3)">3 JUGS</button>
-                    <button class="btn-config" data-cant="4" onclick="cambiarCantidadJugadores(4)">4 JUGS</button>
-                </div>
-            </div>
-
-            <div class="seccion-config">
-                <p class="tit-config">JUGADORES ASIGNADOS</p>
-                <div class="grupo-input-nombre">
-                    <span id="span-j1">Alien👽</span><input type="text" id="input-j1" class="input-nombre-jug" value="" placeholder="CHAT" oninput="actualizarNombresDesdeCampos()">
-                </div>
-                <div class="grupo-input-nombre">
-                    <span id="span-j2">Robot🤖</span><input type="text" id="input-j2" class="input-nombre-jug" value="" placeholder="CREADOR" oninput="actualizarNombresDesdeCampos()">
-                </div>
-                <div class="grupo-input-nombre" id="capa-input-j3" style="display: none;">
-                    <span id="span-j3">Zorro🦊</span><input type="text" id="input-j3" class="input-nombre-jug" value="" placeholder="MODERADOR" oninput="actualizarNombresDesdeCampos()">
-                </div>
-                <div class="grupo-input-nombre" id="capa-input-j4" style="display: none;">
-                    <span id="span-j4">Unic.🦄</span><input type="text" id="input-j4" class="input-nombre-jug" value="" placeholder="INVITADO" oninput="actualizarNombresDesdeCampos()">
-                </div>
-            </div>
-
-            <div class="seccion-config">
-                <p class="tit-config">DIFICULTAD PREGUNTAS</p>
-                <div class="zona-botones">
-                    <button class="btn-config active" data-nivel="facil" onclick="cambiarNivel('facil')">🟢 FÁCIL</button>
-                    <button class="btn-config" data-nivel="medio" onclick="cambiarNivel('medio')">🟡 MEDIO</button>
-                    <button class="btn-config" data-nivel="dificil" onclick="cambiarNivel('dificil')">🔴 DIFÍCIL</button>
-                </div>
-                <button id="btn-modo-auto" class="btn-modo-auto" onclick="toggleModoAuto()">⚙️ AUTO: APAGADO</button>
-            </div>
-
-            <button class="btn-dados-principal" onclick="tirarDadosAzar()">🎲 Tirar Dados al Azar</button>
-
-            <p style="font-size: 11px; color: #888; font-weight: bold; margin-bottom: 8px;">O SELECCIONAR CATEGORÍA MANUAL</p>
-            <div class="grid-categorias">
-                <button id="btn-cat-general" class="btn-cat azul" onclick="controlFlujoCategoria('general')">Conoc. General</button>
-                <button id="btn-cat-geografia" class="btn-cat verde" onclick="controlFlujoCategoria('geografia')">Geografía / Mundo</button>
-                <button id="btn-cat-entretenimiento" class="btn-cat rojo" onclick="controlFlujoCategoria('entretenimiento')">Entre. / Arte</button>
-                <button id="btn-cat-ciencia" class="btn-cat amarillo" onclick="controlFlujoCategoria('ciencia')">Ciencia / Nat.</button>
-            </div>
-
-            <button class="btn-revelar" onclick="revelarRespuesta()">👁️ Mostrar Respuesta</button>
-            <button class="btn-fallo" onclick="activarFalloUrgente()">❌ Incorrecto / No Contestó</button>
-        </div>
-
-        <!-- TABLERO CENTRAL -->
-        <div class="tablero-wrapper">
-            <div class="tablero-monopolio" id="tablero-fisico">
-                <div class="centro-tablero">
-                    <div class="titulo-centro">🎙️ TRIVIA LIVE 🎙️</div>
-                    <div class="zona-controles-musicales">
-                        <button id="btn-musica-id" class="btn-audio-directo muteada" onclick="conmutarMusicaAmbiente()">🎵 Ritmo Interactivo: APAGADO</button>
+            <!-- SIDEBAR IZQUIERDA -->
+            <div class="sidebar">
+                <div id="conexion-ws" class="estado-conexion">🔴 Chat Desconectado</div>
+                <button id="btn-reset-global" class="btn-reset" onclick="reiniciarJuegoYControles()">🔄 REINICIAR TABLERO</button>
+                
+                <div class="seccion-config">
+                    <p class="tit-config">NÚMERO DE JUGADORES</p>
+                    <div class="zona-botones">
+                        <button class="btn-config active-jugadores" data-cant="2" onclick="cambiarCantidadJugadores(2)">2 JUGS</button>
+                        <button class="btn-config" data-cant="3" onclick="cambiarCantidadJugadores(3)">3 JUGS</button>
+                        <button class="btn-config" data-cant="4" onclick="cambiarCantidadJugadores(4)">4 JUGS</button>
                     </div>
+                </div>
 
-                    <div class="marcador-turno-actual">TURNO DE: <span id="nombre-turno-marcador">CHAT 👽</span></div>
-
-                    <div class="zona-dinamica-centro">
-                        <div class="contenedor-espera-turno" id="contenedor-espera-tablero">
-                            <div class="avatar-turno-gigante" id="avatar-turno-pantalla">👽</div>
-                            <div class="texto-turno-gigante" id="texto-turno-pantalla">TU TURNO</div>
-                        </div>
-
-                        <div class="zona-dados-centro" id="contenedor-dados-tablero">
-                            <div class="dado-gigante">
-                                <div class="dado-tit">🎨 Categoría</div>
-                                <div id="dado-color" class="dado-val">-</div>
-                            </div>
-                            <div class="dado-gigante">
-                                <div class="dado-tit">🎲 Pasos</div>
-                                <div id="dado-numero" class="dado-val" style="font-size: 40px; color: #25f4ee;">-</div>
-                            </div>
-                        </div>
-
-                        <div class="pregunta-proyectada" id="contenedor-pregunta-tablero">
-                            <div class="txt-pregunta-tablero" id="pregunta-tablero-texto">¿Pregunta?</div>
-                            <div class="bloque-opciones-tablero">
-                                <div class="opcion-item" id="opc-a"><span>A)</span> -</div>
-                                <div class="opcion-item" id="opc-b"><span>B)</span> -</div>
-                                <div class="opcion-item" id="opc-c"><span>C)</span> -</div>
-                            </div>
-                            
-                            <div class="contenedor-barra-tiempo">
-                                <div class="barra-tiempo" id="barra-reloj"></div>
-                            </div>
-
-                            <div class="txt-respuesta-tablero" id="respuesta-tablero-texto">R: Respuesta</div>
-                        </div>
-
-                        <div class="contenedor-error-centro" id="contenedor-error-tablero">
-                            <div class="carita-triste">😭</div>
-                            <div class="texto-error-tit">¡Respuesta Incorrecta!</div>
-                        </div>
-
-                        <div class="contenedor-celebracion-centro" id="contenedor-celebracion-tablero">
-                            <div class="icono-celebracion">🤩✨🎉</div>
-                            <div class="texto-celebracion-tit">¡AVANZA! 🔥</div>
-                        </div>
+                <div class="seccion-config">
+                    <p class="tit-config">JUGADORES ASIGNADOS</p>
+                    <div class="grupo-input-nombre">
+                        <span id="span-j1">Alien👽</span><input type="text" id="input-j1" class="input-nombre-jug" value="" placeholder="CHAT" oninput="actualizarNombresDesdeCampos()">
                     </div>
+                    <div class="grupo-input-nombre">
+                        <span id="span-j2">Robot🤖</span><input type="text" id="input-j2" class="input-nombre-jug" value="" placeholder="CREADOR" oninput="actualizarNombresDesdeCampos()">
+                    </div>
+                    <div class="grupo-input-nombre" id="capa-input-j3" style="display: none;">
+                        <span id="span-j3">Zorro🦊</span><input type="text" id="input-j3" class="input-nombre-jug" value="" placeholder="MODERADOR" oninput="actualizarNombresDesdeCampos()">
+                    </div>
+                    <div class="grupo-input-nombre" id="capa-input-j4" style="display: none;">
+                        <span id="span-j4">Unic.🦄</span><input type="text" id="input-j4" class="input-nombre-jug" value="" placeholder="INVITADO" oninput="actualizarNombresDesdeCampos()">
+                    </div>
+                </div>
 
-                    <div id="anuncio-efecto"></div>
-                    <div id="ganador-pantalla"></div>
+                <div class="seccion-config">
+                    <p class="tit-config">DIFICULTAD PREGUNTAS</p>
+                    <div class="zona-botones">
+                        <button class="btn-config active" data-nivel="facil" onclick="cambiarNivel('facil')">🟢 FÁCIL</button>
+                        <button class="btn-config" data-nivel="medio" onclick="cambiarNivel('medio')">🟡 MEDIO</button>
+                        <button class="btn-config" data-nivel="dificil" onclick="cambiarNivel('dificil')">🔴 DIFÍCIL</button>
+                    </div>
+                    
+                    <!-- BOTONES DE AUTOMATIZACIÓN POR PASOS -->
+                    <div style="display: flex; gap: 4px; margin-top: 6px;">
+                        <button id="btn-modo-auto" class="btn-modo-auto" onclick="toggleModoAuto()" title="Dificultad Automática">⚙️ DIF.</button>
+                        <button id="btn-auto-conteo" class="btn-modo-auto" onclick="toggleAutoConteo()" title="Conteo Automático">⏱️ CONT.</button>
+                        <button id="btn-auto-suspenso" class="btn-modo-auto" onclick="toggleAutoSuspenso()" title="Suspenso Automático">🥁 SUSP.</button>
+                    </div>
+                </div>
+
+                <button class="btn-dados-principal" onclick="tirarDadosAzar()">🎲 Tirar Dados al Azar</button>
+                <p style="font-size: 11px; color: #888; font-weight: bold; margin-bottom: 6px; text-align: center;">O SELECCIONAR CATEGORÍA MANUAL</p>
+                <div class="grid-categorias">
+                    <button id="btn-cat-general" class="btn-cat azul" onclick="controlFlujoCategoria('general')">Conoc. General</button>
+                    <button id="btn-cat-geografia" class="btn-cat verde" onclick="controlFlujoCategoria('geografia')">Geografía / Mundo</button>
+                    <button id="btn-cat-entretenimiento" class="btn-cat rojo" onclick="controlFlujoCategoria('entretenimiento')">Entre. / Arte</button>
+                    <button id="btn-cat-ciencia" class="btn-cat amarillo" onclick="controlFlujoCategoria('ciencia')">Ciencia / Nat.</button>
+                </div>
+
+                <button class="btn-fallo" onclick="marcarFalloManual()">❌ Forzar Fallo / Tiempo</button>
+            </div>
+
+            <!-- TABLERO CENTRAL -->
+            <div class="tablero-wrapper">
+                <div class="tablero-monopolio" id="tablero-fisico">
+                    <div class="centro-tablero">
+                        <div class="titulo-centro">🎙️ TRIVIA LIVE 🎙️</div>
+                        <div class="zona-controles-musicales">
+                            <button id="btn-musica-id" class="btn-audio-directo muteada" onclick="conmutarMusicaAmbiente()">🎵 Ritmo Interactivo: APAGADO</button>
+                        </div>
+
+                        <div class="marcador-turno-actual">TURNO DE: <span id="nombre-turno-marcador">CHAT 👽</span></div>
+
+                        <div class="zona-dinamica-centro">
+                            <div class="contenedor-espera-turno" id="contenedor-espera-tablero">
+                                <div class="avatar-turno-gigante" id="avatar-turno-pantalla">👽</div>
+                                <div class="texto-turno-gigante" id="texto-turno-pantalla">TU TURNO</div>
+                            </div>
+
+                            <div class="zona-dados-centro" id="contenedor-dados-tablero">
+                                <div class="dado-gigante">
+                                    <div class="dado-tit">🎨 Categoría</div>
+                                    <div id="dado-color" class="dado-val">-</div>
+                                </div>
+                                <div class="dado-gigante">
+                                    <div class="dado-tit">🎲 Pasos</div>
+                                    <div id="dado-numero" class="dado-val" style="font-size: 40px; color: #25f4ee;">-</div>
+                                </div>
+                            </div>
+
+                            <div class="pregunta-proyectada" id="contenedor-pregunta-tablero">
+                                <div class="txt-pregunta-tablero" id="pregunta-tablero-texto">¿Pregunta?</div>
+                                
+                                <div class="contenedor-barra-tiempo">
+                                    <div class="barra-tiempo" id="barra-reloj"></div>
+                                </div>
+
+                                <div class="bloque-opciones-tablero">
+                                    <div class="opcion-item" id="opc-a"><span>A)</span> -</div>
+                                    <div class="opcion-item" id="opc-b"><span>B)</span> -</div>
+                                    <div class="opcion-item" id="opc-c"><span>C)</span> -</div>
+                                </div>
+
+                                <div class="txt-respuesta-tablero" id="respuesta-tablero-texto">R: Respuesta</div>
+                            </div>
+
+                            <div class="contenedor-error-centro" id="contenedor-error-tablero">
+                                <div class="carita-triste">😭</div>
+                                <div class="texto-error-tit">¡Respuesta Incorrecta!</div>
+                            </div>
+
+                            <div class="contenedor-celebracion-centro" id="contenedor-celebracion-tablero">
+                                <div class="icono-celebracion">🤩✨🎉</div>
+                                <div class="texto-celebracion-tit">¡AVANZA! 🔥</div>
+                            </div>
+                        </div>
+
+                        <div id="anuncio-efecto"></div>
+                        <div id="ganador-pantalla"></div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- SIDEBAR DERECHA: 8 TEMÁTICAS EN LISTA VERTICAL -->
-        <div class="sidebar-derecha">
-            <p class="tit-tematica">TEMÁTICA<br>DE AVATARES</p>
-            <div class="grid-tematicas">
-                <button class="btn-tematica activa" onclick="cambiarTematica('clasica')" title="Clásica">👽🤖<br><span>CLÁSICA</span></button>
-                <button class="btn-tematica" onclick="cambiarTematica('animales')" title="Animales">🐶🐱<br><span>ANIMALES</span></button>
-                <button class="btn-tematica" onclick="cambiarTematica('musica')" title="Música">🎙️🎸<br><span>MÚSICA</span></button>
-                <button class="btn-tematica" onclick="cambiarTematica('fitness')" title="Fitness">🍏🥑<br><span>FITNESS</span></button>
-                <button class="btn-tematica" onclick="cambiarTematica('dulces')" title="Dulces">🍦🍩<br><span>DULCES</span></button>
-                <button class="btn-tematica" onclick="cambiarTematica('deportes')" title="Deportes">⚽🏀<br><span>DEPORTES</span></button>
-                <button class="btn-tematica" onclick="cambiarTematica('espacio')" title="Espacio">🚀🛸<br><span>ESPACIO</span></button>
-                <button class="btn-tematica" onclick="cambiarTematica('terror')" title="Terror">👻💀<br><span>TERROR</span></button>
+            <!-- SIDEBAR DERECHA: TEMÁTICAS -->
+            <div class="sidebar-derecha">
+                <p class="tit-tematica">TEMÁTICA<br>DE AVATARES</p>
+                <div class="grid-tematicas">
+                    <button class="btn-tematica activa" onclick="cambiarTematica('clasica')" title="Clásica">👽🤖<br><span>CLÁSICA</span></button>
+                    <button class="btn-tematica" onclick="cambiarTematica('animales')" title="Animales">🐶🐱<br><span>ANIMALES</span></button>
+                    <button class="btn-tematica" onclick="cambiarTematica('musica')" title="Música">🎙️🎸<br><span>MÚSICA</span></button>
+                    <button class="btn-tematica" onclick="cambiarTematica('fitness')" title="Fitness">🍏🥑<br><span>FITNESS</span></button>
+                    <button class="btn-tematica" onclick="cambiarTematica('dulces')" title="Dulces">🍦🍩<br><span>DULCES</span></button>
+                    <button class="btn-tematica" onclick="cambiarTematica('deportes')" title="Deportes">⚽🏀<br><span>DEPORTES</span></button>
+                    <button class="btn-tematica" onclick="cambiarTematica('espacio')" title="Espacio">🚀🛸<br><span>ESPACIO</span></button>
+                    <button class="btn-tematica" onclick="cambiarTematica('terror')" title="Terror">👻💀<br><span>TERROR</span></button>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
 
     <script>
+        // ==========================================
+        // SISTEMA DE PANORAMA (ESTIRAMIENTO INDEPENDIENTE)
+        // ==========================================
+        function forzarPanorama() {
+            const contenedor = document.querySelector('.game-container');
+            const anchoBase = 1320;
+            const altoBase = 760;
+            
+            const anchoPantalla = window.innerWidth;
+            const altoPantalla = window.innerHeight;
+            
+            const escalaX = anchoPantalla / anchoBase;
+            const escalaY = altoPantalla / altoBase;
+            
+            contenedor.style.transform = `scale(${escalaX}, ${escalaY})`;
+            contenedor.style.transformOrigin = 'center center';
+        }
+
+        window.addEventListener('resize', forzarPanorama);
+        window.addEventListener('orientationchange', () => setTimeout(forzarPanorama, 300));
+        forzarPanorama();
+
+        // ==========================================
+        // LÓGICA DEL JUEGO
+        // ==========================================
         const rutaTablero = [
             { r: 7, c: 1, tipo: "c-salida", txt: "SALIDA" }, { r: 6, c: 1, tipo: "c-azul", txt: "1" }, { r: 5, c: 1, tipo: "c-rojo", txt: "2" }, { r: 4, c: 1, tipo: "c-verde", txt: "3" },
             { r: 3, c: 1, tipo: "c-amarillo", txt: "4" }, { r: 2, c: 1, tipo: "c-avanza", txt: "🚀 +3" }, { r: 1, c: 1, tipo: "c-azul", txt: "6" }, { r: 1, c: 2, tipo: "c-rojo", txt: "7" },
@@ -410,7 +431,10 @@
 
         let datosClasificados = null; 
         let copiaMaestraPreguntas = null; 
+        
         let modoAutoDificultad = false; 
+        let modoAutoConteo = false;
+        let modoAutoSuspenso = false;
 
         const colorCategoriasMapeo = { 'general': 'GENERAL 🔵', 'entretenimiento': 'ENTRE./ARTE 🔴', 'geografia': 'GEOGRAFÍA 🟢', 'ciencia': 'CIENCIA 🟡' };
         const nombresOriginalesBotones = { 'general': 'Conoc. General', 'geografia': 'Geografía / Mundo', 'entretenimiento': 'Entre. / Arte', 'ciencia': 'Ciencia / Nat.' };
@@ -418,14 +442,16 @@
         let dadoNumeroActual = 0; let juegoTerminado = false; let nivelActual = "facil"; let cantidadJugadoresActual = 2; 
         let posiciones = { 1: 0, 2: 0, 3: 0, 4: 0 }; let estaMoviendose = false; let jugadorTurnoActual = 1; 
         let intervaloReloj; let tiempoRestante = 10; let preguntaCargadaEstructura = null; let pasoFlujoActual = "inicio"; let categoriaSeleccionadaActiva = null;
+        let opcionElegidaGlobal = null; let resultadoPendiente = null;
+        
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); let nodoMusicaAmbiente = null; let musicaEncendida = false; let socketAdmin; 
 
         async function cargarPreguntasJSON() {
             try {
-                const respuesta = await fetch('preguntas.json');
+                // ESCUDO ANTI-CACHÉ
+                const respuesta = await fetch('preguntas.json?nocache=' + new Date().getTime(), { cache: "no-store" });
                 const datosCrudos = await respuesta.json();
 
-                // 1. Preparamos el formato maestro para reinicios
                 copiaMaestraPreguntas = { 
                     general: {facil:[], medio:[], dificil:[]}, 
                     geografia: {facil:[], medio:[], dificil:[]}, 
@@ -433,7 +459,6 @@
                     ciencia: {facil:[], medio:[], dificil:[]} 
                 };
 
-                // 2. Traductor Automático del nuevo formato de lista plana
                 if (Array.isArray(datosCrudos)) {
                     datosCrudos.forEach(item => {
                         let cat = item.Categoria.toLowerCase();
@@ -450,29 +475,23 @@
                     copiaMaestraPreguntas = JSON.parse(JSON.stringify(datosCrudos));
                 }
 
-                // 3. Verificamos si hay un mazo a medio jugar guardado en la memoria
                 const mazoGuardado = localStorage.getItem('memoriaMazoTrivia');
                 if (mazoGuardado) {
                     datosClasificados = JSON.parse(mazoGuardado);
-                    console.log("📚 Mazo recuperado de la memoria. Continuando sin repetir preguntas.");
+                    console.log("📚 Mazo recuperado de la memoria.");
                 } else {
                     datosClasificados = JSON.parse(JSON.stringify(copiaMaestraPreguntas));
                     localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados));
-                    console.log("📚 Nuevo mazo cargado y guardado en memoria.");
+                    console.log("📚 Nuevo mazo cargado.");
                 }
-            } catch (error) {
-                console.error("Error al cargar preguntas.json:", error);
-            }
+            } catch (error) { console.error("Error al cargar preguntas.json:", error); }
         }
 
-        // LÓGICA DE REINICIO DE PARTIDA (Mantiene el mazo guardado intacto)
         function reiniciarJuegoYControles() {
-            if(confirm("¿Deseas reiniciar las posiciones del tablero y los controles? (El mazo de preguntas no se perderá)")) {
+            if(confirm("¿Deseas reiniciar las posiciones del tablero y los controles?")) {
                 reiniciarTodo();
-                document.getElementById('input-j1').value = "";
-                document.getElementById('input-j2').value = "";
-                document.getElementById('input-j3').value = "";
-                document.getElementById('input-j4').value = "";
+                document.getElementById('input-j1').value = ""; document.getElementById('input-j2').value = "";
+                document.getElementById('input-j3').value = ""; document.getElementById('input-j4').value = "";
                 actualizarNombresDesdeCampos(); 
 
                 if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
@@ -481,27 +500,35 @@
             }
         }
 
+        // Toggles Automáticos Independientes
         function toggleModoAuto() {
             if (estaMoviendose) return;
             modoAutoDificultad = !modoAutoDificultad;
             const btn = document.getElementById('btn-modo-auto');
-            if (modoAutoDificultad) {
-                btn.innerText = "⚙️ AUTO: ENCENDIDO";
-                btn.classList.add('encendido');
-                actualizarDificultadVisualPorTurno();
-            } else {
-                btn.innerText = "⚙️ AUTO: APAGADO";
-                btn.classList.remove('encendido');
-            }
+            if (modoAutoDificultad) { btn.classList.add('encendido'); actualizarDificultadVisualPorTurno(); } 
+            else { btn.classList.remove('encendido'); }
+        }
+
+        function toggleAutoConteo() {
+            if (estaMoviendose) return; 
+            modoAutoConteo = !modoAutoConteo; 
+            const btn = document.getElementById('btn-auto-conteo');
+            if (modoAutoConteo) { btn.classList.add('encendido'); } 
+            else { btn.classList.remove('encendido'); }
+        }
+
+        function toggleAutoSuspenso() {
+            if (estaMoviendose) return; 
+            modoAutoSuspenso = !modoAutoSuspenso; 
+            const btn = document.getElementById('btn-auto-suspenso');
+            if (modoAutoSuspenso) { btn.classList.add('encendido'); } 
+            else { btn.classList.remove('encendido'); }
         }
 
         function actualizarDificultadVisualPorTurno() {
             if (!modoAutoDificultad) return;
             const pos = posiciones[jugadorTurnoActual];
-            let nivelAuto = "facil";
-            if (pos >= 20) nivelAuto = "dificil";
-            else if (pos >= 10) nivelAuto = "medio";
-            
+            let nivelAuto = pos >= 20 ? "dificil" : pos >= 10 ? "medio" : "facil";
             nivelActual = nivelAuto;
             document.querySelectorAll('[data-nivel]').forEach(btn => btn.classList.remove('active'));
             document.querySelector(`[data-nivel="${nivelAuto}"]`).classList.add('active');
@@ -509,29 +536,17 @@
 
         function cambiarNivel(nuevoNivel) { 
             if(estaMoviendose) return; 
-            if (modoAutoDificultad) {
-                modoAutoDificultad = false;
-                const btn = document.getElementById('btn-modo-auto');
-                btn.innerText = "⚙️ AUTO: APAGADO";
-                btn.classList.remove('encendido');
-            }
-
+            if (modoAutoDificultad) { modoAutoDificultad = false; document.getElementById('btn-modo-auto').classList.remove('encendido'); }
             nivelActual = nuevoNivel; 
             document.querySelectorAll('[data-nivel]').forEach(btn => btn.classList.remove('active')); 
             document.querySelector(`[data-nivel="${nuevoNivel}"]`).classList.add('active'); 
         }
 
         function cambiarTematica(tema) {
-            if(estaMoviendose) return;
-            tematicaActual = tema;
-            
-            document.querySelectorAll('.btn-tematica').forEach(b => b.classList.remove('activa'));
-            event.currentTarget.classList.add('activa');
-
+            if(estaMoviendose) return; tematicaActual = tema;
+            document.querySelectorAll('.btn-tematica').forEach(b => b.classList.remove('activa')); event.currentTarget.classList.add('activa');
             avatarJugadores = { 1: tematicas[tema][1].emoji, 2: tematicas[tema][2].emoji, 3: tematicas[tema][3].emoji, 4: tematicas[tema][4].emoji };
-
-            actualizarNombresDesdeCampos();
-            actualizarFichas(null, null);
+            actualizarNombresDesdeCampos(); actualizarFichas(null, null);
 
             if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
                 socketAdmin.send(JSON.stringify({ tipo: 'CAMBIO_TEMATICA', datos: tematicas[tema], cantidadJugadores: cantidadJugadoresActual }));
@@ -543,30 +558,16 @@
             const indicadorConexion = document.getElementById('conexion-ws');
             socketAdmin = new WebSocket(window.location.origin.replace(/^http/, 'ws'));
 
-            socketAdmin.onopen = () => {
-                indicadorConexion.innerText = "🟢 Chat Sincronizado";
-                indicadorConexion.className = "estado-conexion conectado";
-                setTimeout(actualizarNombresDesdeCampos, 500);
-            };
-
-            socketAdmin.onclose = () => {
-                indicadorConexion.innerText = "🔴 Chat Desconectado. Reconectando...";
-                indicadorConexion.className = "estado-conexion";
-                setTimeout(conectarConServidorNode, 3000);
-            };
+            socketAdmin.onopen = () => { indicadorConexion.innerText = "🟢 Chat Sincronizado"; indicadorConexion.className = "estado-conexion conectado"; setTimeout(actualizarNombresDesdeCampos, 500); };
+            socketAdmin.onclose = () => { indicadorConexion.innerText = "🔴 Chat Desconectado. Reconectando..."; indicadorConexion.className = "estado-conexion"; setTimeout(conectarConServidorNode, 3000); };
 
             socketAdmin.onmessage = (event) => {
                 const datos = JSON.parse(event.data);
                 
-                if (datos.tipo === 'SOLICITAR_AVATARES') {
-                    socketAdmin.send(JSON.stringify({ tipo: 'CAMBIO_TEMATICA', datos: tematicas[tematicaActual], cantidadJugadores: cantidadJugadoresActual }));
-                    setTimeout(actualizarNombresDesdeCampos, 100);
-                }
+                if (datos.tipo === 'SOLICITAR_AVATARES') { socketAdmin.send(JSON.stringify({ tipo: 'CAMBIO_TEMATICA', datos: tematicas[tematicaActual], cantidadJugadores: cantidadJugadoresActual })); setTimeout(actualizarNombresDesdeCampos, 100); }
 
                 if (datos.tipo === 'SELECCION_AVATAR') {
-                    const avatarElegido = datos.avatar.toLowerCase();
-                    const temaData = tematicas[tematicaActual];
-                    
+                    const avatarElegido = datos.avatar.toLowerCase(); const temaData = tematicas[tematicaActual];
                     if (avatarElegido === temaData[1].id) { document.getElementById('input-j1').value = datos.usuario; }
                     else if (avatarElegido === temaData[2].id) { document.getElementById('input-j2').value = datos.usuario; }
                     else if (avatarElegido === temaData[3].id && cantidadJugadoresActual >= 3) { document.getElementById('input-j3').value = datos.usuario; }
@@ -583,43 +584,29 @@
         }
 
         function actualizarNombresDesdeCampos() {
-            const j1Val = document.getElementById('input-j1').value.trim();
-            const j2Val = document.getElementById('input-j2').value.trim();
-            const j3Val = document.getElementById('input-j3').value.trim();
-            const j4Val = document.getElementById('input-j4').value.trim();
+            const j1Val = document.getElementById('input-j1').value.trim(); const j2Val = document.getElementById('input-j2').value.trim();
+            const j3Val = document.getElementById('input-j3').value.trim(); const j4Val = document.getElementById('input-j4').value.trim();
             const temaData = tematicas[tematicaActual];
 
-            nombreJugadores[1] = `${(j1Val || "CHAT").toUpperCase()} ${temaData[1].emoji}`;
-            nombreJugadores[2] = `${(j2Val || "CREADOR").toUpperCase()} ${temaData[2].emoji}`;
-            nombreJugadores[3] = `${(j3Val || "MODERADOR").toUpperCase()} ${temaData[3].emoji}`;
-            nombreJugadores[4] = `${(j4Val || "INVITADO").toUpperCase()} ${temaData[4].emoji}`;
+            nombreJugadores[1] = `${(j1Val || "CHAT").toUpperCase()} ${temaData[1].emoji}`; nombreJugadores[2] = `${(j2Val || "CREADOR").toUpperCase()} ${temaData[2].emoji}`;
+            nombreJugadores[3] = `${(j3Val || "MODERADOR").toUpperCase()} ${temaData[3].emoji}`; nombreJugadores[4] = `${(j4Val || "INVITADO").toUpperCase()} ${temaData[4].emoji}`;
 
-            document.getElementById('span-j1').innerText = tematicas[tematicaActual][1].nombre + tematicas[tematicaActual][1].emoji;
-            document.getElementById('span-j2').innerText = tematicas[tematicaActual][2].nombre + tematicas[tematicaActual][2].emoji;
-            document.getElementById('span-j3').innerText = tematicas[tematicaActual][3].nombre + tematicas[tematicaActual][3].emoji;
-            document.getElementById('span-j4').innerText = tematicas[tematicaActual][4].nombre + tematicas[tematicaActual][4].emoji;
+            document.getElementById('span-j1').innerText = tematicas[tematicaActual][1].nombre + tematicas[tematicaActual][1].emoji; document.getElementById('span-j2').innerText = tematicas[tematicaActual][2].nombre + tematicas[tematicaActual][2].emoji;
+            document.getElementById('span-j3').innerText = tematicas[tematicaActual][3].nombre + tematicas[tematicaActual][3].emoji; document.getElementById('span-j4').innerText = tematicas[tematicaActual][4].nombre + tematicas[tematicaActual][4].emoji;
 
-            document.getElementById('nombre-turno-marcador').innerText = nombreJugadores[jugadorTurnoActual];
-            document.getElementById('texto-turno-pantalla').innerText = `TURNO DE: ${nombreJugadores[jugadorTurnoActual]}`;
-            document.getElementById('avatar-turno-pantalla').innerText = avatarJugadores[jugadorTurnoActual];
+            document.getElementById('nombre-turno-marcador').innerText = nombreJugadores[jugadorTurnoActual]; document.getElementById('texto-turno-pantalla').innerText = `TURNO DE: ${nombreJugadores[jugadorTurnoActual]}`; document.getElementById('avatar-turno-pantalla').innerText = avatarJugadores[jugadorTurnoActual];
 
             if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
                 let ocupados = [];
-                if(j1Val !== "") ocupados.push(temaData[1].id);
-                if(j2Val !== "") ocupados.push(temaData[2].id);
-                if(j3Val !== "") ocupados.push(temaData[3].id);
-                if(j4Val !== "") ocupados.push(temaData[4].id);
+                if(j1Val !== "") ocupados.push(temaData[1].id); if(j2Val !== "") ocupados.push(temaData[2].id);
+                if(j3Val !== "") ocupados.push(temaData[3].id); if(j4Val !== "") ocupados.push(temaData[4].id);
                 socketAdmin.send(JSON.stringify({ tipo: 'ESTADO_AVATARES', ocupados: ocupados }));
             }
         }
 
-        function procesarRespuestaElegidaChat(letraOpcion) {
-            if(!preguntaCargadaEstructura) return;
-            clearInterval(intervaloReloj); revelarRespuesta();
-            const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase();
-            setTimeout(() => { if (letraOpcion === letraCorrecta) aplicarAvance(jugadorTurnoActual); else activarFalloUrgente(); }, 1500);
-        }
-
+        // =====================================
+        // SONIDOS Y AUDIOS
+        // =====================================
         function sonarBrinco() { const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination); osc.type = 'sine'; osc.frequency.setValueAtTime(260, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(650, audioCtx.currentTime + 0.12); gain.gain.setValueAtTime(0.12, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12); osc.start(); osc.stop(audioCtx.currentTime + 0.12); }
         function sonarCelebracionAvance() { const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.connect(gain); gain.connect(audioCtx.destination); osc.type = 'triangle'; const t = audioCtx.currentTime; osc.frequency.setValueAtTime(320, t); osc.frequency.setValueAtTime(480, t + 0.06); osc.frequency.setValueAtTime(640, t + 0.12); osc.frequency.setValueAtTime(960, t + 0.18); gain.gain.setValueAtTime(0.15, t); gain.gain.linearRampToValueAtTime(0.01, t + 0.3); osc.start(); osc.stop(t + 0.3); }
         function sonarFalloCritico() { const osc1 = audioCtx.createOscillator(); const osc2 = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc1.connect(gain); osc2.connect(gain); gain.connect(audioCtx.destination); osc1.type = 'sawtooth'; osc2.type = 'square'; osc1.frequency.setValueAtTime(160, audioCtx.currentTime); osc1.frequency.linearRampToValueAtTime(50, audioCtx.currentTime + 0.6); osc2.frequency.setValueAtTime(155, audioCtx.currentTime); osc2.frequency.linearRampToValueAtTime(45, audioCtx.currentTime + 0.6); gain.gain.setValueAtTime(0.2, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.6); osc1.start(); osc2.start(); osc1.stop(audioCtx.currentTime + 0.6); osc2.stop(audioCtx.currentTime + 0.6); }
@@ -629,6 +616,9 @@
         function conmutarMusicaAmbiente() { if (audioCtx.state === 'suspended') audioCtx.resume(); const btn = document.getElementById('btn-musica-id'); if (musicaEncendida) { if(nodoMusicaAmbiente) { nodoMusicaAmbiente.stop(); nodoMusicaAmbiente = null; } musicaEncendida = false; btn.innerText = "🎵 Ritmo Interactivo: APAGADO"; btn.className = "btn-audio-directo muteada"; } else { musicaEncendida = true; btn.innerText = "⚡ Ritmo Interactivo: EN VIVO"; btn.className = "btn-audio-directo"; reproducirSúperFondoProcedural(); } }
         function reproducirSúperFondoProcedural() { if (!musicaEncendida) return; const ritmoBPM = 125; const duracionNegra = 60 / ritmoBPM; const bufferSize = audioCtx.sampleRate * (duracionNegra * 4); const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate); const canalMuestra = buffer.getChannelData(0); for (let i = 0; i < bufferSize; i++) { let t = i / audioCtx.sampleRate; let ondaGrave = Math.sin(2 * Math.PI * 55.0 * t) * Math.exp(-(t % (duracionNegra / 2)) * 10); canalMuestra[i] = (ondaGrave * 0.1); } nodoMusicaAmbiente = audioCtx.createBufferSource(); nodoMusicaAmbiente.buffer = buffer; nodoMusicaAmbiente.loop = true; const gain = audioCtx.createGain(); gain.gain.value = 0.38; nodoMusicaAmbiente.connect(gain); gain.connect(audioCtx.destination); nodoMusicaAmbiente.start(); }
 
+        // =====================================
+        // MOTOR DE JUEGO PRINCIPAL
+        // =====================================
         function tirarDadosAzar() {
             if(juegoTerminado || estaMoviendose) return;
             const keysCats = ['general', 'geografia', 'entretenimiento', 'ciencia'];
@@ -652,6 +642,7 @@
             }, 100);
         }
 
+        // FLUJO DEL BOTÓN DE CATEGORÍA
         function controlFlujoCategoria(categoria) {
             if(juegoTerminado || estaMoviendose) return;
             if(audioCtx.state === 'suspended') audioCtx.resume();
@@ -690,6 +681,11 @@
                     socketAdmin.send(JSON.stringify({ tipo: 'MOSTRAR_EN_CONTROL', fase: 'revelar', pregunta: preguntaCargadaEstructura.p, opciones: preguntaCargadaEstructura.o }));
                 }
 
+                // Si tiene el "Conteo Auto" encendido, pasa directamente al reloj
+                if (modoAutoConteo) {
+                    setTimeout(() => { controlFlujoCategoria(categoriaSeleccionadaActiva); }, 3000);
+                }
+
             } else if (pasoFlujoActual === "conteo") {
                 pasoFlujoActual = "bloqueado"; actualizarEstadosVisualesBotonesCategorias();
                 clearInterval(intervaloReloj); tiempoRestante = 10; 
@@ -714,12 +710,26 @@
                     else { 
                         clearInterval(intervaloReloj); 
                         barraReloj.style.width = '0%';
-                        activarFalloUrgente(); 
+                        marcarFalloManual(); 
                     }
                 }, 1000);
+
+            // NUEVO PASO DE SUSPENSO: Revela la respuesta y decide si avanza o falla
+            } else if (pasoFlujoActual === "suspenso") {
+                pasoFlujoActual = "bloqueado"; // Bloquea clics dobles
+                actualizarEstadosVisualesBotonesCategorias();
+                
+                revelarRespuestaVisual(); 
+                
+                // Efecto dramático de 2 segundos antes de que la ficha se mueva
+                setTimeout(() => { 
+                    if (resultadoPendiente === "avance") aplicarAvance(jugadorTurnoActual); 
+                    else activarFalloUrgente(); 
+                }, 2000);
             }
         }
 
+        // CONTROL DE BOTONES EN EL PANEL IZQUIERDO
         function actualizarEstadosVisualesBotonesCategorias() {
             const categories = ['general', 'geografia', 'entretenimiento', 'ciencia'];
             categories.forEach(cat => {
@@ -727,30 +737,99 @@
                 btn.className = `btn-cat ${colorCategoriasMapeo[cat].includes('🔵') ? 'azul' : colorCategoriasMapeo[cat].includes('🟢') ? 'verde' : colorCategoriasMapeo[cat].includes('🔴') ? 'rojo' : 'amarillo'}`; 
                 btn.innerText = nombresOriginalesBotones[cat];
                 if (pasoFlujoActual === "inicio") return;
+                
                 if (categoriaSeleccionadaActiva === cat) {
                     if (pasoFlujoActual === "revelar") { btn.classList.add('esperando-pregunta'); btn.innerText = "👁️ Mostrar Pregunta"; } 
                     else if (pasoFlujoActual === "conteo") { btn.classList.add('esperando-conteo'); btn.innerText = "⏱️ Iniciar Conteo"; } 
+                    else if (pasoFlujoActual === "suspenso") { btn.classList.add('esperando-conteo'); btn.innerText = "🥁 Revelar Resultado"; } 
                     else if (pasoFlujoActual === "bloqueado") { btn.classList.add('desactivado'); }
                 } else { btn.classList.add('desactivado'); }
             });
         }
 
-        function liberarYResetearFlujoBotones() { 
-            clearInterval(intervaloReloj); pasoFlujoActual = "inicio"; categoriaSeleccionadaActiva = null; actualizarEstadosVisualesBotonesCategorias(); 
-            if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) { 
-                socketAdmin.send(JSON.stringify({ tipo: 'OCULTAR_PREGUNTA' })); 
+        // CHAT RESPONDE Y ENTRA AL SUSPENSO
+        function procesarRespuestaElegidaChat(letraOpcion) {
+            if(!preguntaCargadaEstructura || pasoFlujoActual !== "bloqueado") return;
+            clearInterval(intervaloReloj); 
+            
+            opcionElegidaGlobal = letraOpcion;
+            const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase();
+            
+            // 1. Mostrar la opción que eligió el chat en blanco brillante
+            const mapOpciones = {'A': 'opc-a', 'B': 'opc-b', 'C': 'opc-c'};
+            if(letraOpcion && mapOpciones[letraOpcion]) {
+                document.getElementById(mapOpciones[letraOpcion]).classList.add('opcion-seleccionada');
+                if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
+                    socketAdmin.send(JSON.stringify({ tipo: 'MARCAR_SELECCION', elegida: letraOpcion }));
+                }
+            }
+
+            // 2. Preparar el resultado
+            pasoFlujoActual = "suspenso";
+            if (letraOpcion === letraCorrecta) resultadoPendiente = "avance";
+            else resultadoPendiente = "fallo";
+            
+            actualizarEstadosVisualesBotonesCategorias();
+
+            // Si "Suspenso Auto" está activo, no espera a que des click
+            if(modoAutoSuspenso) {
+                setTimeout(() => {
+                    if(pasoFlujoActual === "suspenso") controlFlujoCategoria(categoriaSeleccionadaActiva);
+                }, 3000);
             }
         }
-        
-        function revelarRespuesta() { 
-            if(estaMoviendose || !preguntaCargadaEstructura) return;
-            clearInterval(intervaloReloj); document.getElementById('respuesta-tablero-texto').style.display = "block";
-            const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase(); limpiarIluminacionOpciones();
-            if(letraCorrecta === "A") document.getElementById('opc-a').classList.add('opcion-correcta-iluminada');
-            else if(letraCorrecta === "B") document.getElementById('opc-b').classList.add('opcion-correcta-iluminada');
-            else if(letraCorrecta === "C") document.getElementById('opc-c').classList.add('opcion-correcta-iluminada');
+
+        // FALLO MANUAL (Ej. se acaba el tiempo o dicen tonterías) Y ENTRA AL SUSPENSO
+        function marcarFalloManual() {
+            if(estaMoviendose || !preguntaCargadaEstructura || pasoFlujoActual === "suspenso") return;
+            clearInterval(intervaloReloj);
+            
+            opcionElegidaGlobal = null;
+            pasoFlujoActual = "suspenso";
+            resultadoPendiente = "fallo";
+            
+            actualizarEstadosVisualesBotonesCategorias();
+
+            if(modoAutoSuspenso) {
+                setTimeout(() => {
+                    if(pasoFlujoActual === "suspenso") controlFlujoCategoria(categoriaSeleccionadaActiva);
+                }, 2000);
+            }
         }
-        function limpiarIluminacionOpciones() { document.getElementById('opc-a').classList.remove('opcion-correcta-iluminada'); document.getElementById('opc-b').classList.remove('opcion-correcta-iluminada'); document.getElementById('opc-c').classList.remove('opcion-correcta-iluminada'); }
+
+        function revelarRespuestaVisual() { 
+            document.getElementById('respuesta-tablero-texto').style.display = "block";
+            const letraCorrecta = preguntaCargadaEstructura.r.substring(0, 1).toUpperCase(); 
+            limpiarIluminacionOpciones(); 
+            
+            const mapOpciones = {'A': 'opc-a', 'B': 'opc-b', 'C': 'opc-c'};
+            if(opcionElegidaGlobal && mapOpciones[opcionElegidaGlobal]) {
+                if(opcionElegidaGlobal === letraCorrecta) {
+                    document.getElementById(mapOpciones[opcionElegidaGlobal]).classList.add('opcion-correcta-iluminada');
+                } else {
+                    document.getElementById(mapOpciones[opcionElegidaGlobal]).classList.add('opcion-error');
+                    document.getElementById(mapOpciones[letraCorrecta]).classList.add('opcion-correcta-iluminada');
+                }
+            } else {
+                document.getElementById(mapOpciones[letraCorrecta]).classList.add('opcion-correcta-iluminada');
+            }
+
+            if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) {
+                socketAdmin.send(JSON.stringify({ tipo: 'REVELAR_CON_SELECCION', correcta: letraCorrecta, elegida: opcionElegidaGlobal }));
+            }
+        }
+
+        function limpiarIluminacionOpciones() { 
+            document.getElementById('opc-a').classList.remove('opcion-correcta-iluminada', 'opcion-error', 'opcion-seleccionada'); 
+            document.getElementById('opc-b').classList.remove('opcion-correcta-iluminada', 'opcion-error', 'opcion-seleccionada'); 
+            document.getElementById('opc-c').classList.remove('opcion-correcta-iluminada', 'opcion-error', 'opcion-seleccionada'); 
+        }
+
+        function liberarYResetearFlujoBotones() { 
+            clearInterval(intervaloReloj); pasoFlujoActual = "inicio"; categoriaSeleccionadaActiva = null; opcionElegidaGlobal = null; resultadoPendiente = null;
+            actualizarEstadosVisualesBotonesCategorias(); 
+            if (typeof socketAdmin !== 'undefined' && socketAdmin.readyState === WebSocket.OPEN) { socketAdmin.send(JSON.stringify({ tipo: 'OCULTAR_PREGUNTA' })); }
+        }
         
         function activarFalloUrgente() {
             if(estaMoviendose || juegoTerminado) return;
@@ -760,7 +839,6 @@
             setTimeout(() => { estaMoviendose = false; liberarYResetearFlujoBotones(); rotarSiguienteTurno(); }, 1800);
         }
 
-        // FUNCION CRÍTICA RESTAURADA (Actualiza las posiciones y avatares en el tablero)
         function actualizarFichas(posicionBrinco, jugadorBrinco) {
             document.querySelectorAll('[id^="fichas-c-"]').forEach(el => el.innerHTML = '');
             for (let j = 1; j <= cantidadJugadoresActual; j++) {
@@ -827,22 +905,18 @@
             actualizarDificultadVisualPorTurno();
         }
         
-        // EL CRUPIER: Saca la carta y guarda el estado en la memoria local
         function obtenerPreguntaClasificada(cat, nivel) { 
             if (!datosClasificados) return { p: "Cargando preguntas...", o: ["A) -", "B) -", "C) -"], r: "A) -" };
             let grupo = datosClasificados[cat][nivel]; 
             
-            // Si el mazo de esa categoría y dificultad se quedó vacío, lo rellena usando la copia maestra
             if (!grupo || grupo.length === 0) { 
                 datosClasificados[cat][nivel] = JSON.parse(JSON.stringify(copiaMaestraPreguntas[cat][nivel]));
                 grupo = datosClasificados[cat][nivel];
             }
             
             const rIdx = Math.floor(Math.random() * grupo.length); 
-            // Saca la carta para que no vuelva a salir
             const preguntaSeleccionada = grupo.splice(rIdx, 1)[0]; 
             
-            // Actualiza la memoria del navegador inmediatamente
             localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados));
             
             return preguntaSeleccionada; 
