@@ -461,13 +461,13 @@
 
                 if (Array.isArray(datosCrudos)) {
                     datosCrudos.forEach(item => {
-                        let cat = item.Categoria.toLowerCase();
-                        let dif = item.Dificultad.toLowerCase();
+                        let cat = (item.Categoria || item.cat || "general").toLowerCase();
+                        let dif = (item.Dificultad || item.dif || "facil").toLowerCase();
                         if (copiaMaestraPreguntas[cat] && copiaMaestraPreguntas[cat][dif]) {
                             copiaMaestraPreguntas[cat][dif].push({
-                                p: item.Pregunta,
-                                o: [item.OpcionA, item.OpcionB, item.OpcionC],
-                                r: item.Respuesta
+                                p: item.Pregunta || item.p,
+                                o: item.o ? item.o : [item.OpcionA, item.OpcionB, item.OpcionC],
+                                r: item.Respuesta || item.r
                             });
                         }
                     });
@@ -475,15 +475,12 @@
                     copiaMaestraPreguntas = JSON.parse(JSON.stringify(datosCrudos));
                 }
 
-                const mazoGuardado = localStorage.getItem('memoriaMazoTrivia');
-                if (mazoGuardado) {
-                    datosClasificados = JSON.parse(mazoGuardado);
-                    console.log("📚 Mazo recuperado de la memoria.");
-                } else {
-                    datosClasificados = JSON.parse(JSON.stringify(copiaMaestraPreguntas));
-                    localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados));
-                    console.log("📚 Nuevo mazo cargado.");
-                }
+                // 💣 DESTRUCCIÓN DE MEMORIA VIEJA: Obligamos al juego a usar el archivo fresco
+                localStorage.removeItem('memoriaMazoTrivia');
+                datosClasificados = JSON.parse(JSON.stringify(copiaMaestraPreguntas));
+                localStorage.setItem('memoriaMazoTrivia', JSON.stringify(datosClasificados));
+                console.log("📚 Memoria purgada. Nuevo mazo cargado directo de la nube.");
+                
             } catch (error) { console.error("Error al cargar preguntas.json:", error); }
         }
 
@@ -664,10 +661,16 @@
             } else if (pasoFlujoActual === "revelar") {
                 pasoFlujoActual = "conteo"; sonarAparicionPregunta();
                 document.getElementById('contenedor-dados-tablero').style.display = "none"; document.getElementById('contenedor-pregunta-tablero').style.display = "block";
+                
+                // Formateo para leer limpio
                 document.getElementById('pregunta-tablero-texto').innerText = preguntaCargadaEstructura.p;
-                document.getElementById('opc-a').innerHTML = `<span>A)</span> ${preguntaCargadaEstructura.o[0].substring(3)}`;
-                document.getElementById('opc-b').innerHTML = `<span>B)</span> ${preguntaCargadaEstructura.o[1].substring(3)}`;
-                document.getElementById('opc-c').innerHTML = `<span>C)</span> ${preguntaCargadaEstructura.o[2].substring(3)}`;
+                let optA = preguntaCargadaEstructura.o[0]; if(optA.startsWith("A)")) optA = optA.substring(3);
+                let optB = preguntaCargadaEstructura.o[1]; if(optB.startsWith("B)")) optB = optB.substring(3);
+                let optC = preguntaCargadaEstructura.o[2]; if(optC.startsWith("C)")) optC = optC.substring(3);
+                
+                document.getElementById('opc-a').innerHTML = `<span>A)</span> ${optA.trim()}`;
+                document.getElementById('opc-b').innerHTML = `<span>B)</span> ${optB.trim()}`;
+                document.getElementById('opc-c').innerHTML = `<span>C)</span> ${optC.trim()}`;
                 
                 const barraReloj = document.getElementById('barra-reloj');
                 barraReloj.style.width = '100%';
